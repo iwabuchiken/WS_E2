@@ -11,13 +11,13 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
+$C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
 end_init CODE 0 0 0 1 2
 config CONFIG 0 2007 2007 1 2
 $dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 cinit CODE 0 3FE 3FE 2 2
 cstackBANK0 BANK0 1 C C 3 1
-maintext CODE 0 3D9 3D9 25 2
+maintext CODE 0 3D6 3D6 28 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -25,17 +25,17 @@ maintext CODE 0 3D9 3D9 25 2
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
 BANK0 000F-004D 1
-CODE 0001-03D8 2
-CONST 0001-03D8 2
+CODE 0001-03D5 2
+CONST 0001-03D5 2
 EEDATA 2100-213F 2
-ENTRY 0001-03D8 2
+ENTRY 0001-03D5 2
 IDLOC 2000-2003 2
 RAM 000F-004D 1
 SFR0 0000-000B 1
 SFR1 0080-00CD 1
 STACK 000F-004D 1
-STRCODE 0001-03D8 2
-STRING 0001-03D8 2
+STRCODE 0001-03D5 2
+STRING 0001-03D5 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -50,20 +50,25 @@ STRING 0001-03D8 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
-"C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f84a.h":700 3D9 maintext CODE
-"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":43 3D9 maintext CODE
-"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":50 3D9 maintext CODE
-"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":52 3DB maintext CODE
-"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":67 3DD maintext CODE
-"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":69 3E0 maintext CODE
-"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":71 3ED maintext CODE
-"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":74 3F0 maintext CODE
-"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":65 3FD maintext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s3fo.":97 3FE cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s3fo.":100 3FE cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s3fo.":106 3FE cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s3fo.":107 3FE cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s3fo.":108 3FF cinit CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f84a.h":700 3D6 maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":43 3D6 maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":53 3D6 maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":58 3D8 maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":59 3D9 maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":64 3DA maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":65 3DC maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":83 3DD maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":84 3DF maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":88 3E0 maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":93 3ED maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":94 3EF maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":96 3F0 maintext CODE
+"C:\WORKS\WS\WS_E2\D-11-1_PIC16F84A\D-11-1_PIC16F84A_retry.X\D-11-1_PIC16F84A_retry.c":81 3FD maintext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s6ek.":105 3FE cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s6ek.":108 3FE cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s6ek.":114 3FE cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s6ek.":115 3FE cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s6ek.":116 3FF cinit CODE
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -83,15 +88,17 @@ __S3 0 0 ABS 0 - -
 __Hintentry 0 0 CODE 0 intentry -
 __Lintentry 0 0 CODE 0 intentry -
 __CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
-_main 7B2 0 CODE 0 maintext dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
+_main 7AC 0 CODE 0 maintext dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
+___sp 0 0 STACK 2 stack C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
 btemp 4E 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 ltemp 4E 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 ttemp 4E 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 wtemp 4E 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
-start 0 0 CODE 0 init C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
+start 0 0 CODE 0 init C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
+_TRISA 85 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 _TRISB 86 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
-reset_vec 0 0 CODE 0 reset_vec C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
+_PORTA 5 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
 _PORTB 6 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 ltemp0 4E 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 ttemp0 4E 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
@@ -119,7 +126,7 @@ __Hcommon 0 0 ABS 0 common -
 __Lcommon 0 0 ABS 0 common -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-___int_sp 0 0 STACK 2 stack C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
+___int_sp 0 0 STACK 2 stack C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
 __Habs1 0 0 ABS 0 abs1 -
 __Labs1 0 0 ABS 0 abs1 -
 __Hsfr0 0 0 ABS 0 sfr0 -
@@ -128,17 +135,18 @@ __Hsfr1 0 0 ABS 0 sfr1 -
 __Lsfr1 0 0 ABS 0 sfr1 -
 __Hcode 0 0 ABS 0 code -
 __Lcode 0 0 ABS 0 code -
-stackhi 0 0 ABS 0 - C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
+stackhi 0 0 ABS 0 - C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __pcstackBANK0 C 0 BANK0 1 cstackBANK0 dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
-stacklo 0 0 ABS 0 - C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
+stacklo 0 0 ABS 0 - C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
 __Hinit 0 0 CODE 0 init -
 __Linit 0 0 CODE 0 init -
 __end_of_main 7FC 0 CODE 0 maintext dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 __Htext 0 0 ABS 0 text -
 __Ltext 0 0 ABS 0 text -
 end_of_initialization 7FC 0 CODE 0 cinit dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
+_PORTBbits 6 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 __Hstrings 0 0 ABS 0 strings -
 __Lstrings 0 0 ABS 0 strings -
 __Hbank0 0 0 ABS 0 bank0 -
@@ -171,17 +179,18 @@ __Hend_init 2 0 CODE 0 end_init -
 __Lend_init 0 0 CODE 0 end_init -
 __Hreset_vec 0 0 CODE 0 reset_vec -
 __Lreset_vec 0 0 CODE 0 reset_vec -
-intlevel0 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
+intlevel0 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
-intlevel1 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
-intlevel2 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
-intlevel3 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
-intlevel4 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
-intlevel5 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s3fo.obj
+intlevel1 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
+intlevel2 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
+intlevel3 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
+intlevel4 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
+intlevel5 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s6ek.obj
 start_initialization 7FC 0 CODE 0 cinit dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 __Hmaintext 0 0 ABS 0 maintext -
 __Lmaintext 0 0 ABS 0 maintext -
-__pmaintext 7B2 0 CODE 0 maintext dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
+__pmaintext 7AC 0 CODE 0 maintext dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
+_OPTION_REGbits 81 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 __initialization 7FC 0 CODE 0 cinit dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 # %SPLITSTAB Section
@@ -213,4 +222,4 @@ reset_vec 0 0 0 1 2
 cinit 0 3FE 7FC 2 2
 config 0 2007 400E 1 2
 cstackBANK0 1 C C 3 1
-maintext 0 3D9 7B2 25 2
+maintext 0 3D6 7AC 28 2

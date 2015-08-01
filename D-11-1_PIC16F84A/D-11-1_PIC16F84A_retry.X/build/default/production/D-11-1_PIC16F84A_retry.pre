@@ -515,20 +515,32 @@ extern char * ftoa(float f, int * status);
 # 43
 void main(void) {
 
-# 50
-TRISB = 0x00;
+# 53
+OPTION_REGbits.nRBPU = 0;
 
+# 58
+TRISB = 0b00000000;
+TRISA = 0x00000000;
+
+# 64
+PORTA = 0b00000000;
 PORTB = 0x00;
 
-# 65
+# 81
 while(1) {
 
-PORTB = 0x01;
+PORTBbits.RB0 = 0;
+PORTBbits.RB1 = 1;
+
+
 
 _delay((unsigned long)((100)*(20000000/4000.0)));
 
-PORTB = 0x02;
 
+
+
+PORTBbits.RB0 = 1;
+PORTBbits.RB1 = 0;
 
 _delay((unsigned long)((100)*(20000000/4000.0)));
 

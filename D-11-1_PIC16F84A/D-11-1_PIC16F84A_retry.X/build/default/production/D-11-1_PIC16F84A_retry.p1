@@ -1,9 +1,32 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
-"482 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f84a.h
+"376 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f84a.h
+[s S16 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S16 . PS PSA T0SE T0CS INTEDG nRBPU ]
+"384
+[s S17 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S17 . PS0 PS1 PS2 ]
+"375
+[u S15 `S16 1 `S17 1 ]
+[n S15 . . . ]
+"390
+[v _OPTION_REGbits `VS15 ~T0 @X0 0 e@129 ]
+"482
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"439
+[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"158
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "201
 [v _PORTB `Vuc ~T0 @X0 0 e@6 ]
+"207
+[s S9 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S9 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"206
+[u S8 `S9 1 ]
+[n S8 . . ]
+"218
+[v _PORTBbits `VS8 ~T0 @X0 0 e@6 ]
 [v F276 `(v ~T0 @X0 1 tf1`ul ]
 "154 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic.h
 [v __delay `JF276 ~T0 @X0 0 e ]
@@ -358,39 +381,54 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;D-11-1_PIC16F84A_retry.c: 43: void main(void) {
 [e :U _main ]
 [f ]
-[; ;D-11-1_PIC16F84A_retry.c: 50: TRISB = 0x00;
-"50
+[; ;D-11-1_PIC16F84A_retry.c: 53: OPTION_REGbits.nRBPU = 0;
+"53
+[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
+[; ;D-11-1_PIC16F84A_retry.c: 58: TRISB = 0b00000000;
+"58
 [e = _TRISB -> -> 0 `i `uc ]
-[; ;D-11-1_PIC16F84A_retry.c: 52: PORTB = 0x00;
-"52
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;D-11-1_PIC16F84A_retry.c: 65: while(1) {
+[; ;D-11-1_PIC16F84A_retry.c: 59: TRISA = 0x00000000;
+"59
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;D-11-1_PIC16F84A_retry.c: 64: PORTA = 0b00000000;
+"64
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;D-11-1_PIC16F84A_retry.c: 65: PORTB = 0x00;
 "65
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;D-11-1_PIC16F84A_retry.c: 81: while(1) {
+"81
 [e :U 31 ]
 {
-[; ;D-11-1_PIC16F84A_retry.c: 67: PORTB = 0x01;
-"67
-[e = _PORTB -> -> 1 `i `uc ]
-[; ;D-11-1_PIC16F84A_retry.c: 69: _delay((unsigned long)((100)*(20000000/4000.0)));
-"69
+[; ;D-11-1_PIC16F84A_retry.c: 83: PORTBbits.RB0 = 0;
+"83
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+[; ;D-11-1_PIC16F84A_retry.c: 84: PORTBbits.RB1 = 1;
+"84
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+[; ;D-11-1_PIC16F84A_retry.c: 88: _delay((unsigned long)((100)*(20000000/4000.0)));
+"88
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-[; ;D-11-1_PIC16F84A_retry.c: 71: PORTB = 0x02;
-"71
-[e = _PORTB -> -> 2 `i `uc ]
-[; ;D-11-1_PIC16F84A_retry.c: 74: _delay((unsigned long)((100)*(20000000/4000.0)));
-"74
+[; ;D-11-1_PIC16F84A_retry.c: 93: PORTBbits.RB0 = 1;
+"93
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+[; ;D-11-1_PIC16F84A_retry.c: 94: PORTBbits.RB1 = 0;
+"94
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+[; ;D-11-1_PIC16F84A_retry.c: 96: _delay((unsigned long)((100)*(20000000/4000.0)));
+"96
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"76
+"98
 }
 [e :U 30 ]
-"65
+"81
 [e $U 31  ]
 [e :U 32 ]
-[; ;D-11-1_PIC16F84A_retry.c: 76: }
-[; ;D-11-1_PIC16F84A_retry.c: 78: return;
-"78
+[; ;D-11-1_PIC16F84A_retry.c: 98: }
+[; ;D-11-1_PIC16F84A_retry.c: 100: return;
+"100
 [e $UE 29  ]
-[; ;D-11-1_PIC16F84A_retry.c: 80: }
-"80
+[; ;D-11-1_PIC16F84A_retry.c: 102: }
+"102
 [e :UE 29 ]
 }

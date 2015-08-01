@@ -5,14 +5,16 @@ __S3 0 0 ABS 0
 __Hintentry 0 0 CODE 0
 __Lintentry 0 0 CODE 0
 __CFG_PWRTE$ON 0 0 ABS 0
-_main 3D9 0 CODE 0
+_main 3D6 0 CODE 0
 ___sp 0 0 STACK 2
 btemp 4E 0 ABS 0
 ltemp 4E 0 ABS 0
 ttemp 4E 0 ABS 0
 wtemp 4E 0 ABS 0
 start 0 0 CODE 0
+_TRISA 85 0 ABS 0
 _TRISB 86 0 ABS 0
+_PORTA 5 0 ABS 0
 reset_vec 0 0 CODE 0
 _PORTB 6 0 ABS 0
 ltemp0 4E 0 ABS 0
@@ -61,6 +63,7 @@ __end_of_main 3FE 0 CODE 0
 __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
 end_of_initialization 3FE 0 CODE 0
+_PORTBbits 6 0 ABS 0
 __Hstrings 0 0 ABS 0
 __Lstrings 0 0 ABS 0
 __Hbank0 0 0 ABS 0
@@ -103,7 +106,8 @@ intlevel5 0 0 CODE 0
 start_initialization 3FE 0 CODE 0
 __Hmaintext 0 0 ABS 0
 __Lmaintext 0 0 ABS 0
-__pmaintext 3D9 0 CODE 0
+__pmaintext 3D6 0 CODE 0
+_OPTION_REGbits 81 0 ABS 0
 __initialization 3FE 0 CODE 0
 __CFG_CP$OFF 0 0 ABS 0
 %segments
@@ -111,23 +115,28 @@ reset_vec 0 1 CODE 0 0
 cinit 7FC 7FF CODE 7FC 0
 config 400E 400F CONFIG 400E 0
 cstackBANK0 C E BANK0 C 1
-maintext 7B2 7FB CODE 7B2 0
+maintext 7AC 7FB CODE 7AC 0
 %locals
 dist/default/production\D-11-1_PIC16F84A_retry.X.production.obj
 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic16f84a.h
-700 3D9 0 CODE 0
+700 3D6 0 CODE 0
 D-11-1_PIC16F84A_retry.c
-43 3D9 0 CODE 0
-50 3D9 0 CODE 0
-52 3DB 0 CODE 0
-67 3DD 0 CODE 0
-69 3E0 0 CODE 0
-71 3ED 0 CODE 0
-74 3F0 0 CODE 0
-65 3FD 0 CODE 0
-C:\Users\kbuchi\AppData\Local\Temp\s3fo.
-97 3FE 0 CODE 0
-100 3FE 0 CODE 0
-106 3FE 0 CODE 0
-107 3FE 0 CODE 0
-108 3FF 0 CODE 0
+43 3D6 0 CODE 0
+53 3D6 0 CODE 0
+58 3D8 0 CODE 0
+59 3D9 0 CODE 0
+64 3DA 0 CODE 0
+65 3DC 0 CODE 0
+83 3DD 0 CODE 0
+84 3DF 0 CODE 0
+88 3E0 0 CODE 0
+93 3ED 0 CODE 0
+94 3EF 0 CODE 0
+96 3F0 0 CODE 0
+81 3FD 0 CODE 0
+C:\Users\kbuchi\AppData\Local\Temp\s6ek.
+105 3FE 0 CODE 0
+108 3FE 0 CODE 0
+114 3FE 0 CODE 0
+115 3FE 0 CODE 0
+116 3FF 0 CODE 0

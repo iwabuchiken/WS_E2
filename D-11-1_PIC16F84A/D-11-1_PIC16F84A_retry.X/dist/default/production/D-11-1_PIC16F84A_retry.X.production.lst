@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.33 build 59893 
-                                                                                               Sat Aug 01 09:32:01 2015
+                                                                                               Sat Aug 01 09:43:06 2015
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 59893
      1                           	processor	16F84A
@@ -27,148 +27,165 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
     21  0086                     	;# 
     22  0088                     	;# 
     23  0089                     	;# 
-    24  0006                     _PORTB	set	6
-    25  0086                     _TRISB	set	134
-    26                           
-    27                           	psect	maintext
-    28  03D9                     __pmaintext:	
-    29                           ; #config settings
+    24  0005                     _PORTA	set	5
+    25  0006                     _PORTB	set	6
+    26  0006                     _PORTBbits	set	6
+    27  0081                     _OPTION_REGbits	set	129
+    28  0085                     _TRISA	set	133
+    29  0086                     _TRISB	set	134
     30                           
-    31                           
-    32                           ;psect for function _main
-    33  0000                     
-    34 ;;
-    35 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
-    36 ;;
-    37 ;; *************** function _main *****************
-    38 ;; Defined at:
-    39 ;;		line 43 in file "D-11-1_PIC16F84A_retry.c"
-    40 ;; Parameters:    Size  Location     Type
-    41 ;;		None
-    42 ;; Auto vars:     Size  Location     Type
-    43 ;;		None
-    44 ;; Return value:  Size  Location     Type
-    45 ;;		None               void
-    46 ;; Registers used:
-    47 ;;		wreg, status,2
-    48 ;; Tracked objects:
-    49 ;;		On entry : 17F/0
-    50 ;;		On exit  : 0/0
-    51 ;;		Unchanged: 0/0
-    52 ;; Data sizes:     COMMON   BANK0
-    53 ;;      Params:         0       0
-    54 ;;      Locals:         0       0
-    55 ;;      Temps:          0       3
-    56 ;;      Totals:         0       3
-    57 ;;Total ram usage:        3 bytes
-    58 ;; This function calls:
-    59 ;;		Nothing
-    60 ;; This function is called by:
-    61 ;;		Startup code after reset
-    62 ;; This function uses a non-reentrant model
-    63 ;;
-    64  03D9                     _main:	
-    65                           
-    66                           ;D-11-1_PIC16F84A_retry.c: 50: TRISB = 0x00;
-    67                           
-    68                           ;incstack = 0
-    69                           ; Regs used in _main: [wreg+status,2]
-    70  03D9  1683               	bsf	3,5	;RP0=1, select bank1
-    71  03DA  0186               	clrf	6	;volatile
-    72                           
-    73                           ;D-11-1_PIC16F84A_retry.c: 52: PORTB = 0x00;
-    74  03DB  1283               	bcf	3,5	;RP0=0, select bank0
-    75  03DC  0186               	clrf	6	;volatile
-    76  03DD                     l481:	
-    77                           ;D-11-1_PIC16F84A_retry.c: 65: while(1) {
-    78                           
+    31                           	psect	maintext
+    32  03D6                     __pmaintext:	
+    33                           ; #config settings
+    34                           
+    35                           
+    36                           ;psect for function _main
+    37  0000                     
+    38 ;;
+    39 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+    40 ;;
+    41 ;; *************** function _main *****************
+    42 ;; Defined at:
+    43 ;;		line 43 in file "D-11-1_PIC16F84A_retry.c"
+    44 ;; Parameters:    Size  Location     Type
+    45 ;;		None
+    46 ;; Auto vars:     Size  Location     Type
+    47 ;;		None
+    48 ;; Return value:  Size  Location     Type
+    49 ;;		None               void
+    50 ;; Registers used:
+    51 ;;		wreg, status,2
+    52 ;; Tracked objects:
+    53 ;;		On entry : 17F/0
+    54 ;;		On exit  : 0/0
+    55 ;;		Unchanged: 0/0
+    56 ;; Data sizes:     COMMON   BANK0
+    57 ;;      Params:         0       0
+    58 ;;      Locals:         0       0
+    59 ;;      Temps:          0       3
+    60 ;;      Totals:         0       3
+    61 ;;Total ram usage:        3 bytes
+    62 ;; This function calls:
+    63 ;;		Nothing
+    64 ;; This function is called by:
+    65 ;;		Startup code after reset
+    66 ;; This function uses a non-reentrant model
+    67 ;;
+    68  03D6                     _main:	
+    69                           
+    70                           ;D-11-1_PIC16F84A_retry.c: 53: OPTION_REGbits.nRBPU = 0;
+    71                           
+    72                           ;incstack = 0
+    73                           ; Regs used in _main: [wreg+status,2]
+    74  03D6  1683               	bsf	3,5	;RP0=1, select bank1
+    75  03D7  1381               	bcf	1,7	;volatile
+    76                           
+    77                           ;D-11-1_PIC16F84A_retry.c: 58: TRISB = 0b00000000;
+    78  03D8  0186               	clrf	6	;volatile
     79                           
-    80                           ;D-11-1_PIC16F84A_retry.c: 67: PORTB = 0x01;
-    81  03DD  3001               	movlw	1
-    82  03DE  1283               	bcf	3,5	;RP0=0, select bank0
-    83  03DF  0086               	movwf	6	;volatile
-    84                           
-    85                           ;D-11-1_PIC16F84A_retry.c: 69: _delay((unsigned long)((100)*(20000000/4000.0)));
-    86  03E0  3003               	movlw	3
-    87  03E1  008E               	movwf	??_main+2
-    88  03E2  308A               	movlw	138
-    89  03E3  008D               	movwf	??_main+1
-    90  03E4  3056               	movlw	86
-    91  03E5  008C               	movwf	??_main
-    92  03E6                     u17:	
-    93  03E6  0B8C               	decfsz	??_main,f
-    94  03E7  2BE6               	goto	u17
-    95  03E8  0B8D               	decfsz	??_main+1,f
-    96  03E9  2BE6               	goto	u17
-    97  03EA  0B8E               	decfsz	??_main+2,f
-    98  03EB  2BE6               	goto	u17
-    99  03EC  2BED               	nop2
-   100                           
-   101                           ;D-11-1_PIC16F84A_retry.c: 71: PORTB = 0x02;
-   102  03ED  3002               	movlw	2
-   103  03EE  1283               	bcf	3,5	;RP0=0, select bank0
-   104  03EF  0086               	movwf	6	;volatile
-   105                           
-   106                           ;D-11-1_PIC16F84A_retry.c: 74: _delay((unsigned long)((100)*(20000000/4000.0)));
-   107  03F0  3003               	movlw	3
-   108  03F1  008E               	movwf	??_main+2
-   109  03F2  308A               	movlw	138
-   110  03F3  008D               	movwf	??_main+1
-   111  03F4  3056               	movlw	86
-   112  03F5  008C               	movwf	??_main
-   113  03F6                     u27:	
-   114  03F6  0B8C               	decfsz	??_main,f
-   115  03F7  2BF6               	goto	u27
-   116  03F8  0B8D               	decfsz	??_main+1,f
-   117  03F9  2BF6               	goto	u27
-   118  03FA  0B8E               	decfsz	??_main+2,f
-   119  03FB  2BF6               	goto	u27
-   120  03FC  2BFD               	nop2
-   121  03FD  2BDD               	goto	l481
-   122  03FE                     __end_of_main:	
-   123                           ;D-11-1_PIC16F84A_retry.c: 76: }
-   124                           ;D-11-1_PIC16F84A_retry.c: 78: return;
-   125                           
-   126  004E                     btemp	set	78	;btemp
-   127  004E                     wtemp	set	78
-   128  004E                     wtemp0	set	78
-   129  0050                     wtemp1	set	80
-   130  0052                     wtemp2	set	82
-   131  0054                     wtemp3	set	84
-   132  0056                     wtemp4	set	86
-   133  0058                     wtemp5	set	88
-   134  004F                     wtemp6	set	79
-   135  004E                     ttemp	set	78
-   136  004E                     ttemp0	set	78
-   137  0051                     ttemp1	set	81
-   138  0054                     ttemp2	set	84
-   139  0057                     ttemp3	set	87
-   140  004F                     ttemp4	set	79
-   141  004E                     ltemp	set	78
-   142  004E                     ltemp0	set	78
-   143  0052                     ltemp1	set	82
-   144  0056                     ltemp2	set	86
-   145  0050                     ltemp3	set	80
-   146                           
-   147                           	psect	cinit
-   148  03FE                     start_initialization:	
-   149  03FE                     __initialization:	
-   150  03FE                     end_of_initialization:	
-   151                           ;End of C runtime variable initialization code
-   152                           
-   153  03FE                     __end_of__initialization:	
-   154  03FE  0183               	clrf	3
-   155  03FF  2BD9               	ljmp	_main	;jump to C main() function
-   156                           
-   157                           	psect	cstackBANK0
-   158  000C                     __pcstackBANK0:	
-   159  000C                     ?_main:	
-   160  000C                     ??_main:	
-   161                           ; 0 bytes @ 0x0
-   162                           
+    80                           ;D-11-1_PIC16F84A_retry.c: 59: TRISA = 0x00000000;
+    81  03D9  0185               	clrf	5	;volatile
+    82                           
+    83                           ;D-11-1_PIC16F84A_retry.c: 64: PORTA = 0b00000000;
+    84  03DA  1283               	bcf	3,5	;RP0=0, select bank0
+    85  03DB  0185               	clrf	5	;volatile
+    86                           
+    87                           ;D-11-1_PIC16F84A_retry.c: 65: PORTB = 0x00;
+    88  03DC  0186               	clrf	6	;volatile
+    89  03DD                     l497:	
+    90                           ;D-11-1_PIC16F84A_retry.c: 81: while(1) {
+    91                           
+    92                           
+    93                           ;D-11-1_PIC16F84A_retry.c: 83: PORTBbits.RB0 = 0;
+    94  03DD  1283               	bcf	3,5	;RP0=0, select bank0
+    95  03DE  1006               	bcf	6,0	;volatile
+    96                           
+    97                           ;D-11-1_PIC16F84A_retry.c: 84: PORTBbits.RB1 = 1;
+    98  03DF  1486               	bsf	6,1	;volatile
+    99                           
+   100                           ;D-11-1_PIC16F84A_retry.c: 88: _delay((unsigned long)((100)*(20000000/4000.0)));
+   101  03E0  3003               	movlw	3
+   102  03E1  008E               	movwf	??_main+2
+   103  03E2  308A               	movlw	138
+   104  03E3  008D               	movwf	??_main+1
+   105  03E4  3056               	movlw	86
+   106  03E5  008C               	movwf	??_main
+   107  03E6                     u17:	
+   108  03E6  0B8C               	decfsz	??_main,f
+   109  03E7  2BE6               	goto	u17
+   110  03E8  0B8D               	decfsz	??_main+1,f
+   111  03E9  2BE6               	goto	u17
+   112  03EA  0B8E               	decfsz	??_main+2,f
+   113  03EB  2BE6               	goto	u17
+   114  03EC  2BED               	nop2
+   115                           
+   116                           ;D-11-1_PIC16F84A_retry.c: 93: PORTBbits.RB0 = 1;
+   117  03ED  1283               	bcf	3,5	;RP0=0, select bank0
+   118  03EE  1406               	bsf	6,0	;volatile
+   119                           
+   120                           ;D-11-1_PIC16F84A_retry.c: 94: PORTBbits.RB1 = 0;
+   121  03EF  1086               	bcf	6,1	;volatile
+   122                           
+   123                           ;D-11-1_PIC16F84A_retry.c: 96: _delay((unsigned long)((100)*(20000000/4000.0)));
+   124  03F0  3003               	movlw	3
+   125  03F1  008E               	movwf	??_main+2
+   126  03F2  308A               	movlw	138
+   127  03F3  008D               	movwf	??_main+1
+   128  03F4  3056               	movlw	86
+   129  03F5  008C               	movwf	??_main
+   130  03F6                     u27:	
+   131  03F6  0B8C               	decfsz	??_main,f
+   132  03F7  2BF6               	goto	u27
+   133  03F8  0B8D               	decfsz	??_main+1,f
+   134  03F9  2BF6               	goto	u27
+   135  03FA  0B8E               	decfsz	??_main+2,f
+   136  03FB  2BF6               	goto	u27
+   137  03FC  2BFD               	nop2
+   138  03FD  2BDD               	goto	l497
+   139  03FE                     __end_of_main:	
+   140                           ;D-11-1_PIC16F84A_retry.c: 98: }
+   141                           ;D-11-1_PIC16F84A_retry.c: 100: return;
+   142                           
+   143  004E                     btemp	set	78	;btemp
+   144  004E                     wtemp	set	78
+   145  004E                     wtemp0	set	78
+   146  0050                     wtemp1	set	80
+   147  0052                     wtemp2	set	82
+   148  0054                     wtemp3	set	84
+   149  0056                     wtemp4	set	86
+   150  0058                     wtemp5	set	88
+   151  004F                     wtemp6	set	79
+   152  004E                     ttemp	set	78
+   153  004E                     ttemp0	set	78
+   154  0051                     ttemp1	set	81
+   155  0054                     ttemp2	set	84
+   156  0057                     ttemp3	set	87
+   157  004F                     ttemp4	set	79
+   158  004E                     ltemp	set	78
+   159  004E                     ltemp0	set	78
+   160  0052                     ltemp1	set	82
+   161  0056                     ltemp2	set	86
+   162  0050                     ltemp3	set	80
    163                           
-   164                           ; 0 bytes @ 0x0
-   165  000C                     	ds	3
+   164                           	psect	cinit
+   165  03FE                     start_initialization:	
+   166  03FE                     __initialization:	
+   167  03FE                     end_of_initialization:	
+   168                           ;End of C runtime variable initialization code
+   169                           
+   170  03FE                     __end_of__initialization:	
+   171  03FE  0183               	clrf	3
+   172  03FF  2BD6               	ljmp	_main	;jump to C main() function
+   173                           
+   174                           	psect	cstackBANK0
+   175  000C                     __pcstackBANK0:	
+   176  000C                     ?_main:	
+   177  000C                     ??_main:	
+   178                           ; 0 bytes @ 0x0
+   179                           
+   180                           
+   181                           ; 0 bytes @ 0x0
+   182  000C                     	ds	3
 
 
 Data Sizes:
@@ -230,20 +247,21 @@ DATA                 0      0       0       6        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.33 build 59893 
-Symbol Table                                                                                   Sat Aug 01 09:32:01 2015
+Symbol Table                                                                                   Sat Aug 01 09:43:06 2015
 
             __CFG_CP$OFF 0000                       u17 03E6                       u27 03F6  
-                    l481 03DD             __CFG_FOSC$HS 0000                     _main 03D9  
+                    l497 03DD             __CFG_FOSC$HS 0000                     _main 03D6  
                    btemp 004E                     ltemp 004E                     start 0000  
                    ttemp 004E                     wtemp 004E                    ?_main 000C  
-          __CFG_WDTE$OFF 0000                    _PORTB 0006                    _TRISB 0086  
-          __CFG_PWRTE$ON 0000                    ltemp0 004E                    ltemp1 0052  
-                  ltemp2 0056                    ltemp3 0050                    ttemp0 004E  
-                  ttemp1 0051                    ttemp2 0054                    ttemp3 0057  
-                  ttemp4 004F                    status 0003                    wtemp0 004E  
-                  wtemp1 0050                    wtemp2 0052                    wtemp3 0054  
-                  wtemp4 0056                    wtemp5 0058                    wtemp6 004F  
-        __initialization 03FE             __end_of_main 03FE                   ??_main 000C  
-__end_of__initialization 03FE               __pmaintext 03D9     end_of_initialization 03FE  
-    start_initialization 03FE                ___latbits 0000            __pcstackBANK0 000C  
-          __size_of_main 0025  
+          __CFG_WDTE$OFF 0000                    _PORTA 0005                    _PORTB 0006  
+                  _TRISA 0085                    _TRISB 0086            __CFG_PWRTE$ON 0000  
+                  ltemp0 004E                    ltemp1 0052                    ltemp2 0056  
+                  ltemp3 0050                    ttemp0 004E                    ttemp1 0051  
+                  ttemp2 0054                    ttemp3 0057                    ttemp4 004F  
+                  status 0003                    wtemp0 004E                    wtemp1 0050  
+                  wtemp2 0052                    wtemp3 0054                    wtemp4 0056  
+                  wtemp5 0058                    wtemp6 004F          __initialization 03FE  
+           __end_of_main 03FE                   ??_main 000C  __end_of__initialization 03FE  
+         _OPTION_REGbits 0081               __pmaintext 03D6     end_of_initialization 03FE  
+              _PORTBbits 0006      start_initialization 03FE                ___latbits 0000  
+          __pcstackBANK0 000C            __size_of_main 0028  

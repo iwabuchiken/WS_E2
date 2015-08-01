@@ -1,14 +1,14 @@
 ### HEXMate logfile and output summary ###
 ### Memory Usage ###
  Unused memory ranges:
-  2h - 7B1h
+  2h - 7ABh
   800h - 3FFFh
   4000h - 400Dh
   4010h - 403Fh
   
  dist/default/production\D-11-1_PIC16F84A_retry.X.production.hex ranges:
   0h - 1h
-  7B2h - 7FFh
+  7ACh - 7FFh
   400Eh - 400Fh
   
 ### Hex Memory Map ###
@@ -24,6 +24,6 @@
   X = Find & delete opcode
   1 = dist/default/production\D-11-1_PIC16F84A_retry.X.production.hex
 00000000: 11--------------------------------------------------------------
-00000780: --------------------------------------------------11111111111111
+00000780: --------------------------------------------11111111111111111111
 000007C0: 1111111111111111111111111111111111111111111111111111111111111111
 00004000: --------------11------------------------------------------------
