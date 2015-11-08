@@ -1,6 +1,8 @@
-taskkill /im wish.exe
+C:\WORKS\Utils\shortcuts\emb\main.stop.bat
 
-taskkill /im PicoScope.exe
+REM taskkill /im wish.exe
+
+REM taskkill /im PicoScope.exe
 
 REM C:\WORKS\Utils\shortcuts\cake_ifm11\main.stop.bat
 
