@@ -1,4 +1,4 @@
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:15:30         PAGE  1
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:28:54         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -45,43 +45,44 @@ Warning[205]: Found directive in column 1. (__CONFIG)
                       00028                 
 0009                  00029 DLY_1S; 1 sec
                       00030 
-0009   0C0A           00031                 movlw   d'10'
-000A   0032           00032                 movwf   CNT3
-                      00033                 
-000B                  00034 DLY_100
-                      00035 
-000B   0C64           00036                 movlw   d'100'
-000C   0030           00037                 movwf   CNT1
-                      00038                 
-000D                  00039 DLP1
-                      00040 
-000D   0CC8           00041                 movlw   d'200'
-000E   0031           00042                 movwf   CNT2
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:15:30         PAGE  2
+                      00031                 ;movlw  d'10'
+0009   0C05           00032                 movlw   d'5'
+000A   0032           00033                 movwf   CNT3
+                      00034                 
+000B                  00035 DLY_100
+                      00036 
+000B   0C64           00037                 movlw   d'100'
+000C   0030           00038                 movwf   CNT1
+                      00039                 
+000D                  00040 DLP1
+                      00041 
+000D   0CC8           00042                 movlw   d'200'
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:28:54         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00043                 
-000F                  00044 DLP2
-                      00045 
-000F   0000           00046                 nop
-0010   0000           00047                 nop
-                      00048                 
-0011   02F1           00049                 decfsz  CNT2,f
-0012   0A??           00050                 goto    DLP2
-                      00051                 
-0013   02F0           00052                 decfsz  CNT1,f
-0014   0A??           00053                 goto    DLP1
-                      00054                 
-0015   02F2           00055                 decfsz  CNT3,f
-0016   0A??           00056                 goto    DLY_100
-                      00057                 
-0017   0800           00058                 retlw   0
-                      00059                 
-0FEB                  00060                 END
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:15:30         PAGE  3
+000E   0031           00043                 movwf   CNT2
+                      00044                 
+000F                  00045 DLP2
+                      00046 
+000F   0000           00047                 nop
+0010   0000           00048                 nop
+                      00049                 
+0011   02F1           00050                 decfsz  CNT2,f
+0012   0A??           00051                 goto    DLP2
+                      00052                 
+0013   02F0           00053                 decfsz  CNT1,f
+0014   0A??           00054                 goto    DLP1
+                      00055                 
+0015   02F2           00056                 decfsz  CNT3,f
+0016   0A??           00057                 goto    DLY_100
+                      00058                 
+0017   0800           00059                 retlw   0
+                      00060                 
+0FEB                  00061                 END
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:28:54         PAGE  3
 
 
 SYMBOL TABLE
@@ -140,7 +141,7 @@ _IDLOC0                           00000100
 _IDLOC1                           00000101
 _IDLOC2                           00000102
 _IDLOC3                           00000103
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:15:30         PAGE  4
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:28:54         PAGE  4
 
 
 SYMBOL TABLE

@@ -28,7 +28,8 @@ main_loop
 		
 DLY_1S;	1 sec
 
-		movlw	d'10'
+		;movlw	d'10'
+		movlw	d'5'
 		movwf	CNT3
 		
 DLY_100
