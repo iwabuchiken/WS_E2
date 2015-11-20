@@ -1,0 +1,42 @@
+MPLINK 4.41, Linker
+Linker Map File - Created Fri Nov 20 18:15:31 2015
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000030
+                   .cinit    romdata   0x000018    program   0x000004
+.config_0FFF_D-17_S-2_PIC10_M=58.O       code   0x000fff    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000019      
+                            0x000fff    0x000fff      
+            27 out of 261 program addresses used, program memory utilization is 10%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     DLP1   0x00000d    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                     DLP2   0x00000f    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                  DLY_100   0x00000b    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                   DLY_1S   0x000009    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                main_loop   0x000004    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                main_loop   0x000004    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                   DLY_1S   0x000009    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                  DLY_100   0x00000b    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                     DLP1   0x00000d    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                     DLP2   0x00000f    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+
+

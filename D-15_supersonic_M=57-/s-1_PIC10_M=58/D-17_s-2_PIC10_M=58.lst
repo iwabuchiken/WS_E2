@@ -1,0 +1,165 @@
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:15:30         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (list)
+                      00001 list            p=10f200
+                      00002 #include        <p10f200.inc>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC10F200 processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2011 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00151         LIST
+                      00003 
+Warning[205]: Found directive in column 1. (__CONFIG)
+0FFF   0FEB           00004 __CONFIG        _CP_OFF & _WDT_OFF & _MCLRE_OFF & _IntRC_OSC
+                      00005 
+  00000010            00006 CNT1    EQU             0x10
+  00000011            00007 CNT2    EQU             0x11
+  00000012            00008 CNT3    EQU             0x12
+                      00009 
+                      00010                 ORG             0x00
+                      00011                 
+0000   0025           00012                 movwf   OSCCAL
+0001   0405           00013                 bcf             OSCCAL,FOSC4
+                      00014                 
+                      00015                 ;GPIO 0
+0002   0CFE           00016                 movlw   b'11111110'     ;GPIO 0 => output
+0003   0006           00017                 TRIS    GPIO
+                      00018 
+0004                  00019 main_loop
+                      00020 
+0004   0506           00021                 bsf             GPIO,0
+0005   09??           00022                 call    DLY_1S
+                      00023                 
+0006   0406           00024                 bcf             GPIO,0
+0007   09??           00025                 call    DLY_1S
+                      00026                 
+0008   0A??           00027                 goto    main_loop
+                      00028                 
+0009                  00029 DLY_1S; 1 sec
+                      00030 
+0009   0C0A           00031                 movlw   d'10'
+000A   0032           00032                 movwf   CNT3
+                      00033                 
+000B                  00034 DLY_100
+                      00035 
+000B   0C64           00036                 movlw   d'100'
+000C   0030           00037                 movwf   CNT1
+                      00038                 
+000D                  00039 DLP1
+                      00040 
+000D   0CC8           00041                 movlw   d'200'
+000E   0031           00042                 movwf   CNT2
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:15:30         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00043                 
+000F                  00044 DLP2
+                      00045 
+000F   0000           00046                 nop
+0010   0000           00047                 nop
+                      00048                 
+0011   02F1           00049                 decfsz  CNT2,f
+0012   0A??           00050                 goto    DLP2
+                      00051                 
+0013   02F0           00052                 decfsz  CNT1,f
+0014   0A??           00053                 goto    DLP1
+                      00054                 
+0015   02F2           00055                 decfsz  CNT3,f
+0016   0A??           00056                 goto    DLY_100
+                      00057                 
+0017   0800           00058                 retlw   0
+                      00059                 
+0FEB                  00060                 END
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:15:30         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+CAL0                              00000001
+CAL1                              00000002
+CAL2                              00000003
+CAL3                              00000004
+CAL4                              00000005
+CAL5                              00000006
+CAL6                              00000007
+CNT1                              00000010
+CNT2                              00000011
+CNT3                              00000012
+DC                                00000001
+DLP1                              0000000D
+DLP2                              0000000F
+DLY_100                           0000000B
+DLY_1S                            00000009
+F                                 00000001
+FOSC4                             00000000
+FSR                               00000004
+GP0                               00000000
+GP1                               00000001
+GP2                               00000002
+GP3                               00000003
+GPIO                              00000006
+GPWUF                             00000007
+INDF                              00000000
+NOT_GPPU                          00000006
+NOT_GPWU                          00000007
+NOT_PD                            00000003
+NOT_TO                            00000004
+OSCCAL                            00000005
+PCL                               00000002
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+STATUS                            00000003
+T0CS                              00000005
+T0SE                              00000004
+TMR0                              00000001
+TRISIO0                           00000000
+TRISIO1                           00000001
+TRISIO2                           00000002
+TRISIO3                           00000003
+W                                 00000000
+Z                                 00000002
+_CONFIG                           00000FFF
+_CP_OFF                           00000FFF
+_CP_ON                            00000FF7
+_IDLOC0                           00000100
+_IDLOC1                           00000101
+_IDLOC2                           00000102
+_IDLOC3                           00000103
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:15:30         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_IntRC_OSC                        00000FFF
+_MCLRE_OFF                        00000FEF
+_MCLRE_ON                         00000FFF
+_OSC_IntRC                        00000FFF
+_WDTE_OFF                         00000FFB
+_WDTE_ON                          00000FFF
+_WDT_OFF                          00000FFB
+_WDT_ON                           00000FFF
+__10F200                          00000001
+__DEBUG                           1
+main_loop                         00000004
+
+Errors   :     0
+Warnings :     2 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+
