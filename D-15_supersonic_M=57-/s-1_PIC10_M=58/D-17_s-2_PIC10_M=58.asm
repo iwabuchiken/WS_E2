@@ -19,13 +19,16 @@ CNT3	EQU		0x12
 main_loop
 
 		bsf		GPIO,0
-		call	DLY_1S
+		;call	DLY_1S
+		CALL	DLY_Xms
 		
 		bcf		GPIO,0
 		call	DLY_1S
 		
 		goto	main_loop
 		
+;=========================== DLY_1S
+;{
 DLY_1S;	1 sec
 
 		;movlw	d'10'
@@ -58,4 +61,38 @@ DLP2
 		
 		retlw	0
 		
+;}
+
+;=========================== DLY_Xms
+;{
+DLY_Xms
+		MOVLW	d'64'	; 64 mill seconds
+		MOVWF	CNT1
+	
+	
+;}
+
+;=========================== DLY_1ms
+;{
+DLY_1ms	;	1 mill seconds
+
+		MOVLW	d'200'
+		MOVWF	CNT2
+		
+DLY_5us	;	5 micro seconds
+
+		NOP
+		NOP
+		DECFSZ	CNT2,f
+		
+		GOTO	DLY_5us
+		
+		DECFSZ	CNT1,f
+		
+		GOTO	DLY_1ms
+
+;}
+		
+;=========================== END
+
 		END

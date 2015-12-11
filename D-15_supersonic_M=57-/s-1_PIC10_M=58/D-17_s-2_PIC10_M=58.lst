@@ -1,4 +1,4 @@
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  9:56:36         PAGE  1
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  17:18:34         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -36,53 +36,96 @@ Warning[205]: Found directive in column 1. (__CONFIG)
 0004                  00019 main_loop
                       00020 
 0004   0506           00021                 bsf             GPIO,0
-0005   09??           00022                 call    DLY_1S
-                      00023                 
-0006   0406           00024                 bcf             GPIO,0
-0007   09??           00025                 call    DLY_1S
-                      00026                 
-0008   0A??           00027                 goto    main_loop
-                      00028                 
-0009                  00029 DLY_1S; 1 sec
-                      00030 
-                      00031                 ;movlw  d'10'
-0009   0C05           00032                 movlw   d'5'
-000A   0032           00033                 movwf   CNT3
-                      00034                 
-000B                  00035 DLY_100
-                      00036 
-000B   0C64           00037                 movlw   d'100'
-000C   0030           00038                 movwf   CNT1
-                      00039                 
-000D                  00040 DLP1
-                      00041 
-000D   0CC8           00042                 movlw   d'200'
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  9:56:36         PAGE  2
+                      00022                 ;call   DLY_1S
+0005   09??           00023                 CALL    DLY_Xms
+                      00024                 
+0006   0406           00025                 bcf             GPIO,0
+0007   09??           00026                 call    DLY_1S
+                      00027                 
+0008   0A??           00028                 goto    main_loop
+                      00029                 
+                      00030 ;=========================== DLY_1S
+                      00031 ;{
+0009                  00032 DLY_1S; 1 sec
+                      00033 
+                      00034                 ;movlw  d'10'
+0009   0C05           00035                 movlw   d'5'
+000A   0032           00036                 movwf   CNT3
+                      00037                 
+000B                  00038 DLY_100
+                      00039 
+000B   0C64           00040                 movlw   d'100'
+000C   0030           00041                 movwf   CNT1
+                      00042                 
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  17:18:34         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-000E   0031           00043                 movwf   CNT2
-                      00044                 
-000F                  00045 DLP2
-                      00046 
-000F   0000           00047                 nop
-0010   0000           00048                 nop
-                      00049                 
-0011   02F1           00050                 decfsz  CNT2,f
-0012   0A??           00051                 goto    DLP2
+000D                  00043 DLP1
+                      00044 
+000D   0CC8           00045                 movlw   d'200'
+000E   0031           00046                 movwf   CNT2
+                      00047                 
+000F                  00048 DLP2
+                      00049 
+000F   0000           00050                 nop
+0010   0000           00051                 nop
                       00052                 
-0013   02F0           00053                 decfsz  CNT1,f
-0014   0A??           00054                 goto    DLP1
+0011   02F1           00053                 decfsz  CNT2,f
+0012   0A??           00054                 goto    DLP2
                       00055                 
-0015   02F2           00056                 decfsz  CNT3,f
-0016   0A??           00057                 goto    DLY_100
+0013   02F0           00056                 decfsz  CNT1,f
+0014   0A??           00057                 goto    DLP1
                       00058                 
-0017   0800           00059                 retlw   0
-                      00060                 
-0FEB                  00061                 END
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  9:56:36         PAGE  3
+0015   02F2           00059                 decfsz  CNT3,f
+0016   0A??           00060                 goto    DLY_100
+                      00061                 
+0017   0800           00062                 retlw   0
+                      00063                 
+                      00064 ;}
+                      00065 
+                      00066 ;=========================== DLY_Xms
+                      00067 ;{
+0018                  00068 DLY_Xms
+0018   0C40           00069                 MOVLW   d'64'   ; 64 mill seconds
+0019   0030           00070                 MOVWF   CNT1
+                      00071         
+                      00072         
+                      00073 ;}
+                      00074 
+                      00075 ;=========================== DLY_1ms
+                      00076 ;{
+001A                  00077 DLY_1ms ;       1 mill seconds
+                      00078 
+001A   0CC8           00079                 MOVLW   d'200'
+001B   0031           00080                 MOVWF   CNT2
+                      00081                 
+001C                  00082 DLY_5us ;       5 micro seconds
+                      00083 
+001C   0000           00084                 NOP
+001D   0000           00085                 NOP
+001E   02F1           00086                 DECFSZ  CNT2,f
+                      00087                 
+001F   0A??           00088                 GOTO    DLY_5us
+                      00089                 
+0020   02F0           00090                 DECFSZ  CNT1,f
+                      00091                 
+0021   0A??           00092                 GOTO    DLY_1ms
+                      00093 
+                      00094 ;}
+                      00095                 
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  17:18:34         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00096 ;=========================== END
+                      00097 
+0FEB                  00098                 END
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  17:18:34         PAGE  4
 
 
 SYMBOL TABLE
@@ -104,6 +147,9 @@ DLP1                              0000000D
 DLP2                              0000000F
 DLY_100                           0000000B
 DLY_1S                            00000009
+DLY_1ms                           0000001A
+DLY_5us                           0000001C
+DLY_Xms                           00000018
 F                                 00000001
 FOSC4                             00000000
 FSR                               00000004
@@ -138,15 +184,15 @@ _CONFIG                           00000FFF
 _CP_OFF                           00000FFF
 _CP_ON                            00000FF7
 _IDLOC0                           00000100
-_IDLOC1                           00000101
-_IDLOC2                           00000102
-_IDLOC3                           00000103
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  9:56:36         PAGE  4
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  17:18:34         PAGE  5
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_IDLOC1                           00000101
+_IDLOC2                           00000102
+_IDLOC3                           00000103
 _IntRC_OSC                        00000FFF
 _MCLRE_OFF                        00000FEF
 _MCLRE_ON                         00000FFF

@@ -1,0 +1,17 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+CNT1	C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm	6;"	q	line:6
+CNT2	C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm	7;"	q	line:7
+CNT3	C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm	8;"	q	line:8
+DLP1	C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm	40;"	l	line:40
+DLP2	C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm	45;"	l	line:45
+DLY_100	C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm	35;"	l	line:35
+__CONFIG	C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm	4;"	l	line:4
+list	C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm	1;"	l	line:1
+main_loop	C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm	19;"	l	line:19
