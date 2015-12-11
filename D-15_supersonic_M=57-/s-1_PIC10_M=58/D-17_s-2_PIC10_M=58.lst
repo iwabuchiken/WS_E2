@@ -1,4 +1,4 @@
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:28:54         PAGE  1
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  9:56:36         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[205]: Found directive in column 1. (__CONFIG)
 000D                  00040 DLP1
                       00041 
 000D   0CC8           00042                 movlw   d'200'
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:28:54         PAGE  2
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  9:56:36         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -82,7 +82,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0017   0800           00059                 retlw   0
                       00060                 
 0FEB                  00061                 END
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:28:54         PAGE  3
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  9:56:36         PAGE  3
 
 
 SYMBOL TABLE
@@ -141,7 +141,7 @@ _IDLOC0                           00000100
 _IDLOC1                           00000101
 _IDLOC2                           00000102
 _IDLOC3                           00000103
-MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   11-20-2015  18:28:54         PAGE  4
+MPASM  5.43           D-17_S-2_PIC10_M=58.ASM   12-11-2015  9:56:36         PAGE  4
 
 
 SYMBOL TABLE
