@@ -20,10 +20,11 @@ main_loop
 
 		bsf		GPIO,0
 		;call	DLY_1S
-		CALL	DLY_Xms
+		CALL	DLY_ms_64
 		
 		bcf		GPIO,0
-		call	DLY_1S
+		;call	DLY_1S
+		CALL	DLY_ms_1_exact
 		
 		goto	main_loop
 		
@@ -63,9 +64,9 @@ DLP2
 		
 ;}
 
-;=========================== DLY_Xms
+;=========================== DLY_ms_64
 ;{
-DLY_Xms
+DLY_ms_64
 		MOVLW	d'64'	; 64 mill seconds
 		MOVWF	CNT1
 	
@@ -92,7 +93,29 @@ DLY_5us	;	5 micro seconds
 		GOTO	DLY_1ms
 
 ;}
+		RETLW	0
+;
+
+;=========================== DLY_ms_1_exact
+;{
+DLY_ms_1_exact	;	1 mill seconds
+
+		MOVLW	d'200'
+		MOVWF	CNT2
 		
+DLY_us_5	;	5 micro seconds
+
+		NOP
+		NOP
+		DECFSZ	CNT2,f
+		
+		GOTO	DLY_us_5
+		
+		RETLW	0
+;}
+		
+;
+
 ;=========================== END
 
 		END

@@ -1,11 +1,11 @@
 MPLINK 4.41, Linker
-Linker Map File - Created Fri Dec 11 17:18:35 2015
+Linker Map File - Created Fri Dec 11 17:56:50 2015
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
-                   .org_0       code   0x000000    program   0x000044
-                   .cinit    romdata   0x000022    program   0x000004
+                   .org_0       code   0x000000    program   0x000054
+                   .cinit    romdata   0x00002a    program   0x000004
 .config_0FFF_D-17_S-2_PIC10_M=58.O       code   0x000fff    program   0x000002
 
 
@@ -13,9 +13,9 @@ Linker Map File - Created Fri Dec 11 17:18:35 2015
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x000023      
+                            0x000000    0x00002b      
                             0x000fff    0x000fff      
-            37 out of 261 program addresses used, program memory utilization is 14%
+            45 out of 261 program addresses used, program memory utilization is 17%
 
 
 
@@ -28,7 +28,9 @@ Linker Map File - Created Fri Dec 11 17:18:35 2015
                    DLY_1S   0x000009    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
                   DLY_1ms   0x00001a    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
                   DLY_5us   0x00001c    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
-                  DLY_Xms   0x000018    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+           DLY_ms_1_exact   0x000023    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                DLY_ms_64   0x000018    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                 DLY_us_5   0x000025    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
                 main_loop   0x000004    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
 
 
@@ -41,8 +43,10 @@ Linker Map File - Created Fri Dec 11 17:18:35 2015
                   DLY_100   0x00000b    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
                      DLP1   0x00000d    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
                      DLP2   0x00000f    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
-                  DLY_Xms   0x000018    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                DLY_ms_64   0x000018    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
                   DLY_1ms   0x00001a    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
                   DLY_5us   0x00001c    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+           DLY_ms_1_exact   0x000023    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
+                 DLY_us_5   0x000025    program     static C:\WORKS\WS\WS_E2\D-15_supersonic_M=57-\s-1_PIC10_M=58\D-17_s-2_PIC10_M=58.asm
 
 
