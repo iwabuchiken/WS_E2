@@ -30,6 +30,7 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.base.2146967594" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.base">
 								<option id="gnu.c.compiler.option.include.paths.1749630734" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;C:\MinGW\mingw32\i686-w64-mingw32\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\WORKS\Programs\Microchip\XC8\v1.33\include&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.800762730" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>

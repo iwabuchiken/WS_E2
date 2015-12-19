@@ -8,6 +8,9 @@ RM := del
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include D-17_PICWriter_PIC16F84A/D-17_PICWriter_PIC16F84A.X/subdir.mk
+-include D-15_supersonic_M=57-/s-1_PIC10_M=58/subdir.mk
+-include D-11-1_PIC16F84A/D-11-1_PIC16F84A_retry.X/dist/default/production/subdir.mk
 -include D-11-1_PIC16F84A/D-11-1_PIC16F84A_retry.X/subdir.mk
 -include subdir.mk
 -include objects.mk
