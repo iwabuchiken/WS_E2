@@ -493,12 +493,14 @@ PORTB = 0x00;
 void
 _While(void) {
 
-PORTB = 0x01;
+PORTB = 0x00;
+
 PORTA = 0x01;
 
-_delay((unsigned long)((100)*(20000000/4000.0)));
+_delay((unsigned long)((500)*(20000000/4000.0)));
 
-PORTB = 0x02;
+PORTB = 0x03;
+
 PORTA = 0x02;
 
 _delay((unsigned long)((500)*(20000000/4000.0)));

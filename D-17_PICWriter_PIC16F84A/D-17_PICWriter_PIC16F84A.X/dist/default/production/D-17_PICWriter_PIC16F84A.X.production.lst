@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.33 build 59893 
-                                                                                               Sat Dec 19 20:45:42 2015
+                                                                                               Tue Dec 22 15:16:47 2015
 
 Microchip Technology Omniscient Code Generator (Lite mode) build 59893
      1                           	processor	16F84A
@@ -35,36 +35,36 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
     29  0089                     	;# 
     30                           
     31                           	psect	idataBANK0
-    32  03B6                     __pidataBANK0:	
+    32  03B7                     __pidataBANK0:	
     33                           
     34                           ;initializer for _msg_Project_Name
-    35  03B6  3444               	retlw	68
-    36  03B7  342D               	retlw	45
-    37  03B8  3431               	retlw	49
-    38  03B9  3431               	retlw	49
-    39  03BA  3436               	retlw	54
-    40  03BB  3420               	retlw	32
-    41  03BC  3476               	retlw	118
-    42  03BD  342D               	retlw	45
-    43  03BE  3431               	retlw	49
-    44  03BF  342E               	retlw	46
-    45  03C0  3432               	retlw	50
-    46  03C1  3423               	retlw	35
-    47  03C2  3431               	retlw	49
-    48  03C3  3400               	retlw	0
+    35  03B7  3444               	retlw	68
+    36  03B8  342D               	retlw	45
+    37  03B9  3431               	retlw	49
+    38  03BA  3431               	retlw	49
+    39  03BB  3436               	retlw	54
+    40  03BC  3420               	retlw	32
+    41  03BD  3476               	retlw	118
+    42  03BE  342D               	retlw	45
+    43  03BF  3431               	retlw	49
+    44  03C0  342E               	retlw	46
+    45  03C1  3432               	retlw	50
+    46  03C2  3423               	retlw	35
+    47  03C3  3431               	retlw	49
+    48  03C4  3400               	retlw	0
     49                           
     50                           ;initializer for _msg_Initial
-    51  03C4  3463               	retlw	99
-    52  03C5  3468               	retlw	104
-    53  03C6  3461               	retlw	97
-    54  03C7  3472               	retlw	114
-    55  03C8  3420               	retlw	32
-    56  03C9  3469               	retlw	105
-    57  03CA  346E               	retlw	110
-    58  03CB  3464               	retlw	100
-    59  03CC  3465               	retlw	101
-    60  03CD  3478               	retlw	120
-    61  03CE  3400               	retlw	0
+    51  03C5  3463               	retlw	99
+    52  03C6  3468               	retlw	104
+    53  03C7  3461               	retlw	97
+    54  03C8  3472               	retlw	114
+    55  03C9  3420               	retlw	32
+    56  03CA  3469               	retlw	105
+    57  03CB  346E               	retlw	110
+    58  03CC  3464               	retlw	100
+    59  03CD  3465               	retlw	101
+    60  03CE  3478               	retlw	120
+    61  03CF  3400               	retlw	0
     62  0005                     _PORTA	set	5
     63  0006                     _PORTB	set	6
     64  0081                     _OPTION_REGbits	set	129
@@ -83,17 +83,17 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
     77  03F6  00CD               	movwf	btemp+-1
     78  03F7  3003               	movlw	high __pidataBANK0
     79  03F8  00CE               	movwf	btemp
-    80  03F9  30B6               	movlw	low __pidataBANK0
+    80  03F9  30B7               	movlw	low __pidataBANK0
     81  03FA  00CF               	movwf	btemp+1
     82  03FB  300C               	movlw	low __pdataBANK0
     83  03FC  0084               	movwf	4
-    84  03FD  23AB               	fcall	init_ram0
+    84  03FD  23AC               	fcall	init_ram0
     85  03FE                     end_of_initialization:	
     86                           ;End of C runtime variable initialization code
     87                           
     88  03FE                     __end_of__initialization:	
     89  03FE  0183               	clrf	3
-    90  03FF  2B9C               	ljmp	_main	;jump to C main() function
+    90  03FF  2B9D               	ljmp	_main	;jump to C main() function
     91                           
     92                           	psect	dataBANK0
     93  000C                     __pdataBANK0:	
@@ -103,31 +103,31 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
     97  001A                     	ds	11
     98                           
     99                           	psect	inittext
-   100  03A7                     init_fetch0:	
+   100  03A8                     init_fetch0:	
    101                           ;	Called with low address in FSR and high address in W
    102                           
-   103  03A7  084E               	movf	78,w
-   104  03A8  008A               	movwf	10
-   105  03A9  084F               	movf	79,w
-   106  03AA  0082               	movwf	2
-   107  03AB                     init_ram0:	
+   103  03A8  084E               	movf	78,w
+   104  03A9  008A               	movwf	10
+   105  03AA  084F               	movf	79,w
+   106  03AB  0082               	movwf	2
+   107  03AC                     init_ram0:	
    108                           ;Called with:
    109                           ;	high address of idata address in btemp 
    110                           ;	low address of idata address in btemp+1 
    111                           ;	low address of data in FSR
    112                           ;	high address + 1 of data in btemp-1
    113                           
-   114  03AB  23A7               	fcall	init_fetch0
-   115  03AC  0080               	movwf	0
-   116  03AD  0A84               	incf	4,f
-   117  03AE  0804               	movf	4,w
-   118  03AF  064D               	xorwf	77,w
-   119  03B0  1903               	btfsc	3,2
-   120  03B1  3400               	retlw	0
-   121  03B2  0ACF               	incf	79,f
-   122  03B3  1903               	btfsc	3,2
-   123  03B4  0ACE               	incf	78,f
-   124  03B5  2BAB               	goto	init_ram0
+   114  03AC  23A8               	fcall	init_fetch0
+   115  03AD  0080               	movwf	0
+   116  03AE  0A84               	incf	4,f
+   117  03AF  0804               	movf	4,w
+   118  03B0  064D               	xorwf	77,w
+   119  03B1  1903               	btfsc	3,2
+   120  03B2  3400               	retlw	0
+   121  03B3  0ACF               	incf	79,f
+   122  03B4  1903               	btfsc	3,2
+   123  03B5  0ACE               	incf	78,f
+   124  03B6  2BAC               	goto	init_ram0
    125                           
    126                           	psect	cstackCOMMON
    127  0000                     __pcstackCOMMON:	
@@ -155,7 +155,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
    149  0025                     	ds	3
    150                           
    151                           	psect	maintext
-   152  039C                     __pmaintext:	
+   152  039D                     __pmaintext:	
    153 ;;
    154 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
    155 ;;
@@ -191,27 +191,27 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
    185                           
    186                           
    187                           ;psect for function _main
-   188  039C                     _main:	
+   188  039D                     _main:	
    189                           
    190                           ;D-17_s-1.c: 62: _Setup();
    191                           
    192                           ;incstack = 0
    193                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
-   194  039C  239F               	fcall	__Setup
-   195  039D                     l507:	
+   194  039D  23A0               	fcall	__Setup
+   195  039E                     l527:	
    196                           ;D-17_s-1.c: 65: while(1) {
    197                           
    198                           
    199                           ;D-17_s-1.c: 67: _While();
-   200  039D  23CF               	fcall	__While
-   201  039E  2B9D               	goto	l507
-   202  039F                     __end_of_main:	
+   200  039E  23D0               	fcall	__While
+   201  039F  2B9E               	goto	l527
+   202  03A0                     __end_of_main:	
    203                           ;D-17_s-1.c: 69: }
    204                           ;D-17_s-1.c: 71: return;
    205                           
    206                           
    207                           	psect	text1
-   208  03CF                     __ptext1:	
+   208  03D0                     __ptext1:	
    209 ;; *************** function __While *****************
    210 ;; Defined at:
    211 ;;		line 96 in file "D-17_s-1.c"
@@ -222,7 +222,7 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
    216 ;; Return value:  Size  Location     Type
    217 ;;		None               void
    218 ;; Registers used:
-   219 ;;		wreg
+   219 ;;		wreg, status,2
    220 ;; Tracked objects:
    221 ;;		On entry : 0/0
    222 ;;		On exit  : 0/0
@@ -243,139 +243,138 @@ Microchip Technology Omniscient Code Generator (Lite mode) build 59893
    237                           
    238                           
    239                           ;psect for function __While
-   240  03CF                     __While:	
+   240  03D0                     __While:	
    241                           
-   242                           ;D-17_s-1.c: 98: PORTB = 0x01;
+   242                           ;D-17_s-1.c: 98: PORTB = 0x00;
    243                           
    244                           ;incstack = 0
-   245                           ; Regs used in __While: [wreg]
-   246  03CF  3001               	movlw	1
-   247  03D0  1283               	bcf	3,5	;RP0=0, select bank0
-   248  03D1  0086               	movwf	6	;volatile
-   249                           
-   250                           ;D-17_s-1.c: 99: PORTA = 0x01;
-   251  03D2  3001               	movlw	1
-   252  03D3  0085               	movwf	5	;volatile
-   253                           
-   254                           ;D-17_s-1.c: 101: _delay((unsigned long)((100)*(20000000/4000.0)));
-   255  03D4  3003               	movlw	3
-   256  03D5  00A7               	movwf	??__While+2
-   257  03D6  308A               	movlw	138
-   258  03D7  00A6               	movwf	??__While+1
-   259  03D8  3056               	movlw	86
-   260  03D9  00A5               	movwf	??__While
-   261  03DA                     u17:	
-   262  03DA  0BA5               	decfsz	??__While,f
-   263  03DB  2BDA               	goto	u17
-   264  03DC  0BA6               	decfsz	??__While+1,f
-   265  03DD  2BDA               	goto	u17
-   266  03DE  0BA7               	decfsz	??__While+2,f
-   267  03DF  2BDA               	goto	u17
-   268  03E0  2BE1               	nop2
-   269                           
-   270                           ;D-17_s-1.c: 103: PORTB = 0x02;
-   271  03E1  3002               	movlw	2
-   272  03E2  1283               	bcf	3,5	;RP0=0, select bank0
-   273  03E3  0086               	movwf	6	;volatile
-   274                           
-   275                           ;D-17_s-1.c: 104: PORTA = 0x02;
-   276  03E4  3002               	movlw	2
-   277  03E5  0085               	movwf	5	;volatile
-   278                           
-   279                           ;D-17_s-1.c: 106: _delay((unsigned long)((500)*(20000000/4000.0)));
-   280  03E6  300D               	movlw	13
-   281  03E7  00A7               	movwf	??__While+2
-   282  03E8  30AF               	movlw	175
-   283  03E9  00A6               	movwf	??__While+1
-   284  03EA  30C1               	movlw	193
-   285  03EB  00A5               	movwf	??__While
-   286  03EC                     u27:	
-   287  03EC  0BA5               	decfsz	??__While,f
-   288  03ED  2BEC               	goto	u27
-   289  03EE  0BA6               	decfsz	??__While+1,f
-   290  03EF  2BEC               	goto	u27
-   291  03F0  0BA7               	decfsz	??__While+2,f
-   292  03F1  2BEC               	goto	u27
-   293  03F2  0000               	nop
-   294  03F3  0008               	return
-   295  03F4                     __end_of__While:	
-   296                           
-   297                           	psect	text2
-   298  039F                     __ptext2:	
-   299 ;; *************** function __Setup *****************
-   300 ;; Defined at:
-   301 ;;		line 74 in file "D-17_s-1.c"
-   302 ;; Parameters:    Size  Location     Type
-   303 ;;		None
-   304 ;; Auto vars:     Size  Location     Type
-   305 ;;		None
-   306 ;; Return value:  Size  Location     Type
-   307 ;;		None               void
-   308 ;; Registers used:
-   309 ;;		status,2
-   310 ;; Tracked objects:
-   311 ;;		On entry : 0/0
-   312 ;;		On exit  : 0/0
-   313 ;;		Unchanged: 0/0
-   314 ;; Data sizes:     COMMON   BANK0
-   315 ;;      Params:         0       0
-   316 ;;      Locals:         0       0
-   317 ;;      Temps:          0       0
-   318 ;;      Totals:         0       0
-   319 ;;Total ram usage:        0 bytes
-   320 ;; Hardware stack levels used:    1
-   321 ;; This function calls:
-   322 ;;		Nothing
-   323 ;; This function is called by:
-   324 ;;		_main
-   325 ;; This function uses a non-reentrant model
-   326 ;;
+   245                           ; Regs used in __While: [wreg+status,2]
+   246  03D0  1283               	bcf	3,5	;RP0=0, select bank0
+   247  03D1  0186               	clrf	6	;volatile
+   248                           
+   249                           ;D-17_s-1.c: 100: PORTA = 0x01;
+   250  03D2  3001               	movlw	1
+   251  03D3  0085               	movwf	5	;volatile
+   252                           
+   253                           ;D-17_s-1.c: 102: _delay((unsigned long)((500)*(20000000/4000.0)));
+   254  03D4  300D               	movlw	13
+   255  03D5  00A7               	movwf	??__While+2
+   256  03D6  30AF               	movlw	175
+   257  03D7  00A6               	movwf	??__While+1
+   258  03D8  30C1               	movlw	193
+   259  03D9  00A5               	movwf	??__While
+   260  03DA                     u17:	
+   261  03DA  0BA5               	decfsz	??__While,f
+   262  03DB  2BDA               	goto	u17
+   263  03DC  0BA6               	decfsz	??__While+1,f
+   264  03DD  2BDA               	goto	u17
+   265  03DE  0BA7               	decfsz	??__While+2,f
+   266  03DF  2BDA               	goto	u17
+   267  03E0  0000               	nop
+   268                           
+   269                           ;D-17_s-1.c: 104: PORTB = 0x03;
+   270  03E1  3003               	movlw	3
+   271  03E2  1283               	bcf	3,5	;RP0=0, select bank0
+   272  03E3  0086               	movwf	6	;volatile
+   273                           
+   274                           ;D-17_s-1.c: 106: PORTA = 0x02;
+   275  03E4  3002               	movlw	2
+   276  03E5  0085               	movwf	5	;volatile
+   277                           
+   278                           ;D-17_s-1.c: 108: _delay((unsigned long)((500)*(20000000/4000.0)));
+   279  03E6  300D               	movlw	13
+   280  03E7  00A7               	movwf	??__While+2
+   281  03E8  30AF               	movlw	175
+   282  03E9  00A6               	movwf	??__While+1
+   283  03EA  30C1               	movlw	193
+   284  03EB  00A5               	movwf	??__While
+   285  03EC                     u27:	
+   286  03EC  0BA5               	decfsz	??__While,f
+   287  03ED  2BEC               	goto	u27
+   288  03EE  0BA6               	decfsz	??__While+1,f
+   289  03EF  2BEC               	goto	u27
+   290  03F0  0BA7               	decfsz	??__While+2,f
+   291  03F1  2BEC               	goto	u27
+   292  03F2  0000               	nop
+   293  03F3  0008               	return
+   294  03F4                     __end_of__While:	
+   295                           
+   296                           	psect	text2
+   297  03A0                     __ptext2:	
+   298 ;; *************** function __Setup *****************
+   299 ;; Defined at:
+   300 ;;		line 74 in file "D-17_s-1.c"
+   301 ;; Parameters:    Size  Location     Type
+   302 ;;		None
+   303 ;; Auto vars:     Size  Location     Type
+   304 ;;		None
+   305 ;; Return value:  Size  Location     Type
+   306 ;;		None               void
+   307 ;; Registers used:
+   308 ;;		status,2
+   309 ;; Tracked objects:
+   310 ;;		On entry : 0/0
+   311 ;;		On exit  : 0/0
+   312 ;;		Unchanged: 0/0
+   313 ;; Data sizes:     COMMON   BANK0
+   314 ;;      Params:         0       0
+   315 ;;      Locals:         0       0
+   316 ;;      Temps:          0       0
+   317 ;;      Totals:         0       0
+   318 ;;Total ram usage:        0 bytes
+   319 ;; Hardware stack levels used:    1
+   320 ;; This function calls:
+   321 ;;		Nothing
+   322 ;; This function is called by:
+   323 ;;		_main
+   324 ;; This function uses a non-reentrant model
+   325 ;;
+   326                           
    327                           
-   328                           
-   329                           ;psect for function __Setup
-   330  039F                     __Setup:	
-   331                           
-   332                           ;D-17_s-1.c: 79: OPTION_REGbits.nRBPU = 0;
-   333                           
-   334                           ;incstack = 0
-   335                           ; Regs used in __Setup: [status,2]
-   336  039F  1683               	bsf	3,5	;RP0=1, select bank1
-   337  03A0  1381               	bcf	1,7	;volatile
-   338                           
-   339                           ;D-17_s-1.c: 84: TRISA = 0x00000000;
-   340  03A1  0185               	clrf	5	;volatile
-   341                           
-   342                           ;D-17_s-1.c: 85: TRISB = 0b00000000;
-   343  03A2  0186               	clrf	6	;volatile
-   344                           
-   345                           ;D-17_s-1.c: 90: PORTA = 0b00000000;
-   346  03A3  1283               	bcf	3,5	;RP0=0, select bank0
-   347  03A4  0185               	clrf	5	;volatile
-   348                           
-   349                           ;D-17_s-1.c: 91: PORTB = 0x00;
-   350  03A5  0186               	clrf	6	;volatile
-   351  03A6  0008               	return
-   352  03A7                     __end_of__Setup:	
-   353  004E                     btemp	set	78	;btemp
-   354  004E                     wtemp	set	78
-   355  004E                     wtemp0	set	78
-   356  0050                     wtemp1	set	80
-   357  0052                     wtemp2	set	82
-   358  0054                     wtemp3	set	84
-   359  0056                     wtemp4	set	86
-   360  0058                     wtemp5	set	88
-   361  004F                     wtemp6	set	79
-   362  004E                     ttemp	set	78
-   363  004E                     ttemp0	set	78
-   364  0051                     ttemp1	set	81
-   365  0054                     ttemp2	set	84
-   366  0057                     ttemp3	set	87
-   367  004F                     ttemp4	set	79
-   368  004E                     ltemp	set	78
-   369  004E                     ltemp0	set	78
-   370  0052                     ltemp1	set	82
-   371  0056                     ltemp2	set	86
-   372  0050                     ltemp3	set	80
+   328                           ;psect for function __Setup
+   329  03A0                     __Setup:	
+   330                           
+   331                           ;D-17_s-1.c: 79: OPTION_REGbits.nRBPU = 0;
+   332                           
+   333                           ;incstack = 0
+   334                           ; Regs used in __Setup: [status,2]
+   335  03A0  1683               	bsf	3,5	;RP0=1, select bank1
+   336  03A1  1381               	bcf	1,7	;volatile
+   337                           
+   338                           ;D-17_s-1.c: 84: TRISA = 0x00000000;
+   339  03A2  0185               	clrf	5	;volatile
+   340                           
+   341                           ;D-17_s-1.c: 85: TRISB = 0b00000000;
+   342  03A3  0186               	clrf	6	;volatile
+   343                           
+   344                           ;D-17_s-1.c: 90: PORTA = 0b00000000;
+   345  03A4  1283               	bcf	3,5	;RP0=0, select bank0
+   346  03A5  0185               	clrf	5	;volatile
+   347                           
+   348                           ;D-17_s-1.c: 91: PORTB = 0x00;
+   349  03A6  0186               	clrf	6	;volatile
+   350  03A7  0008               	return
+   351  03A8                     __end_of__Setup:	
+   352  004E                     btemp	set	78	;btemp
+   353  004E                     wtemp	set	78
+   354  004E                     wtemp0	set	78
+   355  0050                     wtemp1	set	80
+   356  0052                     wtemp2	set	82
+   357  0054                     wtemp3	set	84
+   358  0056                     wtemp4	set	86
+   359  0058                     wtemp5	set	88
+   360  004F                     wtemp6	set	79
+   361  004E                     ttemp	set	78
+   362  004E                     ttemp0	set	78
+   363  0051                     ttemp1	set	81
+   364  0054                     ttemp2	set	84
+   365  0057                     ttemp3	set	87
+   366  004F                     ttemp4	set	79
+   367  004E                     ltemp	set	78
+   368  004E                     ltemp0	set	78
+   369  0052                     ltemp1	set	82
+   370  0056                     ltemp2	set	86
+   371  0050                     ltemp3	set	80
 
 
 Data Sizes:
@@ -445,11 +444,11 @@ EEDATA              40      0       0       0        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.33 build 59893 
-Symbol Table                                                                                   Sat Dec 19 20:45:42 2015
+Symbol Table                                                                                   Tue Dec 22 15:16:47 2015
 
                       pc 0002              __CFG_CP$OFF 0000                       u17 03DA  
-                     u27 03EC                       fsr 0004                      l507 039D  
-                    indf 0000             __CFG_FOSC$HS 0000                     _main 039C  
+                     u27 03EC                       fsr 0004                      l527 039E  
+                    indf 0000             __CFG_FOSC$HS 0000                     _main 039D  
                    btemp 004E                     ltemp 004E                     start 0000  
                    ttemp 004E                     wtemp 004E                    ?_main 0025  
           __CFG_WDTE$OFF 0000                    _PORTA 0005                    _PORTB 0006  
@@ -460,13 +459,13 @@ Symbol Table                                                                    
                   ttemp4 004F                    status 0003                    wtemp0 004E  
                   wtemp1 0050                    wtemp2 0052                    wtemp3 0054  
                   wtemp4 0056                    wtemp5 0058                    wtemp6 004F  
-        __initialization 03F4             __end_of_main 039F                   ??_main 0000  
-                 __Setup 039F                   __While 03CF  __end_of__initialization 03FE  
-         __pcstackCOMMON 0000             __pidataBANK0 03B6           _OPTION_REGbits 0081  
-             __pmaintext 039C                  ?__Setup 0025                  ?__While 0025  
-        __size_of__Setup 0008          __size_of__While 0025                  __ptext1 03CF  
-                __ptext2 039F     end_of_initialization 03FE           __end_of__Setup 03A7  
+        __initialization 03F4             __end_of_main 03A0                   ??_main 0000  
+                 __Setup 03A0                   __While 03D0  __end_of__initialization 03FE  
+         __pcstackCOMMON 0000             __pidataBANK0 03B7           _OPTION_REGbits 0081  
+             __pmaintext 039D                  ?__Setup 0025                  ?__While 0025  
+        __size_of__Setup 0008          __size_of__While 0024                  __ptext1 03D0  
+                __ptext2 03A0     end_of_initialization 03FE           __end_of__Setup 03A8  
          __end_of__While 03F4      start_initialization 03F4                 ??__Setup 0000  
-               ??__While 0025               init_fetch0 03A7              __pdataBANK0 000C  
+               ??__While 0025               init_fetch0 03A8              __pdataBANK0 000C  
               ___latbits 0000            __pcstackBANK0 0025            __size_of_main 0003  
-            _msg_Initial 001A                 init_ram0 03AB         _msg_Project_Name 000C  
+            _msg_Initial 001A                 init_ram0 03AC         _msg_Project_Name 000C  
