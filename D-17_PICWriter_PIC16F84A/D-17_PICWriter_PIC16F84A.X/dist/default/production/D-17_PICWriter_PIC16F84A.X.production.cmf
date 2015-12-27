@@ -11,18 +11,18 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
+$C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
 end_init CODE 0 0 0 1 2
 config CONFIG 0 2007 2007 1 2
 $dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 cinit CODE 0 3F4 3F4 C 2
-text2 CODE 0 39F 39F 8 2
-text1 CODE 0 3CF 3CF 25 2
-maintext CODE 0 39C 39C 3 2
+text2 CODE 0 3A3 3A3 8 2
+text1 CODE 0 3D3 3D3 21 2
+maintext CODE 0 3A0 3A0 3 2
 cstackBANK0 BANK0 1 25 25 3 1
-inittext CODE 0 3A7 3A7 F 2
+inittext CODE 0 3AB 3AB F 2
 dataBANK0 BANK0 1 C C 19 1
-idataBANK0 CODE 0 3B6 3B6 19 2
+idataBANK0 CODE 0 3BA 3BA 19 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -30,17 +30,17 @@ idataBANK0 CODE 0 3B6 3B6 19 2
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
 BANK0 0028-004D 1
-CODE 0001-039B 2
-CONST 0001-039B 2
+CODE 0001-039F 2
+CONST 0001-039F 2
 EEDATA 2100-213F 2
-ENTRY 0001-039B 2
+ENTRY 0001-039F 2
 IDLOC 2000-2003 2
 RAM 0028-004D 1
 SFR0 0000-000B 1
 SFR1 0080-00CD 1
 STACK 0028-004D 1
-STRCODE 0001-039B 2
-STRING 0001-039B 2
+STRCODE 0001-039F 2
+STRING 0001-039F 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -55,57 +55,55 @@ STRING 0001-039B 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":48 39C maintext CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":62 39C maintext CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":67 39D maintext CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":65 39E maintext CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":74 39F text2 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":79 39F text2 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":84 3A1 text2 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":85 3A2 text2 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":90 3A3 text2 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":91 3A5 text2 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":93 3A6 text2 CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":161 3A7 inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":162 3A7 inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":163 3A8 inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":164 3A9 inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":165 3AA inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":172 3AB inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":173 3AB inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":174 3AC inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":175 3AD inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":176 3AE inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":177 3AF inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":178 3B0 inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":179 3B1 inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":180 3B2 inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":181 3B3 inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":182 3B4 inittext CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":183 3B5 inittext CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":96 3CF text1 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":98 3CF text1 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":99 3D2 text1 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":101 3D4 text1 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":103 3E1 text1 CODE
-"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":104 3E4 text1 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":48 3A0 maintext CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":62 3A0 maintext CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":67 3A1 maintext CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":65 3A2 maintext CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":74 3A3 text2 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":79 3A3 text2 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":84 3A5 text2 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":85 3A6 text2 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":90 3A7 text2 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":91 3A9 text2 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":93 3AA text2 CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":161 3AB inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":162 3AB inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":163 3AC inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":164 3AD inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":165 3AE inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":172 3AF inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":173 3AF inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":174 3B0 inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":175 3B1 inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":176 3B2 inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":177 3B3 inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":178 3B4 inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":179 3B5 inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":180 3B6 inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":181 3B7 inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":182 3B8 inittext CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":183 3B9 inittext CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":96 3D3 text1 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":99 3D3 text1 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":101 3D6 text1 CODE
+"C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":104 3E3 text1 CODE
 "C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":106 3E6 text1 CODE
 "C:\WORKS\WS\WS_E2\D-17_PICWriter_PIC16F84A\D-17_PICWriter_PIC16F84A.X\D-17_s-1.c":108 3F3 text1 CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":137 3F4 cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":140 3F4 cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":187 3F4 cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":188 3F5 cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":189 3F6 cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":190 3F7 cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":191 3F8 cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":192 3F9 cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":193 3FA cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":194 3FB cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":195 3FC cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":196 3FD cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":202 3FE cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":203 3FE cinit CODE
-"C:\Users\kbuchi\AppData\Local\Temp\s8ro.":204 3FF cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":137 3F4 cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":140 3F4 cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":187 3F4 cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":188 3F5 cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":189 3F6 cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":190 3F7 cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":191 3F8 cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":192 3F9 cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":193 3FA cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":194 3FB cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":195 3FC cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":196 3FD cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":202 3FE cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":203 3FE cinit CODE
+"C:\Users\kbuchi\AppData\Local\Temp\s8k.":204 3FF cinit CODE
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -126,17 +124,17 @@ _msg_Initial 1A 0 BANK0 1 dataBANK0 dist/default/production\D-17_PICWriter_PIC16
 __Hintentry 0 0 CODE 0 intentry -
 __Lintentry 0 0 CODE 0 intentry -
 __CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-_main 738 0 CODE 0 maintext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
+_main 740 0 CODE 0 maintext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+___sp 0 0 STACK 2 stack C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
 btemp 4E 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 ltemp 4E 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 ttemp 4E 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 wtemp 4E 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-start 0 0 CODE 0 init C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
+start 0 0 CODE 0 init C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
 _TRISA 85 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 _TRISB 86 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 _PORTA 5 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-reset_vec 0 0 CODE 0 reset_vec C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
 _PORTB 6 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 ltemp0 4E 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 ttemp0 4E 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
@@ -164,27 +162,27 @@ __Hcommon 0 0 ABS 0 common -
 __Lcommon 0 0 ABS 0 common -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-___int_sp 0 0 STACK 2 stack C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
+___int_sp 0 0 STACK 2 stack C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
 __Habs1 0 0 ABS 0 abs1 -
 __Labs1 0 0 ABS 0 abs1 -
 __Hsfr0 0 0 ABS 0 sfr0 -
 __Lsfr0 0 0 ABS 0 sfr0 -
 __Hsfr1 0 0 ABS 0 sfr1 -
 __Lsfr1 0 0 ABS 0 sfr1 -
-init_fetch0 74E 0 CODE 0 inittext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+init_fetch0 756 0 CODE 0 inittext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __Hcode 0 0 ABS 0 code -
 __Lcode 0 0 ABS 0 code -
-__While 79E 0 CODE 0 text1 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-stackhi 0 0 ABS 0 - C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
+__While 7A6 0 CODE 0 text1 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+stackhi 0 0 ABS 0 - C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __pcstackBANK0 25 0 BANK0 1 cstackBANK0 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 _msg_Project_Name C 0 BANK0 1 dataBANK0 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-stacklo 0 0 ABS 0 - C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
+stacklo 0 0 ABS 0 - C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
 __Hinit 0 0 CODE 0 init -
 __Linit 0 0 CODE 0 init -
-__end_of_main 73E 0 CODE 0 maintext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-__Setup 73E 0 CODE 0 text2 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+__end_of_main 746 0 CODE 0 maintext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+__Setup 746 0 CODE 0 text2 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __Htext 0 0 ABS 0 text -
 __Ltext 0 0 ABS 0 text -
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
@@ -200,8 +198,8 @@ __Lbank1 0 0 BANK1 1 bank1 -
 ___latbits 0 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
 __Lpowerup 0 0 CODE 0 powerup -
-__ptext1 79E 0 CODE 0 text1 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-__ptext2 73E 0 CODE 0 text2 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+__ptext1 7A6 0 CODE 0 text1 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+__ptext2 746 0 CODE 0 text2 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __Hclrtext 0 0 ABS 0 clrtext -
 __Lclrtext 0 0 ABS 0 clrtext -
 __end_of__initialization 7FC 0 CODE 0 cinit dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
@@ -224,29 +222,29 @@ __Lspace_3 0 0 ABS 0 - -
 __size_of_main 0 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __HidataBANK0 0 0 ABS 0 idataBANK0 -
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
-__pidataBANK0 76C 0 CODE 0 idataBANK0 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+__pidataBANK0 774 0 CODE 0 idataBANK0 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __size_of__Setup 0 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __Hend_init 2 0 CODE 0 end_init -
 __Lend_init 0 0 CODE 0 end_init -
 __end_of__While 7E8 0 CODE 0 text1 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __Hreset_vec 0 0 CODE 0 reset_vec -
 __Lreset_vec 0 0 CODE 0 reset_vec -
-init_ram0 756 0 CODE 0 inittext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
+init_ram0 75E 0 CODE 0 inittext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+intlevel0 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-intlevel1 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
-__end_of__Setup 74E 0 CODE 0 text2 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
-intlevel2 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
-intlevel3 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
-intlevel4 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
-intlevel5 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8ro.obj
+intlevel1 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
+__end_of__Setup 756 0 CODE 0 text2 dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+intlevel2 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
+intlevel3 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
+intlevel4 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
+intlevel5 0 0 CODE 0 functab C:\Users\kbuchi\AppData\Local\Temp\s8k.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 __pcstackCOMMON 0 0 COMMON 1 cstackCOMMON dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 start_initialization 7E8 0 CODE 0 cinit dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __Hmaintext 0 0 ABS 0 maintext -
 __Lmaintext 0 0 ABS 0 maintext -
-__pmaintext 738 0 CODE 0 maintext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
+__pmaintext 740 0 CODE 0 maintext dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\D-17_PICWriter_PIC16F84A.X.production.obj
 __Hinittext 0 0 ABS 0 inittext -
 __Linittext 0 0 ABS 0 inittext -
@@ -281,8 +279,8 @@ reset_vec 0 0 0 1 2
 cinit 0 3F4 7E8 C 2
 config 0 2007 400E 1 2
 dataBANK0 1 C C 1C 1
-text1 0 3CF 79E 25 2
-idataBANK0 0 3B6 76C 19 2
-inittext 0 3A7 74E F 2
-text2 0 39F 73E 8 2
-maintext 0 39C 738 3 2
+text1 0 3D3 7A6 21 2
+idataBANK0 0 3BA 774 19 2
+inittext 0 3AB 756 F 2
+text2 0 3A3 746 8 2
+maintext 0 3A0 740 3 2
