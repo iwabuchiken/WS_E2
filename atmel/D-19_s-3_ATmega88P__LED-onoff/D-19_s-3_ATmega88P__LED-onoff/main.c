@@ -5,19 +5,15 @@
  * Author : kbuchi
  */ 
 
+//#define F_CPU 8000000UL
+
+
 #include <avr/io.h>
 
+int main(void) {
 
-int main(void)
-{
-         uint16_t i;
-         DDRD = 1 << DDD0;        // ポートD0を出力に設定
-         PORTD |= 0x01;             // ポートD0に1を出力(LED点灯)
-         while(1)
-         {
-	         for ( i = 0; i < 26500; i++);        // 500ms程度時間待ち
-	         PORTD = ~PORTD & 0x01;      // ポートD0の出力を反転
-         }
-		 
+	DDRB =0b11111111;
+
+	PORTB=0b00000001;
+
 }
-
