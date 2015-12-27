@@ -95,13 +95,11 @@ void _Setup(void) {
 void
 _While(void) {
 
-	PORTB = 0x00;
 //	PORTB = 0x01;
 	PORTA = 0x01;
 
 	__delay_ms(500);
 
-	PORTB = 0x03;
 //	PORTB = 0x02;
 	PORTA = 0x02;
 

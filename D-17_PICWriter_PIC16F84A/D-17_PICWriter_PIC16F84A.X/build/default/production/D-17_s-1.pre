@@ -493,7 +493,6 @@ PORTB = 0x00;
 void
 _While(void) {
 
-PORTB = 0x00;
 
 PORTA = 0x01;
 

@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 _main: CODE, 925 0 3
 __initialization: CODE, 1012 0 10
 __While: CODE, 976 0 36
 __Setup: CODE, 928 0 8
 Total: 57
+=======
+_main: CODE, 928 0 3
+__initialization: CODE, 1012 0 10
+__While: CODE, 979 0 33
+__Setup: CODE, 931 0 8
+Total: 54
+>>>>>>> D-18_pic-writer_PIC16F84A
