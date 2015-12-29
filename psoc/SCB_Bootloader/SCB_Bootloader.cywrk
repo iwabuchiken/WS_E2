@@ -3,12 +3,13 @@
 <!--This file is machine generated and read. It is not intended to be edited by hand.-->
 <!--Due to this, there is no schema for this file.-->
 <CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspc" version="5" xml_contents_version="3" name="SCB_Bootloader" persistent="" platform="NOT_USED">
-<current_project name=".\Bootloadable Blinking LED.cydsn\Bootloadable Blinking LED.cyprj" />
+<current_project name="..\D-21_s-2.cydsn\D-21_s-2.cyprj" />
 <wrkspc_folders />
 <files />
 <projects>
 <v>.\UART_Bootloader.cydsn\UART_Bootloader.cyprj</v>
 <v>.\Bootloadable Blinking LED.cydsn\Bootloadable Blinking LED.cyprj</v>
+<v>..\D-21_s-2.cydsn\D-21_s-2.cyprj</v>
 </projects>
 <workspace_id v="1d2476d5-8597-4394-acd1-a47e92388f0d" />
 <WriteAppVersionLastSavedWith v="3.2.0.724" />
