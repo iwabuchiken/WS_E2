@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2015-12-29T00:12:27Z")
+ (DATE "2015-12-29T07:39:30Z")
  (DESIGN "Bootloadable Blinking LED")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
@@ -13,8 +13,9 @@
   (DELAY
    (ABSOLUTE
     (INTERCONNECT ClockBlock.ff_div_8 \\PWM\:cy_m0s8_tcpwm_1\\.clock (0.000:0.000:0.000))
-    (INTERCONNECT \\PWM\:cy_m0s8_tcpwm_1\\.line_out P1_6\(0\).pin_input (5.695:5.695:5.695))
+    (INTERCONNECT \\PWM\:cy_m0s8_tcpwm_1\\.line_out P1_6\(0\).pin_input (1.000:1.000:1.000))
     (INTERCONNECT P1_6\(0\).pad_out P1_6\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT LED\(0\)_PAD LED\(0\).pad_in (0.000:0.000:0.000))
     (INTERCONNECT P1_6\(0\).pad_out P1_6\(0\)_PAD (0.000:0.000:0.000))
     (INTERCONNECT P1_6\(0\)_PAD P1_6\(0\).pad_in (0.000:0.000:0.000))
    )

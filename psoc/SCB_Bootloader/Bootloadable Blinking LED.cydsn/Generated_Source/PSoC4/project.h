@@ -23,6 +23,8 @@
 #include "Clock.h"
 #include "P1_6.h"
 #include "P1_6_aliases.h"
+#include "LED.h"
+#include "LED_aliases.h"
 #include "core_cm0_psoc4.h"
 #include "core_cm0.h"
 #include "CyFlash.h"

@@ -60,7 +60,7 @@ Port Name  Setup to Clk  Clock Name:Phase
 
 Port Name    Clock to Out  Clock Name:Phase  
 -----------  ------------  ----------------  
-P1_6(0)_PAD  21818         Clock(FFB):R      
+P1_6(0)_PAD  18370         Clock(FFB):R      
 
 
                          3.3::Pad to Pad

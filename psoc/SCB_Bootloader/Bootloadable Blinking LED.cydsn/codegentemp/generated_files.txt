@@ -26,6 +26,9 @@
   <file name="C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\codegentemp\P1_6.c" value="ARM_C_FILE;P1_6" />
   <file name="C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\codegentemp\P1_6.h" value="NONE;P1_6" />
   <file name="C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\codegentemp\P1_6_aliases.h" value="NONE;P1_6" />
+  <file name="C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\codegentemp\LED.c" value="ARM_C_FILE;LED" />
+  <file name="C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\codegentemp\LED.h" value="NONE;LED" />
+  <file name="C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\codegentemp\LED_aliases.h" value="NONE;LED" />
   <file name="C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\codegentemp\cm0gcc.ld" value="NONE;cy_boot" />
   <file name="C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\codegentemp\Cm0RealView.scat" value="NONE;cy_boot" />
   <file name="C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\codegentemp\Cm0Start.c" value="ARM_C_FILE;cy_boot" />

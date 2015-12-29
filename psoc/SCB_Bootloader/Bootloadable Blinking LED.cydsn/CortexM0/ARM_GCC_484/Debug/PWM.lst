@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
   24:.\Generated_Source\PSoC4/PWM.c **** /*******************************************************************************
   25:.\Generated_Source\PSoC4/PWM.c **** * Function Name: PWM_Init
   26:.\Generated_Source\PSoC4/PWM.c **** ********************************************************************************
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 2
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 2
 
 
   27:.\Generated_Source\PSoC4/PWM.c **** *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
   73:.\Generated_Source\PSoC4/PWM.c ****                 PWM_SetCompareSwap(1u);
   74:.\Generated_Source\PSoC4/PWM.c ****                 PWM_WriteCompareBuf(PWM_TC_COMPARE_BUF_VALUE);
   75:.\Generated_Source\PSoC4/PWM.c ****             #endif  /* (1u == PWM_TC_COMPARE_SWAP) */
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 3
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 3
 
 
   76:.\Generated_Source\PSoC4/PWM.c ****         #endif  /* (PWM__COMPARE == PWM_TC_COMP_CAP_MODE) */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
   57              		.loc 1 112 0
   58 0022 0C4B     		ldr	r3, .L2
   59 0024 0B4A     		ldr	r2, .L2
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 4
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 4
 
 
   60 0026 1268     		ldr	r2, [r2]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
   79 0046 074B     		ldr	r3, .L2+16
   80 0048 181C     		mov	r0, r3
   81 004a FFF7FEFF 		bl	PWM_WriteCompare
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 5
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 5
 
 
  148:.\Generated_Source\PSoC4/PWM.c **** 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  105              		.loc 1 178 0
  106              		.cfi_startproc
  107 0000 90B5     		push	{r4, r7, lr}
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 6
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 6
 
 
  108              		.cfi_def_cfa_offset 12
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  143              	.LFE1:
  144              		.size	PWM_Enable, .-PWM_Enable
  145              		.section	.text.PWM_Start,"ax",%progbits
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 7
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 7
 
 
  146              		.align	2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  168              		.loc 1 229 0
  169 0010 034B     		ldr	r3, .L9
  170 0012 0122     		mov	r2, #1
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 8
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 8
 
 
  171 0014 1A70     		strb	r2, [r3]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  203 0004 00AF     		add	r7, sp, #0
  204              		.cfi_def_cfa_register 7
  252:.\Generated_Source\PSoC4/PWM.c ****     uint8 enableInterrupts;
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 9
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 9
 
 
  253:.\Generated_Source\PSoC4/PWM.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  270:.\Generated_Source\PSoC4/PWM.c **** *
  271:.\Generated_Source\PSoC4/PWM.c **** * Parameters:
  272:.\Generated_Source\PSoC4/PWM.c **** *  mode: Mode for the PWM to operate in
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 10
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 10
 
 
  273:.\Generated_Source\PSoC4/PWM.c **** *   Values:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  295:.\Generated_Source\PSoC4/PWM.c **** 
  296:.\Generated_Source\PSoC4/PWM.c ****     CyExitCriticalSection(enableInterrupts);
  274              		.loc 1 296 0
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 11
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 11
 
 
  275 002c 3B1C     		mov	r3, r7
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  304              		.cfi_def_cfa_offset 12
  305              		.cfi_offset 4, -12
  306              		.cfi_offset 7, -8
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 12
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 12
 
 
  307              		.cfi_offset 14, -4
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  352              		.section	.text.PWM_SetPrescaler,"ax",%progbits
  353              		.align	2
  354              		.global	PWM_SetPrescaler
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 13
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 13
 
 
  355              		.code	16
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  362:.\Generated_Source\PSoC4/PWM.c **** 
  363:.\Generated_Source\PSoC4/PWM.c ****     PWM_CONTROL_REG &= (uint32)~PWM_PRESCALER_MASK;
  378              		.loc 1 363 0
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 14
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 14
 
 
  379 0014 0A4B     		ldr	r3, .L21
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  378:.\Generated_Source\PSoC4/PWM.c **** *
  379:.\Generated_Source\PSoC4/PWM.c **** * Parameters:
  380:.\Generated_Source\PSoC4/PWM.c **** *  oneShotEnable
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 15
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 15
 
 
  381:.\Generated_Source\PSoC4/PWM.c **** *   Values:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  454              		.loc 1 399 0
  455 0032 3B1C     		mov	r3, r7
  456 0034 0F33     		add	r3, r3, #15
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 16
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 16
 
 
  457 0036 1B78     		ldrb	r3, [r3]
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  430:.\Generated_Source\PSoC4/PWM.c **** *     - PWM_MODE_LEFT       - Setting for left aligned PWM.  Should be combined
  431:.\Generated_Source\PSoC4/PWM.c **** *                             with up counting mode
  432:.\Generated_Source\PSoC4/PWM.c **** *     - PWM_MODE_RIGHT      - Setting for right aligned PWM.  Should be combined
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 17
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 17
 
 
  433:.\Generated_Source\PSoC4/PWM.c **** *                             with down counting mode
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  450:.\Generated_Source\PSoC4/PWM.c **** /*******************************************************************************
  451:.\Generated_Source\PSoC4/PWM.c **** * Function Name: PWM_SetPWMSyncKill
  452:.\Generated_Source\PSoC4/PWM.c **** ********************************************************************************
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 18
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 18
 
 
  453:.\Generated_Source\PSoC4/PWM.c **** *
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  539 0018 1268     		ldr	r2, [r2]
  540 001a 0421     		mov	r1, #4
  541 001c 8A43     		bic	r2, r1
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 19
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 19
 
 
  542 001e 1A60     		str	r2, [r3]
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  503:.\Generated_Source\PSoC4/PWM.c **** * Parameters:
  504:.\Generated_Source\PSoC4/PWM.c **** *  stopOnKillEnable
  505:.\Generated_Source\PSoC4/PWM.c **** *   Values:
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 20
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 20
 
 
  506:.\Generated_Source\PSoC4/PWM.c **** *     - 0 - Don't stop
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  615 0032 3B1C     		mov	r3, r7
  616 0034 0F33     		add	r3, r3, #15
  617 0036 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 21
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 21
 
 
  618 0038 181C     		mov	r0, r3
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  648              		.cfi_def_cfa_offset 32
  649 0004 00AF     		add	r7, sp, #0
  650              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 22
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 22
 
 
  651 0006 7860     		str	r0, [r7, #4]
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  695              		.align	2
  696              		.global	PWM_SetPWMInvert
  697              		.code	16
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 23
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 23
 
 
  698              		.thumb_func
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  724 001a 0A4A     		ldr	r2, .L39+4
  725 001c 0A40     		and	r2, r1
  726 001e 1A60     		str	r2, [r3]
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 24
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 24
 
 
  586:.\Generated_Source\PSoC4/PWM.c ****     PWM_CONTROL_REG |= mask;
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  606:.\Generated_Source\PSoC4/PWM.c **** *  None
  607:.\Generated_Source\PSoC4/PWM.c **** *
  608:.\Generated_Source\PSoC4/PWM.c **** *******************************************************************************/
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 25
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 25
 
 
  609:.\Generated_Source\PSoC4/PWM.c **** void PWM_WriteCounter(uint32 count)
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  626:.\Generated_Source\PSoC4/PWM.c **** *  Current counter value
  627:.\Generated_Source\PSoC4/PWM.c **** *
  628:.\Generated_Source\PSoC4/PWM.c **** *******************************************************************************/
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 26
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 26
 
 
  629:.\Generated_Source\PSoC4/PWM.c **** uint32 PWM_ReadCounter(void)
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  650:.\Generated_Source\PSoC4/PWM.c **** *     - PWM_COUNT_UPDOWN1  - Counts up and down. Terminal count
  651:.\Generated_Source\PSoC4/PWM.c **** *                                         generated both when counter reaches 0
  652:.\Generated_Source\PSoC4/PWM.c **** *                                         and period
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 27
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 27
 
 
  653:.\Generated_Source\PSoC4/PWM.c **** *
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  869              		.loc 1 668 0
  870 0038 BD46     		mov	sp, r7
  871 003a 05B0     		add	sp, sp, #20
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 28
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 28
 
 
  872              		@ sp needed
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  905 000e 120C     		lsr	r2, r2, #16
  906 0010 1A60     		str	r2, [r3]
  690:.\Generated_Source\PSoC4/PWM.c **** }
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 29
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 29
 
 
  907              		.loc 1 690 0
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  941 000c 181C     		mov	r0, r3
  942 000e BD46     		mov	sp, r7
  943              		@ sp needed
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 30
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 30
 
 
  944 0010 80BD     		pop	{r7, pc}
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  737:.\Generated_Source\PSoC4/PWM.c ****     enableInterrupts = CyEnterCriticalSection();
  972              		.loc 1 737 0
  973 0008 3C1C     		mov	r4, r7
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 31
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 31
 
 
  974 000a 0F34     		add	r4, r4, #15
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  746:.\Generated_Source\PSoC4/PWM.c **** /*******************************************************************************
  747:.\Generated_Source\PSoC4/PWM.c **** * Function Name: PWM_WritePeriodBuf
  748:.\Generated_Source\PSoC4/PWM.c **** ********************************************************************************
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 32
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 32
 
 
  749:.\Generated_Source\PSoC4/PWM.c **** *
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  766:.\Generated_Source\PSoC4/PWM.c **** /*******************************************************************************
  767:.\Generated_Source\PSoC4/PWM.c **** * Function Name: PWM_ReadPeriodBuf
  768:.\Generated_Source\PSoC4/PWM.c **** ********************************************************************************
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 33
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 33
 
 
  769:.\Generated_Source\PSoC4/PWM.c **** *
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  790:.\Generated_Source\PSoC4/PWM.c **** * Summary:
  791:.\Generated_Source\PSoC4/PWM.c **** *  Writes the register that controls whether the period registers are
  792:.\Generated_Source\PSoC4/PWM.c **** *  swapped. When enabled in Timer/Counter mode the swap occurs at a TC event.
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 34
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 34
 
 
  793:.\Generated_Source\PSoC4/PWM.c **** *  In the PWM mode the swap occurs at the next TC event following a hardware
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1123 002e 0A43     		orr	r2, r1
  1124 0030 1A60     		str	r2, [r3]
  814:.\Generated_Source\PSoC4/PWM.c ****                                                             PWM_RELOAD_PERIOD_SHIFT));
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 35
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 35
 
 
  815:.\Generated_Source\PSoC4/PWM.c **** 
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1157 0002 82B0     		sub	sp, sp, #8
  1158              		.cfi_def_cfa_offset 16
  1159 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 36
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 36
 
 
  1160              		.cfi_def_cfa_register 7
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  863:.\Generated_Source\PSoC4/PWM.c **** /*******************************************************************************
  864:.\Generated_Source\PSoC4/PWM.c **** * Function Name: PWM_ReadCompare
  865:.\Generated_Source\PSoC4/PWM.c **** ********************************************************************************
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 37
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 37
 
 
  866:.\Generated_Source\PSoC4/PWM.c **** *
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1201              		.loc 1 906 0
  1202 000c 181C     		mov	r0, r3
  1203 000e BD46     		mov	sp, r7
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 38
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 38
 
 
  1204              		@ sp needed
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  933:.\Generated_Source\PSoC4/PWM.c ****         if (((uint32)PWM__COUNT_DOWN == currentMode) && (0xFFFFu != compareBuf))
  934:.\Generated_Source\PSoC4/PWM.c ****         {
  935:.\Generated_Source\PSoC4/PWM.c ****             compareBuf++;
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 39
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 39
 
 
  936:.\Generated_Source\PSoC4/PWM.c ****         }
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  964:.\Generated_Source\PSoC4/PWM.c **** *******************************************************************************/
  965:.\Generated_Source\PSoC4/PWM.c **** uint32 PWM_ReadCompareBuf(void)
  966:.\Generated_Source\PSoC4/PWM.c **** {
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 40
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 40
 
 
  1258              		.loc 1 966 0
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1285              		.global	PWM_ReadCapture
  1286              		.code	16
  1287              		.thumb_func
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 41
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 41
 
 
  1288              		.type	PWM_ReadCapture, %function
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1321              		.type	PWM_ReadCaptureBuf, %function
  1322              	PWM_ReadCaptureBuf:
  1323              	.LFB27:
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 42
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 42
 
 
 1015:.\Generated_Source\PSoC4/PWM.c **** 
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1036:.\Generated_Source\PSoC4/PWM.c **** 
 1037:.\Generated_Source\PSoC4/PWM.c **** 
 1038:.\Generated_Source\PSoC4/PWM.c **** /*******************************************************************************
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 43
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 43
 
 
 1039:.\Generated_Source\PSoC4/PWM.c **** * Function Name: PWM_SetCaptureMode
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1383 0020 074B     		ldr	r3, .L94
  1384 0022 074A     		ldr	r2, .L94
  1385 0024 1168     		ldr	r1, [r2]
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 44
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 44
 
 
  1386 0026 7A68     		ldr	r2, [r7, #4]
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1092:.\Generated_Source\PSoC4/PWM.c **** void PWM_SetReloadMode(uint32 triggerMode)
 1093:.\Generated_Source\PSoC4/PWM.c **** {
  1415              		.loc 1 1093 0
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 45
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 45
 
 
  1416              		.cfi_startproc
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1461              	.L97:
  1462 0040 24010540 		.word	1074069796
  1463              		.cfi_endproc
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 46
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 46
 
 
  1464              	.LFE29:
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1491 0012 2370     		strb	r3, [r4]
 1130:.\Generated_Source\PSoC4/PWM.c **** 
 1131:.\Generated_Source\PSoC4/PWM.c ****     PWM_TRIG_CONTROL1_REG &= (uint32)~PWM_START_MASK;
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 47
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 47
 
 
  1492              		.loc 1 1131 0
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1144:.\Generated_Source\PSoC4/PWM.c **** *
 1145:.\Generated_Source\PSoC4/PWM.c **** * Parameters:
 1146:.\Generated_Source\PSoC4/PWM.c **** *  triggerMode: Enumerated trigger mode value
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 48
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 48
 
 
 1147:.\Generated_Source\PSoC4/PWM.c **** *   Values:
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1568 002e 3B1C     		mov	r3, r7
  1569 0030 0F33     		add	r3, r3, #15
  1570 0032 1B78     		ldrb	r3, [r3]
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 49
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 49
 
 
  1571 0034 181C     		mov	r0, r3
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1600 0002 85B0     		sub	sp, sp, #20
  1601              		.cfi_def_cfa_offset 32
  1602 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 50
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 50
 
 
  1603              		.cfi_def_cfa_register 7
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1648              		.thumb_func
  1649              		.type	PWM_TriggerCommand, %function
  1650              	PWM_TriggerCommand:
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 51
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 51
 
 
  1651              	.LFB33:
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1235:.\Generated_Source\PSoC4/PWM.c **** 
 1236:.\Generated_Source\PSoC4/PWM.c ****     PWM_COMMAND_REG = ((uint32)(mask << command));
  1671              		.loc 1 1236 0
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 52
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 52
 
 
  1672 0016 084B     		ldr	r3, .L109
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1258:.\Generated_Source\PSoC4/PWM.c **** *******************************************************************************/
 1259:.\Generated_Source\PSoC4/PWM.c **** uint32 PWM_ReadStatus(void)
 1260:.\Generated_Source\PSoC4/PWM.c **** {
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 53
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 53
 
 
  1705              		.loc 1 1260 0
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1275:.\Generated_Source\PSoC4/PWM.c **** *   interruptMask: Mask of bits to be enabled
 1276:.\Generated_Source\PSoC4/PWM.c **** *   Values:
 1277:.\Generated_Source\PSoC4/PWM.c **** *     - PWM_INTR_MASK_TC       - Terminal count mask
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 54
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 54
 
 
 1278:.\Generated_Source\PSoC4/PWM.c **** *     - PWM_INTR_MASK_CC_MATCH - Compare count / capture mask
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1297:.\Generated_Source\PSoC4/PWM.c **** * Parameters:
 1298:.\Generated_Source\PSoC4/PWM.c **** *   None
 1299:.\Generated_Source\PSoC4/PWM.c **** *
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 55
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 55
 
 
 1300:.\Generated_Source\PSoC4/PWM.c **** * Return:
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1323:.\Generated_Source\PSoC4/PWM.c **** * Return:
 1324:.\Generated_Source\PSoC4/PWM.c **** *  Interrupt request value
 1325:.\Generated_Source\PSoC4/PWM.c **** *   Values:
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 56
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 56
 
 
 1326:.\Generated_Source\PSoC4/PWM.c **** *     - PWM_INTR_MASK_TC       - Terminal count mask
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1349:.\Generated_Source\PSoC4/PWM.c **** * Return:
 1350:.\Generated_Source\PSoC4/PWM.c **** *  None
 1351:.\Generated_Source\PSoC4/PWM.c **** *
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 57
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 57
 
 
 1352:.\Generated_Source\PSoC4/PWM.c **** *******************************************************************************/
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
 1371:.\Generated_Source\PSoC4/PWM.c **** *
 1372:.\Generated_Source\PSoC4/PWM.c **** * Return:
 1373:.\Generated_Source\PSoC4/PWM.c **** *  None
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 58
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 58
 
 
 1374:.\Generated_Source\PSoC4/PWM.c **** *
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1924 002c 02       		.uleb128 0x2
  1925 002d 01       		.byte	0x1
  1926 002e 08       		.byte	0x8
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 59
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 59
 
 
  1927 002f 94030000 		.4byte	.LASF1
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  1981 0092 21040000 		.4byte	.LASF13
  1982 0096 05       		.uleb128 0x5
  1983 0097 3E020000 		.4byte	.LASF14
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 60
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 60
 
 
  1984 009b 02       		.byte	0x2
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2038 010e 01       		.byte	0x1
  2039 010f FC       		.byte	0xfc
  2040 0110 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 61
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 61
 
 
  2041 0114 02       		.uleb128 0x2
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2095 0180 6F       		.sleb128 -17
  2096 0181 00       		.byte	0
  2097 0182 0A       		.uleb128 0xa
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 62
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 62
 
 
  2098 0183 EF010000 		.4byte	.LASF25
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2152 01f2 BB01     		.2byte	0x1bb
  2153 01f4 00000000 		.4byte	.LFB8
  2154 01f8 1C000000 		.4byte	.LFE8-.LFB8
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 63
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 63
 
 
  2155 01fc 01       		.uleb128 0x1
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2209 026b 64       		.sleb128 -28
  2210 026c 0C       		.uleb128 0xc
  2211 026d 82040000 		.4byte	.LASF20
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 64
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 64
 
 
  2212 0271 01       		.byte	0x1
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2266 02de 6B000000 		.4byte	0x6b
  2267 02e2 02       		.uleb128 0x2
  2268 02e3 91       		.byte	0x91
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 65
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 65
 
 
  2269 02e4 6F       		.sleb128 -17
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2323 0356 00       		.byte	0
  2324 0357 0D       		.uleb128 0xd
  2325 0358 2E020000 		.4byte	.LASF43
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 66
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 66
 
 
  2326 035c 01       		.byte	0x1
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2380 03ce F802     		.2byte	0x2f8
  2381 03d0 00000000 		.4byte	.LFB19
  2382 03d4 1C000000 		.4byte	.LFE19-.LFB19
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 67
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 67
 
 
  2383 03d8 01       		.uleb128 0x1
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2437 044a 9C       		.byte	0x9c
  2438 044b 5F040000 		.4byte	0x45f
  2439 044f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 68
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 68
 
 
  2440 0450 77020000 		.4byte	.LASF54
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2494 04c8 6F040000 		.4byte	.LASF60
  2495 04cc 01       		.byte	0x1
  2496 04cd 0804     		.2byte	0x408
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 69
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 69
 
 
  2497 04cf 76000000 		.4byte	0x76
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2551 0544 91       		.byte	0x91
  2552 0545 6F       		.sleb128 -17
  2553 0546 00       		.byte	0
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 70
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 70
 
 
  2554 0547 0A       		.uleb128 0xa
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2608 05b6 01       		.byte	0x1
  2609 05b7 A604     		.2byte	0x4a6
  2610 05b9 00000000 		.4byte	.LFB32
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 71
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 71
 
 
  2611 05bd 44000000 		.4byte	.LFE32-.LFB32
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2665 0629 00       		.byte	0
  2666 062a 0E       		.uleb128 0xe
  2667 062b 71010000 		.4byte	.LASF69
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 72
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 72
 
 
  2668 062f 01       		.byte	0x1
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2722 06ad 01       		.byte	0x1
  2723 06ae 4905     		.2byte	0x549
  2724 06b0 76000000 		.4byte	0x76
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 73
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 73
 
 
  2725 06b4 02       		.uleb128 0x2
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2779 0015 00       		.byte	0
  2780 0016 0B       		.uleb128 0xb
  2781 0017 0B       		.uleb128 0xb
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 74
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 74
 
 
  2782 0018 3E       		.uleb128 0x3e
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2836 004e 19       		.uleb128 0x19
  2837 004f 03       		.uleb128 0x3
  2838 0050 0E       		.uleb128 0xe
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 75
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 75
 
 
  2839 0051 3A       		.uleb128 0x3a
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2893 0089 00       		.byte	0
  2894 008a 00       		.byte	0
  2895 008b 0A       		.uleb128 0xa
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 76
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 76
 
 
  2896 008c 2E       		.uleb128 0x2e
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  2950 00c3 0D       		.uleb128 0xd
  2951 00c4 2E       		.uleb128 0x2e
  2952 00c5 01       		.byte	0x1
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 77
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 77
 
 
  2953 00c6 3F       		.uleb128 0x3f
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3007 00fe 3B       		.uleb128 0x3b
  3008 00ff 0B       		.uleb128 0xb
  3009 0100 49       		.uleb128 0x49
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 78
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 78
 
 
  3010 0101 13       		.uleb128 0x13
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3064 00a8 00000000 		.4byte	.LFB19
  3065 00ac 1C000000 		.4byte	.LFE19-.LFB19
  3066 00b0 00000000 		.4byte	.LFB20
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 79
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 79
 
 
  3067 00b4 18000000 		.4byte	.LFE20-.LFB20
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3121 002c 48000000 		.4byte	.LFE5
  3122 0030 00000000 		.4byte	.LFB6
  3123 0034 48000000 		.4byte	.LFE6
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 80
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 80
 
 
  3124 0038 00000000 		.4byte	.LFB7
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3178 0110 00000000 		.4byte	.LFB34
  3179 0114 20000000 		.4byte	.LFE34
  3180 0118 00000000 		.4byte	.LFB35
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 81
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 81
 
 
  3181 011c 18000000 		.4byte	.LFE35
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3210      00
  3211              	.LASF45:
  3212 006d 50574D5F 		.ascii	"PWM_ReadCounter\000"
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 82
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 82
 
 
  3212      52656164 
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3234      53657443 
  3234      6F6D7061 
  3234      72655377 
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 83
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 83
 
 
  3234      617000
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3258      616E6400 
  3259              	.LASF5:
  3260 01c1 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 84
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 84
 
 
  3260      20756E73 
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3282 025f 73697A65 		.ascii	"sizetype\000"
  3282      74797065 
  3282      00
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 85
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 85
 
 
  3283              	.LASF32:
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3303 0372 50574D5F 		.ascii	"PWM_ReadCapture\000"
  3303      52656164 
  3303      43617074 
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 86
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 86
 
 
  3303      75726500 
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3325 0421 63686172 		.ascii	"char\000"
  3325      00
  3326              	.LASF23:
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 87
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 87
 
 
  3327 0426 6D6F6465 		.ascii	"mode\000"
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 1
  3349 04be 50574D5F 		.ascii	"PWM_SetPWMStopOnKill\000"
  3349      53657450 
  3349      574D5374 
-ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cc5UWv6F.s 			page 88
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\cczi2kBm.s 			page 88
 
 
  3349      6F704F6E 
