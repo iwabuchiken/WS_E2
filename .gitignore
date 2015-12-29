@@ -4,3 +4,6 @@
 *.hex
 *.cof
 *.mcw
+
+*.a
+*.elf

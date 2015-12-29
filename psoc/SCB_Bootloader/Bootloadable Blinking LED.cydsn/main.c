@@ -58,10 +58,17 @@ int main()
     
 	for(;;)
     {
-        LED_Write( ! LED_Read() );
+        
+        LED_Write( 1 );
+        CyDelay( 100 );
+
+        LED_Write( 0 );
+        CyDelay( 500 );
+
+        //LED_Write( ! LED_Read() );
         //LED_Write( 1 );
         
-        CyDelay( 500 );
+        //CyDelay( 500 );
         
         /* The PSoC 4 is put into Sleep Mode as the PWM component is used to 
 		blink the LED */

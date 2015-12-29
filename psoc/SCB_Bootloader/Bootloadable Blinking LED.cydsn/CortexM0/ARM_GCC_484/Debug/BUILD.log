@@ -1,4 +1,4 @@
---------------- Build Started: 12/29/2015 16:44:31 Project: Bootloadable Blinking LED, Configuration: ARM GCC 4.8.4 Debug ---------------
+--------------- Build Started: 12/29/2015 20:31:54 Project: Bootloadable Blinking LED, Configuration: ARM GCC 4.8.4 Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m0 -mthumb -Wno-main -I. -IGenerated_Source\PSoC4 -Wa,-alh=.\CortexM0\ARM_GCC_484\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -O0 -c .\main.c -o .\CortexM0\ARM_GCC_484\Debug\main.o
 arm-none-eabi-ar.exe -rs ".\CortexM0\ARM_GCC_484\Debug\Bootloadable Blinking LED.a" .\CortexM0\ARM_GCC_484\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_484\Debug\Bootloadable.o .\CortexM0\ARM_GCC_484\Debug\PWM.o .\CortexM0\ARM_GCC_484\Debug\PWM_PM.o .\CortexM0\ARM_GCC_484\Debug\Clock.o .\CortexM0\ARM_GCC_484\Debug\P1_6.o .\CortexM0\ARM_GCC_484\Debug\CyBootAsmGnu.o .\CortexM0\ARM_GCC_484\Debug\CyFlash.o .\CortexM0\ARM_GCC_484\Debug\CyLib.o .\CortexM0\ARM_GCC_484\Debug\cyPm.o .\CortexM0\ARM_GCC_484\Debug\cyutils.o .\CortexM0\ARM_GCC_484\Debug\LED.o
@@ -8,4 +8,4 @@ cyelftool.exe -B "C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LE
 cyelftool.exe -S "C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\CortexM0\ARM_GCC_484\Debug\Bootloadable Blinking LED.elf"
 Flash used: 6656 of 32768 bytes (20.3%). Bootloader: 4608 bytes. Application: 1920 bytes. Metadata: 128 bytes.
 SRAM used: 1536 of 4096 bytes (37.5%). Stack: 1024 bytes. Heap: 256 bytes.
---------------- Build Succeeded: 12/29/2015 16:44:32 ---------------
+--------------- Build Succeeded: 12/29/2015 20:31:58 ---------------
