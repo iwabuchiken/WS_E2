@@ -1,0 +1,1979 @@
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"UART_Btldr.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.CyBtldrCommStart,"ax",%progbits
+  18              		.align	1
+  19              		.global	CyBtldrCommStart
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	CyBtldrCommStart, %function
+  23              	CyBtldrCommStart:
+  24              	.LFB33:
+  25              		.file 1 ".\\UART_Btldr.c"
+   1:.\UART_Btldr.c **** /******************************************************************************
+   2:.\UART_Btldr.c **** * Project Name		: UART_Bootloader
+   3:.\UART_Btldr.c **** * File Name			: UART_Btldr.c
+   4:.\UART_Btldr.c **** * Version 			: 1.0
+   5:.\UART_Btldr.c **** * Device Used		: CY8C4245AXI-483
+   6:.\UART_Btldr.c **** * Software Used		: PSoC Creator 3.1
+   7:.\UART_Btldr.c **** * Compiler    		: ARMGCC 4.8.4, ARM RVDS Generic, ARM MDK Generic
+   8:.\UART_Btldr.c **** * Related Hardware	: CY8CKIT-049-42xx PSoC 4 Prototyping Kit 
+   9:.\UART_Btldr.c **** *
+  10:.\UART_Btldr.c **** ********************************************************************************
+  11:.\UART_Btldr.c **** * Copyright (2015), Cypress Semiconductor Corporation. All Rights Reserved.
+  12:.\UART_Btldr.c **** ********************************************************************************
+  13:.\UART_Btldr.c **** * This software is owned by Cypress Semiconductor Corporation (Cypress)
+  14:.\UART_Btldr.c **** * and is protected by and subject to worldwide patent protection (United
+  15:.\UART_Btldr.c **** * States and foreign), United States copyright laws and international treaty
+  16:.\UART_Btldr.c **** * provisions. Cypress hereby grants to licensee a personal, non-exclusive,
+  17:.\UART_Btldr.c **** * non-transferable license to copy, use, modify, create derivative works of,
+  18:.\UART_Btldr.c **** * and compile the Cypress Source Code and derivative works for the sole
+  19:.\UART_Btldr.c **** * purpose of creating custom software in support of licensee product to be
+  20:.\UART_Btldr.c **** * used only in conjunction with a Cypress integrated circuit as specified in
+  21:.\UART_Btldr.c **** * the applicable agreement. Any reproduction, modification, translation,
+  22:.\UART_Btldr.c **** * compilation, or representation of this software except as specified above 
+  23:.\UART_Btldr.c **** * is prohibited without the express written permission of Cypress.
+  24:.\UART_Btldr.c **** *
+  25:.\UART_Btldr.c **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH 
+  26:.\UART_Btldr.c **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  27:.\UART_Btldr.c **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  28:.\UART_Btldr.c **** * Cypress reserves the right to make changes without further notice to the 
+  29:.\UART_Btldr.c **** * materials described herein. Cypress does not assume any liability arising out 
+  30:.\UART_Btldr.c **** * of the application or use of any product or circuit described herein. Cypress 
+  31:.\UART_Btldr.c **** * does not authorize its products for use as critical components in life-support 
+  32:.\UART_Btldr.c **** * systems where a malfunction or failure may reasonably be expected to result in 
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 2
+
+
+  33:.\UART_Btldr.c **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  34:.\UART_Btldr.c **** * support systems application implies that the manufacturer assumes all risk of 
+  35:.\UART_Btldr.c **** * such use and in doing so indemnifies Cypress against all charges. 
+  36:.\UART_Btldr.c **** *
+  37:.\UART_Btldr.c **** * Use of this Software may be limited by and subject to the applicable Cypress
+  38:.\UART_Btldr.c **** * software license agreement. 
+  39:.\UART_Btldr.c **** *******************************************************************************/
+  40:.\UART_Btldr.c **** /*******************************************************************************
+  41:.\UART_Btldr.c **** * Description:
+  42:.\UART_Btldr.c **** * This file contains the bootloader communication functions implemented using 
+  43:.\UART_Btldr.c **** * UART. Some portion of this code depends on the code placed in UART receive 
+  44:.\UART_Btldr.c **** * interrupt routine in main.c file.
+  45:.\UART_Btldr.c **** ********************************************************************************/
+  46:.\UART_Btldr.c **** 
+  47:.\UART_Btldr.c **** #include "UART.h" 
+  48:.\UART_Btldr.c **** #include "project.h"
+  49:.\UART_Btldr.c **** 
+  50:.\UART_Btldr.c **** /* Byte to Byte time out in ms for detecting end of block data from host*/
+  51:.\UART_Btldr.c **** #define BYTE2BYTE_TIME_OUT 2
+  52:.\UART_Btldr.c **** 
+  53:.\UART_Btldr.c **** #define BTLDR_SIZEOF_READ_BUFFER 0xff
+  54:.\UART_Btldr.c **** #define BTLDR_SIZEOF_WRITE_BUFFER 0xff
+  55:.\UART_Btldr.c **** #define END_OF_PACKET 0x17
+  56:.\UART_Btldr.c **** 
+  57:.\UART_Btldr.c **** /***************************************
+  58:.\UART_Btldr.c **** *Global variables
+  59:.\UART_Btldr.c **** ***************************************/
+  60:.\UART_Btldr.c **** 
+  61:.\UART_Btldr.c **** /* UART receive data count variable  */
+  62:.\UART_Btldr.c **** volatile uint16 receivedDataCount=0;
+  63:.\UART_Btldr.c **** 
+  64:.\UART_Btldr.c **** /*******************************************************************************
+  65:.\UART_Btldr.c **** * Function Name: CyBtldrCommStart
+  66:.\UART_Btldr.c **** ********************************************************************************
+  67:.\UART_Btldr.c **** *
+  68:.\UART_Btldr.c **** * Summary:
+  69:.\UART_Btldr.c **** *  Starts the UART communication component 
+  70:.\UART_Btldr.c **** *
+  71:.\UART_Btldr.c **** * Parameters:  
+  72:.\UART_Btldr.c **** *  void
+  73:.\UART_Btldr.c **** *
+  74:.\UART_Btldr.c **** * Return: 
+  75:.\UART_Btldr.c **** *  void 
+  76:.\UART_Btldr.c **** *
+  77:.\UART_Btldr.c **** * Side Effects:
+  78:.\UART_Btldr.c **** *   None  
+  79:.\UART_Btldr.c **** *
+  80:.\UART_Btldr.c **** *******************************************************************************/
+  81:.\UART_Btldr.c **** void CyBtldrCommStart(void)
+  82:.\UART_Btldr.c **** {        
+  26              		.loc 1 82 0
+  27              		.cfi_startproc
+  28 0000 08B5     		push	{r3, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 3, -8
+  31              		.cfi_offset 14, -4
+  83:.\UART_Btldr.c **** 	/* Start UART component and clear the TX,RX buffers */
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 3
+
+
+  84:.\UART_Btldr.c **** 	UART_Start();
+  32              		.loc 1 84 0
+  33 0002 FFF7FEFF 		bl	UART_Start
+  34              	.LVL0:
+  85:.\UART_Btldr.c **** 	UART_SpiUartClearRxBuffer();
+  86:.\UART_Btldr.c **** 	UART_SpiUartClearTxBuffer();
+  87:.\UART_Btldr.c **** }
+  35              		.loc 1 87 0
+  36              		@ sp needed
+  85:.\UART_Btldr.c **** 	UART_SpiUartClearRxBuffer();
+  37              		.loc 1 85 0
+  38 0006 FFF7FEFF 		bl	UART_SpiUartClearRxBuffer
+  39              	.LVL1:
+  86:.\UART_Btldr.c **** 	UART_SpiUartClearTxBuffer();
+  40              		.loc 1 86 0
+  41 000a FFF7FEFF 		bl	UART_SpiUartClearTxBuffer
+  42              	.LVL2:
+  43              		.loc 1 87 0
+  44 000e 08BD     		pop	{r3, pc}
+  45              		.cfi_endproc
+  46              	.LFE33:
+  47              		.size	CyBtldrCommStart, .-CyBtldrCommStart
+  48              		.section	.text.CyBtldrCommStop,"ax",%progbits
+  49              		.align	1
+  50              		.global	CyBtldrCommStop
+  51              		.code	16
+  52              		.thumb_func
+  53              		.type	CyBtldrCommStop, %function
+  54              	CyBtldrCommStop:
+  55              	.LFB34:
+  88:.\UART_Btldr.c **** 
+  89:.\UART_Btldr.c **** /*******************************************************************************
+  90:.\UART_Btldr.c **** * Function Name: CyBtldrCommStop
+  91:.\UART_Btldr.c **** ********************************************************************************
+  92:.\UART_Btldr.c **** *
+  93:.\UART_Btldr.c **** * Summary:
+  94:.\UART_Btldr.c **** *  Disable the component.
+  95:.\UART_Btldr.c **** *
+  96:.\UART_Btldr.c **** * Parameters:  
+  97:.\UART_Btldr.c **** *  void 
+  98:.\UART_Btldr.c **** *
+  99:.\UART_Btldr.c **** * Return: 
+ 100:.\UART_Btldr.c **** *  void 
+ 101:.\UART_Btldr.c **** *
+ 102:.\UART_Btldr.c **** *******************************************************************************/
+ 103:.\UART_Btldr.c **** void CyBtldrCommStop(void) 
+ 104:.\UART_Btldr.c **** {
+  56              		.loc 1 104 0
+  57              		.cfi_startproc
+  58 0000 08B5     		push	{r3, lr}
+  59              		.cfi_def_cfa_offset 8
+  60              		.cfi_offset 3, -8
+  61              		.cfi_offset 14, -4
+ 105:.\UART_Btldr.c ****     /* Stop UART */
+ 106:.\UART_Btldr.c ****     UART_Stop();
+  62              		.loc 1 106 0
+  63 0002 FFF7FEFF 		bl	UART_Stop
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 4
+
+
+  64              	.LVL3:
+ 107:.\UART_Btldr.c **** }
+  65              		.loc 1 107 0
+  66              		@ sp needed
+  67 0006 08BD     		pop	{r3, pc}
+  68              		.cfi_endproc
+  69              	.LFE34:
+  70              		.size	CyBtldrCommStop, .-CyBtldrCommStop
+  71              		.section	.text.CyBtldrCommReset,"ax",%progbits
+  72              		.align	1
+  73              		.global	CyBtldrCommReset
+  74              		.code	16
+  75              		.thumb_func
+  76              		.type	CyBtldrCommReset, %function
+  77              	CyBtldrCommReset:
+  78              	.LFB35:
+ 108:.\UART_Btldr.c **** 
+ 109:.\UART_Btldr.c **** /*******************************************************************************
+ 110:.\UART_Btldr.c **** * Function Name: CyBtldrCommReset
+ 111:.\UART_Btldr.c **** ********************************************************************************
+ 112:.\UART_Btldr.c **** *
+ 113:.\UART_Btldr.c **** * Summary:
+ 114:.\UART_Btldr.c **** *  Resets the receive and transmit communication Buffers.
+ 115:.\UART_Btldr.c **** *
+ 116:.\UART_Btldr.c **** * Parameters:  
+ 117:.\UART_Btldr.c **** *  void 
+ 118:.\UART_Btldr.c **** *
+ 119:.\UART_Btldr.c **** * Return: 
+ 120:.\UART_Btldr.c **** *  void 
+ 121:.\UART_Btldr.c **** *
+ 122:.\UART_Btldr.c **** * Side Effects:
+ 123:.\UART_Btldr.c **** *  
+ 124:.\UART_Btldr.c **** *******************************************************************************/
+ 125:.\UART_Btldr.c **** void CyBtldrCommReset(void)
+ 126:.\UART_Btldr.c **** {
+  79              		.loc 1 126 0
+  80              		.cfi_startproc
+  81 0000 08B5     		push	{r3, lr}
+  82              		.cfi_def_cfa_offset 8
+  83              		.cfi_offset 3, -8
+  84              		.cfi_offset 14, -4
+ 127:.\UART_Btldr.c ****     /* Clear RX and TX buffers */
+ 128:.\UART_Btldr.c ****     UART_SpiUartClearRxBuffer();
+  85              		.loc 1 128 0
+  86 0002 FFF7FEFF 		bl	UART_SpiUartClearRxBuffer
+  87              	.LVL4:
+ 129:.\UART_Btldr.c ****     UART_SpiUartClearTxBuffer();
+ 130:.\UART_Btldr.c **** }
+  88              		.loc 1 130 0
+  89              		@ sp needed
+ 129:.\UART_Btldr.c ****     UART_SpiUartClearTxBuffer();
+  90              		.loc 1 129 0
+  91 0006 FFF7FEFF 		bl	UART_SpiUartClearTxBuffer
+  92              	.LVL5:
+  93              		.loc 1 130 0
+  94 000a 08BD     		pop	{r3, pc}
+  95              		.cfi_endproc
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 5
+
+
+  96              	.LFE35:
+  97              		.size	CyBtldrCommReset, .-CyBtldrCommReset
+  98              		.section	.text.CyBtldrCommWrite,"ax",%progbits
+  99              		.align	1
+ 100              		.global	CyBtldrCommWrite
+ 101              		.code	16
+ 102              		.thumb_func
+ 103              		.type	CyBtldrCommWrite, %function
+ 104              	CyBtldrCommWrite:
+ 105              	.LFB36:
+ 131:.\UART_Btldr.c **** 
+ 132:.\UART_Btldr.c **** /*******************************************************************************
+ 133:.\UART_Btldr.c **** * Function Name: CyBtldrCommWrite
+ 134:.\UART_Btldr.c **** ********************************************************************************
+ 135:.\UART_Btldr.c **** *
+ 136:.\UART_Btldr.c **** * Summary:
+ 137:.\UART_Btldr.c **** *  Allows the caller to write data to the bootloader host. This function uses 
+ 138:.\UART_Btldr.c **** * a block write function for writing data using UART communication component. 
+ 139:.\UART_Btldr.c **** *
+ 140:.\UART_Btldr.c **** * Parameters:
+ 141:.\UART_Btldr.c **** *  pData:    A pointer to the block of data to send to the device
+ 142:.\UART_Btldr.c **** *  size:     The number of bytes to write.
+ 143:.\UART_Btldr.c **** *  count:    Pointer to an unsigned short variable to write the number of
+ 144:.\UART_Btldr.c **** *             bytes actually written.
+ 145:.\UART_Btldr.c **** *  timeOut:  Number of units to wait before returning because of a timeout.
+ 146:.\UART_Btldr.c **** *
+ 147:.\UART_Btldr.c **** * Return: 
+ 148:.\UART_Btldr.c **** *   cystatus: This function will return CYRET_SUCCESS if data is sent successfully.
+ 149:.\UART_Btldr.c **** *
+ 150:.\UART_Btldr.c **** * Side Effects:
+ 151:.\UART_Btldr.c **** *  This function should be called after command was received .
+ 152:.\UART_Btldr.c **** *
+ 153:.\UART_Btldr.c **** *******************************************************************************/
+ 154:.\UART_Btldr.c **** cystatus CyBtldrCommWrite(uint8 * pData, uint16 Size, uint16 * Count, uint8 TimeOut)
+ 155:.\UART_Btldr.c **** {
+ 106              		.loc 1 155 0
+ 107              		.cfi_startproc
+ 108              	.LVL6:
+ 109 0000 70B5     		push	{r4, r5, r6, lr}
+ 110              		.cfi_def_cfa_offset 16
+ 111              		.cfi_offset 4, -16
+ 112              		.cfi_offset 5, -12
+ 113              		.cfi_offset 6, -8
+ 114              		.cfi_offset 14, -4
+ 156:.\UART_Btldr.c ****     cystatus status = CYRET_EMPTY;
+ 157:.\UART_Btldr.c **** 	
+ 158:.\UART_Btldr.c ****     uint8 timeOutms = TimeOut; /* This timeout is not used in this function, defined to avoid compi
+ 159:.\UART_Btldr.c **** 	timeOutms += 10;
+ 160:.\UART_Btldr.c **** 	
+ 161:.\UART_Btldr.c ****    	receivedDataCount=0;
+ 115              		.loc 1 161 0
+ 116 0002 054B     		ldr	r3, .L5
+ 117              	.LVL7:
+ 155:.\UART_Btldr.c **** {
+ 118              		.loc 1 155 0
+ 119 0004 0D1C     		mov	r5, r1
+ 120 0006 161C     		mov	r6, r2
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 6
+
+
+ 121              		.loc 1 161 0
+ 122 0008 0024     		mov	r4, #0
+ 162:.\UART_Btldr.c ****     
+ 163:.\UART_Btldr.c **** 	/* Write TX data using blocking function */
+ 164:.\UART_Btldr.c **** 	UART_SpiUartPutArray(pData, (uint8)Size);
+ 123              		.loc 1 164 0
+ 124 000a C9B2     		uxtb	r1, r1
+ 125              	.LVL8:
+ 161:.\UART_Btldr.c ****    	receivedDataCount=0;
+ 126              		.loc 1 161 0
+ 127 000c 1C80     		strh	r4, [r3]
+ 165:.\UART_Btldr.c **** 	
+ 166:.\UART_Btldr.c **** 	/* Return success code */
+ 167:.\UART_Btldr.c **** 	*Count = Size;
+ 168:.\UART_Btldr.c **** 	status = CYRET_SUCCESS;
+ 169:.\UART_Btldr.c **** 	
+ 170:.\UART_Btldr.c ****     return status;
+ 171:.\UART_Btldr.c **** }
+ 128              		.loc 1 171 0
+ 129              		@ sp needed
+ 164:.\UART_Btldr.c **** 	UART_SpiUartPutArray(pData, (uint8)Size);
+ 130              		.loc 1 164 0
+ 131 000e FFF7FEFF 		bl	UART_SpiUartPutArray
+ 132              	.LVL9:
+ 167:.\UART_Btldr.c **** 	*Count = Size;
+ 133              		.loc 1 167 0
+ 134 0012 3580     		strh	r5, [r6]
+ 135              	.LVL10:
+ 136              		.loc 1 171 0
+ 137 0014 201C     		mov	r0, r4
+ 138              	.LVL11:
+ 139 0016 70BD     		pop	{r4, r5, r6, pc}
+ 140              	.L6:
+ 141              		.align	2
+ 142              	.L5:
+ 143 0018 00000000 		.word	.LANCHOR0
+ 144              		.cfi_endproc
+ 145              	.LFE36:
+ 146              		.size	CyBtldrCommWrite, .-CyBtldrCommWrite
+ 147              		.section	.text.CyBtldrCommRead,"ax",%progbits
+ 148              		.align	1
+ 149              		.global	CyBtldrCommRead
+ 150              		.code	16
+ 151              		.thumb_func
+ 152              		.type	CyBtldrCommRead, %function
+ 153              	CyBtldrCommRead:
+ 154              	.LFB37:
+ 172:.\UART_Btldr.c **** 
+ 173:.\UART_Btldr.c **** /*******************************************************************************
+ 174:.\UART_Btldr.c **** * Function Name: CyBtldrCommRead
+ 175:.\UART_Btldr.c **** ********************************************************************************
+ 176:.\UART_Btldr.c **** *
+ 177:.\UART_Btldr.c **** * Summary:
+ 178:.\UART_Btldr.c **** *  Receives the command. 
+ 179:.\UART_Btldr.c **** *
+ 180:.\UART_Btldr.c **** * Parameters:  
+ 181:.\UART_Btldr.c **** *  pData:    A pointer to the area to store the block of data received
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 7
+
+
+ 182:.\UART_Btldr.c **** *             from the device.
+ 183:.\UART_Btldr.c **** *  size:     Maximum size of the read buffer
+ 184:.\UART_Btldr.c **** *  count:    Pointer to an unsigned short variable to write the number
+ 185:.\UART_Btldr.c **** *             of bytes actually read.
+ 186:.\UART_Btldr.c **** *  timeOut:  Number of units to wait before returning because of a timeOut.
+ 187:.\UART_Btldr.c **** *            Timeout is measured in 10s of ms.
+ 188:.\UART_Btldr.c **** *
+ 189:.\UART_Btldr.c **** * Return: 
+ 190:.\UART_Btldr.c **** *  cystatus: This function will return CYRET_SUCCESS if at least one byte is received
+ 191:.\UART_Btldr.c **** *			 successfully within the timeout interval. If no data is received this 
+ 192:.\UART_Btldr.c **** *			 function will return CYRET_EMPTY.
+ 193:.\UART_Btldr.c **** *
+ 194:.\UART_Btldr.c **** * Theory: 
+ 195:.\UART_Btldr.c **** *  'receivedDataCount' is updated with number of bytes received in the UART RX 
+ 196:.\UART_Btldr.c **** *  interrupt routine. This variable is used to check whether some data is received 
+ 197:.\UART_Btldr.c **** *  within the timeout period specified in *.cydwr. If data is received before the timeout, 
+ 198:.\UART_Btldr.c **** *  the control will remain in another loop waiting for more data until no data is 
+ 199:.\UART_Btldr.c **** *  received for a BYTE2BYTE_TIME_OUT(2 ms) interval.
+ 200:.\UART_Btldr.c **** *
+ 201:.\UART_Btldr.c **** *  Note: Increase the BYTE2BYTE_TIME_OUT to 10 ms for baud rates less than 9600.  
+ 202:.\UART_Btldr.c **** * 
+ 203:.\UART_Btldr.c **** *  BYTE2BYTE_TIME_OUT is used for detecting timeout marking end of block data from host. 
+ 204:.\UART_Btldr.c **** *  This has to be set to a value which is greater than the expected maximum delay 
+ 205:.\UART_Btldr.c **** *  between two bytes during a block/packet transmission from the host. 
+ 206:.\UART_Btldr.c **** *  You have to account for the delay in hardware converters while calculating this value,
+ 207:.\UART_Btldr.c **** *  if you are using any USB-UART bridges.   
+ 208:.\UART_Btldr.c **** *******************************************************************************/
+ 209:.\UART_Btldr.c **** cystatus CyBtldrCommRead(uint8 * pData, uint16 Size, uint16 * Count, uint8 TimeOut)
+ 210:.\UART_Btldr.c **** {
+ 155              		.loc 1 210 0
+ 156              		.cfi_startproc
+ 157              	.LVL12:
+ 158 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 159              		.cfi_def_cfa_offset 20
+ 160              		.cfi_offset 4, -20
+ 161              		.cfi_offset 5, -16
+ 162              		.cfi_offset 6, -12
+ 163              		.cfi_offset 7, -8
+ 164              		.cfi_offset 14, -4
+ 211:.\UART_Btldr.c ****     uint16 cntr,dataIndexCntr;
+ 212:.\UART_Btldr.c ****     uint16 tempCount,oldDataCount;
+ 213:.\UART_Btldr.c **** 	
+ 214:.\UART_Btldr.c ****     cystatus status = CYRET_EMPTY;
+ 215:.\UART_Btldr.c **** 
+ 216:.\UART_Btldr.c ****     /* Check whether data is received within the timeout period. 
+ 217:.\UART_Btldr.c **** 	*  Timeout period is in units of 10ms.
+ 218:.\UART_Btldr.c **** 	*  If at least one byte is received within the timeout interval, wait for more data */
+ 219:.\UART_Btldr.c **** 	for (cntr = 0; cntr < TimeOut*10; cntr++)
+ 165              		.loc 1 219 0
+ 166 0002 0A27     		mov	r7, #10
+ 167 0004 5F43     		mul	r7, r3
+ 210:.\UART_Btldr.c **** {
+ 168              		.loc 1 210 0
+ 169 0006 87B0     		sub	sp, sp, #28
+ 170              		.cfi_def_cfa_offset 48
+ 210:.\UART_Btldr.c **** {
+ 171              		.loc 1 210 0
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 8
+
+
+ 172 0008 0390     		str	r0, [sp, #12]
+ 173 000a 0591     		str	r1, [sp, #20]
+ 174 000c 151C     		mov	r5, r2
+ 175              		.loc 1 219 0
+ 176 000e 0026     		mov	r6, #0
+ 177              	.LVL13:
+ 178              	.L8:
+ 179 0010 2D4C     		ldr	r4, .L28
+ 180              		.loc 1 219 0 is_stmt 0 discriminator 1
+ 181 0012 BE42     		cmp	r6, r7
+ 182 0014 19DA     		bge	.L25
+ 220:.\UART_Btldr.c ****     {
+ 221:.\UART_Btldr.c **** 	    receivedDataCount = UART_SpiUartGetRxBufferSize();
+ 183              		.loc 1 221 0 is_stmt 1
+ 184 0016 FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 185              	.LVL14:
+ 186 001a 80B2     		uxth	r0, r0
+ 187 001c 2080     		strh	r0, [r4]
+ 222:.\UART_Btldr.c **** 		
+ 223:.\UART_Btldr.c **** 		/* If at least one byte is received within the timeout interval enter the next loop
+ 224:.\UART_Btldr.c **** 		* waiting for more data reception */
+ 225:.\UART_Btldr.c **** 		if(receivedDataCount!=0) 
+ 188              		.loc 1 225 0
+ 189 001e 2388     		ldrh	r3, [r4]
+ 190 0020 002B     		cmp	r3, #0
+ 191 0022 0CD0     		beq	.L9
+ 192              	.LVL15:
+ 193              	.L11:
+ 226:.\UART_Btldr.c **** 	   	{
+ 227:.\UART_Btldr.c **** 			/* Wait for more data until 2 ms byte to byte time out interval receivedDataCount 
+ 228:.\UART_Btldr.c **** 			* variable is updated in on each data reception. If no data is received during the 
+ 229:.\UART_Btldr.c **** 			* last 2 ms (BYTE2BYTE_TIME_OUT) then it is considered as end of transmitted data 
+ 230:.\UART_Btldr.c **** 			* block (packet) from the host and the program execution will break from the data 
+ 231:.\UART_Btldr.c **** 			* awaiting loop with status=CYRET_SUCCESS */
+ 232:.\UART_Btldr.c **** 			do{
+ 233:.\UART_Btldr.c **** 			   	oldDataCount = receivedDataCount;
+ 234:.\UART_Btldr.c **** 				CyDelay(BYTE2BYTE_TIME_OUT);
+ 194              		.loc 1 234 0
+ 195 0024 0220     		mov	r0, #2
+ 233:.\UART_Btldr.c **** 			   	oldDataCount = receivedDataCount;
+ 196              		.loc 1 233 0
+ 197 0026 2688     		ldrh	r6, [r4]
+ 198              		.loc 1 234 0
+ 199 0028 FFF7FEFF 		bl	CyDelay
+ 200              	.LVL16:
+ 235:.\UART_Btldr.c **** 				receivedDataCount = UART_SpiUartGetRxBufferSize();			    
+ 201              		.loc 1 235 0
+ 202 002c FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 203              	.LVL17:
+ 204 0030 80B2     		uxth	r0, r0
+ 205 0032 2080     		strh	r0, [r4]
+ 236:.\UART_Btldr.c **** 			}while(receivedDataCount > oldDataCount);
+ 206              		.loc 1 236 0
+ 207 0034 2388     		ldrh	r3, [r4]
+ 233:.\UART_Btldr.c **** 			   	oldDataCount = receivedDataCount;
+ 208              		.loc 1 233 0
+ 209 0036 B6B2     		uxth	r6, r6
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 9
+
+
+ 210              	.LVL18:
+ 211              		.loc 1 236 0
+ 212 0038 B342     		cmp	r3, r6
+ 213 003a F3D8     		bhi	.L11
+ 214 003c 07E0     		b	.L26
+ 215              	.LVL19:
+ 216              	.L9:
+ 237:.\UART_Btldr.c **** 			status = CYRET_SUCCESS;	
+ 238:.\UART_Btldr.c **** 			break;
+ 239:.\UART_Btldr.c **** 		}
+ 240:.\UART_Btldr.c **** 		/* If no data is received, give a delay of 1ms and check again until the Timeout specified in .cy
+ 241:.\UART_Btldr.c **** 		else 
+ 242:.\UART_Btldr.c **** 		{
+ 243:.\UART_Btldr.c **** 			CyDelay(1);
+ 217              		.loc 1 243 0
+ 218 003e 0120     		mov	r0, #1
+ 219:.\UART_Btldr.c **** 	for (cntr = 0; cntr < TimeOut*10; cntr++)
+ 219              		.loc 1 219 0
+ 220 0040 0136     		add	r6, r6, #1
+ 221              	.LVL20:
+ 222              		.loc 1 243 0
+ 223 0042 FFF7FEFF 		bl	CyDelay
+ 224              	.LVL21:
+ 219:.\UART_Btldr.c **** 	for (cntr = 0; cntr < TimeOut*10; cntr++)
+ 225              		.loc 1 219 0
+ 226 0046 B6B2     		uxth	r6, r6
+ 227              	.LVL22:
+ 228 0048 E2E7     		b	.L8
+ 229              	.L25:
+ 214:.\UART_Btldr.c ****     cystatus status = CYRET_EMPTY;
+ 230              		.loc 1 214 0
+ 231 004a 0526     		mov	r6, #5
+ 232              	.LVL23:
+ 233 004c 00E0     		b	.L10
+ 234              	.LVL24:
+ 235              	.L26:
+ 237:.\UART_Btldr.c **** 			status = CYRET_SUCCESS;	
+ 236              		.loc 1 237 0
+ 237 004e 0026     		mov	r6, #0
+ 238              	.LVL25:
+ 239              	.L10:
+ 244:.\UART_Btldr.c **** 		}
+ 245:.\UART_Btldr.c ****     }
+ 246:.\UART_Btldr.c **** 	
+ 247:.\UART_Btldr.c **** 	/* Initialize the data read indexes and Count value*/
+ 248:.\UART_Btldr.c **** 	*Count = 0;
+ 240              		.loc 1 248 0
+ 241 0050 0027     		mov	r7, #0
+ 242 0052 2F80     		strh	r7, [r5]
+ 243              	.LVL26:
+ 244              	.L13:
+ 249:.\UART_Btldr.c **** 	dataIndexCntr = 0;
+ 250:.\UART_Btldr.c **** 	
+ 251:.\UART_Btldr.c **** 	/* If receivedDataCount>0 , move the received data to the pData buffer */
+ 252:.\UART_Btldr.c **** 	while(receivedDataCount > 0)
+ 245              		.loc 1 252 0 discriminator 1
+ 246 0054 2388     		ldrh	r3, [r4]
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 10
+
+
+ 247 0056 002B     		cmp	r3, #0
+ 248 0058 33D0     		beq	.L18
+ 253:.\UART_Btldr.c **** 	{
+ 254:.\UART_Btldr.c **** 		tempCount=receivedDataCount;
+ 249              		.loc 1 254 0
+ 250 005a 2388     		ldrh	r3, [r4]
+ 251 005c 9BB2     		uxth	r3, r3
+ 252 005e 0193     		str	r3, [sp, #4]
+ 253              	.LVL27:
+ 255:.\UART_Btldr.c **** 		*Count  =(*Count ) + tempCount;
+ 254              		.loc 1 255 0
+ 255 0060 0199     		ldr	r1, [sp, #4]
+ 256 0062 2B88     		ldrh	r3, [r5]
+ 257 0064 5A18     		add	r2, r3, r1
+ 256:.\UART_Btldr.c **** 		
+ 257:.\UART_Btldr.c **** 		/* Check if buffer overflow will occur before moving the data */
+ 258:.\UART_Btldr.c **** 		if(*Count < Size)
+ 258              		.loc 1 258 0
+ 259 0066 0599     		ldr	r1, [sp, #20]
+ 255:.\UART_Btldr.c **** 		*Count  =(*Count ) + tempCount;
+ 260              		.loc 1 255 0
+ 261 0068 92B2     		uxth	r2, r2
+ 262 006a 2A80     		strh	r2, [r5]
+ 263              		.loc 1 258 0
+ 264 006c 8A42     		cmp	r2, r1
+ 265 006e 21D2     		bcs	.L14
+ 266 0070 019A     		ldr	r2, [sp, #4]
+ 267 0072 BB18     		add	r3, r7, r2
+ 268 0074 9BB2     		uxth	r3, r3
+ 269 0076 0293     		str	r3, [sp, #8]
+ 270              	.L15:
+ 271              	.LVL28:
+ 259:.\UART_Btldr.c **** 		{
+ 260:.\UART_Btldr.c **** 			for (cntr = 0;((cntr < tempCount) ); cntr++)
+ 272              		.loc 1 260 0 discriminator 1
+ 273 0078 0299     		ldr	r1, [sp, #8]
+ 274 007a 8F42     		cmp	r7, r1
+ 275 007c 09D0     		beq	.L27
+ 261:.\UART_Btldr.c **** 			{
+ 262:.\UART_Btldr.c **** 				/* Read the data and move it to the pData buffer */
+ 263:.\UART_Btldr.c **** 				pData[dataIndexCntr++] = UART_SpiUartReadRxData();   
+ 276              		.loc 1 263 0 discriminator 2
+ 277 007e 7B1C     		add	r3, r7, #1
+ 278 0080 9BB2     		uxth	r3, r3
+ 279 0082 0493     		str	r3, [sp, #16]
+ 280              	.LVL29:
+ 281 0084 039B     		ldr	r3, [sp, #12]
+ 282 0086 DF19     		add	r7, r3, r7
+ 283 0088 FFF7FEFF 		bl	UART_SpiUartReadRxData
+ 284              	.LVL30:
+ 285 008c 3870     		strb	r0, [r7]
+ 286              	.LVL31:
+ 287 008e 049F     		ldr	r7, [sp, #16]
+ 288 0090 F2E7     		b	.L15
+ 289              	.LVL32:
+ 290              	.L27:
+ 264:.\UART_Btldr.c **** 			}
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 11
+
+
+ 265:.\UART_Btldr.c **** 			/* Disable the interrupts before updating the receivedDataCount and 
+ 266:.\UART_Btldr.c **** 			*  re-enable the interrupts after updating */
+ 267:.\UART_Btldr.c **** 			CyGlobalIntDisable;
+ 291              		.loc 1 267 0
+ 292              	@ 267 ".\UART_Btldr.c" 1
+ 293 0092 72B6     		CPSID   i
+ 294              	@ 0 "" 2
+ 268:.\UART_Btldr.c **** 			
+ 269:.\UART_Btldr.c **** 			/* subtract the read data count from received data count */
+ 270:.\UART_Btldr.c **** 			receivedDataCount=receivedDataCount-tempCount;
+ 295              		.loc 1 270 0
+ 296              		.code	16
+ 297 0094 2388     		ldrh	r3, [r4]
+ 298 0096 019A     		ldr	r2, [sp, #4]
+ 299 0098 9B1A     		sub	r3, r3, r2
+ 300 009a 9BB2     		uxth	r3, r3
+ 301 009c 2380     		strh	r3, [r4]
+ 271:.\UART_Btldr.c **** 			
+ 272:.\UART_Btldr.c **** 			CyGlobalIntEnable;
+ 302              		.loc 1 272 0
+ 303              	@ 272 ".\UART_Btldr.c" 1
+ 304 009e 62B6     		CPSIE   i
+ 305              	@ 0 "" 2
+ 273:.\UART_Btldr.c **** 			
+ 274:.\UART_Btldr.c **** 			/* Check if the last data received is End of packet(0x17) 
+ 275:.\UART_Btldr.c **** 			*  If not wait for additional 5ms */
+ 276:.\UART_Btldr.c **** 			if(pData[dataIndexCntr-1]!= END_OF_PACKET)
+ 306              		.loc 1 276 0
+ 307              		.code	16
+ 308 00a0 039A     		ldr	r2, [sp, #12]
+ 309 00a2 5318     		add	r3, r2, r1
+ 310 00a4 013B     		sub	r3, r3, #1
+ 311 00a6 1B78     		ldrb	r3, [r3]
+ 312 00a8 172B     		cmp	r3, #23
+ 313 00aa 08D0     		beq	.L17
+ 277:.\UART_Btldr.c **** 			    CyDelay(5);
+ 314              		.loc 1 277 0
+ 315 00ac 0520     		mov	r0, #5
+ 316 00ae FFF7FEFF 		bl	CyDelay
+ 317              	.LVL33:
+ 318 00b2 04E0     		b	.L17
+ 319              	.LVL34:
+ 320              	.L14:
+ 278:.\UART_Btldr.c **** 	 	}	
+ 279:.\UART_Btldr.c **** 		
+ 280:.\UART_Btldr.c **** 		/* If there is no space to move data, break from the loop */
+ 281:.\UART_Btldr.c **** 		else
+ 282:.\UART_Btldr.c **** 		{
+ 283:.\UART_Btldr.c **** 			*Count=(*Count)-tempCount;
+ 321              		.loc 1 283 0
+ 322 00b4 2B80     		strh	r3, [r5]
+ 284:.\UART_Btldr.c **** 			UART_SpiUartClearRxBuffer();
+ 323              		.loc 1 284 0
+ 324 00b6 FFF7FEFF 		bl	UART_SpiUartClearRxBuffer
+ 325              	.LVL35:
+ 285:.\UART_Btldr.c **** 			status = CYRET_EMPTY;
+ 326              		.loc 1 285 0
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 12
+
+
+ 327 00ba 0526     		mov	r6, #5
+ 286:.\UART_Btldr.c **** 			break;
+ 328              		.loc 1 286 0
+ 329 00bc 01E0     		b	.L18
+ 330              	.LVL36:
+ 331              	.L17:
+ 263:.\UART_Btldr.c **** 				pData[dataIndexCntr++] = UART_SpiUartReadRxData();   
+ 332              		.loc 1 263 0 discriminator 1
+ 333 00be 029F     		ldr	r7, [sp, #8]
+ 334 00c0 C8E7     		b	.L13
+ 335              	.LVL37:
+ 336              	.L18:
+ 287:.\UART_Btldr.c **** 		}
+ 288:.\UART_Btldr.c **** 	}
+ 289:.\UART_Btldr.c **** 	return status;
+ 290:.\UART_Btldr.c **** }
+ 337              		.loc 1 290 0
+ 338 00c2 301C     		mov	r0, r6
+ 339 00c4 07B0     		add	sp, sp, #28
+ 340              		@ sp needed
+ 341              	.LVL38:
+ 342              	.LVL39:
+ 343 00c6 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 344              	.L29:
+ 345              		.align	2
+ 346              	.L28:
+ 347 00c8 00000000 		.word	.LANCHOR0
+ 348              		.cfi_endproc
+ 349              	.LFE37:
+ 350              		.size	CyBtldrCommRead, .-CyBtldrCommRead
+ 351              		.global	receivedDataCount
+ 352              		.bss
+ 353              		.align	1
+ 354              		.set	.LANCHOR0,. + 0
+ 355              		.type	receivedDataCount, %object
+ 356              		.size	receivedDataCount, 2
+ 357              	receivedDataCount:
+ 358 0000 0000     		.space	2
+ 359              		.text
+ 360              	.Letext0:
+ 361              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 362              		.file 3 "Generated_Source\\PSoC4/UART.h"
+ 363              		.file 4 "Generated_Source\\PSoC4/UART_SPI_UART.h"
+ 364              		.file 5 "Generated_Source\\PSoC4/CyLib.h"
+ 365              		.section	.debug_info,"",%progbits
+ 366              	.Ldebug_info0:
+ 367 0000 44030000 		.4byte	0x344
+ 368 0004 0400     		.2byte	0x4
+ 369 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 370 000a 04       		.byte	0x4
+ 371 000b 01       		.uleb128 0x1
+ 372 000c 7D000000 		.4byte	.LASF40
+ 373 0010 01       		.byte	0x1
+ 374 0011 82010000 		.4byte	.LASF41
+ 375 0015 13010000 		.4byte	.LASF42
+ 376 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 377 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 13
+
+
+ 378 0021 00000000 		.4byte	.Ldebug_line0
+ 379 0025 02       		.uleb128 0x2
+ 380 0026 01       		.byte	0x1
+ 381 0027 06       		.byte	0x6
+ 382 0028 A5020000 		.4byte	.LASF0
+ 383 002c 02       		.uleb128 0x2
+ 384 002d 01       		.byte	0x1
+ 385 002e 08       		.byte	0x8
+ 386 002f 05010000 		.4byte	.LASF1
+ 387 0033 02       		.uleb128 0x2
+ 388 0034 02       		.byte	0x2
+ 389 0035 05       		.byte	0x5
+ 390 0036 59020000 		.4byte	.LASF2
+ 391 003a 02       		.uleb128 0x2
+ 392 003b 02       		.byte	0x2
+ 393 003c 07       		.byte	0x7
+ 394 003d 43000000 		.4byte	.LASF3
+ 395 0041 02       		.uleb128 0x2
+ 396 0042 04       		.byte	0x4
+ 397 0043 05       		.byte	0x5
+ 398 0044 7A020000 		.4byte	.LASF4
+ 399 0048 02       		.uleb128 0x2
+ 400 0049 04       		.byte	0x4
+ 401 004a 07       		.byte	0x7
+ 402 004b 5F010000 		.4byte	.LASF5
+ 403 004f 02       		.uleb128 0x2
+ 404 0050 08       		.byte	0x8
+ 405 0051 05       		.byte	0x5
+ 406 0052 34020000 		.4byte	.LASF6
+ 407 0056 02       		.uleb128 0x2
+ 408 0057 08       		.byte	0x8
+ 409 0058 07       		.byte	0x7
+ 410 0059 00020000 		.4byte	.LASF7
+ 411 005d 03       		.uleb128 0x3
+ 412 005e 04       		.byte	0x4
+ 413 005f 05       		.byte	0x5
+ 414 0060 696E7400 		.ascii	"int\000"
+ 415 0064 02       		.uleb128 0x2
+ 416 0065 04       		.byte	0x4
+ 417 0066 07       		.byte	0x7
+ 418 0067 F3010000 		.4byte	.LASF8
+ 419 006b 04       		.uleb128 0x4
+ 420 006c 71010000 		.4byte	.LASF9
+ 421 0070 02       		.byte	0x2
+ 422 0071 A1       		.byte	0xa1
+ 423 0072 2C000000 		.4byte	0x2c
+ 424 0076 04       		.uleb128 0x4
+ 425 0077 A9010000 		.4byte	.LASF10
+ 426 007b 02       		.byte	0x2
+ 427 007c A2       		.byte	0xa2
+ 428 007d 3A000000 		.4byte	0x3a
+ 429 0081 04       		.uleb128 0x4
+ 430 0082 BD010000 		.4byte	.LASF11
+ 431 0086 02       		.byte	0x2
+ 432 0087 A3       		.byte	0xa3
+ 433 0088 48000000 		.4byte	0x48
+ 434 008c 02       		.uleb128 0x2
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 14
+
+
+ 435 008d 04       		.byte	0x4
+ 436 008e 04       		.byte	0x4
+ 437 008f F9000000 		.4byte	.LASF12
+ 438 0093 02       		.uleb128 0x2
+ 439 0094 08       		.byte	0x8
+ 440 0095 04       		.byte	0x4
+ 441 0096 A2010000 		.4byte	.LASF13
+ 442 009a 02       		.uleb128 0x2
+ 443 009b 01       		.byte	0x1
+ 444 009c 08       		.byte	0x8
+ 445 009d 42020000 		.4byte	.LASF14
+ 446 00a1 05       		.uleb128 0x5
+ 447 00a2 00000000 		.4byte	.LASF15
+ 448 00a6 02       		.byte	0x2
+ 449 00a7 4301     		.2byte	0x143
+ 450 00a9 48000000 		.4byte	0x48
+ 451 00ad 06       		.uleb128 0x6
+ 452 00ae 76000000 		.4byte	0x76
+ 453 00b2 02       		.uleb128 0x2
+ 454 00b3 04       		.byte	0x4
+ 455 00b4 07       		.byte	0x7
+ 456 00b5 26020000 		.4byte	.LASF16
+ 457 00b9 07       		.uleb128 0x7
+ 458 00ba 04       		.byte	0x4
+ 459 00bb 6B000000 		.4byte	0x6b
+ 460 00bf 08       		.uleb128 0x8
+ 461 00c0 32000000 		.4byte	.LASF17
+ 462 00c4 01       		.byte	0x1
+ 463 00c5 51       		.byte	0x51
+ 464 00c6 00000000 		.4byte	.LFB33
+ 465 00ca 10000000 		.4byte	.LFE33-.LFB33
+ 466 00ce 01       		.uleb128 0x1
+ 467 00cf 9C       		.byte	0x9c
+ 468 00d0 F0000000 		.4byte	0xf0
+ 469 00d4 09       		.uleb128 0x9
+ 470 00d5 06000000 		.4byte	.LVL0
+ 471 00d9 DE020000 		.4byte	0x2de
+ 472 00dd 09       		.uleb128 0x9
+ 473 00de 0A000000 		.4byte	.LVL1
+ 474 00e2 E5020000 		.4byte	0x2e5
+ 475 00e6 09       		.uleb128 0x9
+ 476 00e7 0E000000 		.4byte	.LVL2
+ 477 00eb ED020000 		.4byte	0x2ed
+ 478 00ef 00       		.byte	0
+ 479 00f0 08       		.uleb128 0x8
+ 480 00f1 67000000 		.4byte	.LASF18
+ 481 00f5 01       		.byte	0x1
+ 482 00f6 67       		.byte	0x67
+ 483 00f7 00000000 		.4byte	.LFB34
+ 484 00fb 08000000 		.4byte	.LFE34-.LFB34
+ 485 00ff 01       		.uleb128 0x1
+ 486 0100 9C       		.byte	0x9c
+ 487 0101 0F010000 		.4byte	0x10f
+ 488 0105 09       		.uleb128 0x9
+ 489 0106 06000000 		.4byte	.LVL3
+ 490 010a F5020000 		.4byte	0x2f5
+ 491 010e 00       		.byte	0
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 15
+
+
+ 492 010f 08       		.uleb128 0x8
+ 493 0110 21000000 		.4byte	.LASF19
+ 494 0114 01       		.byte	0x1
+ 495 0115 7D       		.byte	0x7d
+ 496 0116 00000000 		.4byte	.LFB35
+ 497 011a 0C000000 		.4byte	.LFE35-.LFB35
+ 498 011e 01       		.uleb128 0x1
+ 499 011f 9C       		.byte	0x9c
+ 500 0120 37010000 		.4byte	0x137
+ 501 0124 09       		.uleb128 0x9
+ 502 0125 06000000 		.4byte	.LVL4
+ 503 0129 E5020000 		.4byte	0x2e5
+ 504 012d 09       		.uleb128 0x9
+ 505 012e 0A000000 		.4byte	.LVL5
+ 506 0132 ED020000 		.4byte	0x2ed
+ 507 0136 00       		.byte	0
+ 508 0137 0A       		.uleb128 0xa
+ 509 0138 91010000 		.4byte	.LASF26
+ 510 013c 01       		.byte	0x1
+ 511 013d 9A       		.byte	0x9a
+ 512 013e A1000000 		.4byte	0xa1
+ 513 0142 00000000 		.4byte	.LFB36
+ 514 0146 1C000000 		.4byte	.LFE36-.LFB36
+ 515 014a 01       		.uleb128 0x1
+ 516 014b 9C       		.byte	0x9c
+ 517 014c C9010000 		.4byte	0x1c9
+ 518 0150 0B       		.uleb128 0xb
+ 519 0151 77000000 		.4byte	.LASF20
+ 520 0155 01       		.byte	0x1
+ 521 0156 9A       		.byte	0x9a
+ 522 0157 B9000000 		.4byte	0xb9
+ 523 015b 00000000 		.4byte	.LLST0
+ 524 015f 0B       		.uleb128 0xb
+ 525 0160 17020000 		.4byte	.LASF21
+ 526 0164 01       		.byte	0x1
+ 527 0165 9A       		.byte	0x9a
+ 528 0166 76000000 		.4byte	0x76
+ 529 016a 21000000 		.4byte	.LLST1
+ 530 016e 0B       		.uleb128 0xb
+ 531 016f FF000000 		.4byte	.LASF22
+ 532 0173 01       		.byte	0x1
+ 533 0174 9A       		.byte	0x9a
+ 534 0175 C9010000 		.4byte	0x1c9
+ 535 0179 42000000 		.4byte	.LLST2
+ 536 017d 0B       		.uleb128 0xb
+ 537 017e 83020000 		.4byte	.LASF23
+ 538 0182 01       		.byte	0x1
+ 539 0183 9A       		.byte	0x9a
+ 540 0184 6B000000 		.4byte	0x6b
+ 541 0188 6E000000 		.4byte	.LLST3
+ 542 018c 0C       		.uleb128 0xc
+ 543 018d 60000000 		.4byte	.LASF24
+ 544 0191 01       		.byte	0x1
+ 545 0192 9C       		.byte	0x9c
+ 546 0193 A1000000 		.4byte	0xa1
+ 547 0197 8F000000 		.4byte	.LLST4
+ 548 019b 0D       		.uleb128 0xd
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 16
+
+
+ 549 019c 56000000 		.4byte	.LASF25
+ 550 01a0 01       		.byte	0x1
+ 551 01a1 9E       		.byte	0x9e
+ 552 01a2 6B000000 		.4byte	0x6b
+ 553 01a6 06       		.uleb128 0x6
+ 554 01a7 F3       		.byte	0xf3
+ 555 01a8 01       		.uleb128 0x1
+ 556 01a9 53       		.byte	0x53
+ 557 01aa 23       		.byte	0x23
+ 558 01ab 0A       		.uleb128 0xa
+ 559 01ac 9F       		.byte	0x9f
+ 560 01ad 0E       		.uleb128 0xe
+ 561 01ae 12000000 		.4byte	.LVL9
+ 562 01b2 FC020000 		.4byte	0x2fc
+ 563 01b6 0F       		.uleb128 0xf
+ 564 01b7 01       		.uleb128 0x1
+ 565 01b8 51       		.byte	0x51
+ 566 01b9 06       		.uleb128 0x6
+ 567 01ba F3       		.byte	0xf3
+ 568 01bb 01       		.uleb128 0x1
+ 569 01bc 51       		.byte	0x51
+ 570 01bd 08       		.byte	0x8
+ 571 01be FF       		.byte	0xff
+ 572 01bf 1A       		.byte	0x1a
+ 573 01c0 0F       		.uleb128 0xf
+ 574 01c1 01       		.uleb128 0x1
+ 575 01c2 50       		.byte	0x50
+ 576 01c3 03       		.uleb128 0x3
+ 577 01c4 F3       		.byte	0xf3
+ 578 01c5 01       		.uleb128 0x1
+ 579 01c6 50       		.byte	0x50
+ 580 01c7 00       		.byte	0
+ 581 01c8 00       		.byte	0
+ 582 01c9 07       		.uleb128 0x7
+ 583 01ca 04       		.byte	0x4
+ 584 01cb 76000000 		.4byte	0x76
+ 585 01cf 0A       		.uleb128 0xa
+ 586 01d0 4F010000 		.4byte	.LASF27
+ 587 01d4 01       		.byte	0x1
+ 588 01d5 D1       		.byte	0xd1
+ 589 01d6 A1000000 		.4byte	0xa1
+ 590 01da 00000000 		.4byte	.LFB37
+ 591 01de CC000000 		.4byte	.LFE37-.LFB37
+ 592 01e2 01       		.uleb128 0x1
+ 593 01e3 9C       		.byte	0x9c
+ 594 01e4 CD020000 		.4byte	0x2cd
+ 595 01e8 0B       		.uleb128 0xb
+ 596 01e9 77000000 		.4byte	.LASF20
+ 597 01ed 01       		.byte	0x1
+ 598 01ee D1       		.byte	0xd1
+ 599 01ef B9000000 		.4byte	0xb9
+ 600 01f3 AF000000 		.4byte	.LLST5
+ 601 01f7 0B       		.uleb128 0xb
+ 602 01f8 17020000 		.4byte	.LASF21
+ 603 01fc 01       		.byte	0x1
+ 604 01fd D1       		.byte	0xd1
+ 605 01fe 76000000 		.4byte	0x76
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 17
+
+
+ 606 0202 CE000000 		.4byte	.LLST6
+ 607 0206 0B       		.uleb128 0xb
+ 608 0207 FF000000 		.4byte	.LASF22
+ 609 020b 01       		.byte	0x1
+ 610 020c D1       		.byte	0xd1
+ 611 020d C9010000 		.4byte	0x1c9
+ 612 0211 EF000000 		.4byte	.LLST7
+ 613 0215 0B       		.uleb128 0xb
+ 614 0216 83020000 		.4byte	.LASF23
+ 615 021a 01       		.byte	0x1
+ 616 021b D1       		.byte	0xd1
+ 617 021c 6B000000 		.4byte	0x6b
+ 618 0220 1B010000 		.4byte	.LLST8
+ 619 0224 0C       		.uleb128 0xc
+ 620 0225 2F020000 		.4byte	.LASF28
+ 621 0229 01       		.byte	0x1
+ 622 022a D3       		.byte	0xd3
+ 623 022b 76000000 		.4byte	0x76
+ 624 022f 3C010000 		.4byte	.LLST9
+ 625 0233 0C       		.uleb128 0xc
+ 626 0234 13000000 		.4byte	.LASF29
+ 627 0238 01       		.byte	0x1
+ 628 0239 D3       		.byte	0xd3
+ 629 023a 76000000 		.4byte	0x76
+ 630 023e 96010000 		.4byte	.LLST10
+ 631 0242 0C       		.uleb128 0xc
+ 632 0243 09000000 		.4byte	.LASF30
+ 633 0247 01       		.byte	0x1
+ 634 0248 D4       		.byte	0xd4
+ 635 0249 76000000 		.4byte	0x76
+ 636 024d B6010000 		.4byte	.LLST11
+ 637 0251 0C       		.uleb128 0xc
+ 638 0252 B0010000 		.4byte	.LASF31
+ 639 0256 01       		.byte	0x1
+ 640 0257 D4       		.byte	0xd4
+ 641 0258 76000000 		.4byte	0x76
+ 642 025c CA010000 		.4byte	.LLST12
+ 643 0260 0C       		.uleb128 0xc
+ 644 0261 60000000 		.4byte	.LASF24
+ 645 0265 01       		.byte	0x1
+ 646 0266 D6       		.byte	0xd6
+ 647 0267 A1000000 		.4byte	0xa1
+ 648 026b E8010000 		.4byte	.LLST13
+ 649 026f 09       		.uleb128 0x9
+ 650 0270 1A000000 		.4byte	.LVL14
+ 651 0274 1E030000 		.4byte	0x31e
+ 652 0278 10       		.uleb128 0x10
+ 653 0279 2C000000 		.4byte	.LVL16
+ 654 027d 2A030000 		.4byte	0x32a
+ 655 0281 8B020000 		.4byte	0x28b
+ 656 0285 0F       		.uleb128 0xf
+ 657 0286 01       		.uleb128 0x1
+ 658 0287 50       		.byte	0x50
+ 659 0288 01       		.uleb128 0x1
+ 660 0289 32       		.byte	0x32
+ 661 028a 00       		.byte	0
+ 662 028b 09       		.uleb128 0x9
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 18
+
+
+ 663 028c 30000000 		.4byte	.LVL17
+ 664 0290 1E030000 		.4byte	0x31e
+ 665 0294 10       		.uleb128 0x10
+ 666 0295 46000000 		.4byte	.LVL21
+ 667 0299 2A030000 		.4byte	0x32a
+ 668 029d A7020000 		.4byte	0x2a7
+ 669 02a1 0F       		.uleb128 0xf
+ 670 02a2 01       		.uleb128 0x1
+ 671 02a3 50       		.byte	0x50
+ 672 02a4 01       		.uleb128 0x1
+ 673 02a5 31       		.byte	0x31
+ 674 02a6 00       		.byte	0
+ 675 02a7 09       		.uleb128 0x9
+ 676 02a8 8C000000 		.4byte	.LVL30
+ 677 02ac 3B030000 		.4byte	0x33b
+ 678 02b0 10       		.uleb128 0x10
+ 679 02b1 B2000000 		.4byte	.LVL33
+ 680 02b5 2A030000 		.4byte	0x32a
+ 681 02b9 C3020000 		.4byte	0x2c3
+ 682 02bd 0F       		.uleb128 0xf
+ 683 02be 01       		.uleb128 0x1
+ 684 02bf 50       		.byte	0x50
+ 685 02c0 01       		.uleb128 0x1
+ 686 02c1 35       		.byte	0x35
+ 687 02c2 00       		.byte	0
+ 688 02c3 09       		.uleb128 0x9
+ 689 02c4 BA000000 		.4byte	.LVL35
+ 690 02c8 E5020000 		.4byte	0x2e5
+ 691 02cc 00       		.byte	0
+ 692 02cd 11       		.uleb128 0x11
+ 693 02ce 47020000 		.4byte	.LASF43
+ 694 02d2 01       		.byte	0x1
+ 695 02d3 3E       		.byte	0x3e
+ 696 02d4 AD000000 		.4byte	0xad
+ 697 02d8 05       		.uleb128 0x5
+ 698 02d9 03       		.byte	0x3
+ 699 02da 00000000 		.4byte	receivedDataCount
+ 700 02de 12       		.uleb128 0x12
+ 701 02df 77010000 		.4byte	.LASF32
+ 702 02e3 03       		.byte	0x3
+ 703 02e4 65       		.byte	0x65
+ 704 02e5 13       		.uleb128 0x13
+ 705 02e6 8B020000 		.4byte	.LASF33
+ 706 02ea 04       		.byte	0x4
+ 707 02eb 7801     		.2byte	0x178
+ 708 02ed 13       		.uleb128 0x13
+ 709 02ee C4010000 		.4byte	.LASF34
+ 710 02f2 04       		.byte	0x4
+ 711 02f3 7F01     		.2byte	0x17f
+ 712 02f5 12       		.uleb128 0x12
+ 713 02f6 1C020000 		.4byte	.LASF35
+ 714 02fa 03       		.byte	0x3
+ 715 02fb 66       		.byte	0x66
+ 716 02fc 14       		.uleb128 0x14
+ 717 02fd DE010000 		.4byte	.LASF36
+ 718 0301 04       		.byte	0x4
+ 719 0302 7E01     		.2byte	0x17e
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 19
+
+
+ 720 0304 13030000 		.4byte	0x313
+ 721 0308 15       		.uleb128 0x15
+ 722 0309 13030000 		.4byte	0x313
+ 723 030d 15       		.uleb128 0x15
+ 724 030e 81000000 		.4byte	0x81
+ 725 0312 00       		.byte	0
+ 726 0313 07       		.uleb128 0x7
+ 727 0314 04       		.byte	0x4
+ 728 0315 19030000 		.4byte	0x319
+ 729 0319 16       		.uleb128 0x16
+ 730 031a 6B000000 		.4byte	0x6b
+ 731 031e 17       		.uleb128 0x17
+ 732 031f B1020000 		.4byte	.LASF38
+ 733 0323 04       		.byte	0x4
+ 734 0324 7701     		.2byte	0x177
+ 735 0326 81000000 		.4byte	0x81
+ 736 032a 18       		.uleb128 0x18
+ 737 032b CD020000 		.4byte	.LASF37
+ 738 032f 05       		.byte	0x5
+ 739 0330 7B       		.byte	0x7b
+ 740 0331 3B030000 		.4byte	0x33b
+ 741 0335 15       		.uleb128 0x15
+ 742 0336 81000000 		.4byte	0x81
+ 743 033a 00       		.byte	0
+ 744 033b 17       		.uleb128 0x17
+ 745 033c 63020000 		.4byte	.LASF39
+ 746 0340 04       		.byte	0x4
+ 747 0341 7601     		.2byte	0x176
+ 748 0343 81000000 		.4byte	0x81
+ 749 0347 00       		.byte	0
+ 750              		.section	.debug_abbrev,"",%progbits
+ 751              	.Ldebug_abbrev0:
+ 752 0000 01       		.uleb128 0x1
+ 753 0001 11       		.uleb128 0x11
+ 754 0002 01       		.byte	0x1
+ 755 0003 25       		.uleb128 0x25
+ 756 0004 0E       		.uleb128 0xe
+ 757 0005 13       		.uleb128 0x13
+ 758 0006 0B       		.uleb128 0xb
+ 759 0007 03       		.uleb128 0x3
+ 760 0008 0E       		.uleb128 0xe
+ 761 0009 1B       		.uleb128 0x1b
+ 762 000a 0E       		.uleb128 0xe
+ 763 000b 55       		.uleb128 0x55
+ 764 000c 17       		.uleb128 0x17
+ 765 000d 11       		.uleb128 0x11
+ 766 000e 01       		.uleb128 0x1
+ 767 000f 10       		.uleb128 0x10
+ 768 0010 17       		.uleb128 0x17
+ 769 0011 00       		.byte	0
+ 770 0012 00       		.byte	0
+ 771 0013 02       		.uleb128 0x2
+ 772 0014 24       		.uleb128 0x24
+ 773 0015 00       		.byte	0
+ 774 0016 0B       		.uleb128 0xb
+ 775 0017 0B       		.uleb128 0xb
+ 776 0018 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 20
+
+
+ 777 0019 0B       		.uleb128 0xb
+ 778 001a 03       		.uleb128 0x3
+ 779 001b 0E       		.uleb128 0xe
+ 780 001c 00       		.byte	0
+ 781 001d 00       		.byte	0
+ 782 001e 03       		.uleb128 0x3
+ 783 001f 24       		.uleb128 0x24
+ 784 0020 00       		.byte	0
+ 785 0021 0B       		.uleb128 0xb
+ 786 0022 0B       		.uleb128 0xb
+ 787 0023 3E       		.uleb128 0x3e
+ 788 0024 0B       		.uleb128 0xb
+ 789 0025 03       		.uleb128 0x3
+ 790 0026 08       		.uleb128 0x8
+ 791 0027 00       		.byte	0
+ 792 0028 00       		.byte	0
+ 793 0029 04       		.uleb128 0x4
+ 794 002a 16       		.uleb128 0x16
+ 795 002b 00       		.byte	0
+ 796 002c 03       		.uleb128 0x3
+ 797 002d 0E       		.uleb128 0xe
+ 798 002e 3A       		.uleb128 0x3a
+ 799 002f 0B       		.uleb128 0xb
+ 800 0030 3B       		.uleb128 0x3b
+ 801 0031 0B       		.uleb128 0xb
+ 802 0032 49       		.uleb128 0x49
+ 803 0033 13       		.uleb128 0x13
+ 804 0034 00       		.byte	0
+ 805 0035 00       		.byte	0
+ 806 0036 05       		.uleb128 0x5
+ 807 0037 16       		.uleb128 0x16
+ 808 0038 00       		.byte	0
+ 809 0039 03       		.uleb128 0x3
+ 810 003a 0E       		.uleb128 0xe
+ 811 003b 3A       		.uleb128 0x3a
+ 812 003c 0B       		.uleb128 0xb
+ 813 003d 3B       		.uleb128 0x3b
+ 814 003e 05       		.uleb128 0x5
+ 815 003f 49       		.uleb128 0x49
+ 816 0040 13       		.uleb128 0x13
+ 817 0041 00       		.byte	0
+ 818 0042 00       		.byte	0
+ 819 0043 06       		.uleb128 0x6
+ 820 0044 35       		.uleb128 0x35
+ 821 0045 00       		.byte	0
+ 822 0046 49       		.uleb128 0x49
+ 823 0047 13       		.uleb128 0x13
+ 824 0048 00       		.byte	0
+ 825 0049 00       		.byte	0
+ 826 004a 07       		.uleb128 0x7
+ 827 004b 0F       		.uleb128 0xf
+ 828 004c 00       		.byte	0
+ 829 004d 0B       		.uleb128 0xb
+ 830 004e 0B       		.uleb128 0xb
+ 831 004f 49       		.uleb128 0x49
+ 832 0050 13       		.uleb128 0x13
+ 833 0051 00       		.byte	0
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 21
+
+
+ 834 0052 00       		.byte	0
+ 835 0053 08       		.uleb128 0x8
+ 836 0054 2E       		.uleb128 0x2e
+ 837 0055 01       		.byte	0x1
+ 838 0056 3F       		.uleb128 0x3f
+ 839 0057 19       		.uleb128 0x19
+ 840 0058 03       		.uleb128 0x3
+ 841 0059 0E       		.uleb128 0xe
+ 842 005a 3A       		.uleb128 0x3a
+ 843 005b 0B       		.uleb128 0xb
+ 844 005c 3B       		.uleb128 0x3b
+ 845 005d 0B       		.uleb128 0xb
+ 846 005e 27       		.uleb128 0x27
+ 847 005f 19       		.uleb128 0x19
+ 848 0060 11       		.uleb128 0x11
+ 849 0061 01       		.uleb128 0x1
+ 850 0062 12       		.uleb128 0x12
+ 851 0063 06       		.uleb128 0x6
+ 852 0064 40       		.uleb128 0x40
+ 853 0065 18       		.uleb128 0x18
+ 854 0066 9742     		.uleb128 0x2117
+ 855 0068 19       		.uleb128 0x19
+ 856 0069 01       		.uleb128 0x1
+ 857 006a 13       		.uleb128 0x13
+ 858 006b 00       		.byte	0
+ 859 006c 00       		.byte	0
+ 860 006d 09       		.uleb128 0x9
+ 861 006e 898201   		.uleb128 0x4109
+ 862 0071 00       		.byte	0
+ 863 0072 11       		.uleb128 0x11
+ 864 0073 01       		.uleb128 0x1
+ 865 0074 31       		.uleb128 0x31
+ 866 0075 13       		.uleb128 0x13
+ 867 0076 00       		.byte	0
+ 868 0077 00       		.byte	0
+ 869 0078 0A       		.uleb128 0xa
+ 870 0079 2E       		.uleb128 0x2e
+ 871 007a 01       		.byte	0x1
+ 872 007b 3F       		.uleb128 0x3f
+ 873 007c 19       		.uleb128 0x19
+ 874 007d 03       		.uleb128 0x3
+ 875 007e 0E       		.uleb128 0xe
+ 876 007f 3A       		.uleb128 0x3a
+ 877 0080 0B       		.uleb128 0xb
+ 878 0081 3B       		.uleb128 0x3b
+ 879 0082 0B       		.uleb128 0xb
+ 880 0083 27       		.uleb128 0x27
+ 881 0084 19       		.uleb128 0x19
+ 882 0085 49       		.uleb128 0x49
+ 883 0086 13       		.uleb128 0x13
+ 884 0087 11       		.uleb128 0x11
+ 885 0088 01       		.uleb128 0x1
+ 886 0089 12       		.uleb128 0x12
+ 887 008a 06       		.uleb128 0x6
+ 888 008b 40       		.uleb128 0x40
+ 889 008c 18       		.uleb128 0x18
+ 890 008d 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 22
+
+
+ 891 008f 19       		.uleb128 0x19
+ 892 0090 01       		.uleb128 0x1
+ 893 0091 13       		.uleb128 0x13
+ 894 0092 00       		.byte	0
+ 895 0093 00       		.byte	0
+ 896 0094 0B       		.uleb128 0xb
+ 897 0095 05       		.uleb128 0x5
+ 898 0096 00       		.byte	0
+ 899 0097 03       		.uleb128 0x3
+ 900 0098 0E       		.uleb128 0xe
+ 901 0099 3A       		.uleb128 0x3a
+ 902 009a 0B       		.uleb128 0xb
+ 903 009b 3B       		.uleb128 0x3b
+ 904 009c 0B       		.uleb128 0xb
+ 905 009d 49       		.uleb128 0x49
+ 906 009e 13       		.uleb128 0x13
+ 907 009f 02       		.uleb128 0x2
+ 908 00a0 17       		.uleb128 0x17
+ 909 00a1 00       		.byte	0
+ 910 00a2 00       		.byte	0
+ 911 00a3 0C       		.uleb128 0xc
+ 912 00a4 34       		.uleb128 0x34
+ 913 00a5 00       		.byte	0
+ 914 00a6 03       		.uleb128 0x3
+ 915 00a7 0E       		.uleb128 0xe
+ 916 00a8 3A       		.uleb128 0x3a
+ 917 00a9 0B       		.uleb128 0xb
+ 918 00aa 3B       		.uleb128 0x3b
+ 919 00ab 0B       		.uleb128 0xb
+ 920 00ac 49       		.uleb128 0x49
+ 921 00ad 13       		.uleb128 0x13
+ 922 00ae 02       		.uleb128 0x2
+ 923 00af 17       		.uleb128 0x17
+ 924 00b0 00       		.byte	0
+ 925 00b1 00       		.byte	0
+ 926 00b2 0D       		.uleb128 0xd
+ 927 00b3 34       		.uleb128 0x34
+ 928 00b4 00       		.byte	0
+ 929 00b5 03       		.uleb128 0x3
+ 930 00b6 0E       		.uleb128 0xe
+ 931 00b7 3A       		.uleb128 0x3a
+ 932 00b8 0B       		.uleb128 0xb
+ 933 00b9 3B       		.uleb128 0x3b
+ 934 00ba 0B       		.uleb128 0xb
+ 935 00bb 49       		.uleb128 0x49
+ 936 00bc 13       		.uleb128 0x13
+ 937 00bd 02       		.uleb128 0x2
+ 938 00be 18       		.uleb128 0x18
+ 939 00bf 00       		.byte	0
+ 940 00c0 00       		.byte	0
+ 941 00c1 0E       		.uleb128 0xe
+ 942 00c2 898201   		.uleb128 0x4109
+ 943 00c5 01       		.byte	0x1
+ 944 00c6 11       		.uleb128 0x11
+ 945 00c7 01       		.uleb128 0x1
+ 946 00c8 31       		.uleb128 0x31
+ 947 00c9 13       		.uleb128 0x13
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 23
+
+
+ 948 00ca 00       		.byte	0
+ 949 00cb 00       		.byte	0
+ 950 00cc 0F       		.uleb128 0xf
+ 951 00cd 8A8201   		.uleb128 0x410a
+ 952 00d0 00       		.byte	0
+ 953 00d1 02       		.uleb128 0x2
+ 954 00d2 18       		.uleb128 0x18
+ 955 00d3 9142     		.uleb128 0x2111
+ 956 00d5 18       		.uleb128 0x18
+ 957 00d6 00       		.byte	0
+ 958 00d7 00       		.byte	0
+ 959 00d8 10       		.uleb128 0x10
+ 960 00d9 898201   		.uleb128 0x4109
+ 961 00dc 01       		.byte	0x1
+ 962 00dd 11       		.uleb128 0x11
+ 963 00de 01       		.uleb128 0x1
+ 964 00df 31       		.uleb128 0x31
+ 965 00e0 13       		.uleb128 0x13
+ 966 00e1 01       		.uleb128 0x1
+ 967 00e2 13       		.uleb128 0x13
+ 968 00e3 00       		.byte	0
+ 969 00e4 00       		.byte	0
+ 970 00e5 11       		.uleb128 0x11
+ 971 00e6 34       		.uleb128 0x34
+ 972 00e7 00       		.byte	0
+ 973 00e8 03       		.uleb128 0x3
+ 974 00e9 0E       		.uleb128 0xe
+ 975 00ea 3A       		.uleb128 0x3a
+ 976 00eb 0B       		.uleb128 0xb
+ 977 00ec 3B       		.uleb128 0x3b
+ 978 00ed 0B       		.uleb128 0xb
+ 979 00ee 49       		.uleb128 0x49
+ 980 00ef 13       		.uleb128 0x13
+ 981 00f0 3F       		.uleb128 0x3f
+ 982 00f1 19       		.uleb128 0x19
+ 983 00f2 02       		.uleb128 0x2
+ 984 00f3 18       		.uleb128 0x18
+ 985 00f4 00       		.byte	0
+ 986 00f5 00       		.byte	0
+ 987 00f6 12       		.uleb128 0x12
+ 988 00f7 2E       		.uleb128 0x2e
+ 989 00f8 00       		.byte	0
+ 990 00f9 3F       		.uleb128 0x3f
+ 991 00fa 19       		.uleb128 0x19
+ 992 00fb 03       		.uleb128 0x3
+ 993 00fc 0E       		.uleb128 0xe
+ 994 00fd 3A       		.uleb128 0x3a
+ 995 00fe 0B       		.uleb128 0xb
+ 996 00ff 3B       		.uleb128 0x3b
+ 997 0100 0B       		.uleb128 0xb
+ 998 0101 27       		.uleb128 0x27
+ 999 0102 19       		.uleb128 0x19
+ 1000 0103 3C       		.uleb128 0x3c
+ 1001 0104 19       		.uleb128 0x19
+ 1002 0105 00       		.byte	0
+ 1003 0106 00       		.byte	0
+ 1004 0107 13       		.uleb128 0x13
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 24
+
+
+ 1005 0108 2E       		.uleb128 0x2e
+ 1006 0109 00       		.byte	0
+ 1007 010a 3F       		.uleb128 0x3f
+ 1008 010b 19       		.uleb128 0x19
+ 1009 010c 03       		.uleb128 0x3
+ 1010 010d 0E       		.uleb128 0xe
+ 1011 010e 3A       		.uleb128 0x3a
+ 1012 010f 0B       		.uleb128 0xb
+ 1013 0110 3B       		.uleb128 0x3b
+ 1014 0111 05       		.uleb128 0x5
+ 1015 0112 27       		.uleb128 0x27
+ 1016 0113 19       		.uleb128 0x19
+ 1017 0114 3C       		.uleb128 0x3c
+ 1018 0115 19       		.uleb128 0x19
+ 1019 0116 00       		.byte	0
+ 1020 0117 00       		.byte	0
+ 1021 0118 14       		.uleb128 0x14
+ 1022 0119 2E       		.uleb128 0x2e
+ 1023 011a 01       		.byte	0x1
+ 1024 011b 3F       		.uleb128 0x3f
+ 1025 011c 19       		.uleb128 0x19
+ 1026 011d 03       		.uleb128 0x3
+ 1027 011e 0E       		.uleb128 0xe
+ 1028 011f 3A       		.uleb128 0x3a
+ 1029 0120 0B       		.uleb128 0xb
+ 1030 0121 3B       		.uleb128 0x3b
+ 1031 0122 05       		.uleb128 0x5
+ 1032 0123 27       		.uleb128 0x27
+ 1033 0124 19       		.uleb128 0x19
+ 1034 0125 3C       		.uleb128 0x3c
+ 1035 0126 19       		.uleb128 0x19
+ 1036 0127 01       		.uleb128 0x1
+ 1037 0128 13       		.uleb128 0x13
+ 1038 0129 00       		.byte	0
+ 1039 012a 00       		.byte	0
+ 1040 012b 15       		.uleb128 0x15
+ 1041 012c 05       		.uleb128 0x5
+ 1042 012d 00       		.byte	0
+ 1043 012e 49       		.uleb128 0x49
+ 1044 012f 13       		.uleb128 0x13
+ 1045 0130 00       		.byte	0
+ 1046 0131 00       		.byte	0
+ 1047 0132 16       		.uleb128 0x16
+ 1048 0133 26       		.uleb128 0x26
+ 1049 0134 00       		.byte	0
+ 1050 0135 49       		.uleb128 0x49
+ 1051 0136 13       		.uleb128 0x13
+ 1052 0137 00       		.byte	0
+ 1053 0138 00       		.byte	0
+ 1054 0139 17       		.uleb128 0x17
+ 1055 013a 2E       		.uleb128 0x2e
+ 1056 013b 00       		.byte	0
+ 1057 013c 3F       		.uleb128 0x3f
+ 1058 013d 19       		.uleb128 0x19
+ 1059 013e 03       		.uleb128 0x3
+ 1060 013f 0E       		.uleb128 0xe
+ 1061 0140 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 25
+
+
+ 1062 0141 0B       		.uleb128 0xb
+ 1063 0142 3B       		.uleb128 0x3b
+ 1064 0143 05       		.uleb128 0x5
+ 1065 0144 27       		.uleb128 0x27
+ 1066 0145 19       		.uleb128 0x19
+ 1067 0146 49       		.uleb128 0x49
+ 1068 0147 13       		.uleb128 0x13
+ 1069 0148 3C       		.uleb128 0x3c
+ 1070 0149 19       		.uleb128 0x19
+ 1071 014a 00       		.byte	0
+ 1072 014b 00       		.byte	0
+ 1073 014c 18       		.uleb128 0x18
+ 1074 014d 2E       		.uleb128 0x2e
+ 1075 014e 01       		.byte	0x1
+ 1076 014f 3F       		.uleb128 0x3f
+ 1077 0150 19       		.uleb128 0x19
+ 1078 0151 03       		.uleb128 0x3
+ 1079 0152 0E       		.uleb128 0xe
+ 1080 0153 3A       		.uleb128 0x3a
+ 1081 0154 0B       		.uleb128 0xb
+ 1082 0155 3B       		.uleb128 0x3b
+ 1083 0156 0B       		.uleb128 0xb
+ 1084 0157 27       		.uleb128 0x27
+ 1085 0158 19       		.uleb128 0x19
+ 1086 0159 3C       		.uleb128 0x3c
+ 1087 015a 19       		.uleb128 0x19
+ 1088 015b 01       		.uleb128 0x1
+ 1089 015c 13       		.uleb128 0x13
+ 1090 015d 00       		.byte	0
+ 1091 015e 00       		.byte	0
+ 1092 015f 00       		.byte	0
+ 1093              		.section	.debug_loc,"",%progbits
+ 1094              	.Ldebug_loc0:
+ 1095              	.LLST0:
+ 1096 0000 00000000 		.4byte	.LVL6
+ 1097 0004 11000000 		.4byte	.LVL9-1
+ 1098 0008 0100     		.2byte	0x1
+ 1099 000a 50       		.byte	0x50
+ 1100 000b 11000000 		.4byte	.LVL9-1
+ 1101 000f 1C000000 		.4byte	.LFE36
+ 1102 0013 0400     		.2byte	0x4
+ 1103 0015 F3       		.byte	0xf3
+ 1104 0016 01       		.uleb128 0x1
+ 1105 0017 50       		.byte	0x50
+ 1106 0018 9F       		.byte	0x9f
+ 1107 0019 00000000 		.4byte	0
+ 1108 001d 00000000 		.4byte	0
+ 1109              	.LLST1:
+ 1110 0021 00000000 		.4byte	.LVL6
+ 1111 0025 0C000000 		.4byte	.LVL8
+ 1112 0029 0100     		.2byte	0x1
+ 1113 002b 51       		.byte	0x51
+ 1114 002c 0C000000 		.4byte	.LVL8
+ 1115 0030 1C000000 		.4byte	.LFE36
+ 1116 0034 0400     		.2byte	0x4
+ 1117 0036 F3       		.byte	0xf3
+ 1118 0037 01       		.uleb128 0x1
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 26
+
+
+ 1119 0038 51       		.byte	0x51
+ 1120 0039 9F       		.byte	0x9f
+ 1121 003a 00000000 		.4byte	0
+ 1122 003e 00000000 		.4byte	0
+ 1123              	.LLST2:
+ 1124 0042 00000000 		.4byte	.LVL6
+ 1125 0046 11000000 		.4byte	.LVL9-1
+ 1126 004a 0100     		.2byte	0x1
+ 1127 004c 52       		.byte	0x52
+ 1128 004d 11000000 		.4byte	.LVL9-1
+ 1129 0051 16000000 		.4byte	.LVL11
+ 1130 0055 0100     		.2byte	0x1
+ 1131 0057 56       		.byte	0x56
+ 1132 0058 16000000 		.4byte	.LVL11
+ 1133 005c 1C000000 		.4byte	.LFE36
+ 1134 0060 0400     		.2byte	0x4
+ 1135 0062 F3       		.byte	0xf3
+ 1136 0063 01       		.uleb128 0x1
+ 1137 0064 52       		.byte	0x52
+ 1138 0065 9F       		.byte	0x9f
+ 1139 0066 00000000 		.4byte	0
+ 1140 006a 00000000 		.4byte	0
+ 1141              	.LLST3:
+ 1142 006e 00000000 		.4byte	.LVL6
+ 1143 0072 04000000 		.4byte	.LVL7
+ 1144 0076 0100     		.2byte	0x1
+ 1145 0078 53       		.byte	0x53
+ 1146 0079 04000000 		.4byte	.LVL7
+ 1147 007d 1C000000 		.4byte	.LFE36
+ 1148 0081 0400     		.2byte	0x4
+ 1149 0083 F3       		.byte	0xf3
+ 1150 0084 01       		.uleb128 0x1
+ 1151 0085 53       		.byte	0x53
+ 1152 0086 9F       		.byte	0x9f
+ 1153 0087 00000000 		.4byte	0
+ 1154 008b 00000000 		.4byte	0
+ 1155              	.LLST4:
+ 1156 008f 00000000 		.4byte	.LVL6
+ 1157 0093 14000000 		.4byte	.LVL10
+ 1158 0097 0200     		.2byte	0x2
+ 1159 0099 35       		.byte	0x35
+ 1160 009a 9F       		.byte	0x9f
+ 1161 009b 14000000 		.4byte	.LVL10
+ 1162 009f 1C000000 		.4byte	.LFE36
+ 1163 00a3 0200     		.2byte	0x2
+ 1164 00a5 30       		.byte	0x30
+ 1165 00a6 9F       		.byte	0x9f
+ 1166 00a7 00000000 		.4byte	0
+ 1167 00ab 00000000 		.4byte	0
+ 1168              	.LLST5:
+ 1169 00af 00000000 		.4byte	.LVL12
+ 1170 00b3 10000000 		.4byte	.LVL13
+ 1171 00b7 0100     		.2byte	0x1
+ 1172 00b9 50       		.byte	0x50
+ 1173 00ba 10000000 		.4byte	.LVL13
+ 1174 00be CC000000 		.4byte	.LFE37
+ 1175 00c2 0200     		.2byte	0x2
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 27
+
+
+ 1176 00c4 91       		.byte	0x91
+ 1177 00c5 5C       		.sleb128 -36
+ 1178 00c6 00000000 		.4byte	0
+ 1179 00ca 00000000 		.4byte	0
+ 1180              	.LLST6:
+ 1181 00ce 00000000 		.4byte	.LVL12
+ 1182 00d2 10000000 		.4byte	.LVL13
+ 1183 00d6 0100     		.2byte	0x1
+ 1184 00d8 51       		.byte	0x51
+ 1185 00d9 10000000 		.4byte	.LVL13
+ 1186 00dd CC000000 		.4byte	.LFE37
+ 1187 00e1 0400     		.2byte	0x4
+ 1188 00e3 F3       		.byte	0xf3
+ 1189 00e4 01       		.uleb128 0x1
+ 1190 00e5 51       		.byte	0x51
+ 1191 00e6 9F       		.byte	0x9f
+ 1192 00e7 00000000 		.4byte	0
+ 1193 00eb 00000000 		.4byte	0
+ 1194              	.LLST7:
+ 1195 00ef 00000000 		.4byte	.LVL12
+ 1196 00f3 10000000 		.4byte	.LVL13
+ 1197 00f7 0100     		.2byte	0x1
+ 1198 00f9 52       		.byte	0x52
+ 1199 00fa 10000000 		.4byte	.LVL13
+ 1200 00fe C6000000 		.4byte	.LVL38
+ 1201 0102 0100     		.2byte	0x1
+ 1202 0104 55       		.byte	0x55
+ 1203 0105 C6000000 		.4byte	.LVL38
+ 1204 0109 CC000000 		.4byte	.LFE37
+ 1205 010d 0400     		.2byte	0x4
+ 1206 010f F3       		.byte	0xf3
+ 1207 0110 01       		.uleb128 0x1
+ 1208 0111 52       		.byte	0x52
+ 1209 0112 9F       		.byte	0x9f
+ 1210 0113 00000000 		.4byte	0
+ 1211 0117 00000000 		.4byte	0
+ 1212              	.LLST8:
+ 1213 011b 00000000 		.4byte	.LVL12
+ 1214 011f 10000000 		.4byte	.LVL13
+ 1215 0123 0100     		.2byte	0x1
+ 1216 0125 53       		.byte	0x53
+ 1217 0126 10000000 		.4byte	.LVL13
+ 1218 012a CC000000 		.4byte	.LFE37
+ 1219 012e 0400     		.2byte	0x4
+ 1220 0130 F3       		.byte	0xf3
+ 1221 0131 01       		.uleb128 0x1
+ 1222 0132 53       		.byte	0x53
+ 1223 0133 9F       		.byte	0x9f
+ 1224 0134 00000000 		.4byte	0
+ 1225 0138 00000000 		.4byte	0
+ 1226              	.LLST9:
+ 1227 013c 00000000 		.4byte	.LVL12
+ 1228 0140 10000000 		.4byte	.LVL13
+ 1229 0144 0200     		.2byte	0x2
+ 1230 0146 30       		.byte	0x30
+ 1231 0147 9F       		.byte	0x9f
+ 1232 0148 10000000 		.4byte	.LVL13
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 28
+
+
+ 1233 014c 24000000 		.4byte	.LVL15
+ 1234 0150 0100     		.2byte	0x1
+ 1235 0152 56       		.byte	0x56
+ 1236 0153 3E000000 		.4byte	.LVL19
+ 1237 0157 42000000 		.4byte	.LVL20
+ 1238 015b 0100     		.2byte	0x1
+ 1239 015d 56       		.byte	0x56
+ 1240 015e 42000000 		.4byte	.LVL20
+ 1241 0162 48000000 		.4byte	.LVL22
+ 1242 0166 0300     		.2byte	0x3
+ 1243 0168 76       		.byte	0x76
+ 1244 0169 7F       		.sleb128 -1
+ 1245 016a 9F       		.byte	0x9f
+ 1246 016b 48000000 		.4byte	.LVL22
+ 1247 016f 4C000000 		.4byte	.LVL23
+ 1248 0173 0100     		.2byte	0x1
+ 1249 0175 56       		.byte	0x56
+ 1250 0176 78000000 		.4byte	.LVL28
+ 1251 017a B4000000 		.4byte	.LVL34
+ 1252 017e 0200     		.2byte	0x2
+ 1253 0180 30       		.byte	0x30
+ 1254 0181 9F       		.byte	0x9f
+ 1255 0182 BE000000 		.4byte	.LVL36
+ 1256 0186 C2000000 		.4byte	.LVL37
+ 1257 018a 0200     		.2byte	0x2
+ 1258 018c 30       		.byte	0x30
+ 1259 018d 9F       		.byte	0x9f
+ 1260 018e 00000000 		.4byte	0
+ 1261 0192 00000000 		.4byte	0
+ 1262              	.LLST10:
+ 1263 0196 84000000 		.4byte	.LVL29
+ 1264 019a 92000000 		.4byte	.LVL32
+ 1265 019e 0200     		.2byte	0x2
+ 1266 01a0 91       		.byte	0x91
+ 1267 01a1 60       		.sleb128 -32
+ 1268 01a2 BE000000 		.4byte	.LVL36
+ 1269 01a6 C2000000 		.4byte	.LVL37
+ 1270 01aa 0200     		.2byte	0x2
+ 1271 01ac 91       		.byte	0x91
+ 1272 01ad 58       		.sleb128 -40
+ 1273 01ae 00000000 		.4byte	0
+ 1274 01b2 00000000 		.4byte	0
+ 1275              	.LLST11:
+ 1276 01b6 60000000 		.4byte	.LVL27
+ 1277 01ba C2000000 		.4byte	.LVL37
+ 1278 01be 0200     		.2byte	0x2
+ 1279 01c0 91       		.byte	0x91
+ 1280 01c1 54       		.sleb128 -44
+ 1281 01c2 00000000 		.4byte	0
+ 1282 01c6 00000000 		.4byte	0
+ 1283              	.LLST12:
+ 1284 01ca 38000000 		.4byte	.LVL18
+ 1285 01ce 3E000000 		.4byte	.LVL19
+ 1286 01d2 0100     		.2byte	0x1
+ 1287 01d4 56       		.byte	0x56
+ 1288 01d5 4E000000 		.4byte	.LVL24
+ 1289 01d9 50000000 		.4byte	.LVL25
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 29
+
+
+ 1290 01dd 0100     		.2byte	0x1
+ 1291 01df 56       		.byte	0x56
+ 1292 01e0 00000000 		.4byte	0
+ 1293 01e4 00000000 		.4byte	0
+ 1294              	.LLST13:
+ 1295 01e8 00000000 		.4byte	.LVL12
+ 1296 01ec 50000000 		.4byte	.LVL25
+ 1297 01f0 0200     		.2byte	0x2
+ 1298 01f2 35       		.byte	0x35
+ 1299 01f3 9F       		.byte	0x9f
+ 1300 01f4 50000000 		.4byte	.LVL25
+ 1301 01f8 BA000000 		.4byte	.LVL35
+ 1302 01fc 0100     		.2byte	0x1
+ 1303 01fe 56       		.byte	0x56
+ 1304 01ff BA000000 		.4byte	.LVL35
+ 1305 0203 BE000000 		.4byte	.LVL36
+ 1306 0207 0200     		.2byte	0x2
+ 1307 0209 35       		.byte	0x35
+ 1308 020a 9F       		.byte	0x9f
+ 1309 020b BE000000 		.4byte	.LVL36
+ 1310 020f C6000000 		.4byte	.LVL39
+ 1311 0213 0100     		.2byte	0x1
+ 1312 0215 56       		.byte	0x56
+ 1313 0216 C6000000 		.4byte	.LVL39
+ 1314 021a CC000000 		.4byte	.LFE37
+ 1315 021e 0100     		.2byte	0x1
+ 1316 0220 50       		.byte	0x50
+ 1317 0221 00000000 		.4byte	0
+ 1318 0225 00000000 		.4byte	0
+ 1319              		.section	.debug_aranges,"",%progbits
+ 1320 0000 3C000000 		.4byte	0x3c
+ 1321 0004 0200     		.2byte	0x2
+ 1322 0006 00000000 		.4byte	.Ldebug_info0
+ 1323 000a 04       		.byte	0x4
+ 1324 000b 00       		.byte	0
+ 1325 000c 0000     		.2byte	0
+ 1326 000e 0000     		.2byte	0
+ 1327 0010 00000000 		.4byte	.LFB33
+ 1328 0014 10000000 		.4byte	.LFE33-.LFB33
+ 1329 0018 00000000 		.4byte	.LFB34
+ 1330 001c 08000000 		.4byte	.LFE34-.LFB34
+ 1331 0020 00000000 		.4byte	.LFB35
+ 1332 0024 0C000000 		.4byte	.LFE35-.LFB35
+ 1333 0028 00000000 		.4byte	.LFB36
+ 1334 002c 1C000000 		.4byte	.LFE36-.LFB36
+ 1335 0030 00000000 		.4byte	.LFB37
+ 1336 0034 CC000000 		.4byte	.LFE37-.LFB37
+ 1337 0038 00000000 		.4byte	0
+ 1338 003c 00000000 		.4byte	0
+ 1339              		.section	.debug_ranges,"",%progbits
+ 1340              	.Ldebug_ranges0:
+ 1341 0000 00000000 		.4byte	.LFB33
+ 1342 0004 10000000 		.4byte	.LFE33
+ 1343 0008 00000000 		.4byte	.LFB34
+ 1344 000c 08000000 		.4byte	.LFE34
+ 1345 0010 00000000 		.4byte	.LFB35
+ 1346 0014 0C000000 		.4byte	.LFE35
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 30
+
+
+ 1347 0018 00000000 		.4byte	.LFB36
+ 1348 001c 1C000000 		.4byte	.LFE36
+ 1349 0020 00000000 		.4byte	.LFB37
+ 1350 0024 CC000000 		.4byte	.LFE37
+ 1351 0028 00000000 		.4byte	0
+ 1352 002c 00000000 		.4byte	0
+ 1353              		.section	.debug_line,"",%progbits
+ 1354              	.Ldebug_line0:
+ 1355 0000 35010000 		.section	.debug_str,"MS",%progbits,1
+ 1355      02007100 
+ 1355      00000201 
+ 1355      FB0E0D00 
+ 1355      01010101 
+ 1356              	.LASF15:
+ 1357 0000 63797374 		.ascii	"cystatus\000"
+ 1357      61747573 
+ 1357      00
+ 1358              	.LASF30:
+ 1359 0009 74656D70 		.ascii	"tempCount\000"
+ 1359      436F756E 
+ 1359      7400
+ 1360              	.LASF29:
+ 1361 0013 64617461 		.ascii	"dataIndexCntr\000"
+ 1361      496E6465 
+ 1361      78436E74 
+ 1361      7200
+ 1362              	.LASF19:
+ 1363 0021 43794274 		.ascii	"CyBtldrCommReset\000"
+ 1363      6C647243 
+ 1363      6F6D6D52 
+ 1363      65736574 
+ 1363      00
+ 1364              	.LASF17:
+ 1365 0032 43794274 		.ascii	"CyBtldrCommStart\000"
+ 1365      6C647243 
+ 1365      6F6D6D53 
+ 1365      74617274 
+ 1365      00
+ 1366              	.LASF3:
+ 1367 0043 73686F72 		.ascii	"short unsigned int\000"
+ 1367      7420756E 
+ 1367      7369676E 
+ 1367      65642069 
+ 1367      6E7400
+ 1368              	.LASF25:
+ 1369 0056 74696D65 		.ascii	"timeOutms\000"
+ 1369      4F75746D 
+ 1369      7300
+ 1370              	.LASF24:
+ 1371 0060 73746174 		.ascii	"status\000"
+ 1371      757300
+ 1372              	.LASF18:
+ 1373 0067 43794274 		.ascii	"CyBtldrCommStop\000"
+ 1373      6C647243 
+ 1373      6F6D6D53 
+ 1373      746F7000 
+ 1374              	.LASF20:
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 31
+
+
+ 1375 0077 70446174 		.ascii	"pData\000"
+ 1375      6100
+ 1376              	.LASF40:
+ 1377 007d 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 1377      4320342E 
+ 1377      382E3420 
+ 1377      32303134 
+ 1377      30353236 
+ 1378 00b0 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 1378      20726576 
+ 1378      6973696F 
+ 1378      6E203231 
+ 1378      31333538 
+ 1379 00e3 73202D66 		.ascii	"s -ffunction-sections\000"
+ 1379      66756E63 
+ 1379      74696F6E 
+ 1379      2D736563 
+ 1379      74696F6E 
+ 1380              	.LASF12:
+ 1381 00f9 666C6F61 		.ascii	"float\000"
+ 1381      7400
+ 1382              	.LASF22:
+ 1383 00ff 436F756E 		.ascii	"Count\000"
+ 1383      7400
+ 1384              	.LASF1:
+ 1385 0105 756E7369 		.ascii	"unsigned char\000"
+ 1385      676E6564 
+ 1385      20636861 
+ 1385      7200
+ 1386              	.LASF42:
+ 1387 0113 433A5C57 		.ascii	"C:\\WORKS\\WS\\WS_E2\\psoc\\SCB_Bootloader\\UART_Bo"
+ 1387      4F524B53 
+ 1387      5C57535C 
+ 1387      57535F45 
+ 1387      325C7073 
+ 1388 0140 6F746C6F 		.ascii	"otloader.cydsn\000"
+ 1388      61646572 
+ 1388      2E637964 
+ 1388      736E00
+ 1389              	.LASF27:
+ 1390 014f 43794274 		.ascii	"CyBtldrCommRead\000"
+ 1390      6C647243 
+ 1390      6F6D6D52 
+ 1390      65616400 
+ 1391              	.LASF5:
+ 1392 015f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1392      20756E73 
+ 1392      69676E65 
+ 1392      6420696E 
+ 1392      7400
+ 1393              	.LASF9:
+ 1394 0171 75696E74 		.ascii	"uint8\000"
+ 1394      3800
+ 1395              	.LASF32:
+ 1396 0177 55415254 		.ascii	"UART_Start\000"
+ 1396      5F537461 
+ 1396      727400
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 32
+
+
+ 1397              	.LASF41:
+ 1398 0182 2E5C5541 		.ascii	".\\UART_Btldr.c\000"
+ 1398      52545F42 
+ 1398      746C6472 
+ 1398      2E6300
+ 1399              	.LASF26:
+ 1400 0191 43794274 		.ascii	"CyBtldrCommWrite\000"
+ 1400      6C647243 
+ 1400      6F6D6D57 
+ 1400      72697465 
+ 1400      00
+ 1401              	.LASF13:
+ 1402 01a2 646F7562 		.ascii	"double\000"
+ 1402      6C6500
+ 1403              	.LASF10:
+ 1404 01a9 75696E74 		.ascii	"uint16\000"
+ 1404      313600
+ 1405              	.LASF31:
+ 1406 01b0 6F6C6444 		.ascii	"oldDataCount\000"
+ 1406      61746143 
+ 1406      6F756E74 
+ 1406      00
+ 1407              	.LASF11:
+ 1408 01bd 75696E74 		.ascii	"uint32\000"
+ 1408      333200
+ 1409              	.LASF34:
+ 1410 01c4 55415254 		.ascii	"UART_SpiUartClearTxBuffer\000"
+ 1410      5F537069 
+ 1410      55617274 
+ 1410      436C6561 
+ 1410      72547842 
+ 1411              	.LASF36:
+ 1412 01de 55415254 		.ascii	"UART_SpiUartPutArray\000"
+ 1412      5F537069 
+ 1412      55617274 
+ 1412      50757441 
+ 1412      72726179 
+ 1413              	.LASF8:
+ 1414 01f3 756E7369 		.ascii	"unsigned int\000"
+ 1414      676E6564 
+ 1414      20696E74 
+ 1414      00
+ 1415              	.LASF7:
+ 1416 0200 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1416      206C6F6E 
+ 1416      6720756E 
+ 1416      7369676E 
+ 1416      65642069 
+ 1417              	.LASF21:
+ 1418 0217 53697A65 		.ascii	"Size\000"
+ 1418      00
+ 1419              	.LASF35:
+ 1420 021c 55415254 		.ascii	"UART_Stop\000"
+ 1420      5F53746F 
+ 1420      7000
+ 1421              	.LASF16:
+ 1422 0226 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFCdCj7.s 			page 33
+
+
+ 1422      74797065 
+ 1422      00
+ 1423              	.LASF28:
+ 1424 022f 636E7472 		.ascii	"cntr\000"
+ 1424      00
+ 1425              	.LASF6:
+ 1426 0234 6C6F6E67 		.ascii	"long long int\000"
+ 1426      206C6F6E 
+ 1426      6720696E 
+ 1426      7400
+ 1427              	.LASF14:
+ 1428 0242 63686172 		.ascii	"char\000"
+ 1428      00
+ 1429              	.LASF43:
+ 1430 0247 72656365 		.ascii	"receivedDataCount\000"
+ 1430      69766564 
+ 1430      44617461 
+ 1430      436F756E 
+ 1430      7400
+ 1431              	.LASF2:
+ 1432 0259 73686F72 		.ascii	"short int\000"
+ 1432      7420696E 
+ 1432      7400
+ 1433              	.LASF39:
+ 1434 0263 55415254 		.ascii	"UART_SpiUartReadRxData\000"
+ 1434      5F537069 
+ 1434      55617274 
+ 1434      52656164 
+ 1434      52784461 
+ 1435              	.LASF4:
+ 1436 027a 6C6F6E67 		.ascii	"long int\000"
+ 1436      20696E74 
+ 1436      00
+ 1437              	.LASF23:
+ 1438 0283 54696D65 		.ascii	"TimeOut\000"
+ 1438      4F757400 
+ 1439              	.LASF33:
+ 1440 028b 55415254 		.ascii	"UART_SpiUartClearRxBuffer\000"
+ 1440      5F537069 
+ 1440      55617274 
+ 1440      436C6561 
+ 1440      72527842 
+ 1441              	.LASF0:
+ 1442 02a5 7369676E 		.ascii	"signed char\000"
+ 1442      65642063 
+ 1442      68617200 
+ 1443              	.LASF38:
+ 1444 02b1 55415254 		.ascii	"UART_SpiUartGetRxBufferSize\000"
+ 1444      5F537069 
+ 1444      55617274 
+ 1444      47657452 
+ 1444      78427566 
+ 1445              	.LASF37:
+ 1446 02cd 43794465 		.ascii	"CyDelay\000"
+ 1446      6C617900 
+ 1447              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

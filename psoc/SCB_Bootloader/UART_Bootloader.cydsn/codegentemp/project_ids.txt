@@ -1,0 +1,7 @@
+C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\UART_Bootloader.cydsn\UART_Bootloader.cyprj|04f534a7-dbaf-40bf-b0c6-ad0d74a231c6
+C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|10d0a19b-03c4-4622-936a-31f8cfcfb985
+C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|7cd44db7-1be5-4b16-8fed-1afadd49e548
+C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|2cb76c1b-1129-44af-8eca-0f2057bc1a7f
+C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|45be338f-8ccf-4ea8-8437-9e46ab2a64c1
+C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|65caef16-e892-4154-a1a0-618bf9db91b3
+C:\WORKS\WS\WS_E2\psoc\SCB_Bootloader\Bootloadable Blinking LED.cydsn\Bootloadable Blinking LED.cyprj|a0e52b01-213f-45ee-a100-c016efbeee67

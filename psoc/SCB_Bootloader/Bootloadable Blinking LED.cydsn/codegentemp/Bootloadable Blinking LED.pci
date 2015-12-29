@@ -1,0 +1,5 @@
+# Bootloadable Blinking LED
+# 2015-12-29 00:12:26Z
+
+set_location "ClockGenBlock" m0s8clockgenblockcell -1 -1 0
+set_io "P1_6(0)" iocell 1 6
