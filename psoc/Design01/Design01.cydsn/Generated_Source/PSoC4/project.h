@@ -23,6 +23,8 @@
 #include "OUT_1_aliases.h"
 #include "OUT_2.h"
 #include "OUT_2_aliases.h"
+#include "OUT_3.h"
+#include "OUT_3_aliases.h"
 #include "core_cm0_psoc4.h"
 #include "core_cm0.h"
 #include "CyFlash.h"

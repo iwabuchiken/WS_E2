@@ -82,6 +82,9 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\CyLFClk.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\CyLFClk.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\project.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\OUT_3.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\OUT_3.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC4\OUT_3_aliases.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\Export\ARM_GCC_Generic">

@@ -24,6 +24,9 @@
   <file name="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\codegentemp\OUT_2.c" value="ARM_C_FILE;OUT_2" />
   <file name="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\codegentemp\OUT_2.h" value="NONE;OUT_2" />
   <file name="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\codegentemp\OUT_2_aliases.h" value="NONE;OUT_2" />
+  <file name="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\codegentemp\OUT_3.c" value="ARM_C_FILE;OUT_3" />
+  <file name="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\codegentemp\OUT_3.h" value="NONE;OUT_3" />
+  <file name="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\codegentemp\OUT_3_aliases.h" value="NONE;OUT_3" />
   <file name="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\codegentemp\cm0gcc.ld" value="NONE;cy_boot" />
   <file name="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\codegentemp\Cm0RealView.scat" value="NONE;cy_boot" />
   <file name="C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\codegentemp\Cm0Start.c" value="ARM_C_FILE;cy_boot" />
