@@ -2,7 +2,7 @@
 --	Conversion of D-21_s-2.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Dec 29 20:58:21 2015
+--	Tue Dec 29 23:36:42 2015
 --
 
 USE cypress.cypress.all;
