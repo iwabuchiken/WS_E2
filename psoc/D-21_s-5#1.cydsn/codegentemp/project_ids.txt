@@ -1,0 +1,6 @@
+C:\WORKS\WS\WS_E2\psoc\Design01\Design01.cydsn\Design01.cyprj|05d0154f-4215-4fd9-ba60-7ad710d9b744
+C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|530e033b-3bc3-4e6b-9cb2-ebb532a51692
+C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|137cebbc-67d1-425b-bd1c-15d5a0455734
+C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|65629a88-fefe-47ff-84ba-efc2d85f66e2
+C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|f4a201db-7f3e-4c11-bb3f-8bab9723f588
+C:\WORKS\WS\WS_E2\psoc\D-21_s-5#1.cydsn\D-21_s-5#1.cyprj|d3dd7c17-66b4-478f-964f-06fc606e4ed3
