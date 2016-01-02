@@ -380,58 +380,57 @@ END GROUP
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
                 0x00001828                __exidx_end = .
 
-.rodata         0x00001828       0x88
+.rodata         0x00001828       0xb0
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x00001828       0x20 .\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.a(cyfitter_cfg.o)
- .rodata        0x00001848       0x30 .\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.a(CyLib.o)
-                0x00001848                cyImoFreqMhz2Reg
-                0x00001878                . = ALIGN (0x4)
+ .rodata        0x00001828       0x4c .\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.a(cyfitter_cfg.o)
+ .rodata        0x00001874       0x30 .\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.a(CyLib.o)
+                0x00001874                cyImoFreqMhz2Reg
+                0x000018a4                . = ALIGN (0x4)
  *(.init)
- .init          0x00001878        0x4 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
-                0x00001878                _init
- .init          0x0000187c        0x8 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
-                0x00001884                . = ALIGN (0x4)
-                0x00001884                __preinit_array_start = .
+ .init          0x000018a4        0x4 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
+                0x000018a4                _init
+ .init          0x000018a8        0x8 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
+                0x000018b0                . = ALIGN (0x4)
+                0x000018b0                __preinit_array_start = .
  *(.preinit_array)
-                0x00001884                __preinit_array_end = .
-                0x00001884                . = ALIGN (0x4)
-                0x00001884                __init_array_start = .
+                0x000018b0                __preinit_array_end = .
+                0x000018b0                . = ALIGN (0x4)
+                0x000018b0                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00001884        0x4 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
- .init_array    0x00001888        0x4 .\CortexM0\ARM_GCC_484\Debug\Cm0Start.o
-                0x0000188c                __init_array_end = .
-                0x0000188c                . = ALIGN (0x4)
+ .init_array    0x000018b0        0x4 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ .init_array    0x000018b4        0x4 .\CortexM0\ARM_GCC_484\Debug\Cm0Start.o
+                0x000018b8                __init_array_end = .
+                0x000018b8                . = ALIGN (0x4)
  *(.fini)
- .fini          0x0000188c        0x4 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
-                0x0000188c                _fini
- .fini          0x00001890        0x8 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
-                0x00001898                . = ALIGN (0x4)
-                0x00001898                __fini_array_start = .
+ .fini          0x000018b8        0x4 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crti.o
+                0x000018b8                _fini
+ .fini          0x000018bc        0x8 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtn.o
+                0x000018c4                . = ALIGN (0x4)
+                0x000018c4                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00001898        0x4 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
+ .fini_array    0x000018c4        0x4 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x0000189c                __fini_array_end = .
-                0x0000189c                . = ALIGN (0x4)
+                0x000018c8                __fini_array_end = .
+                0x000018c8                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x0000189c                . = ALIGN (0x4)
+                0x000018c8                . = ALIGN (0x4)
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x0000189c                . = ALIGN (0x4)
-                0x0000189c                __cy_regions = .
-                0x0000189c        0x4 LONG 0x18b0 __cy_region_init_ram
-                0x000018a0        0x4 LONG 0x200000d0 __cy_region_start_data
-                0x000018a4        0x4 LONG 0x18 __cy_region_init_size_ram
-                0x000018a8        0x4 LONG 0x38 __cy_region_zero_size_ram
-                0x000018ac                __cy_regions_end = .
-                0x000018b0                . = ALIGN (0x8)
- *fill*         0x000018ac        0x4 
-                0x000018b0                _etext = .
+                0x000018c8                . = ALIGN (0x4)
+                0x000018c8                __cy_regions = .
+                0x000018c8        0x4 LONG 0x18d8 __cy_region_init_ram
+                0x000018cc        0x4 LONG 0x200000d0 __cy_region_start_data
+                0x000018d0        0x4 LONG 0x18 __cy_region_init_size_ram
+                0x000018d4        0x4 LONG 0x38 __cy_region_zero_size_ram
+                0x000018d8                __cy_regions_end = .
+                0x000018d8                . = ALIGN (0x8)
+                0x000018d8                _etext = .
 
 .ramvectors     0x20000000       0xc0
                 0x20000000                __cy_region_start_ram = .
@@ -449,7 +448,7 @@ END GROUP
  *(.noinit)
  .noinit        0x200000c8        0x4 .\CortexM0\ARM_GCC_484\Debug\Cm0Start.o
 
-.data           0x200000d0       0x18 load address 0x000018b0
+.data           0x200000d0       0x18 load address 0x000018d8
                 0x200000d0                __cy_region_start_data = .
  *(.jcr)
  .jcr           0x200000d0        0x0 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
@@ -468,10 +467,10 @@ END GROUP
  *(.ram)
                 0x200000e8                _edata = .
 
-.igot.plt       0x200000e8        0x0 load address 0x000018c8
+.igot.plt       0x200000e8        0x0 load address 0x000018f0
  .igot.plt      0x00000000        0x0 c:/works/programs/psoc_creator/psoc creator/3.2/psoc_creator/import/gnu/arm/4.8.4/bin/../lib/gcc/arm-none-eabi/4.8.4/armv6-m/crtbegin.o
 
-.bss            0x200000e8       0x38 load address 0x000018c8
+.bss            0x200000e8       0x38 load address 0x000018f0
                 0x200000e8                PROVIDE (__bss_start__, .)
  *(.shbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
@@ -484,11 +483,11 @@ END GROUP
                 0x20000120                __end = .
                 0x20000120                PROVIDE (end, .)
                 0x20000120                PROVIDE (__bss_end__, .)
-                0x000018b0                __cy_region_init_ram = LOADADDR (.data)
+                0x000018d8                __cy_region_init_ram = LOADADDR (.data)
                 0x00000018                __cy_region_init_size_ram = (_edata - ADDR (.data))
                 0x00000038                __cy_region_zero_size_ram = (_end - _edata)
 
-.heap           0x20000120       0x80 load address 0x000018c8
+.heap           0x20000120       0x80 load address 0x000018f0
                 0x20000120                . = _end
                 0x200001a0                . = (. + 0x80)
  *fill*         0x20000120       0x80 

@@ -2,7 +2,7 @@
 --	Conversion of D-21_s-5#1.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sat Jan 02 13:52:17 2016
+--	Sat Jan 02 14:09:28 2016
 --
 
 USE cypress.cypress.all;
@@ -22,18 +22,24 @@ SIGNAL zero : bit;
 SIGNAL one : bit;
 SIGNAL tmpINTERRUPT_0__OUT_1_net_0 : bit;
 SIGNAL tmpOE__IN_1_net_0 : bit;
+SIGNAL Net_23 : bit;
 SIGNAL tmpIO_0__IN_1_net_0 : bit;
 TERMINAL tmpSIOVREF__IN_1_net_0 : bit;
+TERMINAL Net_19 : bit;
 SIGNAL tmpINTERRUPT_0__IN_1_net_0 : bit;
 TERMINAL Net_7 : bit;
 TERMINAL Net_12 : bit;
 TERMINAL Net_18 : bit;
-TERMINAL Net_17 : bit;
+SIGNAL cy_tff_1 : bit;
+SIGNAL Net_20 : bit;
+SIGNAL cy_tff_1D : bit;
 BEGIN
 
 zero <=  ('0') ;
 
 tmpOE__OUT_1_net_0 <=  ('1') ;
+
+cy_tff_1D <= (not Net_4);
 
 OUT_1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"e851a3b9-efb8-48be-bbb8-b303b216c393",
@@ -148,7 +154,7 @@ IN_1:cy_psoc3_pins_v1_10
 		width=>1,
 		port_alias_required=>'0',
 		port_alias_group=>"",
-		use_annotation=>"0",
+		use_annotation=>"1",
 		pa_in_clock=>-1,
 		pa_in_clock_en=>-1,
 		pa_in_reset=>-1,
@@ -161,11 +167,11 @@ IN_1:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__OUT_1_net_0),
 		y=>(zero),
-		fb=>Net_4,
+		fb=>Net_23,
 		analog=>(open),
 		io=>(tmpIO_0__IN_1_net_0),
 		siovref=>(tmpSIOVREF__IN_1_net_0),
-		annotation=>(open),
+		annotation=>Net_19,
 		in_clock=>zero,
 		in_clock_en=>tmpOE__OUT_1_net_0,
 		in_reset=>zero,
@@ -197,6 +203,10 @@ SW_1:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"SwitchSPST_v1_0",
 		port_names=>"T1, T2",
 		width=>2)
-	PORT MAP(connect=>(Net_18, Net_17));
+	PORT MAP(connect=>(Net_18, Net_19));
+cy_tff_1:cy_dff
+	PORT MAP(d=>cy_tff_1D,
+		clk=>Net_23,
+		q=>Net_4);
 
 END R_T_L;

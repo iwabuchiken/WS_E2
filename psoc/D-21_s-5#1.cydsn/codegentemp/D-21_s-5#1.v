@@ -1,6 +1,6 @@
 // ======================================================================
 // D-21_s-5#1.v generated from TopDesign.cysch
-// 01/02/2016 at 13:52
+// 01/02/2016 at 14:09
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -71,14 +71,42 @@
 `define CYDEV_CHIP_FAMILY_USED 2
 `define CYDEV_CHIP_MEMBER_USED 5
 `define CYDEV_CHIP_REVISION_USED 17
+// Component: cy_tff_v1_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_tff_v1_0"
+`include "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_tff_v1_0\cy_tff_v1_0.v"
+`else
+`define CY_BLK_DIR "C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_tff_v1_0"
+`include "C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_tff_v1_0\cy_tff_v1_0.v"
+`endif
+
+// Component: cy_constant_v1_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0"
+`include "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v"
+`else
+`define CY_BLK_DIR "C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0"
+`include "C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v"
+`endif
+
 // top
 module top ;
 
-    electrical  Net_17;
+          wire  Net_20;
+    electrical  Net_19;
     electrical  Net_5;
+          wire  Net_4;
+          wire  Net_23;
     electrical  Net_18;
     electrical  Net_7;
-          wire  Net_4;
     electrical  Net_12;
 
 	wire [0:0] tmpOE__OUT_1_net;
@@ -204,7 +232,7 @@ module top ;
 		  .sio_vtrip(""),
 		  .slew_rate(1'b0),
 		  .spanning(0),
-		  .use_annotation(1'b0),
+		  .use_annotation(1'b1),
 		  .vtrip(2'b00),
 		  .width(1),
 		  .ovt_hyst_trim(1'b0),
@@ -214,10 +242,11 @@ module top ;
 		IN_1
 		 (.oe(tmpOE__IN_1_net),
 		  .y({1'b0}),
-		  .fb({Net_4}),
+		  .fb({Net_23}),
 		  .io({tmpIO_0__IN_1_net[0:0]}),
 		  .siovref(tmpSIOVREF__IN_1_net),
 		  .interrupt({tmpINTERRUPT_0__IN_1_net[0:0]}),
+		  .annotation({Net_19}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -268,12 +297,23 @@ module top ;
     cy_annotation_universal_v1_0 SW_1 (
         .connect({
             Net_18,
-            Net_17
+            Net_19
         })
     );
     defparam SW_1.comp_name = "SwitchSPST_v1_0";
     defparam SW_1.port_names = "T1, T2";
     defparam SW_1.width = 2;
+
+    // -- TFF Start --
+    reg  cy_tff_1;
+    always @(posedge Net_23)
+    begin
+        cy_tff_1 <= Net_20^Net_4;
+    end
+    assign Net_4 = cy_tff_1;
+    // -- TFF End --
+
+    assign Net_20 = 1'h1;
 
 
 
