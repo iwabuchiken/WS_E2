@@ -20,7 +20,7 @@ int main()
     for(;;)
     {
         /* Place your application code here. */
-        OUT_1_Write( IN_1_Read() );
+        //OUT_1_Write( IN_1_Read() );
     }
 }
 

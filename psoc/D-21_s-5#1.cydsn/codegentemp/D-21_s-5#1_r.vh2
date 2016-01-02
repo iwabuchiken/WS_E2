@@ -1,5 +1,5 @@
 -- Project:   D-21_s-5#1
--- Generated: 01/02/2016 13:27:30
+-- Generated: 01/02/2016 13:52:19
 -- PSoC Creator  3.2
 
 ENTITY \D-21_s-5#1\ IS
@@ -20,6 +20,7 @@ ARCHITECTURE __DEFAULT__ OF \D-21_s-5#1\ IS
     SIGNAL ClockBlock_Routed1 : bit;
     SIGNAL ClockBlock_SYSCLK : bit;
     SIGNAL IN_1(0)__PA : bit;
+    SIGNAL Net_4 : bit;
     SIGNAL OUT_1(0)__PA : bit;
     SIGNAL __ONE__ : bit;
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
@@ -208,7 +209,7 @@ BEGIN
             drive_mode => "010",
             ibuf_enabled => "1",
             id => "8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
-            init_dr_st => "0",
+            init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
             input_sync => "1",
@@ -285,6 +286,7 @@ BEGIN
         PORT MAP(
             pa_out => IN_1(0)__PA,
             oe => open,
+            fb => Net_4,
             pad_in => IN_1(0)_PAD,
             in_clock => ClockBlock_HFCLK,
             in_clock_en => '1',
@@ -298,7 +300,7 @@ BEGIN
             drive_mode => "110",
             ibuf_enabled => "1",
             id => "e851a3b9-efb8-48be-bbb8-b303b216c393",
-            init_dr_st => "0",
+            init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
             input_sync => "1",
@@ -317,7 +319,7 @@ BEGIN
             oe_sync => "0",
             output_clk_en => 0,
             output_clock_mode => "0",
-            output_conn => "0",
+            output_conn => "1",
             output_mode => "0",
             output_reset => 0,
             output_sync => "0",
@@ -346,7 +348,7 @@ BEGIN
             slew_rate => "0",
             spanning => 0,
             sw_only => 0,
-            use_annotation => "0",
+            use_annotation => "1",
             vtrip => "10",
             width => 1,
             in_clk_inv => 0,
@@ -370,10 +372,12 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "OUT_1",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
             pa_out => OUT_1(0)__PA,
             oe => open,
+            pin_input => Net_4,
+            pad_out => OUT_1(0)_PAD,
             pad_in => OUT_1(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
