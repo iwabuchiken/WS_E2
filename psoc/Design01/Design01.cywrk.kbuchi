@@ -247,29 +247,6 @@
 <VisibleNodeIds>
 <v>Design01</v>
 <v>Design01\D-21_s-5#1</v>
-<v>Design01\D-21_s-5#1\CortexM0</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\Bootloadable_1.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\Cm0Start.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cybootloader.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\CyFlash.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLFClk.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLib.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cymetadata.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cyPm.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cyutils.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\IN_1.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\main.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\OUT_1.lst</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.cyacd</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.elf</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.hex</v>
-<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.map</v>
-<v>Design01\D-21_s-5#1\D-21_s-5#1.gpdsc</v>
 <v>Design01\D-21_s-5#1\D-21_s-5#1.rpt</v>
 <v>Design01\D-21_s-5#1\D-21_s-5#1_timing.html</v>
 </VisibleNodeIds>
@@ -289,14 +266,7 @@
 <v>Design01\D-21_s-5#1\System Reference Guides\cy_boot_v5_0</v>
 <v>Design01\D-21_s-5#1\System Reference Guides\cy_lfclk_v1_0</v>
 <v>Design01\D-21_s-5#1\Bootloadable_v1_30</v>
-<v>Design01\D-21_s-5#1\cy_constant_v1_0</v>
 <v>Design01\D-21_s-5#1\cy_pins_v2_10</v>
-<v>Design01\D-21_s-5#1\cy_tff_v1_0</v>
-<v>Design01\D-21_s-5#1\Diode_v1_0</v>
-<v>Design01\D-21_s-5#1\Gnd_v1_0</v>
-<v>Design01\D-21_s-5#1\Power_v1_0</v>
-<v>Design01\D-21_s-5#1\Resistor_v1_0</v>
-<v>Design01\D-21_s-5#1\SwitchSPST_v1_0</v>
 <v>Design01\Design01</v>
 <v>Design01\Design01\PSoC 4 Architecture TRM</v>
 <v>Design01\Design01\PSoC 4200 Family Datasheet</v>
@@ -315,14 +285,7 @@
 <v>Design01\D-21_s-5#1\System Reference Guides\cy_boot_v5_0</v>
 <v>Design01\D-21_s-5#1\System Reference Guides\cy_lfclk_v1_0</v>
 <v>Design01\D-21_s-5#1\Bootloadable_v1_30</v>
-<v>Design01\D-21_s-5#1\cy_constant_v1_0</v>
 <v>Design01\D-21_s-5#1\cy_pins_v2_10</v>
-<v>Design01\D-21_s-5#1\cy_tff_v1_0</v>
-<v>Design01\D-21_s-5#1\Diode_v1_0</v>
-<v>Design01\D-21_s-5#1\Gnd_v1_0</v>
-<v>Design01\D-21_s-5#1\Power_v1_0</v>
-<v>Design01\D-21_s-5#1\Resistor_v1_0</v>
-<v>Design01\D-21_s-5#1\SwitchSPST_v1_0</v>
 <v>Design01\Design01</v>
 <v>Design01\Design01\PSoC 4 Architecture TRM</v>
 <v>Design01\Design01\PSoC 4200 Family Datasheet</v>

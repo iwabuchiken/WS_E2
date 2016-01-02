@@ -8,9 +8,7 @@
 		3.2::Clock to Out
 		3.3::Pad to Pad
 	4::Path Details for Clock Frequency Summary
-		4.1::Critical Path Report for CyHFCLK
 	5::Path Details for Clock Relationship Summary
-		5.1::Critical Path Report for (CyHFCLK:R vs. CyHFCLK:R)
 ===================================================================== 
                     End of Table of Contents
 ##################################################################### 
@@ -19,12 +17,12 @@
                     1::Clock Frequency Summary
 ===================================================================== 
 Number of clocks: 6
-Clock: CyHFCLK    | Frequency: 92.29 MHz  | Target: 24.00 MHz  | 
-Clock: CyILO      | N/A                   | Target: 0.03 MHz   | 
-Clock: CyIMO      | N/A                   | Target: 24.00 MHz  | 
-Clock: CyLFCLK    | N/A                   | Target: 0.03 MHz   | 
-Clock: CyRouted1  | N/A                   | Target: 24.00 MHz  | 
-Clock: CySYSCLK   | N/A                   | Target: 24.00 MHz  | 
+Clock: CyHFCLK    | N/A  | Target: 24.00 MHz  | 
+Clock: CyILO      | N/A  | Target: 0.03 MHz   | 
+Clock: CyIMO      | N/A  | Target: 24.00 MHz  | 
+Clock: CyLFCLK    | N/A  | Target: 0.03 MHz   | 
+Clock: CyRouted1  | N/A  | Target: 24.00 MHz  | 
+Clock: CySYSCLK   | N/A  | Target: 24.00 MHz  | 
 
  =====================================================================
                     End of Clock Frequency Summary
@@ -36,8 +34,6 @@ Clock: CySYSCLK   | N/A                   | Target: 24.00 MHz  |
  =====================================================================
 
 Launch Clock  Capture Clock  Constraint(R-R)  Slack(R-R)  Constraint(R-F)  Slack(R-F)  Constraint(F-F)  Slack(F-F)  Constraint(F-R)  Slack(F-R)  
-------------  -------------  ---------------  ----------  ---------------  ----------  ---------------  ----------  ---------------  ----------  
-CyHFCLK       CyHFCLK        41666.7          30831       N/A              N/A         N/A              N/A         N/A              N/A         
 
  =====================================================================
                     End of Clock Relationship Summary
@@ -60,13 +56,12 @@ Port Name  Setup to Clk  Clock Name:Phase
 -----------------------3.2::Clock to Out
 ----------------------------------------
 
-Port Name     Clock to Out  Clock Name:Phase  
-------------  ------------  ----------------  
-OUT_1(0)_PAD  23833         CyHFCLK:R         
+Port Name  Clock to Out  Clock Name:Phase  
+---------  ------------  ----------------  
 
 
-                         3.3::Pad to Pad
-                         ---------------
+-------------------------3.3::Pad to Pad
+----------------------------------------
 
 Port Name (Source)  Port Name (Destination)  Delay  
 ------------------  -----------------------  -----  
@@ -76,51 +71,6 @@ Port Name (Source)  Port Name (Destination)  Delay
 ##################################################################### 
 ##################################################################### 
                     4::Path Details for Clock Frequency Summary
-===================================================================== 
-4.1::Critical Path Report for CyHFCLK
-*************************************
-Clock: CyHFCLK
-Frequency: 92.29 MHz | Target: 24.00 MHz
-
-++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-Path Begin     : IN_1(0)/fb
-Path End       : Net_4/clk_en
-Capture Clock  : Net_4/clock_0
-Path slack     : 30831p
-
-Capture Clock Arrival Time                         0
-+ Clock path delay                                 0
-+ Cycle adjust (CyHFCLK:R#1 vs. CyHFCLK:R#2)   41667
-- Setup time                                   -2100
---------------------------------------------   ----- 
-End-of-path required time (ps)                 39567
-
-Launch Clock Arrival Time                      0
-+ Clock path delay                         0
-+ Data path delay                       8736
--------------------------------------   ---- 
-End-of-path arrival time (ps)           8736
- 
-Launch Clock Path
-pin name                                              model name          delay     AT  edge  Fanout
-----------------------------------------------------  ------------------  -----  -----  ----  ------
-ClockBlock/hfclk                                      m0s8clockblockcell      0      0  RISE       1
-IN_1(0)/in_clock                                      iocell1                 0      0  RISE       1
-
-Data path
-pin name      model name   delay     AT  slack  edge  Fanout
-------------  -----------  -----  -----  -----  ----  ------
-IN_1(0)/fb    iocell1       4047   4047  30831  RISE       1
-Net_4/clk_en  macrocell1    4689   8736  30831  RISE       1
-
-Capture Clock Path
-pin name                                              model name          delay     AT  edge  Fanout
-----------------------------------------------------  ------------------  -----  -----  ----  ------
-ClockBlock/hfclk                                      m0s8clockblockcell      0      0  RISE       1
-Net_4/clock_0                                         macrocell1              0      0  RISE       1
-
-
 
 ===================================================================== 
                     End of Path Details for Clock Frequency Summary
@@ -131,48 +81,6 @@ Net_4/clock_0                                         macrocell1              0 
                     5::Path Details for Clock Relationship Summary
 ===================================================================== 
 
-5.1::Critical Path Report for (CyHFCLK:R vs. CyHFCLK:R)
-*******************************************************
-
-++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-Path Begin     : IN_1(0)/fb
-Path End       : Net_4/clk_en
-Capture Clock  : Net_4/clock_0
-Path slack     : 30831p
-
-Capture Clock Arrival Time                         0
-+ Clock path delay                                 0
-+ Cycle adjust (CyHFCLK:R#1 vs. CyHFCLK:R#2)   41667
-- Setup time                                   -2100
---------------------------------------------   ----- 
-End-of-path required time (ps)                 39567
-
-Launch Clock Arrival Time                      0
-+ Clock path delay                         0
-+ Data path delay                       8736
--------------------------------------   ---- 
-End-of-path arrival time (ps)           8736
- 
-Launch Clock Path
-pin name                                              model name          delay     AT  edge  Fanout
-----------------------------------------------------  ------------------  -----  -----  ----  ------
-ClockBlock/hfclk                                      m0s8clockblockcell      0      0  RISE       1
-IN_1(0)/in_clock                                      iocell1                 0      0  RISE       1
-
-Data path
-pin name      model name   delay     AT  slack  edge  Fanout
-------------  -----------  -----  -----  -----  ----  ------
-IN_1(0)/fb    iocell1       4047   4047  30831  RISE       1
-Net_4/clk_en  macrocell1    4689   8736  30831  RISE       1
-
-Capture Clock Path
-pin name                                              model name          delay     AT  edge  Fanout
-----------------------------------------------------  ------------------  -----  -----  ----  ------
-ClockBlock/hfclk                                      m0s8clockblockcell      0      0  RISE       1
-Net_4/clock_0                                         macrocell1              0      0  RISE       1
-
-
 
 ===================================================================== 
                     End of Path Details for Clock Relationship Summary
@@ -181,46 +89,6 @@ Net_4/clock_0                                         macrocell1              0 
 ##################################################################### 
                     Detailed Report for all timing paths 
 ===================================================================== 
-
-++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-Path Begin     : IN_1(0)/fb
-Path End       : Net_4/clk_en
-Capture Clock  : Net_4/clock_0
-Path slack     : 30831p
-
-Capture Clock Arrival Time                         0
-+ Clock path delay                                 0
-+ Cycle adjust (CyHFCLK:R#1 vs. CyHFCLK:R#2)   41667
-- Setup time                                   -2100
---------------------------------------------   ----- 
-End-of-path required time (ps)                 39567
-
-Launch Clock Arrival Time                      0
-+ Clock path delay                         0
-+ Data path delay                       8736
--------------------------------------   ---- 
-End-of-path arrival time (ps)           8736
- 
-Launch Clock Path
-pin name                                              model name          delay     AT  edge  Fanout
-----------------------------------------------------  ------------------  -----  -----  ----  ------
-ClockBlock/hfclk                                      m0s8clockblockcell      0      0  RISE       1
-IN_1(0)/in_clock                                      iocell1                 0      0  RISE       1
-
-Data path
-pin name      model name   delay     AT  slack  edge  Fanout
-------------  -----------  -----  -----  -----  ----  ------
-IN_1(0)/fb    iocell1       4047   4047  30831  RISE       1
-Net_4/clk_en  macrocell1    4689   8736  30831  RISE       1
-
-Capture Clock Path
-pin name                                              model name          delay     AT  edge  Fanout
-----------------------------------------------------  ------------------  -----  -----  ----  ------
-ClockBlock/hfclk                                      m0s8clockblockcell      0      0  RISE       1
-Net_4/clock_0                                         macrocell1              0      0  RISE       1
-
-
 ===================================================================== 
                     End of Detailed Report for all timing paths 
 ##################################################################### 

@@ -1,6 +1,6 @@
 // ======================================================================
 // D-21_s-5#1.v generated from TopDesign.cysch
-// 01/02/2016 at 14:09
+// 01/02/2016 at 15:25
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -71,43 +71,9 @@
 `define CYDEV_CHIP_FAMILY_USED 2
 `define CYDEV_CHIP_MEMBER_USED 5
 `define CYDEV_CHIP_REVISION_USED 17
-// Component: cy_tff_v1_0
-`ifdef CY_BLK_DIR
-`undef CY_BLK_DIR
-`endif
-
-`ifdef WARP
-`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_tff_v1_0"
-`include "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_tff_v1_0\cy_tff_v1_0.v"
-`else
-`define CY_BLK_DIR "C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_tff_v1_0"
-`include "C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_tff_v1_0\cy_tff_v1_0.v"
-`endif
-
-// Component: cy_constant_v1_0
-`ifdef CY_BLK_DIR
-`undef CY_BLK_DIR
-`endif
-
-`ifdef WARP
-`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0"
-`include "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v"
-`else
-`define CY_BLK_DIR "C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0"
-`include "C:\WORKS\Programs\PSoC_Creator\PSoC Creator\3.2\PSoC_Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v"
-`endif
-
 // top
 module top ;
 
-          wire  Net_20;
-    electrical  Net_19;
-    electrical  Net_5;
-          wire  Net_4;
-          wire  Net_23;
-    electrical  Net_18;
-    electrical  Net_7;
-    electrical  Net_12;
 
 	wire [0:0] tmpOE__OUT_1_net;
 	wire [0:0] tmpFB_0__OUT_1_net;
@@ -119,7 +85,7 @@ module top ;
 		#(.id("e851a3b9-efb8-48be-bbb8-b303b216c393"),
 		  .drive_mode(3'b110),
 		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b1),
+		  .init_dr_st(1'b0),
 		  .input_clk_en(0),
 		  .input_sync(1'b1),
 		  .input_sync_mode(1'b0),
@@ -137,7 +103,7 @@ module top ;
 		  .oe_sync(1'b0),
 		  .output_clk_en(0),
 		  .output_clock_mode(1'b0),
-		  .output_conn(1'b1),
+		  .output_conn(1'b0),
 		  .output_mode(1'b0),
 		  .output_reset(0),
 		  .output_sync(1'b0),
@@ -159,7 +125,7 @@ module top ;
 		  .sio_vtrip(""),
 		  .slew_rate(1'b0),
 		  .spanning(0),
-		  .use_annotation(1'b1),
+		  .use_annotation(1'b0),
 		  .vtrip(2'b10),
 		  .width(1),
 		  .ovt_hyst_trim(1'b0),
@@ -168,12 +134,11 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		OUT_1
 		 (.oe(tmpOE__OUT_1_net),
-		  .y({Net_4}),
+		  .y({1'b0}),
 		  .fb({tmpFB_0__OUT_1_net[0:0]}),
 		  .io({tmpIO_0__OUT_1_net[0:0]}),
 		  .siovref(tmpSIOVREF__OUT_1_net),
 		  .interrupt({tmpINTERRUPT_0__OUT_1_net[0:0]}),
-		  .annotation({Net_5}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -184,6 +149,7 @@ module top ;
 	assign tmpOE__OUT_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 	wire [0:0] tmpOE__IN_1_net;
+	wire [0:0] tmpFB_0__IN_1_net;
 	wire [0:0] tmpIO_0__IN_1_net;
 	wire [0:0] tmpINTERRUPT_0__IN_1_net;
 	electrical [0:0] tmpSIOVREF__IN_1_net;
@@ -232,7 +198,7 @@ module top ;
 		  .sio_vtrip(""),
 		  .slew_rate(1'b0),
 		  .spanning(0),
-		  .use_annotation(1'b1),
+		  .use_annotation(1'b0),
 		  .vtrip(2'b00),
 		  .width(1),
 		  .ovt_hyst_trim(1'b0),
@@ -242,11 +208,10 @@ module top ;
 		IN_1
 		 (.oe(tmpOE__IN_1_net),
 		  .y({1'b0}),
-		  .fb({Net_23}),
+		  .fb({tmpFB_0__IN_1_net[0:0]}),
 		  .io({tmpIO_0__IN_1_net[0:0]}),
 		  .siovref(tmpSIOVREF__IN_1_net),
 		  .interrupt({tmpINTERRUPT_0__IN_1_net[0:0]}),
-		  .annotation({Net_19}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -255,65 +220,6 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__IN_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
-
-    cy_annotation_universal_v1_0 D_1 (
-        .connect({
-            Net_7,
-            Net_5
-        })
-    );
-    defparam D_1.comp_name = "Diode_v1_0";
-    defparam D_1.port_names = "A, K";
-    defparam D_1.width = 2;
-
-    cy_annotation_universal_v1_0 R_1 (
-        .connect({
-            Net_7,
-            Net_12
-        })
-    );
-    defparam R_1.comp_name = "Resistor_v1_0";
-    defparam R_1.port_names = "T1, T2";
-    defparam R_1.width = 2;
-
-    cy_annotation_universal_v1_0 PWR_1 (
-        .connect({
-            Net_12
-        })
-    );
-    defparam PWR_1.comp_name = "Power_v1_0";
-    defparam PWR_1.port_names = "T1";
-    defparam PWR_1.width = 1;
-
-    cy_annotation_universal_v1_0 GND_1 (
-        .connect({
-            Net_18
-        })
-    );
-    defparam GND_1.comp_name = "Gnd_v1_0";
-    defparam GND_1.port_names = "T1";
-    defparam GND_1.width = 1;
-
-    cy_annotation_universal_v1_0 SW_1 (
-        .connect({
-            Net_18,
-            Net_19
-        })
-    );
-    defparam SW_1.comp_name = "SwitchSPST_v1_0";
-    defparam SW_1.port_names = "T1, T2";
-    defparam SW_1.width = 2;
-
-    // -- TFF Start --
-    reg  cy_tff_1;
-    always @(posedge Net_23)
-    begin
-        cy_tff_1 <= Net_20^Net_4;
-    end
-    assign Net_4 = cy_tff_1;
-    // -- TFF End --
-
-    assign Net_20 = 1'h1;
 
 
 
