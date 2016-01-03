@@ -1,4 +1,4 @@
---------------- Build Started: 01/03/2016 12:36:10 Project: D-21_s-6#1, Configuration: ARM GCC 4.8.4 Debug ---------------
+--------------- Build Started: 01/03/2016 12:48:35 Project: D-21_s-6#1, Configuration: ARM GCC 4.8.4 Debug ---------------
 cydsfit.exe -.appdatapath "C:\Users\kbuchi\AppData\Local\Cypress Semiconductor\PSoC Creator\3.2" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\WORKS\WS\WS_E2\psoc\D-21_s-6#1\D-21_s-6#1.cydsn\D-21_s-6#1.cyprj -d CY8C4245AXI-483 -s C:\WORKS\WS\WS_E2\psoc\D-21_s-6#1\D-21_s-6#1.cydsn\Generated_Source\PSoC4 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 Elaborating Design...
 ADD: pft.M0111: information: One or more rows of flash have been configured to be protected; however, debugging has been enabled in the System DWR Editor. This means that while write restrictions are honored flash rows can still be read via SWD or JTAG. To prevent any ability to read the flash rows, disable debugging in the System DWR Editor.
@@ -41,4 +41,4 @@ cyelftool.exe -B C:\WORKS\WS\WS_E2\psoc\D-21_s-6#1\D-21_s-6#1.cydsn\CortexM0\ARM
 cyelftool.exe -S C:\WORKS\WS\WS_E2\psoc\D-21_s-6#1\D-21_s-6#1.cydsn\CortexM0\ARM_GCC_484\Debug\D-21_s-6#1.elf
 Flash used: 6528 of 32768 bytes (19.9%). Bootloader: 4608 bytes. Application: 1792 bytes. Metadata: 128 bytes.
 SRAM used: 1432 of 4096 bytes (35.0%). Stack: 1024 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 01/03/2016 12:36:33 ---------------
+--------------- Build Succeeded: 01/03/2016 12:49:03 ---------------

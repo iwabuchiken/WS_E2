@@ -3,15 +3,15 @@
 #include "cydevice_trm.h"
 
 /* IN_1 */
-#define IN_1__0__DM__MASK 0x38u
-#define IN_1__0__DM__SHIFT 3
+#define IN_1__0__DM__MASK 0x07u
+#define IN_1__0__DM__SHIFT 0
 #define IN_1__0__DR CYREG_PRT0_DR
 #define IN_1__0__HSIOM CYREG_HSIOM_PORT_SEL0
-#define IN_1__0__HSIOM_MASK 0x000000F0u
-#define IN_1__0__HSIOM_SHIFT 4u
+#define IN_1__0__HSIOM_MASK 0x0000000Fu
+#define IN_1__0__HSIOM_SHIFT 0u
 #define IN_1__0__INTCFG CYREG_PRT0_INTCFG
 #define IN_1__0__INTSTAT CYREG_PRT0_INTSTAT
-#define IN_1__0__MASK 0x02u
+#define IN_1__0__MASK 0x01u
 #define IN_1__0__PA__CFG0 CYREG_UDB_PA0_CFG0
 #define IN_1__0__PA__CFG1 CYREG_UDB_PA0_CFG1
 #define IN_1__0__PA__CFG10 CYREG_UDB_PA0_CFG10
@@ -31,11 +31,11 @@
 #define IN_1__0__PC2 CYREG_PRT0_PC2
 #define IN_1__0__PORT 0u
 #define IN_1__0__PS CYREG_PRT0_PS
-#define IN_1__0__SHIFT 1
+#define IN_1__0__SHIFT 0
 #define IN_1__DR CYREG_PRT0_DR
 #define IN_1__INTCFG CYREG_PRT0_INTCFG
 #define IN_1__INTSTAT CYREG_PRT0_INTSTAT
-#define IN_1__MASK 0x02u
+#define IN_1__MASK 0x01u
 #define IN_1__PA__CFG0 CYREG_UDB_PA0_CFG0
 #define IN_1__PA__CFG1 CYREG_UDB_PA0_CFG1
 #define IN_1__PA__CFG10 CYREG_UDB_PA0_CFG10
@@ -55,18 +55,18 @@
 #define IN_1__PC2 CYREG_PRT0_PC2
 #define IN_1__PORT 0u
 #define IN_1__PS CYREG_PRT0_PS
-#define IN_1__SHIFT 1
+#define IN_1__SHIFT 0
 
 /* IN_2 */
-#define IN_2__0__DM__MASK 0x07u
-#define IN_2__0__DM__SHIFT 0
+#define IN_2__0__DM__MASK 0x38u
+#define IN_2__0__DM__SHIFT 3
 #define IN_2__0__DR CYREG_PRT0_DR
 #define IN_2__0__HSIOM CYREG_HSIOM_PORT_SEL0
-#define IN_2__0__HSIOM_MASK 0x0000000Fu
-#define IN_2__0__HSIOM_SHIFT 0u
+#define IN_2__0__HSIOM_MASK 0x000000F0u
+#define IN_2__0__HSIOM_SHIFT 4u
 #define IN_2__0__INTCFG CYREG_PRT0_INTCFG
 #define IN_2__0__INTSTAT CYREG_PRT0_INTSTAT
-#define IN_2__0__MASK 0x01u
+#define IN_2__0__MASK 0x02u
 #define IN_2__0__PA__CFG0 CYREG_UDB_PA0_CFG0
 #define IN_2__0__PA__CFG1 CYREG_UDB_PA0_CFG1
 #define IN_2__0__PA__CFG10 CYREG_UDB_PA0_CFG10
@@ -86,11 +86,11 @@
 #define IN_2__0__PC2 CYREG_PRT0_PC2
 #define IN_2__0__PORT 0u
 #define IN_2__0__PS CYREG_PRT0_PS
-#define IN_2__0__SHIFT 0
+#define IN_2__0__SHIFT 1
 #define IN_2__DR CYREG_PRT0_DR
 #define IN_2__INTCFG CYREG_PRT0_INTCFG
 #define IN_2__INTSTAT CYREG_PRT0_INTSTAT
-#define IN_2__MASK 0x01u
+#define IN_2__MASK 0x02u
 #define IN_2__PA__CFG0 CYREG_UDB_PA0_CFG0
 #define IN_2__PA__CFG1 CYREG_UDB_PA0_CFG1
 #define IN_2__PA__CFG10 CYREG_UDB_PA0_CFG10
@@ -110,7 +110,7 @@
 #define IN_2__PC2 CYREG_PRT0_PC2
 #define IN_2__PORT 0u
 #define IN_2__PS CYREG_PRT0_PS
-#define IN_2__SHIFT 0
+#define IN_2__SHIFT 1
 
 /* OUT_1 */
 #define OUT_1__0__DM__MASK 0x1C0u

@@ -2,7 +2,7 @@
 --	Conversion of D-21_s-6#1.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Jan 03 12:36:15 2016
+--	Sun Jan 03 12:48:40 2016
 --
 
 USE cypress.cypress.all;
@@ -17,12 +17,15 @@ SIGNAL Net_7 : bit;
 SIGNAL tmpFB_0__OUT_1_net_0 : bit;
 SIGNAL tmpIO_0__OUT_1_net_0 : bit;
 TERMINAL tmpSIOVREF__OUT_1_net_0 : bit;
+TERMINAL Net_20 : bit;
 SIGNAL zero : bit;
 SIGNAL one : bit;
 SIGNAL tmpINTERRUPT_0__OUT_1_net_0 : bit;
 SIGNAL tmpOE__IN_1_net_0 : bit;
+SIGNAL Net_31 : bit;
 SIGNAL tmpIO_0__IN_1_net_0 : bit;
 TERMINAL tmpSIOVREF__IN_1_net_0 : bit;
+TERMINAL Net_19 : bit;
 SIGNAL tmpINTERRUPT_0__IN_1_net_0 : bit;
 SIGNAL tmpOE__IN_2_net_0 : bit;
 SIGNAL tmpFB_0__IN_2_net_0 : bit;
@@ -34,11 +37,19 @@ SIGNAL tmpFB_0__OUT_2_net_0 : bit;
 SIGNAL tmpIO_0__OUT_2_net_0 : bit;
 TERMINAL tmpSIOVREF__OUT_2_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__OUT_2_net_0 : bit;
+TERMINAL Net_23 : bit;
+TERMINAL Net_22 : bit;
+TERMINAL Net_28 : bit;
+SIGNAL cy_tff_1 : bit;
+SIGNAL Net_30 : bit;
+SIGNAL cy_tff_1D : bit;
 BEGIN
 
 zero <=  ('0') ;
 
 tmpOE__OUT_1_net_0 <=  ('1') ;
+
+cy_tff_1D <= (not Net_7);
 
 OUT_1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"e851a3b9-efb8-48be-bbb8-b303b216c393",
@@ -84,7 +95,7 @@ OUT_1:cy_psoc3_pins_v1_10
 		width=>1,
 		port_alias_required=>'0',
 		port_alias_group=>"",
-		use_annotation=>"0",
+		use_annotation=>"1",
 		pa_in_clock=>-1,
 		pa_in_clock_en=>-1,
 		pa_in_reset=>-1,
@@ -101,7 +112,7 @@ OUT_1:cy_psoc3_pins_v1_10
 		analog=>(open),
 		io=>(tmpIO_0__OUT_1_net_0),
 		siovref=>(tmpSIOVREF__OUT_1_net_0),
-		annotation=>(open),
+		annotation=>Net_20,
 		in_clock=>zero,
 		in_clock_en=>tmpOE__OUT_1_net_0,
 		in_reset=>zero,
@@ -153,7 +164,7 @@ IN_1:cy_psoc3_pins_v1_10
 		width=>1,
 		port_alias_required=>'0',
 		port_alias_group=>"",
-		use_annotation=>"0",
+		use_annotation=>"1",
 		pa_in_clock=>-1,
 		pa_in_clock_en=>-1,
 		pa_in_reset=>-1,
@@ -166,11 +177,11 @@ IN_1:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__OUT_1_net_0),
 		y=>(zero),
-		fb=>Net_7,
+		fb=>Net_31,
 		analog=>(open),
 		io=>(tmpIO_0__IN_1_net_0),
 		siovref=>(tmpSIOVREF__IN_1_net_0),
-		annotation=>(open),
+		annotation=>Net_19,
 		in_clock=>zero,
 		in_clock_en=>tmpOE__OUT_1_net_0,
 		in_reset=>zero,
@@ -316,5 +327,34 @@ OUT_2:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__OUT_1_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__OUT_2_net_0);
+R_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_23, Net_22));
+D_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"LED_v1_0",
+		port_names=>"A, K",
+		width=>2)
+	PORT MAP(connect=>(Net_23, Net_20));
+PWR_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Power_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_22);
+SW_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"SwitchSPST_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_28, Net_19));
+GND_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_28);
+cy_tff_1:cy_dff
+	PORT MAP(d=>cy_tff_1D,
+		clk=>Net_31,
+		q=>Net_7);
 
 END R_T_L;

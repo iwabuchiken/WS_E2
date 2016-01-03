@@ -1,5 +1,5 @@
 -- Project:   C:\WORKS\WS\WS_E2\psoc\D-21_s-6#1\D-21_s-6#1.cydsn\D-21_s-6#1.cyprj
--- Generated: 01/03/2016 12:36:18
+-- Generated: 01/03/2016 12:48:44
 -- PSoC Creator  3.2
 
 ENTITY \D-21_s-6#1\ IS
@@ -23,7 +23,9 @@ ARCHITECTURE __DEFAULT__ OF \D-21_s-6#1\ IS
     SIGNAL ClockBlock_SYSCLK : bit;
     SIGNAL IN_1(0)__PA : bit;
     SIGNAL IN_2(0)__PA : bit;
+    SIGNAL Net_31 : bit;
     SIGNAL Net_7 : bit;
+    ATTRIBUTE placement_force OF Net_7 : SIGNAL IS "U(1,1,A)0";
     SIGNAL OUT_1(0)__PA : bit;
     SIGNAL OUT_2(0)__PA : bit;
     SIGNAL __ONE__ : bit;
@@ -37,9 +39,11 @@ ARCHITECTURE __DEFAULT__ OF \D-21_s-6#1\ IS
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE Location OF ClockGenBlock : LABEL IS "F(CLK_GEN,0)";
     ATTRIBUTE lib_model OF IN_1(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF IN_1(0) : LABEL IS "P0[1]";
+    ATTRIBUTE Location OF IN_1(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF IN_2(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF IN_2(0) : LABEL IS "P0[0]";
+    ATTRIBUTE Location OF IN_2(0) : LABEL IS "P0[1]";
+    ATTRIBUTE lib_model OF Net_7 : LABEL IS "macrocell1";
+    ATTRIBUTE Location OF Net_7 : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF OUT_1(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF OUT_1(0) : LABEL IS "P0[2]";
     ATTRIBUTE lib_model OF OUT_2(0) : LABEL IS "iocell4";
@@ -198,6 +202,53 @@ ARCHITECTURE __DEFAULT__ OF \D-21_s-6#1\ IS
             gen_clk_out_6 : OUT std_ulogic;
             gen_clk_out_7 : OUT std_ulogic);
     END COMPONENT;
+    COMPONENT macrocell
+        PORT (
+            main_0 : IN std_ulogic;
+            main_1 : IN std_ulogic;
+            main_2 : IN std_ulogic;
+            main_3 : IN std_ulogic;
+            main_4 : IN std_ulogic;
+            main_5 : IN std_ulogic;
+            main_6 : IN std_ulogic;
+            main_7 : IN std_ulogic;
+            main_8 : IN std_ulogic;
+            main_9 : IN std_ulogic;
+            main_10 : IN std_ulogic;
+            main_11 : IN std_ulogic;
+            ar_0 : IN std_ulogic;
+            ap_0 : IN std_ulogic;
+            clock_0 : IN std_ulogic;
+            clk_en : IN std_ulogic;
+            cin : IN std_ulogic;
+            cpt0_0 : IN std_ulogic;
+            cpt0_1 : IN std_ulogic;
+            cpt0_2 : IN std_ulogic;
+            cpt0_3 : IN std_ulogic;
+            cpt0_4 : IN std_ulogic;
+            cpt0_5 : IN std_ulogic;
+            cpt0_6 : IN std_ulogic;
+            cpt0_7 : IN std_ulogic;
+            cpt0_8 : IN std_ulogic;
+            cpt0_9 : IN std_ulogic;
+            cpt0_10 : IN std_ulogic;
+            cpt0_11 : IN std_ulogic;
+            cpt1_0 : IN std_ulogic;
+            cpt1_1 : IN std_ulogic;
+            cpt1_2 : IN std_ulogic;
+            cpt1_3 : IN std_ulogic;
+            cpt1_4 : IN std_ulogic;
+            cpt1_5 : IN std_ulogic;
+            cpt1_6 : IN std_ulogic;
+            cpt1_7 : IN std_ulogic;
+            cpt1_8 : IN std_ulogic;
+            cpt1_9 : IN std_ulogic;
+            cpt1_10 : IN std_ulogic;
+            cpt1_11 : IN std_ulogic;
+            cout : OUT std_ulogic;
+            q : OUT std_ulogic;
+            q_fixed : OUT std_ulogic);
+    END COMPONENT;
 BEGIN
 
     ClockBlock:m0s8clockblockcell
@@ -265,7 +316,7 @@ BEGIN
             slew_rate => "0",
             spanning => 0,
             sw_only => 0,
-            use_annotation => "0",
+            use_annotation => "1",
             vtrip => "00",
             width => 1,
             in_clk_inv => 0,
@@ -294,7 +345,7 @@ BEGIN
         PORT MAP(
             pa_out => IN_1(0)__PA,
             oe => open,
-            fb => Net_7,
+            fb => Net_31,
             pad_in => IN_1(0)_PAD,
             in_clock => ClockBlock_HFCLK,
             in_clock_en => '1',
@@ -393,6 +444,17 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
+    Net_7:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            clk_inv => '0',
+            clken_inv => '0',
+            clken_mode => 2)
+        PORT MAP(
+            q => Net_7,
+            clk_en => Net_31,
+            clock_0 => ClockBlock_HFCLK);
+
     OUT_1:logicalport
         GENERIC MAP(
             drive_mode => "110",
@@ -446,7 +508,7 @@ BEGIN
             slew_rate => "0",
             spanning => 0,
             sw_only => 0,
-            use_annotation => "0",
+            use_annotation => "1",
             vtrip => "10",
             width => 1,
             in_clk_inv => 0,
