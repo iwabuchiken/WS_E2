@@ -3,15 +3,15 @@
 #include "cydevice_trm.h"
 
 /* IN_1 */
-#define IN_1__0__DM__MASK 0x07u
-#define IN_1__0__DM__SHIFT 0
+#define IN_1__0__DM__MASK 0x38u
+#define IN_1__0__DM__SHIFT 3
 #define IN_1__0__DR CYREG_PRT0_DR
 #define IN_1__0__HSIOM CYREG_HSIOM_PORT_SEL0
-#define IN_1__0__HSIOM_MASK 0x0000000Fu
-#define IN_1__0__HSIOM_SHIFT 0u
+#define IN_1__0__HSIOM_MASK 0x000000F0u
+#define IN_1__0__HSIOM_SHIFT 4u
 #define IN_1__0__INTCFG CYREG_PRT0_INTCFG
 #define IN_1__0__INTSTAT CYREG_PRT0_INTSTAT
-#define IN_1__0__MASK 0x01u
+#define IN_1__0__MASK 0x02u
 #define IN_1__0__PA__CFG0 CYREG_UDB_PA0_CFG0
 #define IN_1__0__PA__CFG1 CYREG_UDB_PA0_CFG1
 #define IN_1__0__PA__CFG10 CYREG_UDB_PA0_CFG10
@@ -31,11 +31,11 @@
 #define IN_1__0__PC2 CYREG_PRT0_PC2
 #define IN_1__0__PORT 0u
 #define IN_1__0__PS CYREG_PRT0_PS
-#define IN_1__0__SHIFT 0
+#define IN_1__0__SHIFT 1
 #define IN_1__DR CYREG_PRT0_DR
 #define IN_1__INTCFG CYREG_PRT0_INTCFG
 #define IN_1__INTSTAT CYREG_PRT0_INTSTAT
-#define IN_1__MASK 0x01u
+#define IN_1__MASK 0x02u
 #define IN_1__PA__CFG0 CYREG_UDB_PA0_CFG0
 #define IN_1__PA__CFG1 CYREG_UDB_PA0_CFG1
 #define IN_1__PA__CFG10 CYREG_UDB_PA0_CFG10
@@ -55,18 +55,18 @@
 #define IN_1__PC2 CYREG_PRT0_PC2
 #define IN_1__PORT 0u
 #define IN_1__PS CYREG_PRT0_PS
-#define IN_1__SHIFT 0
+#define IN_1__SHIFT 1
 
 /* IN_2 */
-#define IN_2__0__DM__MASK 0x38u
-#define IN_2__0__DM__SHIFT 3
+#define IN_2__0__DM__MASK 0x07u
+#define IN_2__0__DM__SHIFT 0
 #define IN_2__0__DR CYREG_PRT0_DR
 #define IN_2__0__HSIOM CYREG_HSIOM_PORT_SEL0
-#define IN_2__0__HSIOM_MASK 0x000000F0u
-#define IN_2__0__HSIOM_SHIFT 4u
+#define IN_2__0__HSIOM_MASK 0x0000000Fu
+#define IN_2__0__HSIOM_SHIFT 0u
 #define IN_2__0__INTCFG CYREG_PRT0_INTCFG
 #define IN_2__0__INTSTAT CYREG_PRT0_INTSTAT
-#define IN_2__0__MASK 0x02u
+#define IN_2__0__MASK 0x01u
 #define IN_2__0__PA__CFG0 CYREG_UDB_PA0_CFG0
 #define IN_2__0__PA__CFG1 CYREG_UDB_PA0_CFG1
 #define IN_2__0__PA__CFG10 CYREG_UDB_PA0_CFG10
@@ -86,11 +86,11 @@
 #define IN_2__0__PC2 CYREG_PRT0_PC2
 #define IN_2__0__PORT 0u
 #define IN_2__0__PS CYREG_PRT0_PS
-#define IN_2__0__SHIFT 1
+#define IN_2__0__SHIFT 0
 #define IN_2__DR CYREG_PRT0_DR
 #define IN_2__INTCFG CYREG_PRT0_INTCFG
 #define IN_2__INTSTAT CYREG_PRT0_INTSTAT
-#define IN_2__MASK 0x02u
+#define IN_2__MASK 0x01u
 #define IN_2__PA__CFG0 CYREG_UDB_PA0_CFG0
 #define IN_2__PA__CFG1 CYREG_UDB_PA0_CFG1
 #define IN_2__PA__CFG10 CYREG_UDB_PA0_CFG10
@@ -110,7 +110,7 @@
 #define IN_2__PC2 CYREG_PRT0_PC2
 #define IN_2__PORT 0u
 #define IN_2__PS CYREG_PRT0_PS
-#define IN_2__SHIFT 1
+#define IN_2__SHIFT 0
 
 /* OUT_1 */
 #define OUT_1__0__DM__MASK 0x1C0u
@@ -124,7 +124,7 @@
 #define OUT_1__0__MASK 0x04u
 #define OUT_1__0__OUT_SEL CYREG_UDB_PA0_CFG10
 #define OUT_1__0__OUT_SEL_SHIFT 4u
-#define OUT_1__0__OUT_SEL_VAL 1u
+#define OUT_1__0__OUT_SEL_VAL 3u
 #define OUT_1__0__PA__CFG0 CYREG_UDB_PA0_CFG0
 #define OUT_1__0__PA__CFG1 CYREG_UDB_PA0_CFG1
 #define OUT_1__0__PA__CFG10 CYREG_UDB_PA0_CFG10
@@ -224,6 +224,44 @@
 #define OUT_2__PORT 0u
 #define OUT_2__PS CYREG_PRT0_PS
 #define OUT_2__SHIFT 3
+
+/* PWM_1_PWMUDB */
+#define PWM_1_PWMUDB_genblk8_stsreg__0__MASK 0x01u
+#define PWM_1_PWMUDB_genblk8_stsreg__0__POS 0
+#define PWM_1_PWMUDB_genblk8_stsreg__16BIT_STATUS_AUX_CTL_REG CYREG_UDB_W16_ACTL_01
+#define PWM_1_PWMUDB_genblk8_stsreg__16BIT_STATUS_REG CYREG_UDB_W16_ST_01
+#define PWM_1_PWMUDB_genblk8_stsreg__2__MASK 0x04u
+#define PWM_1_PWMUDB_genblk8_stsreg__2__POS 2
+#define PWM_1_PWMUDB_genblk8_stsreg__3__MASK 0x08u
+#define PWM_1_PWMUDB_genblk8_stsreg__3__POS 3
+#define PWM_1_PWMUDB_genblk8_stsreg__MASK 0x0Du
+#define PWM_1_PWMUDB_genblk8_stsreg__MASK_REG CYREG_UDB_W8_MSK_01
+#define PWM_1_PWMUDB_genblk8_stsreg__STATUS_AUX_CTL_REG CYREG_UDB_W8_ACTL_01
+#define PWM_1_PWMUDB_genblk8_stsreg__STATUS_REG CYREG_UDB_W8_ST_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__16BIT_A0_REG CYREG_UDB_W16_A0_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__16BIT_A1_REG CYREG_UDB_W16_A1_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__16BIT_D0_REG CYREG_UDB_W16_D0_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__16BIT_D1_REG CYREG_UDB_W16_D1_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__16BIT_DP_AUX_CTL_REG CYREG_UDB_W16_ACTL_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__16BIT_F0_REG CYREG_UDB_W16_F0_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__16BIT_F1_REG CYREG_UDB_W16_F1_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__A0_A1_REG CYREG_UDB_CAT16_A_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__A0_REG CYREG_UDB_W8_A0_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__A1_REG CYREG_UDB_W8_A1_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__D0_D1_REG CYREG_UDB_CAT16_D_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__D0_REG CYREG_UDB_W8_D0_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__D1_REG CYREG_UDB_W8_D1_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__DP_AUX_CTL_REG CYREG_UDB_W8_ACTL_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__F0_F1_REG CYREG_UDB_CAT16_F_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__F0_REG CYREG_UDB_W8_F0_01
+#define PWM_1_PWMUDB_sP8_pwmdp_u0__F1_REG CYREG_UDB_W8_F1_01
+
+/* Clock_1 */
+#define Clock_1__DIVIDER_MASK 0x0000FFFFu
+#define Clock_1__ENABLE CYREG_CLK_DIVIDER_B00
+#define Clock_1__ENABLE_MASK 0x80000000u
+#define Clock_1__MASK 0x80000000u
+#define Clock_1__REGISTER CYREG_CLK_DIVIDER_B00
 
 /* Miscellaneous */
 #define CY_PROJECT_NAME "D-21_s-6#1"

@@ -23,7 +23,9 @@ void OUT_OnOff(int, int);
 
 int main()
 {
-    CyGlobalIntEnable; /* Enable global interrupts. */
+    //CyGlobalIntEnable; /* Enable global interrupts. */
+    PWM_1_Start();
+
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 

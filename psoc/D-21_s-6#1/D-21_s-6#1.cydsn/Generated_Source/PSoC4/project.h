@@ -27,6 +27,8 @@
 #include "IN_2_aliases.h"
 #include "OUT_2.h"
 #include "OUT_2_aliases.h"
+#include "Clock_1.h"
+#include "PWM_1.h"
 #include "core_cm0_psoc4.h"
 #include "core_cm0.h"
 #include "CyFlash.h"
