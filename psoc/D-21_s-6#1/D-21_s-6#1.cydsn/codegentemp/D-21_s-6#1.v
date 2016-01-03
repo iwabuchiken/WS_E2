@@ -1,6 +1,6 @@
 // ======================================================================
 // D-21_s-6#1.v generated from TopDesign.cysch
-// 01/03/2016 at 12:28
+// 01/03/2016 at 12:36
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -74,7 +74,7 @@
 // top
 module top ;
 
-          wire  Net_6;
+          wire  Net_7;
 
 	wire [0:0] tmpOE__OUT_1_net;
 	wire [0:0] tmpFB_0__OUT_1_net;
@@ -135,7 +135,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		OUT_1
 		 (.oe(tmpOE__OUT_1_net),
-		  .y({Net_6}),
+		  .y({Net_7}),
 		  .fb({tmpFB_0__OUT_1_net[0:0]}),
 		  .io({tmpIO_0__OUT_1_net[0:0]}),
 		  .siovref(tmpSIOVREF__OUT_1_net),
@@ -208,7 +208,7 @@ module top ;
 		IN_1
 		 (.oe(tmpOE__IN_1_net),
 		  .y({1'b0}),
-		  .fb({Net_6}),
+		  .fb({Net_7}),
 		  .io({tmpIO_0__IN_1_net[0:0]}),
 		  .siovref(tmpSIOVREF__IN_1_net),
 		  .interrupt({tmpINTERRUPT_0__IN_1_net[0:0]}),

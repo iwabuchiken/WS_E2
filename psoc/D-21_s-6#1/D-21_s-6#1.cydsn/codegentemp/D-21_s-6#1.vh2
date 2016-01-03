@@ -2,7 +2,7 @@
 --	Conversion of D-21_s-6#1.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Jan 03 12:28:26 2016
+--	Sun Jan 03 12:36:15 2016
 --
 
 USE cypress.cypress.all;
@@ -13,7 +13,7 @@ END top_RTL;
 --------------------------------------------------------
 ARCHITECTURE R_T_L OF top_RTL IS
 SIGNAL tmpOE__OUT_1_net_0 : bit;
-SIGNAL Net_6 : bit;
+SIGNAL Net_7 : bit;
 SIGNAL tmpFB_0__OUT_1_net_0 : bit;
 SIGNAL tmpIO_0__OUT_1_net_0 : bit;
 TERMINAL tmpSIOVREF__OUT_1_net_0 : bit;
@@ -96,7 +96,7 @@ OUT_1:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__OUT_1_net_0),
-		y=>Net_6,
+		y=>Net_7,
 		fb=>(tmpFB_0__OUT_1_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__OUT_1_net_0),
@@ -166,7 +166,7 @@ IN_1:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__OUT_1_net_0),
 		y=>(zero),
-		fb=>Net_6,
+		fb=>Net_7,
 		analog=>(open),
 		io=>(tmpIO_0__IN_1_net_0),
 		siovref=>(tmpSIOVREF__IN_1_net_0),

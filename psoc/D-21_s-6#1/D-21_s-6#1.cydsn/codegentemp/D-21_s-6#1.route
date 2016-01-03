@@ -6,7 +6,7 @@ net ClockBlock_HFCLK
 	switch ":ioport0_clock_io_mux.clk_in==>:ioport0:pin0.in_clock"
 	term   ":ioport0:pin0.in_clock"
 end ClockBlock_HFCLK
-net Net_6
+net Net_7
 	term   ":ioport0:pin1.fb"
 	switch ":ioport0:pin1.fb==>:ioport0:hsiom_in1.hsiom1_in"
 	switch ":ioport0:hsiom_in1.dsi==>Stub-:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v1+:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v3"
@@ -18,4 +18,4 @@ net Net_6
 	switch ":ioport0:inputs1_mux.pin2__pin_input==>:ioport0:hsiom_out2.dsi"
 	switch ":ioport0:hsiom_out2.hsiom2_out==>:ioport0:pin2.pin_input"
 	term   ":ioport0:pin2.pin_input"
-end Net_6
+end Net_7

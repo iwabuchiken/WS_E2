@@ -1,5 +1,5 @@
 -- Project:   D-21_s-6#1
--- Generated: 01/03/2016 12:28:28
+-- Generated: 01/03/2016 12:36:16
 -- PSoC Creator  3.2
 
 ENTITY \D-21_s-6#1\ IS
@@ -23,7 +23,7 @@ ARCHITECTURE __DEFAULT__ OF \D-21_s-6#1\ IS
     SIGNAL ClockBlock_SYSCLK : bit;
     SIGNAL IN_1(0)__PA : bit;
     SIGNAL IN_2(0)__PA : bit;
-    SIGNAL Net_6 : bit;
+    SIGNAL Net_7 : bit;
     SIGNAL OUT_1(0)__PA : bit;
     SIGNAL OUT_2(0)__PA : bit;
     SIGNAL __ONE__ : bit;
@@ -294,7 +294,7 @@ BEGIN
         PORT MAP(
             pa_out => IN_1(0)__PA,
             oe => open,
-            fb => Net_6,
+            fb => Net_7,
             pad_in => IN_1(0)_PAD,
             in_clock => ClockBlock_HFCLK,
             in_clock_en => '1',
@@ -474,7 +474,7 @@ BEGIN
         PORT MAP(
             pa_out => OUT_1(0)__PA,
             oe => open,
-            pin_input => Net_6,
+            pin_input => Net_7,
             pad_out => OUT_1(0)_PAD,
             pad_in => OUT_1(0)_PAD,
             in_clock => open,
