@@ -247,6 +247,29 @@
 <VisibleNodeIds>
 <v>Design01</v>
 <v>Design01\D-21_s-5#1</v>
+<v>Design01\D-21_s-5#1\CortexM0</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\Bootloadable_1.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\Cm0Start.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cybootloader.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\CyFlash.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLFClk.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\CyLib.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cymetadata.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cyPm.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\cyutils.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\IN_1.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\main.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\Listing Files\OUT_1.lst</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.cyacd</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.elf</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.hex</v>
+<v>Design01\D-21_s-5#1\CortexM0\ARM_GCC_484\Debug\D-21_s-5#1.map</v>
+<v>Design01\D-21_s-5#1\D-21_s-5#1.gpdsc</v>
 <v>Design01\D-21_s-5#1\D-21_s-5#1.rpt</v>
 <v>Design01\D-21_s-5#1\D-21_s-5#1_timing.html</v>
 </VisibleNodeIds>
@@ -310,6 +333,7 @@
 <OpenDocs>
 <name v="..\D-21_s-5#1.cydsn\TopDesign\TopDesign.cysch" />
 <name v="..\D-21_s-5#1.cydsn\main.c" />
+<name v="..\D-21_s-5#1.cydsn\D-21_s-5#1.cydwr" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
