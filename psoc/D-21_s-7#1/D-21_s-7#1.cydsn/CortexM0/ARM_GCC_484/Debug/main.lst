@@ -1,0 +1,741 @@
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 1
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.main,"ax",%progbits
+  18              		.align	2
+  19              		.global	main
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	main, %function
+  23              	main:
+  24              	.LFB33:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** int main()
+  15:.\main.c      **** {
+  26              		.loc 1 15 0
+  27              		.cfi_startproc
+  28 0000 10B5     		push	{r4, lr}
+  29              		.cfi_def_cfa_offset 8
+  30              		.cfi_offset 4, -8
+  31              		.cfi_offset 14, -4
+  16:.\main.c      ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  32              		.loc 1 16 0
+  33              	@ 16 ".\main.c" 1
+  34 0002 62B6     		CPSIE   i
+  35              	@ 0 "" 2
+  17:.\main.c      **** 
+  18:.\main.c      ****     // capsense
+  19:.\main.c      ****     CapSense_Start();
+  36              		.loc 1 19 0
+  37              		.code	16
+  38 0004 FFF7FEFF 		bl	CapSense_Start
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 2
+
+
+  39              	.LVL0:
+  20:.\main.c      ****     
+  21:.\main.c      ****     CapSense_InitializeAllBaselines();
+  40              		.loc 1 21 0
+  41 0008 FFF7FEFF 		bl	CapSense_InitializeAllBaselines
+  42              	.LVL1:
+  22:.\main.c      ****     
+  23:.\main.c      ****     // pwm
+  24:.\main.c      ****     PWM_1_Start();
+  43              		.loc 1 24 0
+  44 000c FFF7FEFF 		bl	PWM_1_Start
+  45              	.LVL2:
+  46              	.LBB2:
+  25:.\main.c      ****     
+  26:.\main.c      ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  27:.\main.c      **** 
+  28:.\main.c      ****     for(;;)
+  29:.\main.c      ****     {
+  30:.\main.c      ****         /* Place your application code here. */
+  31:.\main.c      ****         // capsense
+  32:.\main.c      ****         CapSense_ScanEnabledWidgets();
+  33:.\main.c      ****         
+  34:.\main.c      ****         // busy?
+  35:.\main.c      ****         if( ! CapSense_IsBusy() )
+  36:.\main.c      ****         {
+  37:.\main.c      ****             
+  38:.\main.c      ****             //uint16 value = CapSense_GetCentroidPos( CapSense_LINEAR_SLIDERS_POS_FILTERS_MASK );
+  39:.\main.c      ****             uint16 value = CapSense_GetCentroidPos( CapSense_LINEARSLIDER0__LS );
+  40:.\main.c      **** 
+  41:.\main.c      ****             if( value != 0xFFF )
+  47              		.loc 1 41 0
+  48 0010 084C     		ldr	r4, .L6
+  49              	.L5:
+  50              	.LBE2:
+  32:.\main.c      ****         CapSense_ScanEnabledWidgets();
+  51              		.loc 1 32 0
+  52 0012 FFF7FEFF 		bl	CapSense_ScanEnabledWidgets
+  53              	.LVL3:
+  35:.\main.c      ****         if( ! CapSense_IsBusy() )
+  54              		.loc 1 35 0
+  55 0016 FFF7FEFF 		bl	CapSense_IsBusy
+  56              	.LVL4:
+  57 001a 0028     		cmp	r0, #0
+  58 001c F9D1     		bne	.L5
+  59              	.LBB3:
+  39:.\main.c      ****             uint16 value = CapSense_GetCentroidPos( CapSense_LINEARSLIDER0__LS );
+  60              		.loc 1 39 0
+  61 001e FFF7FEFF 		bl	CapSense_GetCentroidPos
+  62              	.LVL5:
+  63              		.loc 1 41 0
+  64 0022 A042     		cmp	r0, r4
+  65 0024 03D0     		beq	.L3
+  42:.\main.c      ****             {
+  43:.\main.c      ****                 //PWM_1_WriteCompare( value );
+  44:.\main.c      ****                 PWM_1_WriteCompare( value / 2 );
+  66              		.loc 1 44 0
+  67 0026 4008     		lsr	r0, r0, #1
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 3
+
+
+  68              	.LVL6:
+  69 0028 C0B2     		uxtb	r0, r0
+  70 002a FFF7FEFF 		bl	PWM_1_WriteCompare
+  71              	.LVL7:
+  72              	.L3:
+  45:.\main.c      ****             }
+  46:.\main.c      ****             /*else
+  47:.\main.c      ****             {
+  48:.\main.c      ****                 //PWM_1_WriteCompare( 20 );
+  49:.\main.c      ****                 //PWM_1_WritePeriod();
+  50:.\main.c      ****             }*/
+  51:.\main.c      ****             
+  52:.\main.c      ****             CapSense_UpdateEnabledBaselines();
+  73              		.loc 1 52 0
+  74 002e FFF7FEFF 		bl	CapSense_UpdateEnabledBaselines
+  75              	.LVL8:
+  76 0032 EEE7     		b	.L5
+  77              	.L7:
+  78              		.align	2
+  79              	.L6:
+  80 0034 FF0F0000 		.word	4095
+  81              	.LBE3:
+  82              		.cfi_endproc
+  83              	.LFE33:
+  84              		.size	main, .-main
+  85              		.text
+  86              	.Letext0:
+  87              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+  88              		.file 3 "Generated_Source\\PSoC4/CapSense_CSHL.h"
+  89              		.file 4 "Generated_Source\\PSoC4/CapSense.h"
+  90              		.file 5 "Generated_Source\\PSoC4/PWM_1.h"
+  91              		.section	.debug_info,"",%progbits
+  92              	.Ldebug_info0:
+  93 0000 74010000 		.4byte	0x174
+  94 0004 0400     		.2byte	0x4
+  95 0006 00000000 		.4byte	.Ldebug_abbrev0
+  96 000a 04       		.byte	0x4
+  97 000b 01       		.uleb128 0x1
+  98 000c A3010000 		.4byte	.LASF21
+  99 0010 01       		.byte	0x1
+ 100 0011 93010000 		.4byte	.LASF22
+ 101 0015 37010000 		.4byte	.LASF23
+ 102 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 103 001d 00000000 		.4byte	0
+ 104 0021 00000000 		.4byte	.Ldebug_line0
+ 105 0025 02       		.uleb128 0x2
+ 106 0026 01       		.byte	0x1
+ 107 0027 06       		.byte	0x6
+ 108 0028 2B010000 		.4byte	.LASF0
+ 109 002c 02       		.uleb128 0x2
+ 110 002d 01       		.byte	0x1
+ 111 002e 08       		.byte	0x8
+ 112 002f AF000000 		.4byte	.LASF1
+ 113 0033 02       		.uleb128 0x2
+ 114 0034 02       		.byte	0x2
+ 115 0035 05       		.byte	0x5
+ 116 0036 E7000000 		.4byte	.LASF2
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 4
+
+
+ 117 003a 02       		.uleb128 0x2
+ 118 003b 02       		.byte	0x2
+ 119 003c 07       		.byte	0x7
+ 120 003d 18010000 		.4byte	.LASF3
+ 121 0041 02       		.uleb128 0x2
+ 122 0042 04       		.byte	0x4
+ 123 0043 05       		.byte	0x5
+ 124 0044 DE000000 		.4byte	.LASF4
+ 125 0048 02       		.uleb128 0x2
+ 126 0049 04       		.byte	0x4
+ 127 004a 07       		.byte	0x7
+ 128 004b 60000000 		.4byte	.LASF5
+ 129 004f 02       		.uleb128 0x2
+ 130 0050 08       		.byte	0x8
+ 131 0051 05       		.byte	0x5
+ 132 0052 00000000 		.4byte	.LASF6
+ 133 0056 02       		.uleb128 0x2
+ 134 0057 08       		.byte	0x8
+ 135 0058 07       		.byte	0x7
+ 136 0059 72000000 		.4byte	.LASF7
+ 137 005d 03       		.uleb128 0x3
+ 138 005e 04       		.byte	0x4
+ 139 005f 05       		.byte	0x5
+ 140 0060 696E7400 		.ascii	"int\000"
+ 141 0064 02       		.uleb128 0x2
+ 142 0065 04       		.byte	0x4
+ 143 0066 07       		.byte	0x7
+ 144 0067 15000000 		.4byte	.LASF8
+ 145 006b 04       		.uleb128 0x4
+ 146 006c 5A000000 		.4byte	.LASF9
+ 147 0070 02       		.byte	0x2
+ 148 0071 B3       		.byte	0xb3
+ 149 0072 2C000000 		.4byte	0x2c
+ 150 0076 04       		.uleb128 0x4
+ 151 0077 9C010000 		.4byte	.LASF10
+ 152 007b 02       		.byte	0x2
+ 153 007c B4       		.byte	0xb4
+ 154 007d 3A000000 		.4byte	0x3a
+ 155 0081 04       		.uleb128 0x4
+ 156 0082 0E000000 		.4byte	.LASF11
+ 157 0086 02       		.byte	0x2
+ 158 0087 B5       		.byte	0xb5
+ 159 0088 48000000 		.4byte	0x48
+ 160 008c 02       		.uleb128 0x2
+ 161 008d 04       		.byte	0x4
+ 162 008e 04       		.byte	0x4
+ 163 008f 89000000 		.4byte	.LASF12
+ 164 0093 02       		.uleb128 0x2
+ 165 0094 08       		.byte	0x8
+ 166 0095 04       		.byte	0x4
+ 167 0096 F1000000 		.4byte	.LASF13
+ 168 009a 02       		.uleb128 0x2
+ 169 009b 01       		.byte	0x1
+ 170 009c 08       		.byte	0x8
+ 171 009d BD000000 		.4byte	.LASF14
+ 172 00a1 02       		.uleb128 0x2
+ 173 00a2 04       		.byte	0x4
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 5
+
+
+ 174 00a3 07       		.byte	0x7
+ 175 00a4 1F020000 		.4byte	.LASF15
+ 176 00a8 05       		.uleb128 0x5
+ 177 00a9 3A000000 		.4byte	.LASF24
+ 178 00ad 01       		.byte	0x1
+ 179 00ae 0E       		.byte	0xe
+ 180 00af 5D000000 		.4byte	0x5d
+ 181 00b3 00000000 		.4byte	.LFB33
+ 182 00b7 38000000 		.4byte	.LFE33-.LFB33
+ 183 00bb 01       		.uleb128 0x1
+ 184 00bc 9C       		.byte	0x9c
+ 185 00bd 23010000 		.4byte	0x123
+ 186 00c1 06       		.uleb128 0x6
+ 187 00c2 00000000 		.4byte	.Ldebug_ranges0+0
+ 188 00c6 F5000000 		.4byte	0xf5
+ 189 00ca 07       		.uleb128 0x7
+ 190 00cb 8D010000 		.4byte	.LASF25
+ 191 00cf 01       		.byte	0x1
+ 192 00d0 27       		.byte	0x27
+ 193 00d1 76000000 		.4byte	0x76
+ 194 00d5 00000000 		.4byte	.LLST0
+ 195 00d9 08       		.uleb128 0x8
+ 196 00da 22000000 		.4byte	.LVL5
+ 197 00de 23010000 		.4byte	0x123
+ 198 00e2 08       		.uleb128 0x8
+ 199 00e3 2E000000 		.4byte	.LVL7
+ 200 00e7 38010000 		.4byte	0x138
+ 201 00eb 08       		.uleb128 0x8
+ 202 00ec 32000000 		.4byte	.LVL8
+ 203 00f0 49010000 		.4byte	0x149
+ 204 00f4 00       		.byte	0
+ 205 00f5 08       		.uleb128 0x8
+ 206 00f6 08000000 		.4byte	.LVL0
+ 207 00fa 50010000 		.4byte	0x150
+ 208 00fe 08       		.uleb128 0x8
+ 209 00ff 0C000000 		.4byte	.LVL1
+ 210 0103 57010000 		.4byte	0x157
+ 211 0107 08       		.uleb128 0x8
+ 212 0108 10000000 		.4byte	.LVL2
+ 213 010c 5E010000 		.4byte	0x15e
+ 214 0110 08       		.uleb128 0x8
+ 215 0111 16000000 		.4byte	.LVL3
+ 216 0115 65010000 		.4byte	0x165
+ 217 0119 08       		.uleb128 0x8
+ 218 011a 1A000000 		.4byte	.LVL4
+ 219 011e 6C010000 		.4byte	0x16c
+ 220 0122 00       		.byte	0
+ 221 0123 09       		.uleb128 0x9
+ 222 0124 22000000 		.4byte	.LASF26
+ 223 0128 03       		.byte	0x3
+ 224 0129 E2       		.byte	0xe2
+ 225 012a 76000000 		.4byte	0x76
+ 226 012e 38010000 		.4byte	0x138
+ 227 0132 0A       		.uleb128 0xa
+ 228 0133 81000000 		.4byte	0x81
+ 229 0137 00       		.byte	0
+ 230 0138 0B       		.uleb128 0xb
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 6
+
+
+ 231 0139 7A010000 		.4byte	.LASF27
+ 232 013d 05       		.byte	0x5
+ 233 013e C3       		.byte	0xc3
+ 234 013f 49010000 		.4byte	0x149
+ 235 0143 0A       		.uleb128 0xa
+ 236 0144 6B000000 		.4byte	0x6b
+ 237 0148 00       		.byte	0
+ 238 0149 0C       		.uleb128 0xc
+ 239 014a F8000000 		.4byte	.LASF16
+ 240 014e 03       		.byte	0x3
+ 241 014f AF       		.byte	0xaf
+ 242 0150 0C       		.uleb128 0xc
+ 243 0151 4B000000 		.4byte	.LASF17
+ 244 0155 04       		.byte	0x4
+ 245 0156 99       		.byte	0x99
+ 246 0157 0C       		.uleb128 0xc
+ 247 0158 8F000000 		.4byte	.LASF18
+ 248 015c 03       		.byte	0x3
+ 249 015d AB       		.byte	0xab
+ 250 015e 0C       		.uleb128 0xc
+ 251 015f 3F000000 		.4byte	.LASF19
+ 252 0163 05       		.byte	0x5
+ 253 0164 92       		.byte	0x92
+ 254 0165 0C       		.uleb128 0xc
+ 255 0166 C2000000 		.4byte	.LASF20
+ 256 016a 04       		.byte	0x4
+ 257 016b A2       		.byte	0xa2
+ 258 016c 0D       		.uleb128 0xd
+ 259 016d 6A010000 		.4byte	.LASF28
+ 260 0171 04       		.byte	0x4
+ 261 0172 9F       		.byte	0x9f
+ 262 0173 81000000 		.4byte	0x81
+ 263 0177 00       		.byte	0
+ 264              		.section	.debug_abbrev,"",%progbits
+ 265              	.Ldebug_abbrev0:
+ 266 0000 01       		.uleb128 0x1
+ 267 0001 11       		.uleb128 0x11
+ 268 0002 01       		.byte	0x1
+ 269 0003 25       		.uleb128 0x25
+ 270 0004 0E       		.uleb128 0xe
+ 271 0005 13       		.uleb128 0x13
+ 272 0006 0B       		.uleb128 0xb
+ 273 0007 03       		.uleb128 0x3
+ 274 0008 0E       		.uleb128 0xe
+ 275 0009 1B       		.uleb128 0x1b
+ 276 000a 0E       		.uleb128 0xe
+ 277 000b 55       		.uleb128 0x55
+ 278 000c 17       		.uleb128 0x17
+ 279 000d 11       		.uleb128 0x11
+ 280 000e 01       		.uleb128 0x1
+ 281 000f 10       		.uleb128 0x10
+ 282 0010 17       		.uleb128 0x17
+ 283 0011 00       		.byte	0
+ 284 0012 00       		.byte	0
+ 285 0013 02       		.uleb128 0x2
+ 286 0014 24       		.uleb128 0x24
+ 287 0015 00       		.byte	0
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 7
+
+
+ 288 0016 0B       		.uleb128 0xb
+ 289 0017 0B       		.uleb128 0xb
+ 290 0018 3E       		.uleb128 0x3e
+ 291 0019 0B       		.uleb128 0xb
+ 292 001a 03       		.uleb128 0x3
+ 293 001b 0E       		.uleb128 0xe
+ 294 001c 00       		.byte	0
+ 295 001d 00       		.byte	0
+ 296 001e 03       		.uleb128 0x3
+ 297 001f 24       		.uleb128 0x24
+ 298 0020 00       		.byte	0
+ 299 0021 0B       		.uleb128 0xb
+ 300 0022 0B       		.uleb128 0xb
+ 301 0023 3E       		.uleb128 0x3e
+ 302 0024 0B       		.uleb128 0xb
+ 303 0025 03       		.uleb128 0x3
+ 304 0026 08       		.uleb128 0x8
+ 305 0027 00       		.byte	0
+ 306 0028 00       		.byte	0
+ 307 0029 04       		.uleb128 0x4
+ 308 002a 16       		.uleb128 0x16
+ 309 002b 00       		.byte	0
+ 310 002c 03       		.uleb128 0x3
+ 311 002d 0E       		.uleb128 0xe
+ 312 002e 3A       		.uleb128 0x3a
+ 313 002f 0B       		.uleb128 0xb
+ 314 0030 3B       		.uleb128 0x3b
+ 315 0031 0B       		.uleb128 0xb
+ 316 0032 49       		.uleb128 0x49
+ 317 0033 13       		.uleb128 0x13
+ 318 0034 00       		.byte	0
+ 319 0035 00       		.byte	0
+ 320 0036 05       		.uleb128 0x5
+ 321 0037 2E       		.uleb128 0x2e
+ 322 0038 01       		.byte	0x1
+ 323 0039 3F       		.uleb128 0x3f
+ 324 003a 19       		.uleb128 0x19
+ 325 003b 03       		.uleb128 0x3
+ 326 003c 0E       		.uleb128 0xe
+ 327 003d 3A       		.uleb128 0x3a
+ 328 003e 0B       		.uleb128 0xb
+ 329 003f 3B       		.uleb128 0x3b
+ 330 0040 0B       		.uleb128 0xb
+ 331 0041 49       		.uleb128 0x49
+ 332 0042 13       		.uleb128 0x13
+ 333 0043 11       		.uleb128 0x11
+ 334 0044 01       		.uleb128 0x1
+ 335 0045 12       		.uleb128 0x12
+ 336 0046 06       		.uleb128 0x6
+ 337 0047 40       		.uleb128 0x40
+ 338 0048 18       		.uleb128 0x18
+ 339 0049 9742     		.uleb128 0x2117
+ 340 004b 19       		.uleb128 0x19
+ 341 004c 01       		.uleb128 0x1
+ 342 004d 13       		.uleb128 0x13
+ 343 004e 00       		.byte	0
+ 344 004f 00       		.byte	0
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 8
+
+
+ 345 0050 06       		.uleb128 0x6
+ 346 0051 0B       		.uleb128 0xb
+ 347 0052 01       		.byte	0x1
+ 348 0053 55       		.uleb128 0x55
+ 349 0054 17       		.uleb128 0x17
+ 350 0055 01       		.uleb128 0x1
+ 351 0056 13       		.uleb128 0x13
+ 352 0057 00       		.byte	0
+ 353 0058 00       		.byte	0
+ 354 0059 07       		.uleb128 0x7
+ 355 005a 34       		.uleb128 0x34
+ 356 005b 00       		.byte	0
+ 357 005c 03       		.uleb128 0x3
+ 358 005d 0E       		.uleb128 0xe
+ 359 005e 3A       		.uleb128 0x3a
+ 360 005f 0B       		.uleb128 0xb
+ 361 0060 3B       		.uleb128 0x3b
+ 362 0061 0B       		.uleb128 0xb
+ 363 0062 49       		.uleb128 0x49
+ 364 0063 13       		.uleb128 0x13
+ 365 0064 02       		.uleb128 0x2
+ 366 0065 17       		.uleb128 0x17
+ 367 0066 00       		.byte	0
+ 368 0067 00       		.byte	0
+ 369 0068 08       		.uleb128 0x8
+ 370 0069 898201   		.uleb128 0x4109
+ 371 006c 00       		.byte	0
+ 372 006d 11       		.uleb128 0x11
+ 373 006e 01       		.uleb128 0x1
+ 374 006f 31       		.uleb128 0x31
+ 375 0070 13       		.uleb128 0x13
+ 376 0071 00       		.byte	0
+ 377 0072 00       		.byte	0
+ 378 0073 09       		.uleb128 0x9
+ 379 0074 2E       		.uleb128 0x2e
+ 380 0075 01       		.byte	0x1
+ 381 0076 3F       		.uleb128 0x3f
+ 382 0077 19       		.uleb128 0x19
+ 383 0078 03       		.uleb128 0x3
+ 384 0079 0E       		.uleb128 0xe
+ 385 007a 3A       		.uleb128 0x3a
+ 386 007b 0B       		.uleb128 0xb
+ 387 007c 3B       		.uleb128 0x3b
+ 388 007d 0B       		.uleb128 0xb
+ 389 007e 27       		.uleb128 0x27
+ 390 007f 19       		.uleb128 0x19
+ 391 0080 49       		.uleb128 0x49
+ 392 0081 13       		.uleb128 0x13
+ 393 0082 3C       		.uleb128 0x3c
+ 394 0083 19       		.uleb128 0x19
+ 395 0084 01       		.uleb128 0x1
+ 396 0085 13       		.uleb128 0x13
+ 397 0086 00       		.byte	0
+ 398 0087 00       		.byte	0
+ 399 0088 0A       		.uleb128 0xa
+ 400 0089 05       		.uleb128 0x5
+ 401 008a 00       		.byte	0
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 9
+
+
+ 402 008b 49       		.uleb128 0x49
+ 403 008c 13       		.uleb128 0x13
+ 404 008d 00       		.byte	0
+ 405 008e 00       		.byte	0
+ 406 008f 0B       		.uleb128 0xb
+ 407 0090 2E       		.uleb128 0x2e
+ 408 0091 01       		.byte	0x1
+ 409 0092 3F       		.uleb128 0x3f
+ 410 0093 19       		.uleb128 0x19
+ 411 0094 03       		.uleb128 0x3
+ 412 0095 0E       		.uleb128 0xe
+ 413 0096 3A       		.uleb128 0x3a
+ 414 0097 0B       		.uleb128 0xb
+ 415 0098 3B       		.uleb128 0x3b
+ 416 0099 0B       		.uleb128 0xb
+ 417 009a 27       		.uleb128 0x27
+ 418 009b 19       		.uleb128 0x19
+ 419 009c 3C       		.uleb128 0x3c
+ 420 009d 19       		.uleb128 0x19
+ 421 009e 01       		.uleb128 0x1
+ 422 009f 13       		.uleb128 0x13
+ 423 00a0 00       		.byte	0
+ 424 00a1 00       		.byte	0
+ 425 00a2 0C       		.uleb128 0xc
+ 426 00a3 2E       		.uleb128 0x2e
+ 427 00a4 00       		.byte	0
+ 428 00a5 3F       		.uleb128 0x3f
+ 429 00a6 19       		.uleb128 0x19
+ 430 00a7 03       		.uleb128 0x3
+ 431 00a8 0E       		.uleb128 0xe
+ 432 00a9 3A       		.uleb128 0x3a
+ 433 00aa 0B       		.uleb128 0xb
+ 434 00ab 3B       		.uleb128 0x3b
+ 435 00ac 0B       		.uleb128 0xb
+ 436 00ad 27       		.uleb128 0x27
+ 437 00ae 19       		.uleb128 0x19
+ 438 00af 3C       		.uleb128 0x3c
+ 439 00b0 19       		.uleb128 0x19
+ 440 00b1 00       		.byte	0
+ 441 00b2 00       		.byte	0
+ 442 00b3 0D       		.uleb128 0xd
+ 443 00b4 2E       		.uleb128 0x2e
+ 444 00b5 00       		.byte	0
+ 445 00b6 3F       		.uleb128 0x3f
+ 446 00b7 19       		.uleb128 0x19
+ 447 00b8 03       		.uleb128 0x3
+ 448 00b9 0E       		.uleb128 0xe
+ 449 00ba 3A       		.uleb128 0x3a
+ 450 00bb 0B       		.uleb128 0xb
+ 451 00bc 3B       		.uleb128 0x3b
+ 452 00bd 0B       		.uleb128 0xb
+ 453 00be 27       		.uleb128 0x27
+ 454 00bf 19       		.uleb128 0x19
+ 455 00c0 49       		.uleb128 0x49
+ 456 00c1 13       		.uleb128 0x13
+ 457 00c2 3C       		.uleb128 0x3c
+ 458 00c3 19       		.uleb128 0x19
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 10
+
+
+ 459 00c4 00       		.byte	0
+ 460 00c5 00       		.byte	0
+ 461 00c6 00       		.byte	0
+ 462              		.section	.debug_loc,"",%progbits
+ 463              	.Ldebug_loc0:
+ 464              	.LLST0:
+ 465 0000 22000000 		.4byte	.LVL5
+ 466 0004 28000000 		.4byte	.LVL6
+ 467 0008 0100     		.2byte	0x1
+ 468 000a 50       		.byte	0x50
+ 469 000b 00000000 		.4byte	0
+ 470 000f 00000000 		.4byte	0
+ 471              		.section	.debug_aranges,"",%progbits
+ 472 0000 1C000000 		.4byte	0x1c
+ 473 0004 0200     		.2byte	0x2
+ 474 0006 00000000 		.4byte	.Ldebug_info0
+ 475 000a 04       		.byte	0x4
+ 476 000b 00       		.byte	0
+ 477 000c 0000     		.2byte	0
+ 478 000e 0000     		.2byte	0
+ 479 0010 00000000 		.4byte	.LFB33
+ 480 0014 38000000 		.4byte	.LFE33-.LFB33
+ 481 0018 00000000 		.4byte	0
+ 482 001c 00000000 		.4byte	0
+ 483              		.section	.debug_ranges,"",%progbits
+ 484              	.Ldebug_ranges0:
+ 485 0000 10000000 		.4byte	.LBB2
+ 486 0004 12000000 		.4byte	.LBE2
+ 487 0008 1E000000 		.4byte	.LBB3
+ 488 000c 38000000 		.4byte	.LBE3
+ 489 0010 00000000 		.4byte	0
+ 490 0014 00000000 		.4byte	0
+ 491 0018 00000000 		.4byte	.LFB33
+ 492 001c 38000000 		.4byte	.LFE33
+ 493 0020 00000000 		.4byte	0
+ 494 0024 00000000 		.4byte	0
+ 495              		.section	.debug_line,"",%progbits
+ 496              	.Ldebug_line0:
+ 497 0000 93000000 		.section	.debug_str,"MS",%progbits,1
+ 497      02006F00 
+ 497      00000201 
+ 497      FB0E0D00 
+ 497      01010101 
+ 498              	.LASF6:
+ 499 0000 6C6F6E67 		.ascii	"long long int\000"
+ 499      206C6F6E 
+ 499      6720696E 
+ 499      7400
+ 500              	.LASF11:
+ 501 000e 75696E74 		.ascii	"uint32\000"
+ 501      333200
+ 502              	.LASF8:
+ 503 0015 756E7369 		.ascii	"unsigned int\000"
+ 503      676E6564 
+ 503      20696E74 
+ 503      00
+ 504              	.LASF26:
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 11
+
+
+ 505 0022 43617053 		.ascii	"CapSense_GetCentroidPos\000"
+ 505      656E7365 
+ 505      5F476574 
+ 505      43656E74 
+ 505      726F6964 
+ 506              	.LASF24:
+ 507 003a 6D61696E 		.ascii	"main\000"
+ 507      00
+ 508              	.LASF19:
+ 509 003f 50574D5F 		.ascii	"PWM_1_Start\000"
+ 509      315F5374 
+ 509      61727400 
+ 510              	.LASF17:
+ 511 004b 43617053 		.ascii	"CapSense_Start\000"
+ 511      656E7365 
+ 511      5F537461 
+ 511      727400
+ 512              	.LASF9:
+ 513 005a 75696E74 		.ascii	"uint8\000"
+ 513      3800
+ 514              	.LASF5:
+ 515 0060 6C6F6E67 		.ascii	"long unsigned int\000"
+ 515      20756E73 
+ 515      69676E65 
+ 515      6420696E 
+ 515      7400
+ 516              	.LASF7:
+ 517 0072 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 517      206C6F6E 
+ 517      6720756E 
+ 517      7369676E 
+ 517      65642069 
+ 518              	.LASF12:
+ 519 0089 666C6F61 		.ascii	"float\000"
+ 519      7400
+ 520              	.LASF18:
+ 521 008f 43617053 		.ascii	"CapSense_InitializeAllBaselines\000"
+ 521      656E7365 
+ 521      5F496E69 
+ 521      7469616C 
+ 521      697A6541 
+ 522              	.LASF1:
+ 523 00af 756E7369 		.ascii	"unsigned char\000"
+ 523      676E6564 
+ 523      20636861 
+ 523      7200
+ 524              	.LASF14:
+ 525 00bd 63686172 		.ascii	"char\000"
+ 525      00
+ 526              	.LASF20:
+ 527 00c2 43617053 		.ascii	"CapSense_ScanEnabledWidgets\000"
+ 527      656E7365 
+ 527      5F536361 
+ 527      6E456E61 
+ 527      626C6564 
+ 528              	.LASF4:
+ 529 00de 6C6F6E67 		.ascii	"long int\000"
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 12
+
+
+ 529      20696E74 
+ 529      00
+ 530              	.LASF2:
+ 531 00e7 73686F72 		.ascii	"short int\000"
+ 531      7420696E 
+ 531      7400
+ 532              	.LASF13:
+ 533 00f1 646F7562 		.ascii	"double\000"
+ 533      6C6500
+ 534              	.LASF16:
+ 535 00f8 43617053 		.ascii	"CapSense_UpdateEnabledBaselines\000"
+ 535      656E7365 
+ 535      5F557064 
+ 535      61746545 
+ 535      6E61626C 
+ 536              	.LASF3:
+ 537 0118 73686F72 		.ascii	"short unsigned int\000"
+ 537      7420756E 
+ 537      7369676E 
+ 537      65642069 
+ 537      6E7400
+ 538              	.LASF0:
+ 539 012b 7369676E 		.ascii	"signed char\000"
+ 539      65642063 
+ 539      68617200 
+ 540              	.LASF23:
+ 541 0137 433A5C57 		.ascii	"C:\\WORKS\\WS\\WS_E2\\psoc\\D-21_s-7#1\\D-21_s-7#1."
+ 541      4F524B53 
+ 541      5C57535C 
+ 541      57535F45 
+ 541      325C7073 
+ 542 0164 63796473 		.ascii	"cydsn\000"
+ 542      6E00
+ 543              	.LASF28:
+ 544 016a 43617053 		.ascii	"CapSense_IsBusy\000"
+ 544      656E7365 
+ 544      5F497342 
+ 544      75737900 
+ 545              	.LASF27:
+ 546 017a 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 546      315F5772 
+ 546      69746543 
+ 546      6F6D7061 
+ 546      726500
+ 547              	.LASF25:
+ 548 018d 76616C75 		.ascii	"value\000"
+ 548      6500
+ 549              	.LASF22:
+ 550 0193 2E5C6D61 		.ascii	".\\main.c\000"
+ 550      696E2E63 
+ 550      00
+ 551              	.LASF10:
+ 552 019c 75696E74 		.ascii	"uint16\000"
+ 552      313600
+ 553              	.LASF21:
+ 554 01a3 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 554      4320342E 
+ARM GAS  C:\Users\kbuchi\AppData\Local\Temp\ccFoey5b.s 			page 13
+
+
+ 554      382E3420 
+ 554      32303134 
+ 554      30353236 
+ 555 01d6 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 555      20726576 
+ 555      6973696F 
+ 555      6E203231 
+ 555      31333538 
+ 556 0209 67202D66 		.ascii	"g -ffunction-sections\000"
+ 556      66756E63 
+ 556      74696F6E 
+ 556      2D736563 
+ 556      74696F6E 
+ 557              	.LASF15:
+ 558 021f 73697A65 		.ascii	"sizetype\000"
+ 558      74797065 
+ 558      00
+ 559              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
