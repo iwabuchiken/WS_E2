@@ -20,11 +20,19 @@ int main()
     for(;;)
     {
         /* Place your application code here. */
-        OUT_1_Write( 1 );
+        
+        
+        OUT_1_Write( SW_1_Read() );
+        
+/*        OUT_1_Write( ! OUT_1_Read() );
+        CyDelay( 100 );
+  */      
+/*        OUT_1_Write( 1 );
         CyDelay( 100 );
 
         OUT_1_Write( 0 );
         CyDelay( 500 );
+*/
 
         
     }

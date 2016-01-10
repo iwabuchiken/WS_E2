@@ -21,6 +21,8 @@
 #include "Bootloadable_1.h"
 #include "OUT_1.h"
 #include "OUT_1_aliases.h"
+#include "SW_1.h"
+#include "SW_1_aliases.h"
 #include "core_cm0_psoc4.h"
 #include "core_cm0.h"
 #include "CyFlash.h"

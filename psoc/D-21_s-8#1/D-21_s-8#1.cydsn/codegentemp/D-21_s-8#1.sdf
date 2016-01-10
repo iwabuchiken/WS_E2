@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2016-01-09T01:11:36Z")
+ (DATE "2016-01-10T07:13:05Z")
  (DESIGN "D-21_s-8#1")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
@@ -12,7 +12,9 @@
   (INSTANCE *)
   (DELAY
    (ABSOLUTE
+    (INTERCONNECT ClockBlock.hfclk SW_1\(0\).in_clock (0.000:0.000:0.000))
     (INTERCONNECT OUT_1\(0\)_PAD OUT_1\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT SW_1\(0\)_PAD SW_1\(0\).pad_in (0.000:0.000:0.000))
    )
   )
  )

@@ -21,6 +21,9 @@
   <file name="C:\WORKS\WS\WS_E2\psoc\D-21_s-8#1\D-21_s-8#1.cydsn\codegentemp\OUT_1.c" value="ARM_C_FILE;OUT_1" />
   <file name="C:\WORKS\WS\WS_E2\psoc\D-21_s-8#1\D-21_s-8#1.cydsn\codegentemp\OUT_1.h" value="NONE;OUT_1" />
   <file name="C:\WORKS\WS\WS_E2\psoc\D-21_s-8#1\D-21_s-8#1.cydsn\codegentemp\OUT_1_aliases.h" value="NONE;OUT_1" />
+  <file name="C:\WORKS\WS\WS_E2\psoc\D-21_s-8#1\D-21_s-8#1.cydsn\codegentemp\SW_1.c" value="ARM_C_FILE;SW_1" />
+  <file name="C:\WORKS\WS\WS_E2\psoc\D-21_s-8#1\D-21_s-8#1.cydsn\codegentemp\SW_1.h" value="NONE;SW_1" />
+  <file name="C:\WORKS\WS\WS_E2\psoc\D-21_s-8#1\D-21_s-8#1.cydsn\codegentemp\SW_1_aliases.h" value="NONE;SW_1" />
   <file name="C:\WORKS\WS\WS_E2\psoc\D-21_s-8#1\D-21_s-8#1.cydsn\codegentemp\cm0gcc.ld" value="NONE;cy_boot" />
   <file name="C:\WORKS\WS\WS_E2\psoc\D-21_s-8#1\D-21_s-8#1.cydsn\codegentemp\Cm0RealView.scat" value="NONE;cy_boot" />
   <file name="C:\WORKS\WS\WS_E2\psoc\D-21_s-8#1\D-21_s-8#1.cydsn\codegentemp\Cm0Start.c" value="ARM_C_FILE;cy_boot" />

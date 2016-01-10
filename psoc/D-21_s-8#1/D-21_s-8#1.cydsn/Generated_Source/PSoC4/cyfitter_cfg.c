@@ -121,6 +121,47 @@ static void CyClockStartupError(uint8 errorCode)
 }
 #endif
 
+#define CY_CFG_BASE_ADDR_COUNT 1u
+CYPACKED typedef struct
+{
+	uint8 offset;
+	uint8 value;
+} CYPACKED_ATTR cy_cfg_addrvalue_t;
+
+
+
+/*******************************************************************************
+* Function Name: cfg_write_bytes32
+********************************************************************************
+* Summary:
+*  This function is used for setting up the chip configuration areas that
+*  contain relatively sparse data.
+*
+* Parameters:
+*   void
+*
+* Return:
+*   void
+*
+*******************************************************************************/
+static void cfg_write_bytes32(const uint32 addr_table[], const cy_cfg_addrvalue_t data_table[]);
+static void cfg_write_bytes32(const uint32 addr_table[], const cy_cfg_addrvalue_t data_table[])
+{
+	/* For 32-bit little-endian architectures */
+	uint32 i, j = 0u;
+	for (i = 0u; i < CY_CFG_BASE_ADDR_COUNT; i++)
+	{
+		uint32 baseAddr = addr_table[i];
+		uint8 count = (uint8)baseAddr;
+		baseAddr &= 0xFFFFFF00u;
+		while (count != 0u)
+		{
+			CY_SET_XTND_REG8((void CYFAR *)(baseAddr + data_table[j].offset), data_table[j].value);
+			j++;
+			count--;
+		}
+	}
+}
 
 
 /*******************************************************************************
@@ -213,6 +254,16 @@ void cyfitter_cfg(void)
 	CyGlobalIntDisable;
 
 	{
+		static const uint32 CYCODE cy_cfg_addr_table[] = {
+			0x400F6002u, /* Base address: 0x400F6000 Count: 2 */
+		};
+
+		static const cy_cfg_addrvalue_t CYCODE cy_cfg_data_table[] = {
+			{0x02u, 0x01u},
+			{0x11u, 0x01u},
+		};
+
+
 
 		CYPACKED typedef struct {
 			void CYFAR *address;
@@ -234,8 +285,14 @@ void cyfitter_cfg(void)
 			CYMEMZERO(ms->address, (size_t)(uint32)(ms->size));
 		}
 
+		cfg_write_bytes32(cy_cfg_addr_table, cy_cfg_data_table);
+
 		/* HSIOM Starting address: CYDEV_HSIOM_BASE */
 		CY_SET_XTND_REG32((void CYFAR *)(CYREG_HSIOM_PORT_SEL3), 0x0000EE00u);
+
+		/* UDB_PA_0 Starting address: CYDEV_UDB_PA0_BASE */
+		CY_SET_XTND_REG32((void CYFAR *)(CYDEV_UDB_PA0_BASE), 0x00990000u);
+		CY_SET_XTND_REG32((void CYFAR *)(CYREG_UDB_PA0_CFG4), 0x80000000u);
 
 		/* UDB_PA_1 Starting address: CYDEV_UDB_PA1_BASE */
 		CY_SET_XTND_REG32((void CYFAR *)(CYDEV_UDB_PA1_BASE), 0x00990000u);
@@ -252,6 +309,10 @@ void cyfitter_cfg(void)
 	}
 
 	/* Perform second pass device configuration. These items must be configured in specific order after the regular configuration is done. */
+	/* IOPINS0_0 Starting address: CYDEV_PRT0_DR */
+	CY_SET_XTND_REG32((void CYFAR *)(CYREG_PRT0_DR), 0x00000080u);
+	CY_SET_XTND_REG32((void CYFAR *)(CYREG_PRT0_PC), 0x00400000u);
+
 	/* IOPINS0_1 Starting address: CYDEV_PRT1_DR */
 	CY_SET_XTND_REG32((void CYFAR *)(CYREG_PRT1_PC), 0x00180000u);
 
