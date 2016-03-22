@@ -39,9 +39,17 @@ static boolean output = HIGH;
 void flash() {
 //  static boolean output = HIGH;
 
-  digitalWrite(LED_OUT, output);
+  // LED on/off
+  if (count % 10 == 0) {
+
+      digitalWrite(LED_OUT, output);
   
-  output = !output;
+      output = !output;
+
+  }
+//  digitalWrite(LED_OUT, output);
+//  
+//  output = !output;
 
   // display
   count ++;
