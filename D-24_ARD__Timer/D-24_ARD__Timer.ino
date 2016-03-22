@@ -9,7 +9,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "24 s-1#1.3-1 T1";
+char* id = "24 s-1#1.3-3";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -18,7 +18,9 @@ int LED_OUT = 0;
 int LED_OUT_2 = 1;
 //int LED_OUT = 13;
 
-int INTERVAL = 1000;
+//int INTERVAL = 1000;
+int INTERVAL = 100;
+
 
 int INTERVAL_2 = 1500;
 
@@ -26,7 +28,10 @@ char num_s[4];
 
 char line_2[16];
 
-int count = 0;
+//int count = 0;
+//char count = 230;
+//char count = 110;
+unsigned char count = 240;
 
 static boolean output = HIGH;
 
@@ -101,7 +106,7 @@ void loop() {
 
   lcd.setCursor(0,1);
 //  sprintf(line_2, "%s %02d", "counting...", count);
-  sprintf(line_2, "%s %d", "counting...", count);
+  sprintf(line_2, "%s %03d", "counting ", count);
   
   lcd.print(line_2);
   
