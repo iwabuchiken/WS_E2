@@ -5,10 +5,11 @@
  * 
  */
  
-//#include <MsTimer2.h>
-
 // Toggle LED on pin 13 each second
 #include <MsTimer2.h>
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(7,8,9,10,11,12,13);
 
 int LED_OUT = 0;
 int LED_OUT_2 = 1;
@@ -51,6 +52,23 @@ void setup() {
   MsTimer2::set(INTERVAL_2, flash_2); // 500ms period　←500ミリ秒おきにflash関数の実行を指定 
   MsTimer2::start();
 
+  // LCD
+  _setup__LCD();
+  
+  
+}
+
+void _setup__LCD() {
+  
+  lcd.begin(16, 2);//16x2桁
+  
+  delay(100);
+  lcd.clear();
+   
+  lcd.print("D-24 s-1#1.3-1");
+  lcd.setCursor(0,1);
+  lcd.print("welcome");
+
   
 }
 
@@ -58,4 +76,5 @@ void loop() {
 
   
 }
+
 

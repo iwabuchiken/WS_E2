@@ -20,4 +20,5 @@ void loop()
   lcd.print("LCD TestPrint");
   lcd.setCursor(0,1);
   lcd.print("2nd TestPrint");
+  
 }
