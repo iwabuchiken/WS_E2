@@ -7,7 +7,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "25 s-1#3 s.2";
+char* id = "25 s-1#3 s.3";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -68,7 +68,8 @@ void flash() {
 //  output = !output;
 
   // display
-  count += 10;
+//  count += 10;
+  count += 1;
 //  count ++;
 
   // reset count
@@ -168,6 +169,7 @@ void loop() {
   }
   
 }
+
 
 
 
