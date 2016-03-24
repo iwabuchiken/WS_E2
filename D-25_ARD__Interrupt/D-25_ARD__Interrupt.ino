@@ -7,7 +7,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "25 s-1#2 s.2";
+char* id = "25 s-1#2 s.3";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -39,6 +39,8 @@ static boolean output = HIGH;
 int pin = 4;  // LED out
 volatile int state = LOW;
 int swState;
+
+volatile boolean intr = LOW;
 
 /*
  * funcs
@@ -101,6 +103,9 @@ void blink()
 {
   
   state = !state;
+  
+  // flags
+  intr = HIGH;
 
 }
 
@@ -114,9 +119,18 @@ void loop() {
   lcd.print(line_2);
 
   // interrupt
-  digitalWrite(pin, state);
+  if (intr == HIGH) {
+    
+    intr = LOW;
+    
+    digitalWrite(pin, state);
+    
+  }
+//  // interrupt
+//  digitalWrite(pin, state);
   
 }
+
 
 
 
