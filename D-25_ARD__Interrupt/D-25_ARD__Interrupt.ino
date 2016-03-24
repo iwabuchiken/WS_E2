@@ -7,7 +7,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "25 s-1#3 s.1";
+char* id = "25 s-1#3 s.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -30,7 +30,12 @@ char line_2[16];
 //int count = 0;
 //char count = 230;
 //char count = 110;
-unsigned char count = 240;
+//unsigned char count = 240;
+int count = 0;
+
+int total = 0;
+
+volatile boolean sec_1 = LOW;
 
 static boolean output = HIGH;
 
@@ -65,6 +70,19 @@ void flash() {
   // display
   count += 10;
 //  count ++;
+
+  // reset count
+  if (count > 999) {    // 1 sec passed
+    
+    count = 0;
+    
+    // count up: total
+    total ++;
+    
+    // flag
+    sec_1 = HIGH;
+    
+  }
   
 }
 
@@ -128,7 +146,14 @@ void loop() {
   //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
   lcd.setCursor(0,1);
 
-  sprintf(line_2, "%s %04d", "counting ", count);
+//  sprintf(line_2, "%s %04d", "counting ", count);
+  if (sec_1 == HIGH) {
+
+    sec_1 = LOW;
+    
+    sprintf(line_2, "%04d sec passed", total);
+    
+  }
 //  sprintf(line_2, "%s %03d", "counting ", count);
   
   lcd.print(line_2);
@@ -143,4 +168,6 @@ void loop() {
   }
   
 }
+
+
 
