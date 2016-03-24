@@ -1,22 +1,22 @@
 /*
- * ref http://happy-arduino.blogspot.jp/2012/08/blog-post_9.html
- * 
- * 2016/03/22 15:24:40
- * 
+ * 2016/03/24 13:23:51
+ *   
  */
  
 // Toggle LED on pin 13 each second
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "24 s-1#1.3-3";
+char* id = "25 s-1#1";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
 
+/*
+ * I/O
+ */
 int LED_OUT = 0;
 int LED_OUT_2 = 1;
-//int LED_OUT = 13;
 
 //int INTERVAL = 1000;
 int INTERVAL = 100;
@@ -35,7 +35,15 @@ unsigned char count = 240;
 
 static boolean output = HIGH;
 
+//ref http://play-arduino.up.seesaa.net/image/dd22_attachinterrupt_rising.txt
+int pin = 4;  // LED out
+volatile int state = LOW;
+int swState;
 
+/*
+ * funcs
+ * 
+ */
 void flash() {
 //  static boolean output = HIGH;
 
@@ -54,23 +62,6 @@ void flash() {
   // display
   count ++;
   
-//  lcd.setCursor(0,1);
-////  lcd.print("counting... " + itoa(count, num_s, 10));
-//
-//  sprintf(line_2, "%s %02d", "counting...", count);
-//  
-////  lcd.print(line_2);
-//  lcd.print("counting...");
-
-}
-
-void flash_2() {
-//  static boolean output = HIGH;
-
-  digitalWrite(LED_OUT_2, output);
-  
-  output = !output;
-  
 }
 
 void setup() {
@@ -81,14 +72,13 @@ void setup() {
   MsTimer2::set(INTERVAL, flash); // 500ms period　←500ミリ秒おきにflash関数の実行を指定 
   MsTimer2::start();
 
-//  // OUT_2
-//  MsTimer2::set(INTERVAL_2, flash_2); // 500ms period　←500ミリ秒おきにflash関数の実行を指定 
-//  MsTimer2::start();
-
   // LCD
   _setup__LCD();
-  
-  
+
+  //
+  pinMode(pin, OUTPUT);
+  attachInterrupt(0, blink, RISING);
+
 }
 
 void _setup__LCD() {
@@ -107,30 +97,26 @@ void _setup__LCD() {
   
 }
 
-void loop() {
+void blink()
+{
+  
+  state = !state;
 
-  // LCD
-//  lcd.clear();
+}
+
+void loop() {
 
   //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
   lcd.setCursor(0,1);
-//  sprintf(line_2, "%s %02d", "counting...", count);
+
   sprintf(line_2, "%s %03d", "counting ", count);
   
   lcd.print(line_2);
-  
-//  if (count % 5 == 0) {
-//
-//      lcd.setCursor(0,1);
-//    //  lcd.print("counting... " + itoa(count, num_s, 10));
-//    
-//      sprintf(line_2, "%s %02d", "counting...", count);
-//      
-//      lcd.print(line_2);
-////      lcd.print("counting...");
-//
-//  }
+
+  // interrupt
+  digitalWrite(pin, state);
   
 }
+
 
 
