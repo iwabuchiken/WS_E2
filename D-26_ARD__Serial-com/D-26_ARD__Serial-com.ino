@@ -7,7 +7,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "26 s-1#1 s.3.2";
+char* id = "26 s-1#1 s.3.4.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -222,6 +222,10 @@ void loop() {
 //    digitalWrite(pin, state);
     digitalWrite(IO_D_4, state);
     
+    // serial ==> end
+    Serial.write("ending serial com...");
+    Serial.end();
+
   }
   
 }
@@ -261,8 +265,5 @@ void _loop__Serial() {
   }
   
 }
-
-
-
 
 
