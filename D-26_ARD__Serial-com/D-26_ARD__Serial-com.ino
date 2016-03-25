@@ -1,13 +1,28 @@
 /*
- * 2016/03/24 13:23:51
+ * 2016/03/25 15:17:03
  *   
+ *   <i/o>
+ *   D0,D1      serial com
+ *   D2         i/o interrupt
+ *   D3         n/u (not used)
+ *   D4,5,6     output
+ *   
+ *   <description>
+ *   - switch on/of      --> begin/end serial com
+ *   - timer interrupt    --> count seconds
+ *   
+ *   <bear in mind>
+ *   - D0,1       => used for serial in/out
+ *   
+ *   <remarks>
+ *   - chattering protection for i/o interrupt    => not coded
  */
  
 // Toggle LED on pin 13 each second
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "26 s-1#1 s.3.4.2";
+char* id = "26 s-1#1 s.3.4.5";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -223,8 +238,21 @@ void loop() {
     digitalWrite(IO_D_4, state);
     
     // serial ==> end
-    Serial.write("ending serial com...");
-    Serial.end();
+//    Serial.write("ending serial com...");
+//    Serial.end();
+    if (state == HIGH) {
+
+      Serial.write("ending serial com...");
+      Serial.write('\n');
+      Serial.end();
+      
+    } else {
+
+      Serial.begin(9600);
+      Serial.write("re-beginng serial com...");
+      Serial.write('\n');
+      
+    }
 
   }
   
@@ -265,5 +293,6 @@ void _loop__Serial() {
   }
   
 }
+
 
 
