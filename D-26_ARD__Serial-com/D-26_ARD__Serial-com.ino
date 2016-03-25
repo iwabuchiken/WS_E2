@@ -7,7 +7,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "26 s-1#1 s.1";
+char* id = "26 s-1#1 s.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -201,9 +201,9 @@ void loop() {
 
     // D_2 => being pushed?
 //    while (IO_D_2 == HIGH) {
-	while (pin_intr == HIGH) {
+  while (pin_intr == HIGH) {
       
-		LED_OUT = HIGH;
+    LED_OUT = HIGH;
 //      IO_D_4 = HIGH;
       
     }
@@ -216,3 +216,4 @@ void loop() {
   }
   
 }
+
