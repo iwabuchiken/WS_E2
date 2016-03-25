@@ -7,7 +7,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "26 s-1#1 s.2";
+char* id = "26 s-1#1 s.3.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -49,6 +49,8 @@ volatile int state = LOW;     // on/off state of LED --> i/o interrupt
 //int swState;
 
 volatile boolean intr = LOW;
+
+char serial_receive_char[1];
 
 /*
  * funcs
@@ -181,6 +183,9 @@ void blink()
 
 void loop() {
 
+  // serial: receive message
+  _loop__Serial();
+  
   //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
   lcd.setCursor(0,1);
 
@@ -190,6 +195,10 @@ void loop() {
     sec_1 = LOW;
     
     sprintf(line_2, "%04d sec passed", total);
+    
+    // serial
+    Serial.println(line_2);
+
     
   }
 //  sprintf(line_2, "%s %03d", "counting ", count);
@@ -216,4 +225,44 @@ void loop() {
   }
   
 }
+
+void _loop__Serial() {
+  
+  char chr;
+  
+  if(Serial.available()>0) {
+
+    Serial.write("Receive --> starting");
+
+    Serial.write('\n');
+    
+    chr = Serial.read();
+    
+    while (chr != -1) {
+
+      sprintf(serial_receive_char, "%d", chr);
+//      sprintf(serial_receive_char, "%c", chr);
+            
+      Serial.write(serial_receive_char);
+//      Serial.write(chr);
+      Serial.write("*");
+      
+      // new char
+      chr = Serial.read();
+      
+    }
+    
+    Serial.write('\n');
+    
+    Serial.write("Receive --> done");
+    
+    Serial.write('\n');
+    
+  }
+  
+}
+
+
+
+
 
