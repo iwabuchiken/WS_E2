@@ -22,14 +22,14 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "27 s-1#1 s.3";
+char* id = "27 s-1#1 s.4.2.1";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
 
-/*
+/****************************
  * I/O
- */
+ ****************************/
 int LED_OUT    = 5;  // output
 int LED_OUT_2 = 6;  // output
 int IO_D_2    = 2;  //  D2  => input, interrupt
@@ -38,6 +38,12 @@ int IO_D_4    = 4;  //  D4  => output
 int IO_D_0    = 0;  //  D0  => serial receive
 int IO_D_1    = 1;  //  D1  => serial send
 
+int sensorPin = A0;   // analog pin 0
+int sensorValue = 0;
+
+/****************************
+ *    vars
+ ****************************/
 int pin_intr = 2;    // interrupt
 
 int INTERVAL = 1;   // interval for --> timer interrupt
@@ -67,13 +73,20 @@ volatile boolean intr = LOW;
 
 char serial_receive_char[1];
 
-/*
+/*****************************
  * funcs
  * 
  *    blink()     i/o interupt
  *    flash()     timer interupt
  * 
- */
+ ****************************/
+float modTemp(int analog_val){
+  
+    float v  = 5;       // vref
+    float tempC = ((v * analog_val) / 1024) * 100;    // conv => celsius
+    return tempC;
+  
+ }
 void flash() {
 //  static boolean output = HIGH;
 
@@ -196,68 +209,6 @@ void blink()
 
 }
 
-void loop() {
-
-  // serial: receive message
-  _loop__Serial();
-  
-  //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
-  lcd.setCursor(0,1);
-
-//  sprintf(line_2, "%s %04d", "counting ", count);
-  if (sec_1 == HIGH) {
-
-    sec_1 = LOW;
-    
-    sprintf(line_2, "%04d sec passed", total);
-    
-    // serial
-    Serial.println(line_2);
-
-    
-  }
-//  sprintf(line_2, "%s %03d", "counting ", count);
-  
-  lcd.print(line_2);
-
-  // interrupt
-  if (intr == HIGH) {
-
-    // D_2 => being pushed?
-//    while (IO_D_2 == HIGH) {
-  while (pin_intr == HIGH) {
-      
-    LED_OUT = HIGH;
-//      IO_D_4 = HIGH;
-      
-    }
-    
-    intr = LOW;
-    
-//    digitalWrite(pin, state);
-    digitalWrite(IO_D_4, state);
-    
-    // serial ==> end
-//    Serial.write("ending serial com...");
-//    Serial.end();
-    if (state == HIGH) {
-
-      Serial.write("ending serial com...");
-      Serial.write('\n');
-      Serial.end();
-      
-    } else {
-
-      Serial.begin(9600);
-      Serial.write("re-beginng serial com...");
-      Serial.write('\n');
-      
-    }
-
-  }
-  
-}
-
 void _loop__Serial() {
   
   char chr;
@@ -294,5 +245,82 @@ void _loop__Serial() {
   
 }
 
+void _loop__Sensor() {
+  
+  sensorValue = analogRead(sensorPin);    //アナログ0番ピンからの入力値を取得
+  float temp  = modTemp(sensorValue);     //温度センサーからの入力値を変換
+  Serial.println(temp);                   //結果をシリアルモニタに表示
+  delay(500); 
+  
+  Serial.println("sensor => done");
+  
+}//_loop__Sensor()
+
+void loop() {
+
+    // serial: receive message
+    _loop__Serial();
+    
+    //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
+    lcd.setCursor(0,1);
+
+  //  sprintf(line_2, "%s %04d", "counting ", count);
+    if (sec_1 == HIGH) {
+
+      sec_1 = LOW;
+      
+      sprintf(line_2, "%04d sec passed", total);
+      
+      // serial
+      Serial.println(line_2);
+
+      
+    }
+  //  sprintf(line_2, "%s %03d", "counting ", count);
+    
+    lcd.print(line_2);
+
+    // interrupt
+    if (intr == HIGH) {
+
+      // D_2 => being pushed?
+//      while (IO_D_2 == HIGH) {
+    while (pin_intr == HIGH) {
+        
+      LED_OUT = HIGH;
+//        IO_D_4 = HIGH;
+        
+      }
+      
+      intr = LOW;
+      
+//      digitalWrite(pin, state);
+      digitalWrite(IO_D_4, state);
+      
+      // serial ==> end
+//      Serial.write("ending serial com...");
+//      Serial.end();
+      if (state == HIGH) {
+
+        Serial.write("ending serial com...");
+        Serial.write('\n');
+        Serial.end();
+        
+      } else {
+
+        Serial.begin(9600);
+        Serial.write("re-beginng serial com...");
+        Serial.write('\n');
+        
+      }
+
+    }
+
+    // sensor
+    _loop__Sensor();
+  
+  
+    
+}//loop()
 
 
