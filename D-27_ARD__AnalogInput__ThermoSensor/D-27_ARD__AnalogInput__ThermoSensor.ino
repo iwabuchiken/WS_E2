@@ -22,7 +22,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "27 s-1#1 s.4.2.1";
+char* id = "27 s-1#1 s.4.2.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -252,7 +252,7 @@ void _loop__Sensor() {
   Serial.println(temp);                   //結果をシリアルモニタに表示
   delay(500); 
   
-  Serial.println("sensor => done");
+//  Serial.println("sensor => done");
   
 }//_loop__Sensor()
 
