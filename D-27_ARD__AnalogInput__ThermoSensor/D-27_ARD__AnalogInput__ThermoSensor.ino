@@ -22,7 +22,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "27 s-1#1 s.4.3";
+char* id = "27 1#1 s.4.3.1.1";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -44,6 +44,8 @@ int sensorValue = 0;
 /****************************
  *    vars
  ****************************/
+char str_temp[6];    // dtostrf(temp, 4, 2, str_temp);
+
 float temp;
 
 int pin_intr = 2;    // interrupt
@@ -274,8 +276,12 @@ void loop() {
     if (sec_1 == HIGH) {
 
       sec_1 = LOW;
+
+      //ref http://stackoverflow.com/questions/27651012/arduino-sprintf-float-not-formatting answered Dec 26 '14 at 1:22
+      dtostrf(temp, 3, 2, str_temp);
       
-      sprintf(line_2, "%04d secs %03.2d", total, temp);
+      sprintf(line_2, "%04d secs %s", total, str_temp);
+//      sprintf(line_2, "%04d secs %03.2d", total, temp);
 //      sprintf(line_2, "%04d secs %03.2f", total, temp);
 //      sprintf(line_2, "%04d sec passed", total);
       
@@ -330,6 +336,7 @@ void loop() {
   
     
 }//loop()
+
 
 
 
