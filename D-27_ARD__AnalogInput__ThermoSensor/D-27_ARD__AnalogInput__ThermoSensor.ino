@@ -22,7 +22,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "27 s-1#1 s.4.2.2";
+char* id = "27 s-1#1 s.4.3";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -44,6 +44,8 @@ int sensorValue = 0;
 /****************************
  *    vars
  ****************************/
+float temp;
+
 int pin_intr = 2;    // interrupt
 
 int INTERVAL = 1;   // interval for --> timer interrupt
@@ -248,8 +250,12 @@ void _loop__Serial() {
 void _loop__Sensor() {
   
   sensorValue = analogRead(sensorPin);    //アナログ0番ピンからの入力値を取得
-  float temp  = modTemp(sensorValue);     //温度センサーからの入力値を変換
+  
+  temp  = modTemp(sensorValue);     //温度センサーからの入力値を変換
+//  float temp  = modTemp(sensorValue);     //温度センサーからの入力値を変換
+  
   Serial.println(temp);                   //結果をシリアルモニタに表示
+  
   delay(500); 
   
 //  Serial.println("sensor => done");
@@ -269,7 +275,9 @@ void loop() {
 
       sec_1 = LOW;
       
-      sprintf(line_2, "%04d sec passed", total);
+      sprintf(line_2, "%04d secs %03.2d", total, temp);
+//      sprintf(line_2, "%04d secs %03.2f", total, temp);
+//      sprintf(line_2, "%04d sec passed", total);
       
       // serial
       Serial.println(line_2);
@@ -322,5 +330,7 @@ void loop() {
   
     
 }//loop()
+
+
 
 
