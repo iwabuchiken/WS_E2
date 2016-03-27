@@ -22,7 +22,7 @@
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
 
-char* id = "27 1#1 s.4.3.1.1";
+char* id = "27 1#1 s.4.3.7";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -87,7 +87,9 @@ char serial_receive_char[1];
 float modTemp(int analog_val){
   
     float v  = 5;       // vref
-    float tempC = ((v * analog_val) / 1024) * 100;    // conv => celsius
+//    float tempC = ((v * analog_val) / 1024) * 100;    // conv => celsius
+    float tempC = ((v * analog_val) / 1024);    // conv => up to 5
+
     return tempC;
   
  }
@@ -278,7 +280,13 @@ void loop() {
       sec_1 = LOW;
 
       //ref http://stackoverflow.com/questions/27651012/arduino-sprintf-float-not-formatting answered Dec 26 '14 at 1:22
-      dtostrf(temp, 3, 2, str_temp);
+      dtostrf(temp, 6,3, str_temp);
+//      dtostrf(temp, 4,3, str_temp);     // n.w
+//      dtostrf(temp, 6,4, str_temp);   // "re-beginng serial com..."
+//      dtostrf(temp, 4, 3, str_temp);  // n.w
+
+//      dtostrf(temp, 6, 3, str_temp);  // n.w
+//      dtostrf(temp, 3, 2, str_temp);  // n.w
       
       sprintf(line_2, "%04d secs %s", total, str_temp);
 //      sprintf(line_2, "%04d secs %03.2d", total, temp);
@@ -336,6 +344,7 @@ void loop() {
   
     
 }//loop()
+
 
 
 
