@@ -280,6 +280,7 @@ void loop() {
       sec_1 = LOW;
 
       //ref http://stackoverflow.com/questions/27651012/arduino-sprintf-float-not-formatting answered Dec 26 '14 at 1:22
+      //ref http://www.hobbytronics.co.uk/arduino-float-vars "An example will serve to illustrate the behaviour"
       dtostrf(temp, 6,3, str_temp);
 //      dtostrf(temp, 4,3, str_temp);     // n.w
 //      dtostrf(temp, 6,4, str_temp);   // "re-beginng serial com..."
