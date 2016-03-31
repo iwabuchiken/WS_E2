@@ -34,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "28 2#1 s.5";
+char* id = "28 2#2 s.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -95,6 +95,10 @@ volatile boolean intr = LOW;
 
 char serial_receive_char[1];
 
+char remocon_values[4][2];
+
+char remocon_values_str[9];
+
 /*****************************
  * funcs
  * 
@@ -109,6 +113,14 @@ void DspData(int num,char *data)
       Serial.print(data) ;    // ビットデータで表示
       Serial.write(" ( ") ;
       x = num / 8 ;
+      
+//      //debug
+//      Serial.println("x = ") ;
+//      Serial.println(x) ;      //=> 4
+//      
+//      Serial.println("num = ") ;
+//      Serial.println(num) ;   //=> 32
+      
       // ビット文字列データから数値に変換する
       for (j=0 ; j < x ; j++) {
            dt = 0 ;
@@ -119,6 +131,10 @@ void DspData(int num,char *data)
            Serial.write(' ') ;
       }
       Serial.println(')') ;     
+      
+//      // set values
+//      aaa
+      
 }
 
 float modTemp(int analog_val){
@@ -165,6 +181,32 @@ void flash() {
   
 }
 
+void _setup__Init_RemoconValues() {
+  
+  int k = 0;
+  
+  for (k = 0; k < 4; k ++) {
+    
+//    remocon_values[k] = " ";
+//    sprintf(remocon_values[k], "%s", " ");
+    sprintf(remocon_values[k], "%d%d", k,k);
+    
+  }
+  
+  // debug
+  Serial.println("\n_setup__Init_RemoconValues --> done\n");
+
+  sprintf(remocon_values_str, "%s%s%s%s", 
+      remocon_values[0], remocon_values[1], 
+      remocon_values[2], remocon_values[3]);
+  
+  remocon_values_str[8] = '\0';
+  
+  Serial.println("remocon_values_str => ");
+  Serial.println(remocon_values_str);
+  
+}//_setup__Init_RemoconValues()
+
 void setup() {
   
   // serial com
@@ -193,7 +235,11 @@ void setup() {
   // i/o interrupt
   attachInterrupt(0, blink, RISING);
 
+  // init: remocon_values
+  _setup__Init_RemoconValues();
+  
 }
+
 
 void _setup__SerialCom() {
   
@@ -311,7 +357,7 @@ void _loop__InfraRed() {
     t = 0 ;
     if (digitalRead(IRPIN) == LOW) {
       
-      Serial.println("DEBUG: IRPIN --> LOW");
+//      Serial.println("DEBUG: IRPIN --> LOW");
       
          // リーダ部のチェックを行う
          t = micros() ;                          // 現在の時刻(us)を得る
@@ -428,4 +474,13 @@ void loop() {
   
     
 }//loop()
+
+
+
+
+
+
+
+
+
 
