@@ -34,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "28 2#1 s.4";
+char* id = "28 2#1 s.5";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -298,9 +298,9 @@ void _loop__Sensor() {
   temp  = modTemp(sensorValue);     //温度センサーからの入力値を変換
 //  float temp  = modTemp(sensorValue);     //温度センサーからの入力値を変換
   
-  Serial.println(temp);                   //結果をシリアルモニタに表示
-  
-  delay(500); 
+//  Serial.println(temp);                   //結果をシリアルモニタに表示
+//  
+//  delay(500); 
   
 //  Serial.println("sensor => done");
   
@@ -419,18 +419,13 @@ void loop() {
 //  //      }
 //
 //    }//if (intr == HIGH)
-//
-//    // sensor
-//    _loop__Sensor();
+
+    // sensor
+    _loop__Sensor();
 
     // infra red
     _loop__InfraRed();
   
     
 }//loop()
-
-
-
-
-
 
