@@ -15,6 +15,13 @@
  *   
  *   <remarks>
  *   - chattering protection for i/o interrupt    => not coded
+ *   
+ *   <loop>
+ *     _loop__Serial()
+ *    %04d secs %s
+ *    if (intr == HIGH)
+ *    _loop__Sensor()
+ *    _loop__InfraRed()
  */
  
 // Toggle LED on pin 13 each second
@@ -27,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "28 1#1 s.2";
+char* id = "28 2#1 s.4";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -280,7 +287,7 @@ void _loop__Serial() {
     
     Serial.write('\n');
     
-  }
+  }//if(Serial.available()>0)
   
 }
 
@@ -303,6 +310,9 @@ void _loop__InfraRed() {
 
     t = 0 ;
     if (digitalRead(IRPIN) == LOW) {
+      
+      Serial.println("DEBUG: IRPIN --> LOW");
+      
          // リーダ部のチェックを行う
          t = micros() ;                          // 現在の時刻(us)を得る
          while (digitalRead(IRPIN) == LOW) ;  // HIGH(ON)になるまで待つ
@@ -339,8 +349,8 @@ void _loop__InfraRed() {
 
 void loop() {
 
-    // serial: receive message
-    _loop__Serial();
+//    // serial: receive message
+//    _loop__Serial();
     
     //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
     lcd.setCursor(0,1);
@@ -374,48 +384,53 @@ void loop() {
     
     lcd.print(line_2);
 
-    // interrupt
-    if (intr == HIGH) {
-
-      // D_2 => being pushed?
-//      while (IO_D_2 == HIGH) {
-    while (pin_intr == HIGH) {
-        
-      LED_OUT = HIGH;
-//        IO_D_4 = HIGH;
-        
-      }
-      
-      intr = LOW;
-      
-//      digitalWrite(pin, state);
-      digitalWrite(IO_D_4, state);
-      
-      // serial ==> end
-//      Serial.write("ending serial com...");
-//      Serial.end();
-      if (state == HIGH) {
-
-        Serial.write("ending serial com...");
-        Serial.write('\n');
-        Serial.end();
-        
-      } else {
-
-        Serial.begin(9600);
-        Serial.write("re-beginng serial com...");
-        Serial.write('\n');
-        
-      }
-
-    }
-
-    // sensor
-    _loop__Sensor();
+//    // interrupt
+//    if (intr == HIGH) {
+//  
+//        // D_2 => being pushed?
+//  //      while (IO_D_2 == HIGH) {
+//      while (pin_intr == HIGH) {
+//          
+//        LED_OUT = HIGH;
+//  //        IO_D_4 = HIGH;
+//          
+//        }
+//        
+//        intr = LOW;
+//        
+//  //      digitalWrite(pin, state);
+//        digitalWrite(IO_D_4, state);
+//        
+//        // serial ==> end
+//  //      Serial.write("ending serial com...");
+//  //      Serial.end();
+//  //      if (state == HIGH) {
+//  //
+//  //        Serial.write("ending serial com...");
+//  //        Serial.write('\n');
+//  //        Serial.end();
+//  //        
+//  //      } else {
+//  //
+//  //        Serial.begin(9600);
+//  //        Serial.write("re-beginng serial com...");
+//  //        Serial.write('\n');
+//  //        
+//  //      }
+//
+//    }//if (intr == HIGH)
+//
+//    // sensor
+//    _loop__Sensor();
 
     // infra red
     _loop__InfraRed();
   
     
 }//loop()
+
+
+
+
+
 
