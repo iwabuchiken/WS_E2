@@ -34,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "28 3#1 s.5";
+char* id = "28 3#1 s.6";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -445,10 +445,12 @@ void loop() {
       
 //      sprintf(line_2, "%04d secs %s", total, str_temp);
 //      sprintf(line_2, "%04d %s %s", 
-      sprintf(line_2, "%04d %c%c %s", 
+      sprintf(line_2, "%04d %c%c%c%c %s", 
           total,
           remocon_values[2][0],
           remocon_values[2][1],
+          remocon_values[3][0],
+          remocon_values[3][1],
 //          &remocon_values[2],
 //          &remocon_values_str[4], 
 //          remocon_values_str[5], 
@@ -512,6 +514,4 @@ void loop() {
   
     
 }//loop()
-
-
 
