@@ -34,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "28 2#2 s.5";
+char* id = "28 3#1 s.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -124,16 +124,36 @@ void DspData(int num,char *data)
       // ビット文字列データから数値に変換する
       for (j=0 ; j < x ; j++) {
            dt = 0 ;
+           
            for (i=0 ; i < 8 ; i++) {
-                if (*data++ == 0x31) bitSet(dt,i) ;
+                if (*data++ == 0x31) bitSet(dt,i) ;  // 0x31 --> '1' //ref http://web.cs.mun.ca/~michael/c/ascii-table.html
            }
+           
            Serial.print(dt,HEX) ; // ＨＥＸ(16進数)で表示
            Serial.write(' ') ;
+      
+           // sprintf
+           sprintf(remocon_values[j], "%x", dt);
+           
       }
+      
       Serial.println(')') ;     
       
-//      // set values
-//      aaa
+      //debug
+      for (j=0 ; j < x ; j++) {
+        
+        Serial.print("remocon_values: ") ;
+        Serial.print(j) ;
+        Serial.print(" / ");
+        Serial.print(remocon_values[j]);
+        
+        Serial.print(" ");
+        
+      }
+      
+//      Serial.print("data is ...: '") ;
+//      Serial.print(data) ;
+//      Serial.print("'") ;
       
 }
 
@@ -384,11 +404,13 @@ void _loop__InfraRed() {
               else            IRbit[i] = (char)0x30 ; // ON部分が短い
               i++ ;
          }
+         
          // データ有りなら表示を行う
          if (i != 0) {
               IRbit[i] = 0 ;
               DspData(i,IRbit) ;
          }
+         
     }
   
 }//_loop__InfraRed
@@ -481,16 +503,5 @@ void loop() {
   
     
 }//loop()
-
-
-
-
-
-
-
-
-
-
-
 
 
