@@ -34,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "28 3#1 s.6";
+char* id = "28 3#1 s.7";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -134,7 +134,8 @@ void DspData(int num,char *data)
            Serial.write(' ') ;
       
            // sprintf
-           sprintf(remocon_values[j], "%x", dt);
+           sprintf(remocon_values[j], "%02x", dt);
+//           sprintf(remocon_values[j], "%x", dt);
            
       }
       
@@ -514,4 +515,5 @@ void loop() {
   
     
 }//loop()
+
 
