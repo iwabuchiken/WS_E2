@@ -34,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "28 3#1 s.2";
+char* id = "28 3#1 s.5";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -95,7 +95,8 @@ volatile boolean intr = LOW;
 
 char serial_receive_char[1];
 
-char remocon_values[4][2];
+//char remocon_values[4][2];
+char remocon_values[5][2];
 
 char remocon_values_str[9];
 
@@ -212,6 +213,10 @@ void _setup__Init_RemoconValues() {
     sprintf(remocon_values[k], "%d%d", k,k);
     
   }
+  
+  // string end
+  
+  remocon_values[4][0] = '\0';
   
   // debug
   Serial.println("\n_setup__Init_RemoconValues --> done\n");
@@ -439,9 +444,13 @@ void loop() {
 //      dtostrf(temp, 3, 2, str_temp);  // n.w
       
 //      sprintf(line_2, "%04d secs %s", total, str_temp);
-      sprintf(line_2, "%04d %s %s", 
-          total, 
-          &remocon_values_str[4], 
+//      sprintf(line_2, "%04d %s %s", 
+      sprintf(line_2, "%04d %c%c %s", 
+          total,
+          remocon_values[2][0],
+          remocon_values[2][1],
+//          &remocon_values[2],
+//          &remocon_values_str[4], 
 //          remocon_values_str[5], 
           str_temp);
 
@@ -503,5 +512,6 @@ void loop() {
   
     
 }//loop()
+
 
 
