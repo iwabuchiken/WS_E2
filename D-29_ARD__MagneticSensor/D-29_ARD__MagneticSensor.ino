@@ -34,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 2#1 s.3";
+char* id = "29 2#1 s.3.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -158,7 +158,7 @@ void DspData(int num,char *data)
 //      Serial.print(data) ;
 //      Serial.print("'") ;
       
-}
+}//DspData
 
 float modTemp(int analog_val){
   
@@ -261,8 +261,9 @@ void setup() {
   
   // i/o interrupt
   attachInterrupt(digitalPinToInterrupt(1), intr_2, RISING);  //
+//  attachInterrupt(digitalPinToInterrupt(1), intr_2, RISING);  //
   
-  attachInterrupt(digitalPinToInterrupt(0), blink, RISING); //=> w.
+//  attachInterrupt(digitalPinToInterrupt(0), blink, RISING); //=> w.
 //  attachInterrupt(0, blink, RISING);
 
   // init: remocon_values
@@ -526,6 +527,7 @@ void loop() {
   
     
 }//loop()
+
 
 
 
