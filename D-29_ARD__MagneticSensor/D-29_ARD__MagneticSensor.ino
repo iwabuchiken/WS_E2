@@ -34,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 2#1 s.3.2";
+char* id = "29 2#1 s.3.3";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -260,7 +260,7 @@ void setup() {
 //  
   
   // i/o interrupt
-  attachInterrupt(digitalPinToInterrupt(1), intr_2, RISING);  //
+  attachInterrupt(digitalPinToInterrupt(3), intr_2, RISING);  //
 //  attachInterrupt(digitalPinToInterrupt(1), intr_2, RISING);  //
   
 //  attachInterrupt(digitalPinToInterrupt(0), blink, RISING); //=> w.
@@ -527,6 +527,7 @@ void loop() {
   
     
 }//loop()
+
 
 
 
