@@ -34,7 +34,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 2#1 s.1";
+char* id = "29 2#1 s.3";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -103,7 +103,8 @@ char remocon_values_str[9];
 /*****************************
  * funcs
  * 
- *    blink()     i/o interupt
+ *    blink()     i/o interupt    pin 2
+ *    intr_2()     i/o interupt   pin 3
  *    flash()     timer interupt
  * 
  ****************************/
@@ -259,7 +260,10 @@ void setup() {
 //  
   
   // i/o interrupt
-  attachInterrupt(0, blink, RISING);
+  attachInterrupt(digitalPinToInterrupt(1), intr_2, RISING);  //
+  
+  attachInterrupt(digitalPinToInterrupt(0), blink, RISING); //=> w.
+//  attachInterrupt(0, blink, RISING);
 
   // init: remocon_values
   _setup__Init_RemoconValues();
@@ -317,6 +321,12 @@ void _setup__LCD() {
 
   
 }
+
+void intr_2() {
+  
+  Serial.println("intr_2");
+  
+}//intr_2
 
 void blink()
 {
@@ -516,5 +526,7 @@ void loop() {
   
     
 }//loop()
+
+
 
 
