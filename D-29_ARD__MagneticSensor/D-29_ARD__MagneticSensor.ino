@@ -1,5 +1,5 @@
 /*
- * 2016/03/28 16:43:23
+ * 2016/05/03 14:04:58
  *   
  *   <i/o>
  *   D0,D1      serial com
@@ -22,6 +22,9 @@
  *    if (intr == HIGH)
  *    _loop__Sensor()
  *    _loop__InfraRed()
+ *    
+ *    <funcs>
+ *    flash()       => timer interrupt
  */
  
 // Toggle LED on pin 13 each second
@@ -34,7 +37,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 2#1 s.3.3";
+char* id = "29 4#1 s.1";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -169,6 +172,10 @@ float modTemp(int analog_val){
     return tempC;
   
  }
+
+ /*
+  * timer interrupt 
+  */
 void flash() {
 //  static boolean output = HIGH;
 
