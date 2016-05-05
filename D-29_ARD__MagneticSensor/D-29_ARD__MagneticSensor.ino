@@ -37,7 +37,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 5#1 s.4";
+char* id = "29 5#1 s.5.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -57,6 +57,8 @@ int sensorPin = A0;   // analog pin 0
 int sensorValue = 0;
 
 int pin_intr = 2;    // interrupt
+
+int pin_AttachInterrupt = 3;    // attach interrupt
 
 /****************************
  *    vars
@@ -314,6 +316,9 @@ void _setup__PinMode() {
     // infra red
     pinMode(IRPIN,INPUT) ;
     
+    // attach interrupt
+    pinMode(pin_AttachInterrupt, INPUT) ;
+    
 }
 
 void _setup__LCD() {
@@ -472,9 +477,11 @@ void _loop__Interupt_Pin() {
   }
 
   //test
-  if (digitalRead(pin_intr) == HIGH) {
+  if (digitalRead(pin_AttachInterrupt) == HIGH) {
+//    if (digitalRead(pin_intr) == HIGH) {
   
-    Serial.println("digitalRead(pin_intr) => HIGH");
+    Serial.println("digitalRead(pin_AttachInterrupt) => HIGH");
+//    Serial.println("digitalRead(pin_intr) => HIGH");
   
   }
 
@@ -520,6 +527,8 @@ void loop() {
     _loop__Interupt_Pin();
     
 }//loop()
+
+
 
 
 
