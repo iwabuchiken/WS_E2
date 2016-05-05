@@ -37,7 +37,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 5#1 s.7";
+char* id = "29 5#1 s.8";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -106,6 +106,9 @@ char serial_receive_char[1];
 char remocon_values[5][2];
 
 char remocon_values_str[9];
+
+// time the events
+volatile unsigned long t_2 ;
 
 /*****************************
  * funcs
@@ -349,6 +352,11 @@ void intr_2() {
     
     Serial.println("intr_2] f_intr_2 => set HIGH");
     
+    t_2 = micros();
+    
+    Serial.print("intr_2] t_2 => set --> ");
+    Serial.println(t_2);
+    
   }
 //  f_intr_2 = HIGH;
   
@@ -483,6 +491,12 @@ void _loop__Interupt_Pin() {
     f_intr_2 = LOW;
         
     Serial.println("f_intr_2 => set LOW");
+    
+    t_2 = micros() - t_2;
+    
+    Serial.print("t_2 =>");
+    Serial.println(t_2);
+    
 //    Serial.println("f_intr_2 => LOW");
     
   }
@@ -538,6 +552,8 @@ void loop() {
     _loop__Interupt_Pin();
     
 }//loop()
+
+
 
 
 
