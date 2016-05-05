@@ -37,7 +37,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 4#1 s.1";
+char* id = "29 5#1 s.2";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -85,7 +85,11 @@ int count = 0;      // incremented thru timer interrupt
 
 int total = 0;
 
+/*
+ *     flags
+ */
 volatile boolean sec_1 = LOW;   // flag --> up when 1 sec passed
+volatile boolean f_intr_2 = LOW;   // flag --> up when 1 sec passed
 
 //ref http://play-arduino.up.seesaa.net/image/dd22_attachinterrupt_rising.txt
 //int pin = 4;  // LED out
@@ -334,6 +338,11 @@ void intr_2() {
   
   Serial.println("intr_2");
   
+  // set flag
+  f_intr_2 = HIGH;
+  
+  Serial.println("f_intr_2 => HIGH");
+  
 }//intr_2
 
 void blink()
@@ -440,15 +449,29 @@ void _loop__InfraRed() {
   
 }//_loop__InfraRed
 
+void _loop__Interupt_Pin() {
+
+  // flag => HIGH?
+  if(f_intr_2 == HIGH) {
+  
+    Serial.println("intr_2 => detected") ;    // ビットデータで表示
+//    Serial.print("\n") ;
+//      Serial.write(" ( ") ;
+    
+    // reset: flag
+    f_intr_2 = LOW;
+        
+    Serial.println("f_intr_2 => LOW");
+    
+  }
+  
+}
+
 void loop() {
 
-//    // serial: receive message
-//    _loop__Serial();
-    
     //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
     lcd.setCursor(0,1);
 
-  //  sprintf(line_2, "%s %04d", "counting ", count);
     if (sec_1 == HIGH) {
 
       sec_1 = LOW;
@@ -456,75 +479,22 @@ void loop() {
       //ref http://stackoverflow.com/questions/27651012/arduino-sprintf-float-not-formatting answered Dec 26 '14 at 1:22
       //ref http://www.hobbytronics.co.uk/arduino-float-vars "An example will serve to illustrate the behaviour"
       dtostrf(temp, 6,3, str_temp);
-//      dtostrf(temp, 4,3, str_temp);     // n.w
-//      dtostrf(temp, 6,4, str_temp);   // "re-beginng serial com..."
-//      dtostrf(temp, 4, 3, str_temp);  // n.w
-
-//      dtostrf(temp, 6, 3, str_temp);  // n.w
-//      dtostrf(temp, 3, 2, str_temp);  // n.w
       
-//      sprintf(line_2, "%04d secs %s", total, str_temp);
-//      sprintf(line_2, "%04d %s %s", 
       sprintf(line_2, "%04d %c%c%c%c %s", 
           total,
           remocon_values[2][0],
           remocon_values[2][1],
           remocon_values[3][0],
           remocon_values[3][1],
-//          &remocon_values[2],
-//          &remocon_values_str[4], 
-//          remocon_values_str[5], 
           str_temp);
 
-      
-      //      sprintf(line_2, "%04d secs %03.2d", total, temp);
-//      sprintf(line_2, "%04d secs %03.2f", total, temp);
-//      sprintf(line_2, "%04d sec passed", total);
-      
       // serial
       Serial.println(line_2);
 
       
     }
-  //  sprintf(line_2, "%s %03d", "counting ", count);
     
     lcd.print(line_2);
-
-//    // interrupt
-//    if (intr == HIGH) {
-//  
-//        // D_2 => being pushed?
-//  //      while (IO_D_2 == HIGH) {
-//      while (pin_intr == HIGH) {
-//          
-//        LED_OUT = HIGH;
-//  //        IO_D_4 = HIGH;
-//          
-//        }
-//        
-//        intr = LOW;
-//        
-//  //      digitalWrite(pin, state);
-//        digitalWrite(IO_D_4, state);
-//        
-//        // serial ==> end
-//  //      Serial.write("ending serial com...");
-//  //      Serial.end();
-//  //      if (state == HIGH) {
-//  //
-//  //        Serial.write("ending serial com...");
-//  //        Serial.write('\n');
-//  //        Serial.end();
-//  //        
-//  //      } else {
-//  //
-//  //        Serial.begin(9600);
-//  //        Serial.write("re-beginng serial com...");
-//  //        Serial.write('\n');
-//  //        
-//  //      }
-//
-//    }//if (intr == HIGH)
 
     // sensor
     _loop__Sensor();
@@ -532,11 +502,9 @@ void loop() {
     // infra red
     _loop__InfraRed();
   
+    // pin interrupt
+    _loop__Interupt_Pin();
     
 }//loop()
-
-
-
-
 
 
