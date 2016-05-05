@@ -2,9 +2,13 @@
  * 2016/05/03 14:04:58
  *   
  *   <i/o>
- *   D0,D1      serial com
- *   D2         InfraRed receive
+ *   [pin num]	[usage]				[var signature]
+ *   D0,D1      serial com			IO_D_0, IO_D_1
+ *   D2         InfraRed receive	IRPIN
  *   D4,5,6     output
+ *   D3		     attachInterrupt	pin_AttachInterrupt
+ *   
+ *   A0		     analog input		sensorPin
  *   
  *   <description>
  *   - switch on/of      --> begin/end serial com
@@ -37,7 +41,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 5#1 s.8";
+char* id = "29 5#1 s.9";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -108,7 +112,8 @@ char remocon_values[5][2];
 char remocon_values_str[9];
 
 // time the events
-volatile unsigned long t_2 ;
+volatile unsigned long time_2 ;
+volatile unsigned long time_3 ;
 
 /*****************************
  * funcs
@@ -352,10 +357,10 @@ void intr_2() {
     
     Serial.println("intr_2] f_intr_2 => set HIGH");
     
-    t_2 = micros();
+    time_2 = micros();
     
-    Serial.print("intr_2] t_2 => set --> ");
-    Serial.println(t_2);
+    Serial.print("intr_2] time_2 => set --> ");
+    Serial.println(time_2);
     
   }
 //  f_intr_2 = HIGH;
@@ -492,10 +497,19 @@ void _loop__Interupt_Pin() {
         
     Serial.println("f_intr_2 => set LOW");
     
-    t_2 = micros() - t_2;
+    time_3 = micros();
     
-    Serial.print("t_2 =>");
-    Serial.println(t_2);
+    time_2 = time_3 - time_2;
+//    time_2 = micros() - time_2;
+    
+    Serial.print("time_3 =>");
+    Serial.println(time_3);
+    
+    Serial.print("time_2(diff) =>");
+    Serial.println(time_2);
+    
+//    Serial.print("time_2 =>");
+//    Serial.println(time_2);
     
 //    Serial.println("f_intr_2 => LOW");
     
@@ -552,6 +566,7 @@ void loop() {
     _loop__Interupt_Pin();
     
 }//loop()
+
 
 
 
