@@ -37,7 +37,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 5#1 s.2";
+char* id = "29 5#1 s.3";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -56,7 +56,7 @@ int IO_D_1    = 1;  //  D1  => serial send
 int sensorPin = A0;   // analog pin 0
 int sensorValue = 0;
 
-
+int pin_intr = 2;    // interrupt
 
 /****************************
  *    vars
@@ -68,8 +68,6 @@ char IRbit[64] ;
 char str_temp[6];    // dtostrf(temp, 4, 2, str_temp);
 
 float temp;
-
-int pin_intr = 2;    // interrupt
 
 int INTERVAL = 1;   // interval for --> timer interrupt
 
@@ -457,6 +455,14 @@ void _loop__Interupt_Pin() {
     Serial.println("intr_2 => detected") ;    // ビットデータで表示
 //    Serial.print("\n") ;
 //      Serial.write(" ( ") ;
+  
+    // wait
+//    while (digitalRead(pin_intr) == HIGH) {
+//      
+//      Serial.println("digitalRead(pin_intr) => HIGH");
+//      
+//    }
+    
     
     // reset: flag
     f_intr_2 = LOW;
@@ -506,5 +512,7 @@ void loop() {
     _loop__Interupt_Pin();
     
 }//loop()
+
+
 
 
