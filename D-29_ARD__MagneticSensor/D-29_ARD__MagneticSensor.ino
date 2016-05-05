@@ -37,7 +37,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 5#1 s.6";
+char* id = "29 5#1 s.7";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -339,12 +339,20 @@ void _setup__LCD() {
 
 void intr_2() {
   
-  Serial.println("intr_2");
+  Serial.println("intr_2] intr_2");
+//  Serial.println("intr_2");
   
   // set flag
-  f_intr_2 = HIGH;
+  if (f_intr_2 == LOW) {
+    
+    f_intr_2 = HIGH;
+    
+    Serial.println("intr_2] f_intr_2 => set HIGH");
+    
+  }
+//  f_intr_2 = HIGH;
   
-  Serial.println("f_intr_2 => HIGH");
+//  Serial.println("f_intr_2 => HIGH");
   
 }//intr_2
 
@@ -457,7 +465,8 @@ void _loop__Interupt_Pin() {
   // flag => HIGH?
   if(f_intr_2 == HIGH) {
   
-    Serial.println("intr_2 => detected") ;    // ビットデータで表示
+    Serial.println("_loop__Interupt_Pin] intr_2 => detected") ;    // ビットデータで表示
+//    Serial.println("intr_2 => detected") ;    // ビットデータで表示
 //    Serial.print("\n") ;
 //      Serial.write(" ( ") ;
   
@@ -473,7 +482,8 @@ void _loop__Interupt_Pin() {
     // reset: flag
     f_intr_2 = LOW;
         
-    Serial.println("f_intr_2 => LOW");
+    Serial.println("f_intr_2 => set LOW");
+//    Serial.println("f_intr_2 => LOW");
     
   }
 
@@ -528,6 +538,8 @@ void loop() {
     _loop__Interupt_Pin();
     
 }//loop()
+
+
 
 
 
