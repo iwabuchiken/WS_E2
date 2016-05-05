@@ -37,7 +37,7 @@
 #define IRPIN       2
 //#define DATA_POINT  5
 
-char* id = "29 5#1 s.5.2";
+char* id = "29 5#1 s.6";
 char* msg = "Welcome";
 
 LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -462,11 +462,12 @@ void _loop__Interupt_Pin() {
 //      Serial.write(" ( ") ;
   
     // wait
-//    while (digitalRead(pin_intr) == HIGH) {
-//      
-//      Serial.println("digitalRead(pin_intr) => HIGH");
-//      
-//    }
+    while (digitalRead(pin_AttachInterrupt) == HIGH) {
+//      while (digitalRead(pin_intr) == HIGH) {
+      
+      Serial.println("while: digitalRead(pin_AttachInterrupt) => HIGH");
+      
+    }
     
     
     // reset: flag
@@ -527,6 +528,7 @@ void loop() {
     _loop__Interupt_Pin();
     
 }//loop()
+
 
 
 
