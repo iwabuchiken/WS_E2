@@ -1,3 +1,7 @@
+#include <Wire.h>
+
+#include <skI2CLCDlib.h>
+
 /*
  * 2016/05/03 14:04:58
  *   
@@ -34,6 +38,8 @@
 // Toggle LED on pin 13 each second
 #include <MsTimer2.h>
 #include <LiquidCrystal.h>
+
+
 
 /*
  *    defines
