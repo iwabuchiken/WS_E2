@@ -41,7 +41,7 @@ void setup() {
 //  digitalWrite(10,HIGH);
   digitalWrite(SS,HIGH);
 
-//  pinMode(chipSelect,OUTPUT);
+  pinMode(chipSelect,OUTPUT);
 
   // we'll use the initialization code from the utility libraries
   // since we're just testing if the card is working!
