@@ -18,6 +18,10 @@ void setup()
     {
         ;
     }
+
+    //try:  2#1/steps.2
+    pinMode(4, OUTPUT);
+    
     Serial.print("Initializing SD card...");
     if (!SD.begin(4))
     {
