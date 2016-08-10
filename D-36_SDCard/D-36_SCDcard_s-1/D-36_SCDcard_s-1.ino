@@ -28,6 +28,8 @@ void setup() {
     ; // wait for serial port to connect. Needed for native USB port only
   }
 
+  // ref http://stackoverflow.com/questions/17503094/arduinio-sd-on-ethernet-shield-not-working-at-all answered Feb 28 at 21:32
+  SD.begin();
 
   Serial.print("\nInitializing SD card...");
 
@@ -38,6 +40,8 @@ void setup() {
   // ref http://embedjournal.com/arduino-sd-card-initialization-failed/
 //  digitalWrite(10,HIGH);
   digitalWrite(SS,HIGH);
+
+//  pinMode(chipSelect,OUTPUT);
 
   // we'll use the initialization code from the utility libraries
   // since we're just testing if the card is working!
