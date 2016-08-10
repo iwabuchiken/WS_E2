@@ -11,51 +11,35 @@ char* msg_1 = "36 1#1/1        ";
 
 
 File myFile;
+
+const int chipSelect = 4;
+
 void setup()
 {
-    Serial.begin(9600);
-    while (!Serial)
-    {
-        ;
-    }
+  // シリアルポート初期化
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // USBケーブルが接続されるのを待つ。この待ちループは Leonardo のみ必要。
+  }
 
-    //try:  2#1/steps.2
-    pinMode(4, OUTPUT);
-    
-    Serial.print("Initializing SD card...");
-    if (!SD.begin(4))
-    {
-        Serial.println("initialization failed!");
-        return;
-    }
-    Serial.println("initialization done.");
-    myFile = SD.open("test.txt", FILE_WRITE);
-    if (myFile)
-    {
-        Serial.print("Writing to test.txt...");
-        myFile.println("testing 1, 2, 3.");
-        myFile.close();
-        Serial.println("done.");
-    }
-    else
-    {
-        Serial.println("error opening test.txt");
-    }
-    myFile = SD.open("test.txt");
-    if (myFile)
-    {
-        Serial.println("test.txt:");
-        while (myFile.available())
-        {
-            Serial.write(myFile.read());
-        }
-        myFile.close();
-    }
-    else
-    {
-        Serial.println("error opening test.txt");
-    }
+  Serial.print(F("Initializing SD card..."));
+
+  // SSピン（Unoは10番、Megaは53番）は使わない場合でも出力にする必要があります。
+  // そうしないと、SPIがスレーブモードに移行し、SDライブラリが動作しなくなります。
+  pinMode(SS, OUTPUT);
+
+  // SDライブラリを初期化
+  if (!SD.begin(chipSelect)) {
+    Serial.println(F("Card failed, or not present"));
+    // 失敗、何もしない
+    while(1);
+  }
+  Serial.println(F("ok."));
+
+//  // 日付と時刻を返す関数を登録
+//  SdFile::dateTimeCallback( &dateTime );
 }
+
 void loop()
 {
 
