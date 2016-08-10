@@ -28,6 +28,10 @@ void setup()
   // そうしないと、SPIがスレーブモードに移行し、SDライブラリが動作しなくなります。
   pinMode(SS, OUTPUT);
 
+  // ref http://embedjournal.com/arduino-sd-card-initialization-failed/
+//  digitalWrite(10,HIGH);
+  digitalWrite(SS,HIGH);
+  
   // SDライブラリを初期化
   if (!SD.begin(chipSelect)) {
     Serial.println(F("Card failed, or not present"));
