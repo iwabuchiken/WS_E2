@@ -10,19 +10,26 @@
 char* msg_1 = "36 1#1/1        ";
 
 
-File myFile;
+// set up variables using the SD utility library functions:
+Sd2Card card;
+SdVolume volume;
+SdFile root;
 
+// change this to match your SD shield or module;
+// Arduino Ethernet shield: pin 4
+// Adafruit SD shields and modules: pin 10
+// Sparkfun SD shield: pin 8
 const int chipSelect = 4;
 
-void setup()
-{
-  // シリアルポート初期化
+void setup() {
+  // Open serial communications and wait for port to open:
   Serial.begin(9600);
   while (!Serial) {
-    ; // USBケーブルが接続されるのを待つ。この待ちループは Leonardo のみ必要。
+    ; // wait for serial port to connect. Needed for native USB port only
   }
 
-  Serial.print(F("Initializing SD card..."));
+
+  Serial.print("\nInitializing SD card...");
 
   // SSピン（Unoは10番、Megaは53番）は使わない場合でも出力にする必要があります。
   // そうしないと、SPIがスレーブモードに移行し、SDライブラリが動作しなくなります。
@@ -31,17 +38,18 @@ void setup()
   // ref http://embedjournal.com/arduino-sd-card-initialization-failed/
 //  digitalWrite(10,HIGH);
   digitalWrite(SS,HIGH);
-  
-  // SDライブラリを初期化
-  if (!SD.begin(chipSelect)) {
-    Serial.println(F("Card failed, or not present"));
-    // 失敗、何もしない
-    while(1);
-  }
-  Serial.println(F("ok."));
 
-//  // 日付と時刻を返す関数を登録
-//  SdFile::dateTimeCallback( &dateTime );
+  // we'll use the initialization code from the utility libraries
+  // since we're just testing if the card is working!
+  if (!card.init(SPI_HALF_SPEED, chipSelect)) {
+    Serial.println("initialization failed. Things to check:");
+    Serial.println("* is a card inserted?");
+    Serial.println("* is your wiring correct?");
+    Serial.println("* did you change the chipSelect pin to match your shield or module?");
+    return;
+  } else {
+    Serial.println("Wiring is correct and a card is present.");
+  }
 }
 
 void loop()
