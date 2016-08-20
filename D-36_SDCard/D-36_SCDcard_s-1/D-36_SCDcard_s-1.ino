@@ -29,7 +29,8 @@ void setup() {
   }
 
   // ref http://stackoverflow.com/questions/17503094/arduinio-sd-on-ethernet-shield-not-working-at-all answered Feb 28 at 21:32
-  SD.begin();
+//  SD.begin();
+  SD.begin(chipSelect);
 
   Serial.print("\nInitializing SD card...");
 
