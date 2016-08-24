@@ -7,7 +7,7 @@
 #include <SD.h>
 
 //         0111111001111110       
-char* msg_1 = "38 2#1 steps.1";
+char* msg_1 = "38 2#1 steps.2";
 
 
 // set up variables using the SD utility library functions:
@@ -58,7 +58,26 @@ void setup() {
   } else {
     Serial.println("Wiring is correct and a card is present.");
   }
-}
+
+  /*
+   * card type
+   */
+  Serial.print("\nCard type: ");
+  switch (card.type()) {
+    case SD_CARD_TYPE_SD1:
+    Serial.println("SD1");
+    break;
+    case SD_CARD_TYPE_SD2:
+    Serial.println("SD2");
+    break;
+    case SD_CARD_TYPE_SDHC:
+    Serial.println("SDHC");
+    break;
+    default:
+    Serial.println("Unknown");
+  }//switch (card.type())
+  
+}//void setup()
 
 void loop()
 {
