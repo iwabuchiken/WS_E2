@@ -7,13 +7,15 @@
 #include <SD.h>
 
 //         0111111001111110       
-char* msg_1 = "38 2#2 steps.1";
+char* msg_1 = "38 2#2 steps.2";
 
 
 // set up variables using the SD utility library functions:
-Sd2Card card;
-SdVolume volume;
-SdFile root;
+//Sd2Card card;
+//SdVolume volume;
+//SdFile root;
+
+File myFile;
 
 // change this to match your SD shield or module;
 // Arduino Ethernet shield: pin 4
@@ -41,7 +43,26 @@ void setup() {
       return;
   }
   Serial.println("initialization done.");
- 
+
+  /* 
+   *  write file
+   */
+    myFile = SD.open("test.txt", FILE_WRITE);
+    if (myFile)
+    {
+        Serial.print("Writing to test.txt...");
+        myFile.println("testing 1, 2, 3.");
+
+//        myFile.println(millis());
+        
+        myFile.close();
+        Serial.println("done.");
+        
+    }
+    else
+    {
+        Serial.println("error opening test.txt");
+    }
   
 }//void setup()
 
