@@ -7,7 +7,7 @@
 #include <SD.h>
 
 //         0111111001111110       
-char* msg_1 = "38 2#1 steps.2";
+char* msg_1 = "38 2#1 steps.4";
 
 
 // set up variables using the SD utility library functions:
@@ -76,6 +76,41 @@ void setup() {
     default:
     Serial.println("Unknown");
   }//switch (card.type())
+
+  /*
+   * init volume
+   */
+   if (!volume.init(card)) {
+      Serial.println("Could not find FAT16/FAT32 partition.\nMake sure you've formatted the card");
+      return;
+    } else {
+
+      Serial.println("init volume => done");
+      
+    }
+
+  /*
+   * - volume size
+   * - list files
+   */
+  uint32_t volumesize;
+  Serial.print("\nVolume type is FAT");
+  Serial.println(volume.fatType(), DEC);
+  Serial.println();
+  volumesize = volume.blocksPerCluster(); // clusters are collections of blocks
+  volumesize *= volume.clusterCount(); // we'll have a lot of clusters
+  volumesize *= 512; // SD card blocks are always 512 bytes
+  Serial.print("Volume size (bytes): ");
+  Serial.println(volumesize);
+  Serial.print("Volume size (Kbytes): ");
+  volumesize /= 1024;
+  Serial.println(volumesize);
+  Serial.print("Volume size (Mbytes): ");
+  volumesize /= 1024;
+  Serial.println(volumesize);
+  Serial.println("\nFiles found on the card (name, date and size in bytes): ");
+  root.openRoot(volume);
+  root.ls(LS_R | LS_DATE | LS_SIZE);
   
 }//void setup()
 
