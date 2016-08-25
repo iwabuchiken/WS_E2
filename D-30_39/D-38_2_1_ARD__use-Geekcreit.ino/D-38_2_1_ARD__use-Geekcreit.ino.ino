@@ -7,7 +7,7 @@
 #include <SD.h>
 
 //         0111111001111110       
-char* msg_1 = "38 2#2 steps.3";
+char* msg_1 = "38 2#2 steps.4";
 
 
 // set up variables using the SD utility library functions:
@@ -16,6 +16,8 @@ SdVolume volume;
 SdFile root;
 
 File myFile;
+
+char* fname = "test_4.txt";
 
 // change this to match your SD shield or module;
 // Arduino Ethernet shield: pin 4
@@ -119,6 +121,60 @@ void setup() {
    * ref https://github.com/adafruit/SD/blob/master/utility/SdFile.cpp
    * search https://www.google.co.jp/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=arduino+sdfile
    */
+
+   _setup__OpenClose_Files_2();
+
+   // read file
+   _setup__Read_Files();
+     
+}//void setup()
+
+void _setup__Read_Files() {
+
+    myFile = SD.open(fname);
+    if (myFile)
+    {
+//        Serial.println("test.txt:");
+        Serial.print(fname);
+        Serial.print(": ");
+        
+        while (myFile.available())
+        {
+            Serial.write(myFile.read());
+        }
+        myFile.close();
+    }
+    else
+    {
+        Serial.println("error opening test.txt");
+    }
+  
+}
+
+void _setup__OpenClose_Files_2() {
+
+    myFile = SD.open("test_4.txt", FILE_WRITE);
+    if (myFile)
+    {
+      Serial.print("file => opened");
+      
+        Serial.print("Writing to test.txt...");
+        myFile.println("testing 1, 2, 3.");
+        myFile.close();
+        Serial.println("done.");
+    }
+    else
+    {
+        Serial.println("error opening test.txt");
+    }
+
+}
+
+
+void _setup__OpenClose_Files() {
+
+//    _setup__OpenClose_Files();
+   
 //  uint8_t res = SdFile.open(root, "test-2.txt", O_APPEND);
   uint8_t res = root.open(root, "test-2.txt", O_APPEND);
 
@@ -144,9 +200,9 @@ void setup() {
     Serial.println("unknown result");
     
   }
-   
-  
-}//void setup()
+
+}
+
 
 void loop()
 {
