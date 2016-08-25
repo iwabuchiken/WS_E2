@@ -9,7 +9,7 @@
 #include <MsTimer2.h>
 //#include <LiquidCrystal.h>
 
-char* id = "38 s-3#1 steps.3";
+char* id = "38 s-3#1 steps.4";
 char* msg = "Welcome";
 
 //LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -23,18 +23,26 @@ int INTERVAL = 1000;
 
 int count = 0;
 
-//int INTERVAL_2 = 1500;
-//
-//char num_s[4];
-//
+int sensorValue = 0;
+
 char line_2[30];
+
+/*
+ * pins
+ */
+int sensorPin = A0;   // analog pin 0
 
 void timer_intr() {
 
+  // analog input
+  sensorValue = analogRead(sensorPin);    //アナログ0番ピンからの入力値を取得
+  
   // disp: time
   count += 1;
 
-  sprintf(line_2, "[%07ld] %s => %03d", millis(), "count", count);
+  sprintf(line_2, "[%07ld] %s => %03d (%05d)", 
+        millis(), "count", count, sensorValue);
+//  sprintf(line_2, "[%07ld] %s => %03d", millis(), "count", count);
 //  sprintf(line_2, "[%06ld] %s => %03d", millis(), "count", count);
 //  sprintf(line_2, "[%d] %s => %03d", millis(), "count", count);
 //  sprintf(line_2, "%s => %03d", "count", count);
@@ -90,6 +98,7 @@ void loop() {
 //  lcd.print(line_2);
   
 }
+
 
 
 
