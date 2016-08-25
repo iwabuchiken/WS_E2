@@ -9,7 +9,7 @@
 #include <MsTimer2.h>
 //#include <LiquidCrystal.h>
 
-char* id = "38 s-3#1 steps.4";
+char* id = "38 s-3#1 steps.5";
 char* msg = "Welcome";
 
 //LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -26,6 +26,7 @@ int count = 0;
 int sensorValue = 0;
 
 char line_2[30];
+char clocl_label[10];
 
 /*
  * pins
@@ -40,6 +41,11 @@ void timer_intr() {
   // disp: time
   count += 1;
 
+  // convert: count to clock label
+  conv_Count_2_ClockLabel(clocl_label, count);
+
+  Serial.println(clocl_label);
+  
   sprintf(line_2, "[%07ld] %s => %03d (%05d)", 
         millis(), "count", count, sensorValue);
 //  sprintf(line_2, "[%07ld] %s => %03d", millis(), "count", count);
@@ -96,6 +102,29 @@ void loop() {
 //  sprintf(line_2, "%s %03d", "counting ", count);
 //  
 //  lcd.print(line_2);
+  
+}
+
+void conv_Count_2_ClockLabel(char* label, int count) {
+
+  int min = count / 60;
+  
+  int sec = count % 60;
+
+  int hour = 0;
+  /*
+   * minutes => more than 60
+   */
+  if (min >= 60) {
+	  
+	  hour = min / 60;
+	  
+	  min = min - hour * 60;
+	  
+  }
+  
+  sprintf(label, "%02d:%02d:%02d", hour, min, sec);
+//  sprintf(label, "%d:%02d", min, sec);
   
 }
 
