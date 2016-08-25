@@ -9,7 +9,7 @@
 #include <MsTimer2.h>
 //#include <LiquidCrystal.h>
 
-char* id = "38 s-3#1 steps.5";
+char* id = "38 s-3#1 steps.6";
 char* msg = "Welcome";
 
 //LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -21,7 +21,8 @@ char* msg = "Welcome";
 int INTERVAL = 1000;
 //int INTERVAL = 100;
 
-int count = 0;
+int count = 3600;
+//int count = 0;
 
 int sensorValue = 0;
 
@@ -116,22 +117,15 @@ void conv_Count_2_ClockLabel(char* label, int count) {
    * minutes => more than 60
    */
   if (min >= 60) {
-	  
-	  hour = min / 60;
-	  
-	  min = min - hour * 60;
-	  
+    
+    hour = min / 60;
+    
+    min = min - hour * 60;
+    
   }
   
   sprintf(label, "%02d:%02d:%02d", hour, min, sec);
 //  sprintf(label, "%d:%02d", min, sec);
   
 }
-
-
-
-
-
-
-
 
