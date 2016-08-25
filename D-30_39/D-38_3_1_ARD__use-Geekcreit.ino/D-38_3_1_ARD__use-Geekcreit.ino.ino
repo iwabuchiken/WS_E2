@@ -9,7 +9,7 @@
 #include <MsTimer2.h>
 //#include <LiquidCrystal.h>
 
-char* id = "38 s-3#1 steps.2";
+char* id = "38 s-3#1 steps.3";
 char* msg = "Welcome";
 
 //LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -34,7 +34,8 @@ void timer_intr() {
   // disp: time
   count += 1;
 
-  sprintf(line_2, "[%06ld] %s => %03d", millis(), "count", count);
+  sprintf(line_2, "[%07ld] %s => %03d", millis(), "count", count);
+//  sprintf(line_2, "[%06ld] %s => %03d", millis(), "count", count);
 //  sprintf(line_2, "[%d] %s => %03d", millis(), "count", count);
 //  sprintf(line_2, "%s => %03d", "count", count);
   
@@ -89,6 +90,7 @@ void loop() {
 //  lcd.print(line_2);
   
 }
+
 
 
 
