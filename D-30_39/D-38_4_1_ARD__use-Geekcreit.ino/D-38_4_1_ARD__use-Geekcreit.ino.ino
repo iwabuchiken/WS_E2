@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-4#1 steps.2";
+char* id = "38 s-4#1 steps.3";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -189,7 +189,26 @@ void _setup_SDCard() {
   root.openRoot(volume);
   root.ls(LS_R | LS_DATE | LS_SIZE);
 
-  
+  /*
+   * write: opening messages
+   */
+  myFile = SD.open(fname, FILE_WRITE);
+  if (myFile)
+  {
+    Serial.println("file => opened");
+    
+      Serial.print("Writing to test.txt...");
+      
+      myFile.println(id);
+      myFile.close();
+      
+      Serial.println("done.");
+  }
+  else
+  {
+      Serial.println("error opening test.txt");
+  }
+
   
 }//_setup_SDCard()
 
@@ -233,6 +252,7 @@ void conv_Count_2_ClockLabel(char* label, int count) {
 //  sprintf(label, "%d:%02d", min, sec);
   
 }
+
 
 
 
