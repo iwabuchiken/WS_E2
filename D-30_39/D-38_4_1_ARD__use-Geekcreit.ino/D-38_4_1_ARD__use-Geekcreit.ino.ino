@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-4#1 steps.3";
+char* id = "38 s-4#1 steps.4";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -32,8 +32,8 @@ char* fname = "20160826.txt";
 int INTERVAL = 1000;
 //int INTERVAL = 100;
 
-int count = 3600;
-//int count = 0;
+//int count = 3600;
+int count = 0;
 
 int sensorValue = 0;
 
@@ -69,6 +69,11 @@ void timer_intr() {
   
   Serial.println(line_2);
 
+  /*
+   * write: sdcard
+   */
+  write_SDCard(fname, line_2);
+  
 }
 
 void setup() {
@@ -253,6 +258,29 @@ void conv_Count_2_ClockLabel(char* label, int count) {
   
 }
 
+void write_SDCard(char* filename, char* line_2) {
+  
+    /*
+     * write: 
+     */
+    myFile = SD.open(filename, FILE_WRITE);
+    if (myFile)
+    {
+      Serial.println("file => opened");
+      
+//        Serial.print("Writing to test.txt...");
+        
+        myFile.println(line_2);
+        myFile.close();
+        
+        Serial.println("done.");
+    }
+    else
+    {
+        Serial.println("error opening test.txt");
+    }
+  
+}
 
 
 
