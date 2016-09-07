@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-8#2 steps.3-3";
+char* id = "38 s-8#2 steps.3-4";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -23,7 +23,8 @@ File myFile;
 
 //char* fname = "20160826.txt";
 //char* fname = "20160907.txt";
-char* fname = "160907_1.txt";
+char* fname = "16090701.txt";
+//char* fname = "160907_1.txt";
 //char* fname = "160907-1.txt";
 
 //LiquidCrystal lcd(7,8,9,10,11,12,13);
@@ -277,7 +278,7 @@ void loop() {
   /*
    * pin interrupt
    */
-  _loop_PinIntr();
+//  _loop_PinIntr();
   
 //  //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
 //  lcd.setCursor(0,1);
@@ -384,6 +385,8 @@ void intr_pin() {
 
 
 }
+
+
 
 
 
