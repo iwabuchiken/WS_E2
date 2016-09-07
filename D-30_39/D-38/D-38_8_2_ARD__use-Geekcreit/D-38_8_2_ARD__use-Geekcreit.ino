@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-8#2 steps.3-5";
+char* id = "38 s-8#2 steps.3-6";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -338,6 +338,7 @@ void write_SDCard(char* filename, char* line_2) {
      * write: 
      */
     myFile = SD.open(filename, FILE_WRITE);
+    
     if (myFile)
     {
       Serial.println("file => opened");
@@ -351,7 +352,9 @@ void write_SDCard(char* filename, char* line_2) {
     }
     else
     {
-        Serial.println("error opening test.txt");
+        Serial.println("error opening: ");
+        Serial.println(filename);
+        
     }
   
 }
@@ -385,6 +388,7 @@ void intr_pin() {
 
 
 }
+
 
 
 
