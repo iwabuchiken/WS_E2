@@ -21,7 +21,8 @@ SdFile root;
 
 File myFile;
 
-char* fname = "20160826.txt";
+//char* fname = "20160826.txt";
+char* fname = "20160907.txt";
 
 //LiquidCrystal lcd(7,8,9,10,11,12,13);
 //
