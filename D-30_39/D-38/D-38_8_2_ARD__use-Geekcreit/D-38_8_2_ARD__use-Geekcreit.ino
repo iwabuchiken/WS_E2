@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-8#2 steps.3-6";
+char* id = "38 s-9#1 steps.1";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -250,7 +250,8 @@ void _setup_SDCard() {
     
       Serial.print("Writing to: ");
       Serial.println(fname);
-      
+
+      myFile.println("=================================");
       myFile.println(id);
       myFile.close();
       
