@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-8#2 steps.2";
+char* id = "38 s-8#2 steps.3";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -54,7 +54,15 @@ int interrupt_pin = 2;
 /*
  * flags
  */
-int flag_PinIntr = 0;
+int flag_PinIntr = 0;        // f1 --> see memo for 'f1'
+
+int flag_PinIntr_Occurred = 0;    // f3
+
+int flag_PinIntr_Not_Occurred = 0;  // f4
+
+
+
+int flag_Changed = 0;
 
 /*
  * values
@@ -283,11 +291,42 @@ void _loop_PinIntr() {
 //    delay(100);
     delay(250);
     
-    flag_PinIntr = 0;
+    // reset flag
+    flag_PinIntr_Not_Occurred = 0;
     
-    Serial.println("pin intr --> occurred");
+//    flag_PinIntr = 0;
     
-  }
+    if (flag_PinIntr_Occurred == 0) {
+      
+      Serial.println("pin intr --> occurred; write file --> starts");
+      
+      flag_PinIntr_Occurred = 1;
+      
+    } else {
+      
+    }
+    
+//    Serial.println("pin intr --> occurred: write file --> starts");
+//    Serial.println("pin intr --> occurred");
+    
+//    flag_Changed = 1;
+    
+  } else {
+//  } else (flag_PinIntr == 0) {
+    
+    // reset flag
+    flag_PinIntr_Occurred = 0;
+    
+    // judge
+    if (flag_PinIntr_Not_Occurred == 0) {
+      
+      Serial.println("pin intr --> occurred; write file --> ends");
+      
+      flag_PinIntr_Not_Occurred = 1;
+      
+    }
+    
+  }//if (flag_PinIntr == 1)
   
 }//_loop_PinIntr()
 
@@ -341,13 +380,19 @@ void write_SDCard(char* filename, char* line_2) {
 void intr_pin() {
   
   // set flag
-  flag_PinIntr = 1;
+  if (flag_PinIntr == 0) {
+     
+    flag_PinIntr = 1;
+    
+  } else {
+    
+    flag_PinIntr = 0;
+    
+  }
+  
+//  flag_PinIntr = 1;
   
 //  Serial.println("pin intr ==> occurred");
 
 
 }
-
-
-
-
