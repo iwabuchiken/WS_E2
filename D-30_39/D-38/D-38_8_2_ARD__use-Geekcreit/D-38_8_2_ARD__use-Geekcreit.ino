@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-8#2 steps.3-1";
+char* id = "38 s-8#2 steps.3-2";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -379,7 +379,15 @@ void intr_pin() {
   if (flag_PinIntr == 0) {
      
     flag_PinIntr = 1;
+    
+    // message
+    Serial.println("pin interrupt => detected");
 
+  } else {
+    
+  // message
+  Serial.println("flag_PinIntr => not 0");
+      
   }
   
 //  } else {
@@ -394,4 +402,5 @@ void intr_pin() {
 
 
 }
+
 
