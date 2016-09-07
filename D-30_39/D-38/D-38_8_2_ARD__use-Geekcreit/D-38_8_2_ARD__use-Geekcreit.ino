@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-8#2 steps.1";
+char* id = "38 s-8#2 steps.2";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -51,6 +51,20 @@ const int chipSelect = 4;
 
 int interrupt_pin = 2;
 
+/*
+ * flags
+ */
+int flag_PinIntr = 0;
+
+/*
+ * values
+ * 
+ */
+//int chattering_time = 200;
+
+/************************************
+ * funcs
+ *************************************/
 void timer_intr() {
 
   // analog input
@@ -245,6 +259,11 @@ void _setup_Timer2() {
 
 void loop() {
 
+  /*
+   * pin interrupt
+   */
+  _loop_PinIntr();
+  
 //  //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
 //  lcd.setCursor(0,1);
 ////  sprintf(line_2, "%s %02d", "counting...", count);
@@ -253,6 +272,24 @@ void loop() {
 //  lcd.print(line_2);
   
 }
+
+void _loop_PinIntr() {
+  
+  // judge
+  if (flag_PinIntr == 1) {
+    
+    // chattering safety
+//    delay(chattering_time);
+//    delay(100);
+    delay(250);
+    
+    flag_PinIntr = 0;
+    
+    Serial.println("pin intr --> occurred");
+    
+  }
+  
+}//_loop_PinIntr()
 
 void conv_Count_2_ClockLabel(char* label, int count) {
 
@@ -303,8 +340,12 @@ void write_SDCard(char* filename, char* line_2) {
 
 void intr_pin() {
   
-  Serial.println("pin intr ==> occurred");
+  // set flag
+  flag_PinIntr = 1;
   
+//  Serial.println("pin intr ==> occurred");
+
+
 }
 
 
