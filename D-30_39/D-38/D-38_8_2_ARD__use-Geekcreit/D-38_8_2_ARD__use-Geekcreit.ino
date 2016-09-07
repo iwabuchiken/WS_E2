@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-8#2 steps.3-2";
+char* id = "38 s-8#2 steps.3-3";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -23,7 +23,8 @@ File myFile;
 
 //char* fname = "20160826.txt";
 //char* fname = "20160907.txt";
-char* fname = "160907-1.txt";
+char* fname = "160907_1.txt";
+//char* fname = "160907-1.txt";
 
 //LiquidCrystal lcd(7,8,9,10,11,12,13);
 //
@@ -246,7 +247,8 @@ void _setup_SDCard() {
   {
     Serial.println("file => opened");
     
-      Serial.print("Writing to test.txt...");
+      Serial.print("Writing to: ");
+      Serial.println(fname);
       
       myFile.println(id);
       myFile.close();
@@ -255,7 +257,9 @@ void _setup_SDCard() {
   }
   else
   {
-      Serial.println("error opening test.txt");
+      Serial.print("error opening: ");
+      Serial.println(fname);
+      
   }
 
   
@@ -294,35 +298,13 @@ void _loop_PinIntr() {
 //    delay(100);
     delay(250);
     
-    // judge
-    if (flag_PinIntr_Loop == 0) {
-      
-      // loop flag => set
-      flag_PinIntr_Loop = 1;
-      
-      // message
-      Serial.println("write file => starts");
-      
-      // interrupt flag => reset
-      flag_PinIntr = 0;
-      
-    } else {
+    // message
+    Serial.println("flag_PinIntr => 1");
+    
+    // reset
+    flag_PinIntr = 0;
 
-      // loop flag => set
-      flag_PinIntr_Loop = 0;
-      
-      // message
-      Serial.println("write file => ends");
-      
-      // interrupt flag => reset
-      flag_PinIntr = 0;
-
-    }
-    
-    
-  } else {
-    
-  }//if (flag_PinIntr == 1)
+  }
   
 }//_loop_PinIntr()
 
@@ -385,8 +367,8 @@ void intr_pin() {
 
   } else {
     
-  // message
-  Serial.println("flag_PinIntr => not 0");
+    // message
+    Serial.println("flag_PinIntr => not 0");
       
   }
   
@@ -402,5 +384,7 @@ void intr_pin() {
 
 
 }
+
+
 
 
