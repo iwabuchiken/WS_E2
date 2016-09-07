@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-8#2 steps.3";
+char* id = "38 s-8#2 steps.3-1";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -56,9 +56,11 @@ int interrupt_pin = 2;
  */
 int flag_PinIntr = 0;        // f1 --> see memo for 'f1'
 
-int flag_PinIntr_Occurred = 0;    // f3
+int flag_PinIntr_Loop = 0;        // f2
 
-int flag_PinIntr_Not_Occurred = 0;  // f4
+//int flag_PinIntr_Occurred = 0;    // f3
+//
+//int flag_PinIntr_Not_Occurred = 0;  // f4
 
 
 
@@ -98,6 +100,7 @@ void timer_intr() {
   /*
    * write: sdcard
    */
+  
   write_SDCard(fname, line_2);
   
 }
@@ -291,40 +294,33 @@ void _loop_PinIntr() {
 //    delay(100);
     delay(250);
     
-    // reset flag
-    flag_PinIntr_Not_Occurred = 0;
-    
-//    flag_PinIntr = 0;
-    
-    if (flag_PinIntr_Occurred == 0) {
+    // judge
+    if (flag_PinIntr_Loop == 0) {
       
-      Serial.println("pin intr --> occurred; write file --> starts");
+      // loop flag => set
+      flag_PinIntr_Loop = 1;
       
-      flag_PinIntr_Occurred = 1;
+      // message
+      Serial.println("write file => starts");
+      
+      // interrupt flag => reset
+      flag_PinIntr = 0;
       
     } else {
+
+      // loop flag => set
+      flag_PinIntr_Loop = 0;
       
+      // message
+      Serial.println("write file => ends");
+      
+      // interrupt flag => reset
+      flag_PinIntr = 0;
+
     }
     
-//    Serial.println("pin intr --> occurred: write file --> starts");
-//    Serial.println("pin intr --> occurred");
-    
-//    flag_Changed = 1;
     
   } else {
-//  } else (flag_PinIntr == 0) {
-    
-    // reset flag
-    flag_PinIntr_Occurred = 0;
-    
-    // judge
-    if (flag_PinIntr_Not_Occurred == 0) {
-      
-      Serial.println("pin intr --> occurred; write file --> ends");
-      
-      flag_PinIntr_Not_Occurred = 1;
-      
-    }
     
   }//if (flag_PinIntr == 1)
   
@@ -383,12 +379,14 @@ void intr_pin() {
   if (flag_PinIntr == 0) {
      
     flag_PinIntr = 1;
-    
-  } else {
-    
-    flag_PinIntr = 0;
-    
+
   }
+  
+//  } else {
+//    
+//    flag_PinIntr = 0;
+//    
+//  }
   
 //  flag_PinIntr = 1;
   
@@ -396,3 +394,4 @@ void intr_pin() {
 
 
 }
+
