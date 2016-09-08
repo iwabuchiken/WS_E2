@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.24";
+char* id = "38 s-9#1 steps.25";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -21,22 +21,10 @@ SdFile root;
 
 File myFile;
 
-//char* fname = "20160826.txt";
-//char* fname = "20160907.txt";
 char* fname = "16090801.txt";
-//char* fname = "160907_1.txt";
-//char* fname = "160907-1.txt";
-
-//LiquidCrystal lcd(7,8,9,10,11,12,13);
-//
-//int LED_OUT = 0;
-//int LED_OUT_2 = 1;
-////int LED_OUT = 13;
 
 int INTERVAL = 1000;
-//int INTERVAL = 100;
 
-//int count = 3600;
 int count = 0;
 
 int sensorValue = 0;
@@ -59,14 +47,6 @@ int interrupt_pin = 2;
 int flag_PinIntr = 0;        // f1 --> see memo for 'f1'
 
 int flag_PinIntr_Loop = 0;        // f2
-
-//int flag_PinIntr_Occurred = 0;    // f3
-//
-//int flag_PinIntr_Not_Occurred = 0;  // f4
-
-
-
-int flag_Changed = 0;
 
 /*
  * values
@@ -132,19 +112,12 @@ void setup() {
      * timer
      */
     _setup_Timer2();
-//  MsTimer2::set(INTERVAL, timer_intr); // 500ms period　←500ミリ秒おきにflash関数の実行を指定 
-//  MsTimer2::start();
 
     /*
      * sdcard
      */
     _setup_SDCard();
 
-    /*
-     * pin intr
-     */
-//    _setup_Interrupt();
-    
     /*
      * pins
      */
@@ -161,14 +134,14 @@ void _setup_Pins() {
   
 }//_setup_Pins()
 
-void _setup_Interrupt() {
-  
-  // attach
-  attachInterrupt(
-      digitalPinToInterrupt(interrupt_pin), 
-      intr_pin, RISING);
-  
-}//_setup_Interrupt()
+//void _setup_Interrupt() {
+//  
+//  // attach
+//  attachInterrupt(
+//      digitalPinToInterrupt(interrupt_pin), 
+//      intr_pin, RISING);
+//  
+//}//_setup_Interrupt()
 
 void _setup_SDCard() {
 
@@ -288,39 +261,7 @@ void _setup_Timer2() {
 
 void loop() {
 
-  /*
-   * pin interrupt
-   */
-//  _loop_PinIntr();
-  
-//  //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
-//  lcd.setCursor(0,1);
-////  sprintf(line_2, "%s %02d", "counting...", count);
-//  sprintf(line_2, "%s %03d", "counting ", count);
-//  
-//  lcd.print(line_2);
-  
 }
-
-void _loop_PinIntr() {
-  
-  // judge
-  if (flag_PinIntr == 1) {
-    
-    // chattering safety
-//    delay(chattering_time);
-//    delay(100);
-    delay(250);
-    
-    // message
-    Serial.println("flag_PinIntr => 1");
-    
-    // reset
-    flag_PinIntr = 0;
-
-  }
-  
-}//_loop_PinIntr()
 
 void conv_Count_2_ClockLabel(char* label, int count) {
 
@@ -372,45 +313,5 @@ void write_SDCard(char* filename, char* line_2) {
     }
   
 }//void write_SDCard
-
-void intr_pin() {
-  
-  // set flag
-  if (flag_PinIntr == 0) {
-     
-    flag_PinIntr = 1;
-    
-    // message
-    Serial.println("pin interrupt => detected");
-
-  } else {
-    
-    // message
-    Serial.println("flag_PinIntr => not 0");
-      
-  }
-  
-//  } else {
-//    
-//    flag_PinIntr = 0;
-//    
-//  }
-  
-//  flag_PinIntr = 1;
-  
-//  Serial.println("pin intr ==> occurred");
-
-
-}
-
-
-
-
-
-
-
-
-
-
 
 
