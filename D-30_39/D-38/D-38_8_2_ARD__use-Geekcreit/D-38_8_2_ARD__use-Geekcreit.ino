@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.11";
+char* id = "38 s-9#1 steps.12";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -50,9 +50,11 @@ char clocl_label[10];
  */
 int sensorPin = A0;   // analog pin 0
 
-const int chipSelect = 4;
+const byte chipSelect = 4;
+//const int chipSelect = 4;
 
-int interrupt_pin = 2;
+byte interrupt_pin = 2;
+//int interrupt_pin = 2;
 
 /*
  * flags
@@ -424,6 +426,7 @@ void intr_pin() {
 
 
 }
+
 
 
 
