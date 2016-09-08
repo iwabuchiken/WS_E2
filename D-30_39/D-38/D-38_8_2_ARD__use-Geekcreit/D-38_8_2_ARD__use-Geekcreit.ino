@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.12";
+char* id = "38 s-9#1 steps.13";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -24,7 +24,6 @@ File myFile;
 //char* fname = "20160826.txt";
 //char* fname = "20160907.txt";
 char* fname = "16090801.txt";
-//char* fname = "16090701.txt";
 //char* fname = "160907_1.txt";
 //char* fname = "160907-1.txt";
 
@@ -50,20 +49,16 @@ char clocl_label[10];
  */
 int sensorPin = A0;   // analog pin 0
 
-const byte chipSelect = 4;
-//const int chipSelect = 4;
+const int chipSelect = 4;
 
-byte interrupt_pin = 2;
-//int interrupt_pin = 2;
+int interrupt_pin = 2;
 
 /*
  * flags
  */
-byte flag_PinIntr = 0;        // f1 --> see memo for 'f1'
-//int flag_PinIntr = 0;        // f1 --> see memo for 'f1'
+int flag_PinIntr = 0;        // f1 --> see memo for 'f1'
 
-byte flag_PinIntr_Loop = 0;        // f2
-//int flag_PinIntr_Loop = 0;        // f2
+int flag_PinIntr_Loop = 0;        // f2
 
 //int flag_PinIntr_Occurred = 0;    // f3
 //
@@ -71,7 +66,7 @@ byte flag_PinIntr_Loop = 0;        // f2
 
 
 
-//int flag_Changed = 0;
+int flag_Changed = 0;
 
 /*
  * values
@@ -108,10 +103,9 @@ void timer_intr() {
    * write: sdcard
    */
   
-  write_SDCard_2(line_2);
-//  write_SDCard(fname, line_2);
+  write_SDCard(fname, line_2);
   
-}//void timer_intr
+}
 
 void setup() {
 
@@ -127,8 +121,6 @@ void setup() {
     /*
      * opening message
      */
-    Serial.println("");
-    Serial.println("============================");
     Serial.print(msg);
     Serial.print(": ");
     Serial.println(id);
@@ -345,8 +337,7 @@ void write_SDCard(char* filename, char* line_2) {
     /*
      * write: 
      */
-    myFile = SD.open(fname, FILE_WRITE);
-//    myFile = SD.open(filename, FILE_WRITE);
+    myFile = SD.open(filename, FILE_WRITE);
     
     if (myFile)
     {
@@ -366,36 +357,7 @@ void write_SDCard(char* filename, char* line_2) {
         
     }
   
-}//write_SDCard
-
-void write_SDCard_2(char* line_2) {
-    
-    /*
-     * write: 
-     */
-    myFile = SD.open(fname, FILE_WRITE);
-//    myFile = SD.open(filename, FILE_WRITE);
-    
-    if (myFile)
-    {
-      Serial.println("file => opened");
-      
-//        Serial.print("Writing to test.txt...");
-        
-        myFile.println(line_2);
-        myFile.close();
-        
-        Serial.println("done.");
-    }
-    else
-    {
-        Serial.println("error opening: ");
-//        Serial.println(filename);
-        Serial.println(fname);
-        
-    }
-  
-}//write_SDCard_2
+}
 
 void intr_pin() {
   
@@ -426,6 +388,9 @@ void intr_pin() {
 
 
 }
+
+
+
 
 
 
