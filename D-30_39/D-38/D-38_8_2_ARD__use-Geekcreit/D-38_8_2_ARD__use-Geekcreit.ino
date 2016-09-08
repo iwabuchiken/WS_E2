@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.9";
+char* id = "38 s-9#1 steps.10";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -104,9 +104,10 @@ void timer_intr() {
    * write: sdcard
    */
   
-  write_SDCard(fname, line_2);
+  write_SDCard_2(line_2);
+//  write_SDCard(fname, line_2);
   
-}
+}//void timer_intr
 
 void setup() {
 
@@ -361,7 +362,36 @@ void write_SDCard(char* filename, char* line_2) {
         
     }
   
-}
+}//write_SDCard
+
+void write_SDCard_2(char* line_2) {
+    
+    /*
+     * write: 
+     */
+    myFile = SD.open(fname, FILE_WRITE);
+//    myFile = SD.open(filename, FILE_WRITE);
+    
+    if (myFile)
+    {
+      Serial.println("file => opened");
+      
+//        Serial.print("Writing to test.txt...");
+        
+        myFile.println(line_2);
+        myFile.close();
+        
+        Serial.println("done.");
+    }
+    else
+    {
+        Serial.println("error opening: ");
+//        Serial.println(filename);
+        Serial.println(fname);
+        
+    }
+  
+}//write_SDCard_2
 
 void intr_pin() {
   
@@ -392,6 +422,7 @@ void intr_pin() {
 
 
 }
+
 
 
 
