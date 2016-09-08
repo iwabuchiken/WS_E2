@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.10";
+char* id = "38 s-9#1 steps.11";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -57,9 +57,11 @@ int interrupt_pin = 2;
 /*
  * flags
  */
-int flag_PinIntr = 0;        // f1 --> see memo for 'f1'
+byte flag_PinIntr = 0;        // f1 --> see memo for 'f1'
+//int flag_PinIntr = 0;        // f1 --> see memo for 'f1'
 
-int flag_PinIntr_Loop = 0;        // f2
+byte flag_PinIntr_Loop = 0;        // f2
+//int flag_PinIntr_Loop = 0;        // f2
 
 //int flag_PinIntr_Occurred = 0;    // f3
 //
@@ -67,7 +69,7 @@ int flag_PinIntr_Loop = 0;        // f2
 
 
 
-int flag_Changed = 0;
+//int flag_Changed = 0;
 
 /*
  * values
@@ -422,6 +424,7 @@ void intr_pin() {
 
 
 }
+
 
 
 
