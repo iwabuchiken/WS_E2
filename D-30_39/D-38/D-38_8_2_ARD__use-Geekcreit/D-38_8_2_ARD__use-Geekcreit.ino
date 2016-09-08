@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.27-5";
+char* id = "38 s-9#1 steps.28";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -46,9 +46,11 @@ byte interrupt_pin = 2;
 /*
  * flags
  */
-byte flag_PinIntr = 0;        // f1 --> see memo for 'f1'
+//byte flag_PinIntr = 0;        // f1 --> see memo for 'f1'
+//
+//byte flag_PinIntr_Loop = 0;        // f2
 
-byte flag_PinIntr_Loop = 0;        // f2
+byte flag_PIN_IS_HIGH = 0;  // D2 --> HIGH? --> if yes, start writing to the file
 
 /*
  * values
@@ -90,14 +92,38 @@ void timer_intr() {
    Serial.print("interrupt pin --> ");
    Serial.println(val);
   
+   // set flag
+   if (val == 1) {
+     
+     if (flag_PIN_IS_HIGH == 0) {
+       
+       flag_PIN_IS_HIGH = 1;
+       
+     }
+     
+   } else if (val == 0) {
+
+     if (flag_PIN_IS_HIGH != 0) {
+       
+       flag_PIN_IS_HIGH = 0;
+       
+     }
+
+   }
+   
   /*
    * write: sdcard
    */
+   if (flag_PIN_IS_HIGH == 1) {
   
-  write_SDCard(fname, line_2);
+     write_SDCard(fname, line_2);
+     
+   }
+   
+//  write_SDCard(fname, line_2);
 //  write_SDCard(fname, line_2);
   
-}
+}//void timer_intr()
 
 void setup() {
 
@@ -306,6 +332,7 @@ void write_SDCard(char* filename, char* line_2) {
     }
   
 }//void write_SDCard
+
 
 
 
