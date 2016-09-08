@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.5";
+char* id = "38 s-9#1 steps.6";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -23,7 +23,8 @@ File myFile;
 
 //char* fname = "20160826.txt";
 //char* fname = "20160907.txt";
-char* fname = "16090701.txt";
+char* fname = "16090801.txt";
+//char* fname = "16090701.txt";
 //char* fname = "160907_1.txt";
 //char* fname = "160907-1.txt";
 
@@ -66,7 +67,7 @@ int flag_PinIntr_Loop = 0;        // f2
 
 
 
-//int flag_Changed = 0;
+int flag_Changed = 0;
 
 /*
  * values
@@ -143,7 +144,7 @@ void setup() {
     /*
      * pin intr
      */
-    _setup_Interrupt();
+//    _setup_Interrupt();
     
     
 }//void setup()
@@ -250,8 +251,7 @@ void _setup_SDCard() {
     
       Serial.print("Writing to: ");
       Serial.println(fname);
-
-      myFile.println("=================================");
+      
       myFile.println(id);
       myFile.close();
       
@@ -342,8 +342,7 @@ void write_SDCard(char* filename, char* line_2) {
     
     if (myFile)
     {
-      Serial.print("file => opened: ");
-      Serial.println(filename);
+      Serial.println("file => opened");
       
 //        Serial.print("Writing to test.txt...");
         
@@ -390,6 +389,12 @@ void intr_pin() {
 
 
 }
+
+
+
+
+
+
 
 
 
