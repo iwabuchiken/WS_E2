@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.25";
+char* id = "38 s-9#1 steps.26";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -79,6 +79,15 @@ void timer_intr() {
   
   Serial.println(line_2);
 
+  /*
+   * pin state
+   */
+  int val = digitalRead(interrupt_pin);
+  
+  //message
+   Serial.print("interrupt pin --> ");
+   Serial.println(val);
+  
   /*
    * write: sdcard
    */
@@ -313,5 +322,6 @@ void write_SDCard(char* filename, char* line_2) {
     }
   
 }//void write_SDCard
+
 
 
