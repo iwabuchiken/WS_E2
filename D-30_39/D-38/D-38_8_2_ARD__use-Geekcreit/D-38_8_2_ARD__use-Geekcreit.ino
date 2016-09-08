@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.8";
+char* id = "38 s-9#1 steps.9";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -340,7 +340,8 @@ void write_SDCard(char* filename, char* line_2) {
     /*
      * write: 
      */
-    myFile = SD.open(filename, FILE_WRITE);
+    myFile = SD.open(fname, FILE_WRITE);
+//    myFile = SD.open(filename, FILE_WRITE);
     
     if (myFile)
     {
@@ -391,5 +392,6 @@ void intr_pin() {
 
 
 }
+
 
 
