@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.26";
+char* id = "38 s-9#1 steps.27";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -39,14 +39,14 @@ int sensorPin = A0;   // analog pin 0
 
 const int chipSelect = 4;
 
-int interrupt_pin = 2;
+byte interrupt_pin = 2;
 
 /*
  * flags
  */
-int flag_PinIntr = 0;        // f1 --> see memo for 'f1'
+byte flag_PinIntr = 0;        // f1 --> see memo for 'f1'
 
-int flag_PinIntr_Loop = 0;        // f2
+byte flag_PinIntr_Loop = 0;        // f2
 
 /*
  * values
@@ -322,6 +322,7 @@ void write_SDCard(char* filename, char* line_2) {
     }
   
 }//void write_SDCard
+
 
 
 
