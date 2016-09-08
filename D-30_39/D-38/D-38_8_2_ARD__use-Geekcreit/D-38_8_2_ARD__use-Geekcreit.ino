@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.27-4";
+char* id = "38 s-9#1 steps.27-5";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -21,7 +21,8 @@ SdFile root;
 
 File myFile;
 
-char* fname = "16090801.txt";
+
+char* fname = "16090801.txt";  // file nam --> use local literal, not global var (20160908_125919)
 
 int INTERVAL = 1000;
 
@@ -94,6 +95,7 @@ void timer_intr() {
    */
   
   write_SDCard(fname, line_2);
+//  write_SDCard(fname, line_2);
   
 }
 
@@ -240,12 +242,14 @@ void _setup_SDCard() {
    * write: opening messages
    */
   myFile = SD.open(fname, FILE_WRITE);
+//  myFile = SD.open(fname, FILE_WRITE);
   if (myFile)
   {
     Serial.println("file => opened");
     
       Serial.print("Writing to: ");
       Serial.println(fname);
+//      Serial.println(fname);
       
       myFile.println(id);
       myFile.close();
@@ -256,6 +260,7 @@ void _setup_SDCard() {
   {
       Serial.print("error opening: ");
       Serial.println(fname);
+//      Serial.println(fname);
       
   }
 
@@ -279,6 +284,7 @@ void write_SDCard(char* filename, char* line_2) {
      * write: 
      */
     myFile = SD.open(fname, FILE_WRITE);
+//    myFile = SD.open(fname, FILE_WRITE);
 //    myFile = SD.open(filename, FILE_WRITE);
     
     if (myFile)
@@ -300,6 +306,7 @@ void write_SDCard(char* filename, char* line_2) {
     }
   
 }//void write_SDCard
+
 
 
 
