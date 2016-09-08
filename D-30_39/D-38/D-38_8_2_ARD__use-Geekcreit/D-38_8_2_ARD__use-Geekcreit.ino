@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.22";
+char* id = "38 s-9#1 steps.23";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -145,8 +145,21 @@ void setup() {
      */
 //    _setup_Interrupt();
     
+    /*
+     * pins
+     */
+    _setup_Pins();
     
 }//void setup()
+
+void _setup_Pins() {
+  
+  pinMode(interrupt_pin, INPUT);
+  
+  // message
+  Serial.println("setup pins --> done");
+  
+}//_setup_Pins()
 
 void _setup_Interrupt() {
   
@@ -388,6 +401,7 @@ void intr_pin() {
 
 
 }
+
 
 
 
