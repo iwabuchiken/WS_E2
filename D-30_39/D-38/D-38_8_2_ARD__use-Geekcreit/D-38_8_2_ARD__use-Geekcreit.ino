@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-9#1 steps.17";
+char* id = "38 s-9#1 steps.18";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -121,6 +121,8 @@ void setup() {
     /*
      * opening message
      */
+    Serial.println("");
+    Serial.println("==============================");
     Serial.print(msg);
     Serial.print(": ");
     Serial.println(id);
@@ -251,6 +253,8 @@ void _setup_SDCard() {
       Serial.print("Writing to: ");
       Serial.println(fname);
       
+      myFile.println("");
+      myFile.println("====================================");
       myFile.println(id);
       myFile.close();
       
@@ -278,7 +282,7 @@ void loop() {
   /*
    * pin interrupt
    */
-  _loop_PinIntr();
+//  _loop_PinIntr();
   
 //  //ref sprintf https://liudr.wordpress.com/2012/01/16/sprintf/
 //  lcd.setCursor(0,1);
@@ -389,6 +393,7 @@ void intr_pin() {
 
 
 }
+
 
 
 
