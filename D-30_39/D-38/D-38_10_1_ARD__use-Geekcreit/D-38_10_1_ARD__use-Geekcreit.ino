@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-10#1 steps.1";
+char* id = "38 s-10#1 steps.2";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -42,6 +42,7 @@ byte sensorPin = A0;   // analog pin 0
 const int chipSelect = 4;
 
 byte interrupt_pin = 2;
+byte message_pin = 3;
 
 /*
  * flags
@@ -118,7 +119,21 @@ void timer_intr() {
   
      write_SDCard(fname, line_2);
      
-   }
+     if (message_pin == HIGH) {
+       
+       digitalWrite(message_pin, LOW);
+       
+     } else {
+       
+       digitalWrite(message_pin, HIGH);
+       
+     }
+     
+   } else {
+     
+     digitalWrite(message_pin, LOW);
+     
+   }//if (flag_PIN_IS_HIGH == 1)
    
 //  write_SDCard(fname, line_2);
 //  write_SDCard(fname, line_2);
@@ -166,6 +181,9 @@ void setup() {
 void _setup_Pins() {
   
   pinMode(interrupt_pin, INPUT);
+  pinMode(message_pin, OUTPUT);
+  
+  digitalWrite(message_pin, LOW);
   
   // message
   Serial.println("setup pins --> done");
@@ -277,7 +295,11 @@ void _setup_SDCard() {
       Serial.println(fname);
 //      Serial.println(fname);
       
+      // write
+      myFile.println("");
+      myFile.println("==================================");
       myFile.println(id);
+      myFile.println("");
       myFile.close();
       
       Serial.println("done.");
@@ -355,4 +377,5 @@ void conv_Count_2_ClockLabel(char* label, int count) {
   //  sprintf(label, "%d:%02d", min, sec);
     
   }
+
 
