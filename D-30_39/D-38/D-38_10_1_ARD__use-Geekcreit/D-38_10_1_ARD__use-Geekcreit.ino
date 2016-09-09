@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-10#1 steps.2-5";
+char* id = "38 s-10#1 steps.2-5-2";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -121,9 +121,6 @@ void timer_intr() {
      
    }
    
-//  write_SDCard(fname, line_2);
-//  write_SDCard(fname, line_2);
-  
 }//void timer_intr()
 
 void setup() {
@@ -319,6 +316,11 @@ void loop() {
 
 void write_SDCard(char* filename, char* line_2) {
   
+  //debug
+  Serial.print("[DEBUG] ");
+  Serial.print("write_SDCard: ");
+  Serial.println(fname);
+  
     /*
      * write: 
      */
@@ -368,6 +370,7 @@ void conv_Count_2_ClockLabel(char* label, int count) {
   //  sprintf(label, "%d:%02d", min, sec);
     
   }
+
 
 
 
