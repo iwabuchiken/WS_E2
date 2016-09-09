@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <SD.h>
 
-char* id = "38 s-10#1 steps.2-4";
+char* id = "38 s-10#1 steps.2-5";
 char* msg = "Welcome";
 
 Sd2Card card;
@@ -153,14 +153,19 @@ void setup() {
     _setup_Timer2();
 
     /*
+     * pins
+     */
+    _setup_Pins();
+
+    /*
      * sdcard
      */
     _setup_SDCard();
 
-    /*
-     * pins
-     */
-    _setup_Pins();
+//    /*
+//     * pins
+//     */
+//    _setup_Pins();
     
 }//void setup()
 
@@ -363,6 +368,7 @@ void conv_Count_2_ClockLabel(char* label, int count) {
   //  sprintf(label, "%d:%02d", min, sec);
     
   }
+
 
 
 
