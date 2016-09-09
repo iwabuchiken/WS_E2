@@ -1,0 +1,188 @@
+Welcome: 38 s-10#1 steps.2-2
+
+
+Initializing SD card...Wiring is correct and a card is present.
+
+Card type: SD2
+init volume => done
+
+Volume type is FAT32
+
+Volume size (bytes): 2002255872
+Volume size (Kbytes): 1955328
+Volume size (Mbytes): 1909
+
+Files found on the card (name, date and size in bytes): 
+TEST.TXT      2000-01-01 01:00:00 18
+TEST_4.TXT    2000-01-01 01:00:00 72
+20160826.TXT  2000-01-01 01:00:00 4368
+ABCDEF.TXT    2016-08-24 15:33:36 10
+SYSTEM~1/     2016-08-24 15:34:00
+20160907.TXT  2016-09-07 20:36:42 0
+160907-1.TXT  2000-01-01 01:00:00 23938
+160907_1.TXT  2000-01-01 01:00:00 0
+16090701.TXT  2000-01-01 01:00:00 16020
+16090801.TXT  2000-01-01 01:00:00 58367
+16090901.TXT  2000-01-01 01:00:00 15314
+file => opened
+Writing to: 16090901.txt
+done.
+setup pins --> done
+00:00:01
+[0000998] count => 001 (00151)
+interrupt pin --> 1
+file => opened
+done.
+00:00:02
+[0001998] count => 002 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:03
+[0002999] count => 003 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:04
+[0003999] count => 004 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:05
+[0004999] count => 005 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:06
+[0005998] count => 006 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:07
+[0006999] count => 007 (00150)
+interrupt pin --> 0
+00:00:08
+[0007998] count => 008 (00150)
+interrupt pin --> 0
+00:00:09
+[0008998] count => 009 (00150)
+interrupt pin --> 0
+00:00:10
+[0009999] count => 010 (00150)
+interrupt pin --> 0
+00:00:11
+[0010999] count => 011 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:12
+[0012000] count => 012 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:13
+[0012999] count => 013 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:14
+[0014000] count => 014 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:15
+[0014999] count => 015 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:16
+[0016000] count => 016 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:17
+[0017000] count => 017 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:18
+[0018000] count => 018 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:19
+[0019001] count => 019 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:20
+[0020001] count => 020 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:21
+[0021002] count => 021 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:22
+[0022002] count => 022 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:23
+[0023003] count => 023 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:24
+[0024003] count => 024 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:25
+[0025003] count => 025 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:26
+[0026003] count => 026 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:27
+[0027003] count => 027 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:28
+[0028003] count => 028 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:29
+[0029003] count => 029 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:30
+[0030003] count => 030 (00150)
+interrupt pin --> 1
+error opening: 
+16090901.txt
+00:00:31
+[0031003] count => 031 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:32
+[0032003] count => 032 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00:00:33
+[0033002] count => 033 (00150)
+interrupt pin --> 1
+file => opened
+done.
+00
