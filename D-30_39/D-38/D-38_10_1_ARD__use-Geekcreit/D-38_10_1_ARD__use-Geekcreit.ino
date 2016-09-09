@@ -10,16 +10,19 @@
 //#include <LiquidCrystal.h>
 
 #include <SPI.h>
-#include <SD.h>
+#include <SD.h> 
 
-char* id = "38 s-10#1 steps.2-5-2";
+/**********************************
+ * variables
+ **********************************/
+char* id = "38 s-10#1 steps.2-5-3";
 char* msg = "Welcome";
 
-Sd2Card card;
-SdVolume volume;
-SdFile root;
-
-File myFile;
+//Sd2Card card;
+//SdVolume volume;
+//SdFile root;
+//
+//File myFile;
 
 
 char* fname = "16090901.txt";  // file nam --> use local literal, not global var (20160908_125919)
@@ -58,6 +61,15 @@ byte flag_PIN_IS_HIGH = 0;  // D2 --> HIGH? --> if yes, start writing to the fil
  * 
  */
 //int chattering_time = 200;
+
+/*
+ * sdcard-related
+ */
+Sd2Card card;
+SdVolume volume;
+SdFile root;
+
+File myFile;
 
 /************************************
  * funcs
@@ -370,6 +382,7 @@ void conv_Count_2_ClockLabel(char* label, int count) {
   //  sprintf(label, "%d:%02d", min, sec);
     
   }
+
 
 
 
